@@ -1,0 +1,3850 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Centre for Consciousness Studies — NIMHANS, Bengaluru</title>
+  <meta name="description" content="A multidisciplinary research center at NIMHANS bridging modern neuroscience with India&#39;s ancient contemplative traditions.
+">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Source+Serif+4:wght@300;400&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --ink: #0D1B2A;
+      --saffron: #E8830A;
+      --saffron-lt: #F5A84A;
+      --cream: #FAF6EF;
+      --stone: #E2D9CC;
+      --muted: #8A9BB0;
+      --teal: #1A6B6B;
+      --teal-lt: #24A0A0;
+      --surface: #132030;
+      --white: #FFFFFF;
+      --ff-disp: 'Cormorant Garamond', Georgia, serif;
+      --ff-body: 'Source Serif 4', Georgia, serif;
+      --ff-mono: 'DM Mono', 'Courier New', monospace;
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+      --max: 1200px;
+    }
+
+    /* ── RESET ──────────────────────────────────────────── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: var(--ff-body);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      font: inherit;
+    }
+
+    /* ── TYPOGRAPHY ─────────────────────────────────────── */
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: var(--ff-disp);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .label {
+      font-family: var(--ff-mono);
+      font-size: .72rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--saffron);
+    }
+
+    .label::before {
+      content: '[';
+      opacity: .5;
+    }
+
+    .label::after {
+      content: ']';
+      opacity: .5;
+    }
+
+    /* ── LAYOUT ─────────────────────────────────────────── */
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 5vw;
+    }
+
+    .section-pad {
+      padding: 100px 0;
+    }
+
+    section.dark {
+      background: var(--ink);
+    }
+
+    section.light {
+      background: var(--cream);
+      color: var(--ink);
+    }
+
+    section.surface {
+      background: var(--surface);
+    }
+
+
+    /* ── ANIMATIONS ─────────────────────────────────────── */
+    to {
+      stroke-dashoffset: 0;
+    }
+    }
+
+    @keyframes spin-slow {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-12px);
+      }
+    }
+
+    @keyframes fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Reveal: visible by default; JS adds .js-loaded to <html> to enable animations */
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: opacity .7s var(--ease), transform .7s var(--ease);
+    }
+
+    .js-loaded .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+
+    .js-loaded .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── NAV ────────────────────────────────────────────── */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 20px 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background .4s var(--ease), padding .4s var(--ease), border-color .4s var(--ease);
+      border-bottom: 1px solid transparent;
+    }
+
+    #navbar.scrolled {
+      background: rgba(13, 27, 42, .96);
+      backdrop-filter: blur(16px);
+      border-color: rgba(232, 131, 10, .25);
+      padding: 14px 5vw;
+    }
+
+    .nav-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .nav-brand .brand-top {
+      font-family: var(--ff-mono);
+      font-size: .75rem;
+      letter-spacing: .15em;
+      color: var(--saffron);
+    }
+
+    .nav-brand .brand-sub {
+      font-family: var(--ff-mono);
+      font-size: .6rem;
+      letter-spacing: .1em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--ff-mono);
+      font-size: .68rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      position: relative;
+      transition: color .25s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 1px;
+      background: var(--saffron);
+      transition: width .3s var(--ease);
+    }
+
+    .nav-links a:hover {
+      color: var(--saffron);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--saffron);
+      border-radius: 2px;
+      transition: transform .3s, opacity .3s;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    /* mobile overlay */
+    #nav-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: var(--ink);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .35s var(--ease);
+    }
+
+    #nav-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    #nav-overlay a {
+      font-family: var(--ff-disp);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--cream);
+      transition: color .2s;
+    }
+
+    #nav-overlay a:hover {
+      color: var(--saffron);
+    }
+
+    /* ── HERO ───────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      padding: 120px 5vw 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 70% 50%, rgba(26, 107, 107, .12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 20% 80%, rgba(232, 131, 10, .06) 0%, transparent 60%);
+    }
+
+    .mandala-svg {
+      position: absolute;
+      right: -5vw;
+      top: 50%;
+      transform: translateY(-50%);
+      width: min(56vw, 700px);
+      opacity: .07;
+      animation: spin-slow 120s linear infinite;
+    }
+
+    .eeg-wave {
+      position: absolute;
+      bottom: 80px;
+      left: 0;
+      right: 0;
+      opacity: .15;
+    }
+
+    .eeg-path {
+      stroke-dasharray: 600;
+      stroke-dashoffset: 600;
+      animation: eeg 4s ease forwards;
+    }
+
+    .hero-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+      align-items: center;
+      width: 100%;
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    .hero-text .eyebrow {
+      font-family: var(--ff-mono);
+      font-size: .72rem;
+      letter-spacing: .3em;
+      color: var(--saffron);
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-style: italic;
+      line-height: 1.05;
+      color: var(--cream);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-text h1 em {
+      font-style: normal;
+      color: var(--saffron);
+    }
+
+    .hero-text p {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+
+
+    /* ── ABOUT (VISION + MISSION) ───────────────────────── */
+    #about {
+      position: relative;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .vision-card {
+      background: var(--ink);
+      border-radius: 12px;
+      padding: 3rem;
+      border: 1px solid rgba(232, 131, 10, .15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vision-card::before {
+      content: '"';
+      position: absolute;
+      font-family: var(--ff-disp);
+      font-size: 12rem;
+      color: var(--saffron);
+      opacity: .06;
+      top: -2rem;
+      left: 1rem;
+      line-height: 1;
+    }
+
+    .vision-card .label {
+      margin-bottom: 1.5rem;
+    }
+
+    .vision-card blockquote {
+      font-family: var(--ff-disp);
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.35;
+    }
+
+    .mission-title {
+      font-family: var(--ff-disp);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      color: var(--ink);
+      margin-bottom: 2rem;
+    }
+
+    .mission-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .mission-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1.2rem;
+      align-items: start;
+    }
+
+    .mission-num {
+      font-family: var(--ff-mono);
+      font-size: .65rem;
+      color: var(--saffron);
+      background: rgba(232, 131, 10, .1);
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: .2rem;
+      border: 1px solid rgba(232, 131, 10, .3);
+    }
+
+    .mission-item p {
+      font-size: .95rem;
+      color: rgba(13, 27, 42, .8);
+      line-height: 1.7;
+      border-left: 2px solid rgba(232, 131, 10, .3);
+      padding-left: 1rem;
+    }
+
+    /* ── HISTORY ────────────────────────────────────────── */
+    #history {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pull-quote {
+      max-width: 800px;
+      margin: 0 auto 5rem;
+      text-align: center;
+      position: relative;
+      padding: 0 3rem;
+    }
+
+    .pull-quote .q-mark {
+      font-family: var(--ff-disp);
+      font-size: 6rem;
+      color: var(--saffron);
+      opacity: .3;
+      line-height: .6;
+      position: absolute;
+    }
+
+    .pull-quote .q-mark.open {
+      top: 0;
+      left: 0;
+    }
+
+    .pull-quote .q-mark.close {
+      bottom: -1rem;
+      right: 0;
+    }
+
+    .pull-quote blockquote {
+      font-family: var(--ff-disp);
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-style: italic;
+      line-height: 1.5;
+      color: var(--cream);
+    }
+
+    .timeline {
+      display: flex;
+      gap: 0;
+      position: relative;
+      margin: 4rem 0 5rem;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--saffron), transparent);
+    }
+
+    .tl-item {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 1rem;
+      position: relative;
+    }
+
+    .tl-diamond {
+      width: 14px;
+      height: 14px;
+      background: var(--saffron);
+      transform: rotate(45deg);
+      margin-bottom: 1.2rem;
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+      box-shadow:
+        0 0 6px 2px rgba(232, 131, 10, .8),
+        0 0 18px 6px rgba(232, 131, 10, .4),
+        0 0 36px 12px rgba(232, 131, 10, .15);
+      animation: diamond-pulse 2.8s ease-in-out infinite;
+    }
+
+    @keyframes diamond-pulse {
+
+      0%,
+      100% {
+        box-shadow:
+          0 0 6px 2px rgba(232, 131, 10, .8),
+          0 0 18px 6px rgba(232, 131, 10, .4),
+          0 0 36px 12px rgba(232, 131, 10, .15);
+      }
+
+      50% {
+        box-shadow:
+          0 0 10px 4px rgba(232, 131, 10, 1),
+          0 0 28px 10px rgba(232, 131, 10, .55),
+          0 0 52px 18px rgba(232, 131, 10, .22);
+      }
+    }
+
+    .tl-year {
+      font-family: var(--ff-mono);
+      font-size: .7rem;
+      color: var(--saffron);
+      letter-spacing: .1em;
+      margin-bottom: .3rem;
+    }
+
+    .tl-label {
+      font-family: var(--ff-disp);
+      font-size: 1rem;
+      color: var(--cream);
+      margin-bottom: .4rem;
+    }
+
+    .tl-desc {
+      font-size: .8rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .preface-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .preface-cols p {
+      color: rgba(250, 246, 239, .75);
+      font-size: .95rem;
+      line-height: 1.85;
+      margin-bottom: 1rem;
+    }
+
+    /* ── TEAM ───────────────────────────────────────────── */
+    #people {
+      position: relative;
+    }
+
+    .section-header {
+      margin-bottom: 3rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--ink);
+      margin-top: .5rem;
+    }
+
+    .section-header.light-header h2 {
+      color: var(--cream);
+    }
+
+    .saffron-rule {
+      width: 3rem;
+      height: 2px;
+      background: var(--saffron);
+      margin: .8rem 0;
+    }
+
+    /* tabs */
+    .tab-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .tab-btn {
+      font-family: var(--ff-mono);
+      font-size: .65rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      padding: .5rem 1.1rem;
+      border-radius: 100px;
+      border: 1px solid var(--stone);
+      color: var(--muted);
+      transition: all .25s;
+    }
+
+    .tab-btn:hover {
+      border-color: var(--saffron);
+      color: var(--saffron);
+    }
+
+    .tab-btn.active {
+      background: var(--saffron);
+      border-color: var(--saffron);
+      color: var(--ink);
+    }
+
+    .tab-panel {
+      display: none;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    /* team grid */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .team-card {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--stone);
+      overflow: hidden;
+      transition: transform .25s var(--ease), box-shadow .25s var(--ease), border-color .25s;
+      text-align: center;
+      padding-bottom: 1.5rem;
+    }
+
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 32px rgba(13, 27, 42, .12);
+      border-color: var(--saffron);
+    }
+
+    .team-card:hover .card-border-bottom {
+      height: 3px;
+    }
+
+    .card-avatar-wrap {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 2rem auto 1rem;
+      border: 3px solid var(--stone);
+      transition: border-color .25s;
+      flex-shrink: 0;
+    }
+
+    .team-card:hover .card-avatar-wrap {
+      border-color: var(--saffron);
+    }
+
+    .card-avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* monogram canvas fallback */
+    .monogram-canvas {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+    }
+
+    .team-card h3 {
+      font-family: var(--ff-disp);
+      font-size: 1.05rem;
+      color: var(--ink);
+      padding: 0 1rem;
+      margin-bottom: .3rem;
+    }
+
+    .team-card .role {
+      font-family: var(--ff-mono);
+      font-size: .6rem;
+      letter-spacing: .1em;
+      color: var(--muted);
+      padding: 0 1rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .team-socials {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding-bottom: 1.5rem;
+    }
+
+    .team-socials a {
+      color: var(--muted);
+      transition: color .2s var(--ease), transform .2s var(--ease);
+      display: flex;
+      align-items: center;
+    }
+
+    .team-socials a:hover {
+      color: var(--saffron);
+      transform: translateY(-2px);
+    }
+
+    .card-border-bottom {
+      height: 0;
+      background: var(--saffron);
+      transition: height .25s;
+    }
+
+    /* alumni smaller */
+    .alumni-grid {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .alumni-grid .team-card {
+      padding-bottom: 1rem;
+    }
+
+    .alumni-grid .card-avatar-wrap {
+      width: 72px;
+      height: 72px;
+      margin: 1.5rem auto .8rem;
+    }
+
+    .alumni-grid .team-card h3 {
+      font-size: .9rem;
+    }
+
+    /* advisory table */
+    .advisory-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .5rem;
+      margin-top: 1rem;
+    }
+
+    .advisory-row {
+      display: flex;
+      flex-direction: column;
+      padding: .85rem 1rem;
+      border-radius: 8px;
+      transition: background .2s;
+    }
+
+    .advisory-row:hover {
+      background: rgba(13, 27, 42, .05);
+    }
+
+    .advisory-row .adv-name {
+      font-family: var(--ff-body);
+      font-size: .95rem;
+      color: var(--ink);
+    }
+
+    .advisory-row .adv-affil {
+      font-family: var(--ff-mono);
+      font-size: .6rem;
+      letter-spacing: .06em;
+      color: var(--muted);
+      margin-top: .15rem;
+    }
+
+    .advisory-chairperson {
+      background: rgba(232, 131, 10, .07);
+      border: 1px solid rgba(232, 131, 10, .2);
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1rem;
+      grid-column: 1/-1;
+    }
+
+    .advisory-chairperson .chair-label {
+      font-family: var(--ff-mono);
+      font-size: .6rem;
+      letter-spacing: .15em;
+      color: var(--saffron);
+      margin-bottom: .3rem;
+    }
+
+    .advisory-chairperson .chair-name {
+      font-family: var(--ff-body);
+      font-size: 1rem;
+      color: var(--ink);
+    }
+
+    /* consortium */
+    .consortium-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: .5rem;
+      margin-top: 1rem;
+    }
+
+    .consortium-row {
+      padding: .75rem 1rem;
+      border-radius: 8px;
+      border-left: 2px solid transparent;
+      transition: all .2s;
+    }
+
+    .consortium-row:hover {
+      background: rgba(13, 27, 42, .04);
+      border-color: var(--saffron);
+    }
+
+    .consortium-row .cons-name {
+      font-family: var(--ff-body);
+      font-size: .9rem;
+      color: var(--ink);
+    }
+
+    .consortium-row .cons-dept {
+      font-family: var(--ff-mono);
+      font-size: .58rem;
+      letter-spacing: .06em;
+      color: var(--muted);
+      margin-top: .1rem;
+    }
+
+    /* ── PROJECTS ───────────────────────────────────────── */
+    #projects {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .filter-btn {
+      font-family: var(--ff-mono);
+      font-size: .65rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      padding: .5rem 1.1rem;
+      border-radius: 100px;
+      border: 1px solid rgba(250, 246, 239, .15);
+      color: var(--muted);
+      transition: all .25s;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--saffron);
+      color: var(--saffron);
+    }
+
+    .filter-btn.active {
+      background: var(--saffron);
+      border-color: var(--saffron);
+      color: var(--ink);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border-radius: 12px;
+      border: 1px solid rgba(250, 246, 239, .06);
+      overflow: hidden;
+      transition: transform .25s var(--ease), box-shadow .25s, opacity .35s, border-color .25s;
+    }
+
+    .project-card.hidden {
+      display: none !important;
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(.96);
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 40px rgba(26, 107, 107, .2);
+      border-color: rgba(26, 107, 107, .4);
+    }
+
+    .project-top {
+      height: 6px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-lt));
+    }
+
+    .project-top.saffron {
+      background: linear-gradient(90deg, var(--saffron), var(--saffron-lt));
+    }
+
+    .project-body {
+      padding: 1.5rem;
+    }
+
+    .project-type {
+      font-family: var(--ff-mono);
+      font-size: .6rem;
+      letter-spacing: .12em;
+      color: var(--saffron);
+      margin-bottom: .6rem;
+      text-transform: uppercase;
+    }
+
+    .project-card h3 {
+      font-family: var(--ff-disp);
+      font-size: 1.1rem;
+      color: var(--cream);
+      line-height: 1.3;
+      margin-bottom: .8rem;
+    }
+
+    .project-card p {
+      font-size: .85rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+
+    .proj-tag {
+      font-family: var(--ff-mono);
+      font-size: .55rem;
+      letter-spacing: .1em;
+      padding: .25rem .7rem;
+      border-radius: 100px;
+      border: 1px solid rgba(26, 107, 107, .4);
+      color: var(--teal-lt);
+      text-transform: uppercase;
+    }
+
+    /* ── PUBLICATIONS ───────────────────────────────────── */
+    #publications {
+      position: relative;
+    }
+
+    .search-wrap {
+      position: relative;
+      margin-bottom: 2.5rem;
+      max-width: 560px;
+    }
+
+    .search-wrap svg {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      pointer-events: none;
+    }
+
+    #pub-search {
+      width: 100%;
+      background: transparent;
+      border: 1px solid var(--stone);
+      border-radius: 8px;
+      padding: .9rem 1rem .9rem 2.8rem;
+      font-family: var(--ff-body);
+      font-size: 1rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color .25s, box-shadow .25s;
+    }
+
+    #pub-search:focus {
+      border-color: var(--saffron);
+      box-shadow: 0 0 0 3px rgba(232, 131, 10, .12);
+    }
+
+    .pub-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .pub-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      padding: 1.5rem 1rem;
+      border-radius: 8px;
+      border-left: 2px solid transparent;
+      transition: all .2s;
+      background: transparent;
+    }
+
+    .pub-item:hover {
+      background: rgba(13, 27, 42, .03);
+      border-color: var(--saffron);
+    }
+
+    .pub-item.hidden {
+      display: none;
+    }
+
+    .pub-year {
+      font-family: var(--ff-mono);
+      font-size: .65rem;
+      background: var(--ink);
+      color: var(--saffron);
+      padding: .3rem .5rem;
+      border-radius: 4px;
+      text-align: center;
+      height: fit-content;
+      width: fit-content;
+      margin-top: .15rem;
+    }
+
+    .pub-title {
+      font-family: var(--ff-body);
+      font-size: 1rem;
+      color: var(--ink);
+      margin-bottom: .4rem;
+      line-height: 1.5;
+    }
+
+    .pub-authors {
+      font-size: .82rem;
+      color: var(--muted);
+      margin-bottom: .6rem;
+      font-family: var(--ff-body);
+    }
+
+    .pub-journal {
+      font-style: italic;
+      font-size: .82rem;
+      color: var(--teal);
+      margin-bottom: .6rem;
+    }
+
+    .pub-links {
+      display: flex;
+      gap: .8rem;
+    }
+
+    .pub-link {
+      font-family: var(--ff-mono);
+      font-size: .6rem;
+      letter-spacing: .1em;
+      color: var(--teal);
+      border-bottom: 1px solid rgba(26, 107, 107, .3);
+      padding-bottom: 1px;
+      transition: color .2s, border-color .2s;
+    }
+
+    .pub-link:hover {
+      color: var(--saffron);
+      border-color: var(--saffron);
+    }
+
+    /* ── FACILITIES ─────────────────────────────────────── */
+    #facilities {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .facilities-layout {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .fac-sidebar {
+      position: sticky;
+      top: 100px;
+    }
+
+    .fac-nav {
+      display: flex;
+      flex-direction: column;
+      gap: .3rem;
+    }
+
+    .fac-nav-item {
+      font-family: var(--ff-mono);
+      font-size: .65rem;
+      letter-spacing: .1em;
+      color: var(--muted);
+      padding: .5rem .8rem;
+      border-radius: 6px;
+      border-left: 2px solid transparent;
+      transition: all .2s;
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    .fac-nav-item:hover {
+      color: var(--saffron);
+    }
+
+    .fac-nav-item.active {
+      color: var(--saffron);
+      border-color: var(--saffron);
+      background: rgba(232, 131, 10, .06);
+    }
+
+    .fac-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .fac-section {
+      display: none;
+    }
+
+    .fac-section.active {
+      display: block;
+      animation: fadeIn .4s var(--ease);
+    }
+
+    .fac-placeholder {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.6;
+      max-width: 600px;
+      margin-bottom: 2rem;
+    }
+
+    .fac-category-title {
+      font-family: var(--ff-mono);
+      font-size: .65rem;
+      letter-spacing: .2em;
+      color: var(--saffron);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid rgba(232, 131, 10, .2);
+      padding-bottom: .5rem;
+    }
+
+    .fac-items-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+
+    .fac-card {
+      background: var(--surface);
+      border-radius: 10px;
+      padding: 1.5rem;
+      border: 1px solid rgba(250, 246, 239, .06);
+      transition: border-color .2s, transform .2s;
+    }
+
+    .fac-card:hover {
+      border-color: rgba(26, 107, 107, .3);
+      transform: translateY(-3px);
+    }
+
+    .fac-icon {
+      width: 40px;
+      height: 40px;
+      color: var(--teal-lt);
+      margin-bottom: 1rem;
+    }
+
+    .fac-name {
+      font-family: var(--ff-body);
+      font-size: 1rem;
+      color: var(--cream);
+      margin-bottom: .2rem;
+    }
+
+    .fac-vendor {
+      font-family: var(--ff-mono);
+      font-size: .6rem;
+      color: var(--saffron);
+      letter-spacing: .08em;
+      margin-bottom: .8rem;
+    }
+
+    .fac-count {
+      display: inline-block;
+      background: rgba(232, 131, 10, .1);
+      border: 1px solid rgba(232, 131, 10, .2);
+      color: var(--saffron);
+      font-family: var(--ff-mono);
+      font-size: .58rem;
+      padding: .15rem .5rem;
+      border-radius: 100px;
+      margin-bottom: .8rem;
+      letter-spacing: .08em;
+    }
+
+    .fac-specs {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+    }
+
+    .fac-specs li {
+      font-size: .8rem;
+      color: var(--muted);
+      padding-left: 1.2rem;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .fac-specs li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--saffron);
+      opacity: .6;
+    }
+
+    /* ── EVENTS ─────────────────────────────────────────── */
+    #talks {
+      position: relative;
+    }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .event-card {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--stone);
+      overflow: hidden;
+      transition: transform .25s var(--ease), box-shadow .25s, border-color .25s;
+    }
+
+    .event-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 36px rgba(13, 27, 42, .1);
+      border-color: var(--saffron);
+    }
+
+    .event-date-bar {
+      background: var(--ink);
+      padding: .8rem 1.2rem;
+      font-family: var(--ff-mono);
+      font-size: .65rem;
+      color: var(--saffron);
+      letter-spacing: .12em;
+    }
+
+    .event-body {
+      padding: 1.4rem 1.2rem;
+    }
+
+    .event-card h3 {
+      font-family: var(--ff-disp);
+      font-size: 1.1rem;
+      color: var(--ink);
+      margin-bottom: .6rem;
+      line-height: 1.35;
+    }
+
+    .event-card p {
+      font-size: .82rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .event-tags {
+      display: flex;
+      gap: .4rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .event-tag {
+      font-family: var(--ff-mono);
+      font-size: .55rem;
+      letter-spacing: .1em;
+      padding: .2rem .6rem;
+      border-radius: 100px;
+      background: rgba(232, 131, 10, .08);
+      border: 1px solid rgba(232, 131, 10, .2);
+      color: var(--saffron);
+      text-transform: uppercase;
+    }
+
+    .event-location {
+      font-family: var(--ff-mono);
+      font-size: .6rem;
+      color: var(--muted);
+      letter-spacing: .08em;
+    }
+
+    /* ── GALLERY ────────────────────────────────────────── */
+    #gallery {
+      position: relative;
+    }
+
+    .gallery-grid {
+      columns: 3;
+      column-gap: 1rem;
+    }
+
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 1rem;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      display: block;
+      transition: transform .4s var(--ease);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.04);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(13, 27, 42, .5);
+      opacity: 0;
+      transition: opacity .3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    .gallery-placeholder {
+      aspect-ratio: 4/3;
+      background: linear-gradient(135deg, var(--surface), var(--teal) 200%);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--ff-mono);
+      font-size: .7rem;
+      letter-spacing: .1em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* lightbox */
+    #lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(7, 14, 22, .92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+    }
+
+    #lightbox.open {
+      display: flex;
+    }
+
+    #lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 8px;
+    }
+
+    #lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      font-size: 2rem;
+      color: var(--cream);
+      background: none;
+      border: none;
+      cursor: pointer;
+      opacity: .7;
+      transition: opacity .2s;
+    }
+
+    #lightbox-close:hover {
+      opacity: 1;
+    }
+
+    /* ── OPPORTUNITIES ──────────────────────────────────── */
+    #Opportunities {
+      position: relative;
+    }
+
+    .opps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .opp-card {
+      background: var(--ink);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      border: 1px solid rgba(232, 131, 10, .12);
+      transition: border-color .25s, transform .25s;
+    }
+
+    .opp-card:hover {
+      border-color: var(--saffron);
+      transform: translateY(-4px);
+    }
+
+    .opp-icon {
+      width: 48px;
+      height: 48px;
+      color: var(--saffron);
+      margin-bottom: 1.5rem;
+      opacity: .8;
+    }
+
+    .opp-card h3 {
+      font-family: var(--ff-disp);
+      font-size: 1.4rem;
+      color: var(--cream);
+      margin-bottom: .8rem;
+    }
+
+    .opp-card p {
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 1.5rem;
+    }
+
+    .opp-cta {
+      font-family: var(--ff-mono);
+      font-size: .65rem;
+      letter-spacing: .12em;
+      color: var(--saffron);
+      border-bottom: 1px solid rgba(232, 131, 10, .3);
+      padding-bottom: 2px;
+      text-transform: uppercase;
+      transition: color .2s;
+      display: inline-block;
+    }
+
+    .opp-cta:hover {
+      color: var(--saffron-lt);
+    }
+
+    /* ── CONNECT ────────────────────────────────────────── */
+    #Connect {
+      position: relative;
+    }
+
+    .connect-grid {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+
+    .contact-row {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .contact-row svg {
+      color: var(--saffron);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .contact-row p {
+      font-size: .9rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .contact-row a {
+      color: var(--teal-lt);
+      transition: color .2s;
+    }
+
+    .contact-row a:hover {
+      color: var(--saffron);
+    }
+
+    .map-wrap {
+      margin-top: 1.5rem;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(250, 246, 239, .1);
+    }
+
+    .map-wrap iframe {
+      display: block;
+    }
+
+
+
+    /* ── CONNECT SIMPLIFIED ─────────────────────────────── */
+    .connect-layout-simple {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 860px;
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────── */
+
+    /* ── RESPONSIVE ─────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .preface-cols {
+        grid-template-columns: 1fr;
+      }
+
+      .connect-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .facilities-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .fac-sidebar {
+        position: static;
+      }
+
+      .fac-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .timeline {
+        flex-direction: column;
+      }
+
+      .timeline::before {
+        width: 1px;
+        height: auto;
+        top: 0;
+        bottom: 0;
+        left: 20px;
+        right: auto;
+      }
+
+      .tl-item {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 1rem;
+        text-align: left;
+      }
+
+      .tl-diamond {
+        margin-bottom: 0;
+        flex-shrink: 0;
+        margin-top: 4px;
+      }
+
+      .advisory-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .gallery-grid {
+        columns: 2;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .section-pad {
+        padding: 70px 0;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .gallery-grid {
+        columns: 1;
+      }
+
+      .footer-bar {
+        flex-direction: column;
+        gap: .5rem;
+        text-align: center;
+      }
+    }
+
+    /* ── CCS LOGO PLACEHOLDER ───────────────────────────── */
+    .ccs-logo-placeholder {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    .ccs-logo-inner {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 1.5px dashed rgba(232, 131, 10, .4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: .2rem;
+      background: rgba(232, 131, 10, .04);
+      transition: border-color .3s, background .3s;
+      cursor: default;
+    }
+
+    .ccs-logo-inner:hover {
+      border-color: rgba(232, 131, 10, .75);
+      background: rgba(232, 131, 10, .08);
+    }
+
+    .ccs-logo-icon {
+      width: 48px;
+      height: 48px;
+    }
+
+    .ccs-logo-text {
+      font-family: var(--ff-mono);
+      font-size: .65rem;
+      letter-spacing: .25em;
+      color: var(--saffron);
+      text-transform: uppercase;
+    }
+
+    .ccs-logo-sub {
+      font-family: var(--ff-mono);
+      font-size: .52rem;
+      letter-spacing: .15em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .ccs-logo-hint {
+      font-family: var(--ff-mono);
+      font-size: .58rem;
+      letter-spacing: .08em;
+      color: rgba(138, 155, 176, .45);
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- skip link -->
+  <a href="#hero"
+    style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;font-family:var(--ff-mono);font-size:.8rem;background:var(--saffron);color:var(--ink);padding:.5rem 1rem;border-radius:4px;z-index:9999;"
+    onfocus="this.style.left='1rem';this.style.top='1rem';this.style.width='auto';this.style.height='auto';">Skip to
+    content</a>
+
+  <!-- ── MOBILE OVERLAY ───────────────────────────── -->
+  <div id="nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <a href="#hero" onclick="closeNav()">Home</a>
+    <a href="#people" onclick="closeNav()">Team</a>
+    <a href="#projects" onclick="closeNav()">Projects</a>
+    <a href="#publications" onclick="closeNav()">Publications</a>
+    <a href="#facilities" onclick="closeNav()">Facilities</a>
+    <a href="#talks" onclick="closeNav()">Events</a>
+    <a href="#Opportunities" onclick="closeNav()">Opportunities</a>
+    <a href="#Connect" onclick="closeNav()">Connect</a>
+  </div>
+
+  <!-- ── NAV ──────────────────────────────────────── -->
+  <nav id="navbar" aria-label="Main navigation">
+    <a href="#hero" class="nav-brand" aria-label="Centre for Consciousness Studies">
+      <span class="brand-top">CCS · NIMHANS</span>
+      <span class="brand-sub">Centre for Consciousness Studies</span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="#people">Team</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#facilities">Facilities</a></li>
+      <li><a href="#talks">Events</a></li>
+      <li><a href="#Opportunities">Opportunities</a></li>
+      <li><a href="#Connect">Connect</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ── HERO ─────────────────────────────────────── -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-mandala-bg" style="
+    position:absolute;inset:0;
+    background-image:url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Vajrabhairava_Mandala_Tibet.jpg/1200px-Vajrabhairava_Mandala_Tibet.jpg');
+    background-size:cover;
+    background-position:center top;
+    background-repeat:no-repeat;
+    opacity:0.13;
+    mix-blend-mode:luminosity;
+    pointer-events:none;
+    z-index:0;
+  " aria-hidden="true"></div>
+    <div
+      style="position:absolute;inset:0;background:radial-gradient(ellipse 90% 80% at 80% 50%,transparent 20%,var(--ink) 75%);pointer-events:none;z-index:1;"
+      aria-hidden="true"></div>
+    <div
+      style="position:absolute;inset:0;background:linear-gradient(to right,var(--ink) 35%,transparent 65%);pointer-events:none;z-index:1;"
+      aria-hidden="true"></div>
+    <div class="hero-grid" style="position:relative;z-index:2;">
+      <div class="hero-text">
+        <p class="eyebrow">Centre for Consciousness Studies · NIMHANS, Bengaluru</p>
+        <h1>Decoding the<br><em>Architecture</em><br>of Awareness</h1>
+        <p>A multidisciplinary research center at NIMHANS bridging modern neuroscience with India&#39;s ancient
+          contemplative traditions.
+        </p>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ── VISION & MISSION ───────────────────────────── -->
+  <section id="about" class="light section-pad" style="position:relative;overflow:hidden;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">About</span>
+        <div class="saffron-rule"></div>
+        <h2>Vision &amp; Mission</h2>
+      </div>
+      <div class="about-grid">
+        <div class="vision-card reveal">
+          <p class="label" style="margin-bottom:1.5rem;">Vision</p>
+          <blockquote>To be a global leader of excellence in consciousness studies</blockquote>
+
+          <!-- CCS Logo placeholder -->
+          <div class="ccs-logo-placeholder" title="Place CCS logo here">
+            <div class="ccs-logo-inner">
+              <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="ccs-logo-icon"
+                aria-hidden="true">
+                <!-- Outer ring -->
+                <circle cx="40" cy="40" r="36" stroke="rgba(232,131,10,0.35)" stroke-width="1" />
+                <!-- Middle ring -->
+                <circle cx="40" cy="40" r="26" stroke="rgba(232,131,10,0.5)" stroke-width="1" />
+                <!-- Inner ring -->
+                <circle cx="40" cy="40" r="16" stroke="rgba(232,131,10,0.7)" stroke-width="1" />
+                <!-- Cross lines -->
+                <line x1="40" y1="4" x2="40" y2="76" stroke="rgba(232,131,10,0.2)" stroke-width="0.8" />
+                <line x1="4" y1="40" x2="76" y2="40" stroke="rgba(232,131,10,0.2)" stroke-width="0.8" />
+                <!-- Diagonal lines -->
+                <line x1="14.7" y1="14.7" x2="65.3" y2="65.3" stroke="rgba(232,131,10,0.15)" stroke-width="0.8" />
+                <line x1="65.3" y1="14.7" x2="14.7" y2="65.3" stroke="rgba(232,131,10,0.15)" stroke-width="0.8" />
+                <!-- Centre dot -->
+                <circle cx="40" cy="40" r="3.5" fill="var(--saffron)" opacity="0.9" />
+                <circle cx="40" cy="40" r="7" fill="var(--saffron)" opacity="0.15" />
+              </svg>
+              <span class="ccs-logo-text">CCS</span>
+              <span class="ccs-logo-sub">Logo</span>
+            </div>
+            <p class="ccs-logo-hint">↑ Replace with official logo</p>
+          </div>
+        </div>
+        <div class="reveal" style="animation-delay:.15s">
+          <h3 class="mission-title">Our Mission</h3>
+          <div class="mission-list">
+
+            <div class="mission-item">
+              <span class="mission-num">01</span>
+              <p>Build a platform for multidisciplinary research integrating Indian philosophical wisdom with
+                neuroscience.</p>
+            </div>
+
+            <div class="mission-item">
+              <span class="mission-num">02</span>
+              <p>Undertake research on tradition-based meditation techniques and their effects on consciousness and
+                wellbeing.</p>
+            </div>
+
+            <div class="mission-item">
+              <span class="mission-num">03</span>
+              <p>Provide leadership in mind-brain-self and consciousness by creating opportunities for young scientists
+                and faculty.</p>
+            </div>
+
+            <div class="mission-item">
+              <span class="mission-num">04</span>
+              <p>Promote teaching and learning activities across the domains of consciousness.</p>
+            </div>
+
+            <div class="mission-item">
+              <span class="mission-num">05</span>
+              <p>Undertake Yoga and meditation-based intervention approaches into neuropsychiatric clinical settings.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HISTORY ────────────────────────────────────── -->
+  <section id="history" class="dark section-pad" style="position:relative;overflow:hidden;">
+    <div class="container">
+      <div class="section-header light-header reveal">
+        <span class="label">History</span>
+        <div class="saffron-rule"></div>
+        <h2 style="color:var(--cream);">Our Legacy</h2>
+      </div>
+
+      <div class="pull-quote reveal">
+        <span class="q-mark open">&ldquo;</span>
+        <blockquote>Deciphering the scientific basis of consciousness is one of the greatest challenges confronted by
+          neuroscientists, philosophers, mathematicians, and evolutionary biologists alike.
+        </blockquote>
+        <span class="q-mark close">&rdquo;</span>
+      </div>
+
+      <div class="timeline reveal">
+
+        <div class="tl-item">
+          <div class="tl-diamond"></div>
+          <div>
+            <div class="tl-year">1980</div>
+            <div class="tl-label">ICMR Funding</div>
+            <div class="tl-desc">ICMR funds consciousness project under Prof. T. Desiraju, Dept. of Neurophysiology
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-diamond"></div>
+          <div>
+            <div class="tl-year">1980s–90s</div>
+            <div class="tl-label">Foundational Work</div>
+            <div class="tl-desc">Studies on neurophysiology of Yoga, Meditation, and psychosomatic disorders</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-diamond"></div>
+          <div>
+            <div class="tl-year">2000s</div>
+            <div class="tl-label">Team Expands</div>
+            <div class="tl-desc">Current team under Prof. Bindu M. Kutty begins EEG/ERP, fMRI, sleep research</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-diamond"></div>
+          <div>
+            <div class="tl-year">2010s</div>
+            <div class="tl-label">20 Years of Expertise</div>
+            <div class="tl-desc">Spanning cognition, sleep, meditation, schizophrenia and neurodegenerative disorders
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-diamond"></div>
+          <div>
+            <div class="tl-year">Present</div>
+            <div class="tl-label">Ministry Sanction</div>
+            <div class="tl-desc">Ministry of Health &amp; Family Welfare, Govt. of India officially sanctions CCS at
+              NIMHANS</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="preface-cols reveal">
+
+
+        <p>India has a long tradition of exploring consciousness from philosophical and cultural perspectives.
+          NIMHANS, by virtue of its indisputable competence in neuroscience and mind science, is uniquely
+          positioned to establish a multi-disciplinary center for consciousness studies.</p>
+
+        <p>Renowned scientists of NIMHANS — late Prof. T. Desiraju, late Prof. R.M. Verma, and late Prof.
+          R.L. Kapur — had recognized the importance of initiating studies to explore the neural basis of
+          brain–mind–self and consciousness. ICMR funded a project on consciousness studies in 1980 under
+          Prof. T. Desiraju, whose team undertook landmark studies on the neurophysiology of Yoga and Meditation.</p>
+
+        <p>Building on this legacy, the current research team under Prof. Bindu M. Kutty has initiated studies
+          spanning neural mechanisms of meditation, meditation and cognition, sleep organization, neurobiology
+          of schizophrenia, anxiety disorders, and neurodegenerative disorders — accumulating over 20 years of
+          core expertise in EEG, ERP, MRI, fMRI, and psychometric assessment.</p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── TEAM ──────────────────────────────────────── -->
+  <section id="people" class="light section-pad" style="position:relative;overflow:hidden;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">Team</span>
+        <div class="saffron-rule"></div>
+        <h2>The People Behind the Science</h2>
+      </div>
+
+      <!-- Tab bar -->
+      <div class="tab-bar reveal" role="tablist" aria-label="Team groups">
+
+        <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-current" data-tab="current">
+          Current Research Team
+        </button>
+
+        <button class="tab-btn " role="tab" aria-selected="false" aria-controls="tab-postdoc" data-tab="postdoc">
+          Post-Doctoral Fellows
+        </button>
+
+        <button class="tab-btn " role="tab" aria-selected="false" aria-controls="tab-phd" data-tab="phd">
+          Graduate Students
+        </button>
+
+        <button class="tab-btn " role="tab" aria-selected="false" aria-controls="tab-staff" data-tab="staff">
+          Project Staff
+        </button>
+
+        <button class="tab-btn " role="tab" aria-selected="false" aria-controls="tab-admin" data-tab="admin">
+          Administration
+        </button>
+
+        <button class="tab-btn " role="tab" aria-selected="false" aria-controls="tab-alumni" data-tab="alumni">
+          Alumni
+        </button>
+
+        <button class="tab-btn " role="tab" aria-selected="false" aria-controls="tab-historical" data-tab="historical">
+          Founders (1980–1992)
+        </button>
+
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-advisory"
+          data-tab="advisory">Advisory</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-consortium"
+          data-tab="consortium">Consortium</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-trainee"
+          data-tab="trainee">Trainee</button>
+      </div>
+
+      <!-- Member panels -->
+      <!-- TEAM_DYNAMIC_START -->
+      <div class="tab-panel active" id="tab-current" role="tabpanel">
+        <div class="team-grid ">
+          <div class="team-card reveal" style="animation-delay:0.00s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/admin.jpg" alt="Prof Bindu M Kutty avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Prof Bindu M Kutty</h3>
+            <p class="role">Professor of Neurophysiology &amp; Officer In charge, Centre for Consciousness Studies</p>
+            <div class="team-socials">
+              <a href="https://www.gibberish.com" target="_blank" rel="noopener" aria-label="Google Scholar"
+                title="Google Scholar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" width="18" height="18">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+              </a>
+              <a href="https://www.gibberish.com" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" width="18" height="18">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="team-card reveal" style="animation-delay:0.18s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/arun.jpg" alt="Dr Arun avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Dr Arun</h3>
+            <p class="role">Scientist-C (Neuroscience)</p>
+            <div class="team-socials">
+              <a href="https://www.gibberish.com" target="_blank" rel="noopener" aria-label="Google Scholar"
+                title="Google Scholar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" width="18" height="18">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+              </a>
+              <a href="https://www.gibberish.com" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" width="18" height="18">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="team-card reveal" style="animation-delay:0.36s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/ramajayam.jpg" alt="Dr Ramajayam G avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Dr Ramajayam G</h3>
+            <p class="role">Scientist-C (Yogic Science)</p>
+            <div class="team-socials">
+              <a href="https://www.gibberish.com" target="_blank" rel="noopener" aria-label="Google Scholar"
+                title="Google Scholar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" width="18" height="18">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+              </a>
+              <a href="https://www.gibberish.com" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" width="18" height="18">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="team-card reveal" style="animation-delay:0.54s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/ravindra.jpg" alt="Dr PN Ravindra avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Dr PN Ravindra</h3>
+            <p class="role">Associate Professor</p>
+            <div class="team-socials">
+              <a href="https://www.gibberish.com" target="_blank" rel="noopener" aria-label="Google Scholar"
+                title="Google Scholar">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" width="18" height="18">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+              </a>
+              <a href="https://www.gibberish.com" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" width="18" height="18">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                  <rect x="2" y="9" width="4" height="12"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-panel " id="tab-postdoc" role="tabpanel">
+        <div class="team-grid ">
+          <div class="team-card reveal" style="animation-delay:0.00s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/arathi.jpg" alt="Dr Arathi Radhakrishnan avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Dr Arathi Radhakrishnan</h3>
+            <p class="role">DST-CSRI Post-Doctoral Fellow</p>
+          </div>
+          <div class="team-card reveal" style="animation-delay:0.18s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/shwetha.jpg" alt="Dr Shweta Rastogi avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Dr Shweta Rastogi</h3>
+            <p class="role">DST-CSRI Post-Doctoral Fellow</p>
+          </div>
+        </div>
+      </div>
+      <div class="tab-panel " id="tab-phd" role="tabpanel">
+        <div class="team-grid ">
+          <div class="team-card reveal" style="animation-delay:0.00s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/gulshan.jpg" alt="Dr Gulshan Kumar avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Dr Gulshan Kumar</h3>
+            <p class="role">Graduate student</p>
+          </div>
+          <div class="team-card reveal" style="animation-delay:0.18s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/rahul.png" alt="Rahul Venugopal avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Rahul Venugopal</h3>
+            <p class="role">Graduate student</p>
+          </div>
+          <div class="team-card reveal" style="animation-delay:0.36s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/safoora.jpg" alt="Safoora Naaz avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Safoora Naaz</h3>
+            <p class="role">Graduate student</p>
+          </div>
+          <div class="team-card reveal" style="animation-delay:0.54s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/saketh.jpg" alt="Saketh M avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Saketh M</h3>
+            <p class="role">Graduate student</p>
+          </div>
+          <div class="team-card reveal" style="animation-delay:0.72s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/suma.png" alt="Suma Bhaskar avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Suma Bhaskar</h3>
+            <p class="role">Graduate student</p>
+          </div>
+        </div>
+      </div>
+      <div class="tab-panel " id="tab-staff" role="tabpanel">
+        <div class="team-grid ">
+          <div class="team-card reveal" style="animation-delay:0.00s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/aishwarya.jpg" alt="Aishwarya Swamy avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Aishwarya Swamy</h3>
+            <p class="role">Junior Research Fellow</p>
+          </div>
+          <div class="team-card reveal" style="animation-delay:0.18s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/neethi.jpg" alt="Dr Neethi Prem avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Dr Neethi Prem</h3>
+            <p class="role">Senior Research Fellow (DST-SERB)</p>
+          </div>
+          <div class="team-card reveal" style="animation-delay:0.36s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/sruthi.jpg" alt="Sruthi Susan Kuriakose avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Sruthi Susan Kuriakose</h3>
+            <p class="role">Junior Research Fellow</p>
+          </div>
+          <div class="team-card reveal" style="animation-delay:0.54s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/vrinda.jpg" alt="Dr Vrinda M avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Dr Vrinda M</h3>
+            <p class="role">Research Associate</p>
+          </div>
+        </div>
+      </div>
+      <div class="tab-panel " id="tab-admin" role="tabpanel">
+        <div class="team-grid ">
+          <div class="team-card reveal" style="animation-delay:0.00s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/jimisha.jpg" alt="Jimisha avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Jimisha</h3>
+            <p class="role">Medical lab technologist</p>
+          </div>
+          <div class="team-card reveal" style="animation-delay:0.18s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/jini.jpeg" alt="Jini Joseph avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Jini Joseph</h3>
+            <p class="role">Medical lab technologist</p>
+          </div>
+          <div class="team-card reveal" style="animation-delay:0.36s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/ramachandra.jpg" alt="Ramachandra avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Ramachandra</h3>
+            <p class="role">Senior scientific assistant</p>
+          </div>
+        </div>
+      </div>
+      <div class="tab-panel " id="tab-alumni" role="tabpanel">
+        <div class="team-grid alumni-grid">
+          <div class="team-card reveal" style="animation-delay:0.00s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/ajay.jpg" alt="Dr Ajay Kumar Nair avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Dr Ajay Kumar Nair</h3>
+            <p class="role"></p>
+          </div>
+          <div class="team-card reveal" style="animation-delay:0.18s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/basavaraj.jpg" alt="Dr Basavaraj Tubaki avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Dr Basavaraj Tubaki</h3>
+            <p class="role"></p>
+          </div>
+          <div class="team-card reveal" style="animation-delay:0.36s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/harsha.jpg" alt="Dr Harsha Halahalli avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Dr Harsha Halahalli</h3>
+            <p class="role"></p>
+          </div>
+          <div class="team-card reveal" style="animation-delay:0.54s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/jyothi.jpg" alt="Dr Ratna Jyothi Kakumanu avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Dr Ratna Jyothi Kakumanu</h3>
+            <p class="role"></p>
+          </div>
+          <div class="team-card reveal" style="animation-delay:0.72s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/nirmala.jpg" alt="Dr Nirmala M avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Dr Nirmala M</h3>
+            <p class="role"></p>
+          </div>
+          <div class="team-card reveal" style="animation-delay:0.90s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/pranay.jpg" alt="Dr Pranay S Yadav avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Dr Pranay S Yadav</h3>
+            <p class="role"></p>
+          </div>
+          <div class="team-card reveal" style="animation-delay:1.08s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/ravi_kiran.jpg" alt="Dr Ravi Kiran Kisan avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Dr Ravi Kiran Kisan</h3>
+            <p class="role"></p>
+          </div>
+          <div class="team-card reveal" style="animation-delay:1.26s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/sulekha.jpg" alt="Dr Sulekha S avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Dr Sulekha S</h3>
+            <p class="role"></p>
+          </div>
+        </div>
+      </div>
+      <div class="tab-panel " id="tab-historical" role="tabpanel">
+        <div class="team-grid ">
+          <div class="team-card reveal" style="animation-delay:0.00s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/blmeti.jpg" alt="Dr. BL Meti avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Dr. BL Meti</h3>
+            <p class="role">Scientist</p>
+          </div>
+          <div class="team-card reveal" style="animation-delay:0.18s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/desiraju.jpg" alt="Prof. T Desiraju avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Prof. T Desiraju</h3>
+            <p class="role">Professor</p>
+          </div>
+          <div class="team-card reveal" style="animation-delay:0.36s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/kanchan.jpg" alt="Dr. Kanchan avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Dr. Kanchan</h3>
+            <p class="role">Scientist</p>
+          </div>
+          <div class="team-card reveal" style="animation-delay:0.54s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/telles.jpg" alt="Dr. Shirley Telles avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Dr. Shirley Telles</h3>
+            <p class="role">Scientist</p>
+          </div>
+        </div>
+      </div>
+      <!-- TEAM_DYNAMIC_END -->
+
+      <!-- Advisory panel -->
+      <div class="tab-panel" id="tab-advisory" role="tabpanel">
+        <div class="advisory-grid">
+          <div class="advisory-chairperson">
+            <div class="chair-label">Chairperson</div>
+            <div class="chair-name">Prof. D Nagaraja, Former Director, NIMHANS</div>
+          </div>
+
+          <div class="advisory-row">
+            <span class="adv-name">Dr. H. R. Nagendra</span>
+            <span class="adv-affil">Chancellor, S-VYASA, Bengaluru</span>
+          </div>
+
+          <div class="advisory-row">
+            <span class="adv-name">Prof. Ramesh Bijlani</span>
+            <span class="adv-affil">Sri Aurobindo Ashram, Delhi</span>
+          </div>
+
+          <div class="advisory-row">
+            <span class="adv-name">Dr. R Nagarathna</span>
+            <span class="adv-affil">Dean, S-VYASA, Bengaluru</span>
+          </div>
+
+          <div class="advisory-row">
+            <span class="adv-name">Prof. B. N. Gangadhar</span>
+            <span class="adv-affil">Former Director, NIMHANS; President, NMC Medical Assessment &amp; Rating
+              Board</span>
+          </div>
+
+          <div class="advisory-row">
+            <span class="adv-name">Dr. W. Selvamurthy</span>
+            <span class="adv-affil">President, Amity University, Chhattisgarh</span>
+          </div>
+
+          <div class="advisory-row">
+            <span class="adv-name">Swami Atmapriyananda</span>
+            <span class="adv-affil">Pro Chancellor, RKMVERI, Belur Math, Howrah</span>
+          </div>
+
+          <div class="advisory-row">
+            <span class="adv-name">Geshe Lharampa Dorjee Damdul</span>
+            <span class="adv-affil">Director, Tibet House, New Delhi</span>
+          </div>
+
+          <div class="advisory-row">
+            <span class="adv-name">Dr Ishwar V Basavaraddi</span>
+            <span class="adv-affil">Director, Morarji Desai National Institute of Yoga, Ministry of AYUSH</span>
+          </div>
+
+          <div class="advisory-row">
+            <span class="adv-name">Dr. Shirley Telles</span>
+            <span class="adv-affil">Director, Patanjali Research Foundation, Haridwar</span>
+          </div>
+
+          <div class="advisory-row">
+            <span class="adv-name">Prof. Sisir Roy</span>
+            <span class="adv-affil">NIAS, Bengaluru</span>
+          </div>
+
+          <div class="advisory-row">
+            <span class="adv-name">Prof. Steven Laureys</span>
+            <span class="adv-affil">Research Director, National Fund of Scientific Research (FNRS), Belgium</span>
+          </div>
+
+          <div class="advisory-row">
+            <span class="adv-name">Prof. Narayanan Srinivasan</span>
+            <span class="adv-affil">Head, Dept. of Cognitive Science, IIT Kanpur</span>
+          </div>
+
+          <div class="advisory-row">
+            <span class="adv-name">Prof. Sangeetha Menon</span>
+            <span class="adv-affil">Dean, NIAS, Bengaluru</span>
+          </div>
+
+          <div class="advisory-row">
+            <span class="adv-name">Prof. Antonino Raffone</span>
+            <span class="adv-affil">Sapienza University of Rome, Italy</span>
+          </div>
+
+          <div class="advisory-row">
+            <span class="adv-name">Dr. C R Chandrashekar</span>
+            <span class="adv-affil">Former Professor, Dept. of Psychiatry, NIMHANS</span>
+          </div>
+
+          <div class="advisory-row">
+            <span class="adv-name">Dr. C R Mukundan</span>
+            <span class="adv-affil">Former Professor, Dept. of Clinical Psychology, NIMHANS</span>
+          </div>
+
+          <div class="advisory-row">
+            <span class="adv-name">Dr. Priti Dedhia</span>
+            <span class="adv-affil">Director, Vipassana Research Institute, Igatpuri</span>
+          </div>
+
+          <div class="advisory-row">
+            <span class="adv-name">Dr. V N Jha</span>
+            <span class="adv-affil">Founder Chairperson, Special Centre for Sanskrit Studies, JNU</span>
+          </div>
+
+          <div class="advisory-row">
+            <span class="adv-name">Dr. B Mahadevan</span>
+            <span class="adv-affil">Professor of Operations Management, IIM Bengaluru</span>
+          </div>
+
+          <div class="advisory-row">
+            <span class="adv-name">Dr. Ellora Sen</span>
+            <span class="adv-affil">Scientist F, NBRC</span>
+          </div>
+
+          <div class="advisory-row">
+            <span class="adv-name">Mr. Sridharan</span>
+            <span class="adv-affil">Senior Yoga Consultant, Krishnamacharya Yoga Mandiram</span>
+          </div>
+
+          <div class="advisory-row">
+            <span class="adv-name">SpARC Wing</span>
+            <span class="adv-affil">Rajayoga Education and Research Foundation (RERF), Mount Abu</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Consortium panel -->
+      <div class="tab-panel" id="tab-consortium" role="tabpanel">
+        <div class="consortium-grid">
+
+          <div class="consortium-row">
+            <div class="cons-name">Prof. Bindu M. Kutty</div>
+            <div class="cons-dept">Officer In-charge, CCS; Dept. of Neurophysiology</div>
+          </div>
+
+          <div class="consortium-row">
+            <div class="cons-name">Prof. John P. John</div>
+            <div class="cons-dept">Dept. of Psychiatry</div>
+          </div>
+
+          <div class="consortium-row">
+            <div class="cons-name">Prof. Seema Mehrotra</div>
+            <div class="cons-dept">Dept. of Clinical Psychology</div>
+          </div>
+
+          <div class="consortium-row">
+            <div class="cons-name">Prof. G. Venkatasubramanian</div>
+            <div class="cons-dept">Dept. of Psychiatry</div>
+          </div>
+
+          <div class="consortium-row">
+            <div class="cons-name">Prof. Ravi Yadav</div>
+            <div class="cons-dept">Dept. of Neurology</div>
+          </div>
+
+          <div class="consortium-row">
+            <div class="cons-name">Prof. Shivarama Varambally</div>
+            <div class="cons-dept">Dept. of Psychiatry</div>
+          </div>
+
+          <div class="consortium-row">
+            <div class="cons-name">Prof. Srinivas Bharath</div>
+            <div class="cons-dept">Dept. of Clinical Psychopharmacology and Neurotoxicology</div>
+          </div>
+
+          <div class="consortium-row">
+            <div class="cons-name">Prof. Kishore Kumar Ramakrishna</div>
+            <div class="cons-dept">Dept. of Integrative Medicine</div>
+          </div>
+
+          <div class="consortium-row">
+            <div class="cons-name">Prof. Rose Dawn</div>
+            <div class="cons-dept">Dept. of Neuroimaging &amp; Interventional Radiology</div>
+          </div>
+
+          <div class="consortium-row">
+            <div class="cons-name">Prof. Nupur Pruthi</div>
+            <div class="cons-dept">Dept. of Neurosurgery</div>
+          </div>
+
+          <div class="consortium-row">
+            <div class="cons-name">Dr. Monojit Debnath</div>
+            <div class="cons-dept">Additional Professor, Dept. of Human Genetics</div>
+          </div>
+
+          <div class="consortium-row">
+            <div class="cons-name">Dr. Kaviraja Udupa</div>
+            <div class="cons-dept">Dept. of Neurophysiology</div>
+          </div>
+
+          <div class="consortium-row">
+            <div class="cons-name">Dr. R. Subasree</div>
+            <div class="cons-dept">Dept. of Neurology</div>
+          </div>
+
+          <div class="consortium-row">
+            <div class="cons-name">Dr. P N Ravindra</div>
+            <div class="cons-dept">Dept. of Neurophysiology</div>
+          </div>
+
+          <div class="consortium-row">
+            <div class="cons-name">Dr. Shantala Hegde</div>
+            <div class="cons-dept">Dept. of Clinical Psychology</div>
+          </div>
+
+          <div class="consortium-row">
+            <div class="cons-name">Dr. Jyotsna Agrawal</div>
+            <div class="cons-dept">Dept. of Clinical Psychology</div>
+          </div>
+
+          <div class="consortium-row">
+            <div class="cons-name">Dr. Sriganesh Kamat</div>
+            <div class="cons-dept">Dept. of Neuroanaesthesia and Neurocritical Care</div>
+          </div>
+
+          <div class="consortium-row">
+            <div class="cons-name">Dr. Bharath Holla</div>
+            <div class="cons-dept">Dept. of Psychiatry</div>
+          </div>
+
+          <div class="consortium-row">
+            <div class="cons-name">Dr. Pooja Mailankody</div>
+            <div class="cons-dept">Dept. of Neurology</div>
+          </div>
+
+          <div class="consortium-row">
+            <div class="cons-name">Dr. Hemant Bhargav</div>
+            <div class="cons-dept">Dept. of Integrative Medicine</div>
+          </div>
+
+          <div class="consortium-row">
+            <div class="cons-name">Dr. D V Seshagiri</div>
+            <div class="cons-dept">Dept. of Neurology</div>
+          </div>
+
+          <div class="consortium-row">
+            <div class="cons-name">Dr. B V Kathyayini</div>
+            <div class="cons-dept">College of Nursing</div>
+          </div>
+
+          <div class="consortium-row">
+            <div class="cons-name">Dr. Arun Sasidharan</div>
+            <div class="cons-dept">Dept. of Neurophysiology</div>
+          </div>
+
+          <div class="consortium-row">
+            <div class="cons-name">Dr. Ramajayam Govindaraj</div>
+            <div class="cons-dept">Dept. of Neurophysiology</div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Trainee panel -->
+      <div class="tab-panel" id="tab-trainee" role="tabpanel">
+        <div class="consortium-grid">
+          <div class="consortium-row">
+            <div class="cons-name">Trainee Name Placeholder</div>
+            <div class="cons-dept">Trainee Detailed Info Placeholder</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECTS ───────────────────────────────────── -->
+  <section id="projects" class="dark section-pad" style="position:relative;overflow:hidden;">
+    <div class="container">
+      <div class="section-header light-header reveal">
+        <span class="label">Research</span>
+        <div class="saffron-rule"></div>
+        <h2 style="color:var(--cream);">Active Investigations</h2>
+      </div>
+
+      <!-- PROJECT_FILTERS_START -->
+      <div class="filter-bar reveal" role="group" aria-label="Filter projects by topic">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="Circadian">Circadian</button>
+        <button class="filter-btn" data-filter="Cognition">Cognition</button>
+        <button class="filter-btn" data-filter="Meditation">Meditation</button>
+        <button class="filter-btn" data-filter="Sleep">Sleep</button>
+      </div>
+      <!-- PROJECT_FILTERS_END -->
+
+      <!-- PROJECTS_START -->
+      <div class="projects-grid">
+
+        <article class="project-card reveal" data-tags="Sleep" style="animation-delay:0.00s">
+          <div class="project-top saffron"></div>
+          <div class="project-body">
+            <p class="project-type">DST-CSRI Project</p>
+            <h3>Evaluation of cognitive dysfunction in conditions of Insomnia and Excessive Daytime Sleepiness -
+              Efficacy of transcranial alternating current stimulation (tACS) on cognition and sleep</h3>
+            <div class="project-tags">
+              <span class="proj-tag">Sleep</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-tags="Sleep" style="animation-delay:0.07s">
+          <div class="project-top "></div>
+          <div class="project-body">
+            <p class="project-type">PhD Project</p>
+            <h3>Neurophysiological basis of dreaming - A comprehensive polysomnography study in healthy human volunteers
+            </h3>
+            <div class="project-tags">
+              <span class="proj-tag">Sleep</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-tags="Meditation" style="animation-delay:0.14s">
+          <div class="project-top saffron"></div>
+          <div class="project-body">
+            <p class="project-type">Sahaj Marg Project</p>
+            <h3>Meditation and neuroplasticity - A study on Heartfulness meditators using EEG and MRI</h3>
+            <div class="project-tags">
+              <span class="proj-tag">Meditation</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-tags="Circadian" style="animation-delay:0.21s">
+          <div class="project-top "></div>
+          <div class="project-body">
+            <p class="project-type">DST-SERB Project</p>
+            <h3>Efficacy of photoperiod manipulation in establishing stress integration and cognitive recovery in
+              ventral subicular-lesioned rats - A behavioural and molecular study</h3>
+            <div class="project-tags">
+              <span class="proj-tag">Circadian</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-tags="Cognition" style="animation-delay:0.28s">
+          <div class="project-top saffron"></div>
+          <div class="project-body">
+            <p class="project-type">PhD Project</p>
+            <h3>Neural oscillatory dynamics and cognition - A neurophysiological study</h3>
+            <div class="project-tags">
+              <span class="proj-tag">Cognition</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-tags="Meditation" style="animation-delay:0.35s">
+          <div class="project-top "></div>
+          <div class="project-body">
+            <p class="project-type">PhD Project</p>
+            <h3>Efficacy of Isha Yoga (Shambhavi Mahamudra) on Cognition and Well-being - A Neuropsychophysiological and
+              Imaging study</h3>
+            <div class="project-tags">
+              <span class="proj-tag">Meditation</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-tags="Sleep" style="animation-delay:0.42s">
+          <div class="project-top saffron"></div>
+          <div class="project-body">
+            <p class="project-type">DST-SATYAM Project</p>
+            <h3>Meditation, Sleep Organization and Well-Being from an Indian Perspective - Evaluation of Micro Sleep
+              Architecture Dynamics, Sleep Consciousness and Psychological Well-Being in Practitioners of Vipassana
+              Meditation</h3>
+            <div class="project-tags">
+              <span class="proj-tag">Sleep</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-tags="Meditation" style="animation-delay:0.49s">
+          <div class="project-top "></div>
+          <div class="project-body">
+            <p class="project-type">DST-SATYAM Project</p>
+            <h3>A Study of Consciousness Measures and Synchrony between Brain and Cardiovascular Dynamics in Yoga
+              Experience</h3>
+            <div class="project-tags">
+              <span class="proj-tag">Meditation</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-tags="Cognition" style="animation-delay:0.56s">
+          <div class="project-top saffron"></div>
+          <div class="project-body">
+            <p class="project-type">Post-doctoral Project</p>
+            <h3>Efficacy of EEG and ERPs as diagnostic biomarkers of prodromal AD - A pre and post CBT intervention
+              study</h3>
+            <div class="project-tags">
+              <span class="proj-tag">Cognition</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-tags="Circadian" style="animation-delay:0.63s">
+          <div class="project-top "></div>
+          <div class="project-body">
+            <p class="project-type">PhD Project</p>
+            <h3>Efficacy of short photoperiod regime on cognitive functions in ventral subicular lesioned rats - A
+              behavioral and electrophysiological study</h3>
+            <div class="project-tags">
+              <span class="proj-tag">Circadian</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-tags="Meditation" style="animation-delay:0.70s">
+          <div class="project-top saffron"></div>
+          <div class="project-body">
+            <p class="project-type">DST-SERB Project</p>
+            <h3>Functional connectivity changes during traditional Vipassana practice – an fMRI study</h3>
+            <div class="project-tags">
+              <span class="proj-tag">Meditation</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal" data-tags="Cognition" style="animation-delay:0.77s">
+          <div class="project-top "></div>
+          <div class="project-body">
+            <p class="project-type">DST-CSRI Project</p>
+            <h3>Chronic Pain - Understanding the cognitive, perceptual, affective underpinnings - A search for a
+              cognitive model</h3>
+            <div class="project-tags">
+              <span class="proj-tag">Cognition</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+      <!-- PROJECTS_END -->
+    </div>
+  </section>
+
+  <!-- ── PUBLICATIONS ───────────────────────────────── -->
+  <section id="publications" class="light section-pad" style="position:relative;overflow:hidden;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">Publications</span>
+        <div class="saffron-rule"></div>
+        <h2>Research Output</h2>
+      </div>
+
+      <div class="search-wrap reveal">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          aria-hidden="true">
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+        <input type="search" id="pub-search" placeholder="Search publications by title or author…"
+          aria-label="Search publications">
+      </div>
+
+      <!-- PUBLICATIONS_START -->
+      <div class="pub-list" role="list">
+
+        <article class="pub-item reveal" role="listitem"
+          data-search="People with dyssomnia showed increased vulnerability to CoVID-19 pandemic - a questionnaire-based study exploring the patterns and predictors of sleep quality using the latent class analysis technique in Indian population Arathi Radhakrishnan, Ramajayam Govindaraj, Arun Sasidharan, PN Ravindra, Ravi Yadav, Bindu M Kutty"
+          style="animation-delay:0.00s">
+          <div><span class="pub-year">2021</span></div>
+          <div>
+            <p class="pub-title">People with dyssomnia showed increased vulnerability to CoVID-19 pandemic - a
+              questionnaire-based study exploring the patterns and predictors of sleep quality using the latent class
+              analysis technique in Indian population</p>
+            <p class="pub-authors">Arathi Radhakrishnan, Ramajayam Govindaraj, Arun Sasidharan, PN Ravindra, Ravi Yadav,
+              Bindu M Kutty</p>
+            <p class="pub-journal">Sleep medicine</p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1016/j.sleep.2020.12.041" target="_blank" rel="noopener">Read
+                here</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item reveal" role="listitem"
+          data-search="Meditation, well-being and cognition in heartfulness meditators – A pilot study Bhuvnesh Sankar Sylapan, Ajay Kumar Nair, Krishnamurthy Jayanna, Saketh Mallipeddi, Sunil Sathyanarayana, Bindu M Kutty"
+          style="animation-delay:0.06s">
+          <div><span class="pub-year">2020</span></div>
+          <div>
+            <p class="pub-title">Meditation, well-being and cognition in heartfulness meditators – A pilot study</p>
+            <p class="pub-authors">Bhuvnesh Sankar Sylapan, Ajay Kumar Nair, Krishnamurthy Jayanna, Saketh Mallipeddi,
+              Sunil Sathyanarayana, Bindu M Kutty</p>
+            <p class="pub-journal">Consciousness and Cognition</p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1016/j.concog.2020.103032" target="_blank"
+                rel="noopener">Read here</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item reveal" role="listitem"
+          data-search="State-trait influences of Vipassana meditation practice on P3 EEG dynamics Ratna Jyothi, Ajay Kumar Nair, Arun Sasidharan, John P John, Seema Mehrotra, Ravindra Panth, Bindu M Kutty"
+          style="animation-delay:0.12s">
+          <div><span class="pub-year">2018</span></div>
+          <div>
+            <p class="pub-title">State-trait influences of Vipassana meditation practice on P3 EEG dynamics</p>
+            <p class="pub-authors">Ratna Jyothi, Ajay Kumar Nair, Arun Sasidharan, John P John, Seema Mehrotra, Ravindra
+              Panth, Bindu M Kutty</p>
+            <p class="pub-journal">Progress in brain research</p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1016/bs.pbr.2018.10.027" target="_blank" rel="noopener">Read
+                here</a>
+              <a class="pub-link"
+                href="https://books.google.co.in/books?hl=en&amp;lr=&amp;id=LYOGDwAAQBAJ&amp;oi=fnd&amp;pg=PA115&amp;dq=progress+in+brain+research+jyothi+kakumanu&amp;ots=Fdq-kdxn7x&amp;sig=uQoQTVgJSCO3WloV9tBl-RU0jN8#v=onepage&amp;q&amp;f=false"
+                target="_blank" rel="noopener">PDF</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item reveal" role="listitem"
+          data-search="Assessment of Sleep Spindle Density among Genetically Positive Spinocerebellar Ataxias Types 1, 2, and 3 Patients Seshagiri DV, Raghasudha B, Arun Sasidharan, Pramod K Pal, Sanjeev Jain, Ravi Yadav, Bindu M Kutty"
+          style="animation-delay:0.18s">
+          <div><span class="pub-year">2018</span></div>
+          <div>
+            <p class="pub-title">Assessment of Sleep Spindle Density among Genetically Positive Spinocerebellar Ataxias
+              Types 1, 2, and 3 Patients</p>
+            <p class="pub-authors">Seshagiri DV, Raghasudha B, Arun Sasidharan, Pramod K Pal, Sanjeev Jain, Ravi Yadav,
+              Bindu M Kutty</p>
+            <p class="pub-journal">Annals of Neurosciences</p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1159/000484516" target="_blank" rel="noopener">Read here</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item reveal" role="listitem"
+          data-search="Challenges in sleep stage R scoring in patients with autosomal dominant spinocerebellar ataxias (SCA1, SCA2 and SCA3) and oculomotor abnormalities - a whole night polysomnographic evaluation Seshagiri DV, Arun Sasidharan, Gulshan Kumar, Pramod K Pal, Sanjeev jain, Bindu M Kutty, Ravi Yadav"
+          style="animation-delay:0.24s">
+          <div><span class="pub-year">2018</span></div>
+          <div>
+            <p class="pub-title">Challenges in sleep stage R scoring in patients with autosomal dominant spinocerebellar
+              ataxias (SCA1, SCA2 and SCA3) and oculomotor abnormalities - a whole night polysomnographic evaluation</p>
+            <p class="pub-authors">Seshagiri DV, Arun Sasidharan, Gulshan Kumar, Pramod K Pal, Sanjeev jain, Bindu M
+              Kutty, Ravi Yadav</p>
+            <p class="pub-journal">Sleep Medicine</p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1016/j.sleep.2017.09.030" target="_blank" rel="noopener">Read
+                here</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item reveal" role="listitem"
+          data-search="What contributes to wellbeing gains – proficiency or duration of meditation related practices? Ajay Kumar Nair, John P John, Seema Mehrotra, Bindu M Kutty"
+          style="animation-delay:0.30s">
+          <div><span class="pub-year">2018</span></div>
+          <div>
+            <p class="pub-title">What contributes to wellbeing gains – proficiency or duration of meditation related
+              practices?</p>
+            <p class="pub-authors">Ajay Kumar Nair, John P John, Seema Mehrotra, Bindu M Kutty</p>
+            <p class="pub-journal">International Journal of Wellbeing</p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.5502/ijw.v8i2.696" target="_blank" rel="noopener">Read
+                here</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item reveal" role="listitem"
+          data-search="Beyond hypnograms - Assessing sleep stability using acoustic and electrical stimulation Rahul Venugopal, Arun Sasidharan, Vrinda Marigowda, Gulshan Kumar, Ajay Kumar Nair, Sumit Sharma, Chetan Mukundan, Bindu M Kutty"
+          style="animation-delay:0.36s">
+          <div><span class="pub-year">2018</span></div>
+          <div>
+            <p class="pub-title">Beyond hypnograms - Assessing sleep stability using acoustic and electrical stimulation
+            </p>
+            <p class="pub-authors">Rahul Venugopal, Arun Sasidharan, Vrinda Marigowda, Gulshan Kumar, Ajay Kumar Nair,
+              Sumit Sharma, Chetan Mukundan, Bindu M Kutty</p>
+            <p class="pub-journal">Neuromodulation</p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1111/ner.12847" target="_blank" rel="noopener">Read here</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item reveal" role="listitem"
+          data-search="Dissociating meditation proficiency and experience dependent EEG changes during traditional Vipassana meditation practice Ratna Jyothi Kakumanu, Ajay Kumar Nair, Rahul Venugopal, Arun Sasidharan, Prasanta Kumar Ghosh, John P John, Bindu M Kutty"
+          style="animation-delay:0.42s">
+          <div><span class="pub-year">2018</span></div>
+          <div>
+            <p class="pub-title">Dissociating meditation proficiency and experience dependent EEG changes during
+              traditional Vipassana meditation practice</p>
+            <p class="pub-authors">Ratna Jyothi Kakumanu, Ajay Kumar Nair, Rahul Venugopal, Arun Sasidharan, Prasanta
+              Kumar Ghosh, John P John, Bindu M Kutty</p>
+            <p class="pub-journal">Biological Psychology</p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1016/j.biopsycho.2018.03.004" target="_blank"
+                rel="noopener">Read here</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item reveal" role="listitem"
+          data-search="Efficacy of the combination of cognitive training and acoustic stimulation in eliciting lucid dreams during undisturbed sleep - a pilot study using polysomnography, dream reports and questionnaires Gulshan Kumar, Arun Sasidharan, Bindu M Kutty"
+          style="animation-delay:0.48s">
+          <div><span class="pub-year">2018</span></div>
+          <div>
+            <p class="pub-title">Efficacy of the combination of cognitive training and acoustic stimulation in eliciting
+              lucid dreams during undisturbed sleep - a pilot study using polysomnography, dream reports and
+              questionnaires</p>
+            <p class="pub-authors">Gulshan Kumar, Arun Sasidharan, Bindu M Kutty</p>
+            <p class="pub-journal">International Journal of Dream Research</p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.11588/ijodr.2018.2.46417" target="_blank" rel="noopener">Read
+                here</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item reveal" role="listitem"
+          data-search="Just a minute meditation - Rapid voluntary conscious state shifts in long term meditators Ajay Kumar Nair, Arun Sasidharan, John P John, Seema Mehrotra, Bindu M Kutty"
+          style="animation-delay:0.54s">
+          <div><span class="pub-year">2017</span></div>
+          <div>
+            <p class="pub-title">Just a minute meditation - Rapid voluntary conscious state shifts in long term
+              meditators</p>
+            <p class="pub-authors">Ajay Kumar Nair, Arun Sasidharan, John P John, Seema Mehrotra, Bindu M Kutty</p>
+            <p class="pub-journal">Consciousness and Cognition</p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1016/j.concog.2017.06.002" target="_blank"
+                rel="noopener">Read here</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item reveal" role="listitem"
+          data-search="Elevated serum adenosine deaminase levels in neuroleptic-naïve patients with recent-onset schizophrenia Arun Sasidharan, Ajay Kumar Nair, John P John, Philip M, Sarada Subramanian, Sanjeev Jain, Bindu M Kutty"
+          style="animation-delay:0.60s">
+          <div><span class="pub-year">2017</span></div>
+          <div>
+            <p class="pub-title">Elevated serum adenosine deaminase levels in neuroleptic-naïve patients with
+              recent-onset schizophrenia</p>
+            <p class="pub-authors">Arun Sasidharan, Ajay Kumar Nair, John P John, Philip M, Sarada Subramanian, Sanjeev
+              Jain, Bindu M Kutty</p>
+            <p class="pub-journal">Asian Journal of Psychiatry</p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1016/j.ajp.2017.03.034" target="_blank" rel="noopener">Read
+                here</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item reveal" role="listitem"
+          data-search="Further evidences for sleep instability and impaired spindle-delta dynamics in schizophrenia - a whole-night polysomnography study with neuroloop-gain and sleep-cycle analysis Arun Sasidharan, Ajay Kumar Nair, Amuu K Lukose, Vrinda Marigowda, John P John, Bindu M Kutty"
+          style="animation-delay:0.66s">
+          <div><span class="pub-year">2017</span></div>
+          <div>
+            <p class="pub-title">Further evidences for sleep instability and impaired spindle-delta dynamics in
+              schizophrenia - a whole-night polysomnography study with neuroloop-gain and sleep-cycle analysis</p>
+            <p class="pub-authors">Arun Sasidharan, Ajay Kumar Nair, Amuu K Lukose, Vrinda Marigowda, John P John, Bindu
+              M Kutty</p>
+            <p class="pub-journal">Sleep Medicine</p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1016/j.sleep.2017.02.009" target="_blank" rel="noopener">Read
+                here</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item reveal" role="listitem"
+          data-search="Vipassana Meditation Practices Enhance the Parasympathetic Activity during Sleep - a Case-Control Study of Heart Rate Variability across Sleep Cycles Ravindra P Nagendra, Sathiamma Sulekha, Arun Sasidharan, Sathyaprabha TN, Nithyanda Pradhan, Raju TR, Bindu M Kutty"
+          style="animation-delay:0.72s">
+          <div><span class="pub-year">2017</span></div>
+          <div>
+            <p class="pub-title">Vipassana Meditation Practices Enhance the Parasympathetic Activity during Sleep - a
+              Case-Control Study of Heart Rate Variability across Sleep Cycles</p>
+            <p class="pub-authors">Ravindra P Nagendra, Sathiamma Sulekha, Arun Sasidharan, Sathyaprabha TN, Nithyanda
+              Pradhan, Raju TR, Bindu M Kutty</p>
+            <p class="pub-journal">International journal of complementary and alternative medicine</p>
+            <div class="pub-links">
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item reveal" role="listitem"
+          data-search="Senior Vipassana Meditation practitioners exhibit distinct REM sleep organization from that of novice meditators and healthy controls Nirmala Maruthai, Ravindra PN, Arun Sasidharan, Sulekha Srikumar, Karuna Datta, Sunao Uchida, Bindu M Kutty"
+          style="animation-delay:0.78s">
+          <div><span class="pub-year">2016</span></div>
+          <div>
+            <p class="pub-title">Senior Vipassana Meditation practitioners exhibit distinct REM sleep organization from
+              that of novice meditators and healthy controls</p>
+            <p class="pub-authors">Nirmala Maruthai, Ravindra PN, Arun Sasidharan, Sulekha Srikumar, Karuna Datta, Sunao
+              Uchida, Bindu M Kutty</p>
+            <p class="pub-journal">International Review of Psychiatry</p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.3109/09540261.2016.1159949" target="_blank"
+                rel="noopener">Read here</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item reveal" role="listitem"
+          data-search="Manasamitra Vataka and Shirodhara treatments preserve slow wave sleep and promote sleep continuity in patients with generalized anxiety disorder and co-morbid generalized social phobia Basavaraj Tubaki, Anupriya Verma, Arun Sasidharan, Sulekha Srikumar, TN Sathyaprabha, D Sudhakar, CR Chandrashekar, GS Lavekar, Bindu M Kutty"
+          style="animation-delay:0.84s">
+          <div><span class="pub-year">2016</span></div>
+          <div>
+            <p class="pub-title">Manasamitra Vataka and Shirodhara treatments preserve slow wave sleep and promote sleep
+              continuity in patients with generalized anxiety disorder and co-morbid generalized social phobia</p>
+            <p class="pub-authors">Basavaraj Tubaki, Anupriya Verma, Arun Sasidharan, Sulekha Srikumar, TN Sathyaprabha,
+              D Sudhakar, CR Chandrashekar, GS Lavekar, Bindu M Kutty</p>
+            <p class="pub-journal">Current Science</p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.18520/cs/v111/i2/283-292" target="_blank" rel="noopener">Read
+                here</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item reveal" role="listitem"
+          data-search="Assessing Neurocognition via Gamified Experimental Logic - A Novel Approach to Simultaneous Acquisition of Multiple ERPs Ajay Kumar Nair, Arun Sasidharan, John P John, Seema Mehrotra, Bindu M Kutty"
+          style="animation-delay:0.90s">
+          <div><span class="pub-year">2016</span></div>
+          <div>
+            <p class="pub-title">Assessing Neurocognition via Gamified Experimental Logic - A Novel Approach to
+              Simultaneous Acquisition of Multiple ERPs</p>
+            <p class="pub-authors">Ajay Kumar Nair, Arun Sasidharan, John P John, Seema Mehrotra, Bindu M Kutty</p>
+            <p class="pub-journal">Frontiers in Neuroscience</p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.3389/fnins.2016.00001" target="_blank" rel="noopener">Read
+                here</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item reveal" role="listitem"
+          data-search="Endogenous-cue prospective memory involving incremental updating of working memory - an fMRI study Harsha Halahalli, John P John, Ammu K lukose, Sanjeev Jain, Bindu M Kutty"
+          style="animation-delay:0.96s">
+          <div><span class="pub-year">2015</span></div>
+          <div>
+            <p class="pub-title">Endogenous-cue prospective memory involving incremental updating of working memory - an
+              fMRI study</p>
+            <p class="pub-authors">Harsha Halahalli, John P John, Ammu K lukose, Sanjeev Jain, Bindu M Kutty</p>
+            <p class="pub-journal">Brain Structure and Function</p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1007/s00429-014-0877-7" target="_blank" rel="noopener">Read
+                here</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item reveal" role="listitem"
+          data-search="Current understanding on the neurobiology of sleep and wakefulness Arun Sasidharan, Sulekha Srikumar, Bindu M Kutty"
+          style="animation-delay:1.02s">
+          <div><span class="pub-year">2014</span></div>
+          <div>
+            <p class="pub-title">Current understanding on the neurobiology of sleep and wakefulness</p>
+            <p class="pub-authors">Arun Sasidharan, Sulekha Srikumar, Bindu M Kutty</p>
+            <p class="pub-journal">International Journal of Clinical and Experimental Physiology</p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.4103/2348-8093.129720" target="_blank" rel="noopener">Read
+                here</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item reveal" role="listitem"
+          data-search="Functional importance of sleep - An overview Ravindra PN, Bindu M Kutty"
+          style="animation-delay:1.08s">
+          <div><span class="pub-year">2012</span></div>
+          <div>
+            <p class="pub-title">Functional importance of sleep - An overview</p>
+            <p class="pub-authors">Ravindra PN, Bindu M Kutty</p>
+            <p class="pub-journal">Indian Journal of Sleep Medicine</p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.5958/j.0973-340X.7.2.009" target="_blank" rel="noopener">Read
+                here</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item reveal" role="listitem"
+          data-search="Clinical Efficacy of Manasamitra Vataka (an Ayurveda Medication) on Generalized Anxiety Disorder with Comorbid Generalized Social Phobia - A Randomized Controlled Study Basavaraj Tubaki, CR Chandrashekar, D Sudhakar, TNS Prabha, Lavekar GS, Bindu M Kutty"
+          style="animation-delay:1.14s">
+          <div><span class="pub-year">2012</span></div>
+          <div>
+            <p class="pub-title">Clinical Efficacy of Manasamitra Vataka (an Ayurveda Medication) on Generalized Anxiety
+              Disorder with Comorbid Generalized Social Phobia - A Randomized Controlled Study</p>
+            <p class="pub-authors">Basavaraj Tubaki, CR Chandrashekar, D Sudhakar, TNS Prabha, Lavekar GS, Bindu M Kutty
+            </p>
+            <p class="pub-journal">The Journal of Alternative and Complementary Medicine</p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1089/acm.2010.0778" target="_blank" rel="noopener">Read
+                here</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item reveal" role="listitem"
+          data-search="Meditation and its regulatory role on sleep Ravindra PN, Nirmala Maruthai, Bindu M Kutty"
+          style="animation-delay:1.20s">
+          <div><span class="pub-year">2012</span></div>
+          <div>
+            <p class="pub-title">Meditation and its regulatory role on sleep</p>
+            <p class="pub-authors">Ravindra PN, Nirmala Maruthai, Bindu M Kutty</p>
+            <p class="pub-journal">Frontiers in Neurology</p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.3389/fneur.2012.00054" target="_blank" rel="noopener">Read
+                here</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item reveal" role="listitem"
+          data-search="Practitioners of vipassana meditation exhibit enhanced slow wave sleep and REM sleep states across different age groups Ravindra PN, Sulekha Srikumar, TN Sathyaprabha, Nityananda Pradhan, TR Raju, Bindu M Kutty"
+          style="animation-delay:1.26s">
+          <div><span class="pub-year">2010</span></div>
+          <div>
+            <p class="pub-title">Practitioners of vipassana meditation exhibit enhanced slow wave sleep and REM sleep
+              states across different age groups</p>
+            <p class="pub-authors">Ravindra PN, Sulekha Srikumar, TN Sathyaprabha, Nityananda Pradhan, TR Raju, Bindu M
+              Kutty</p>
+            <p class="pub-journal">Sleep and Biological Rhythms</p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1111/j.1479-8425.2009.00416.x" target="_blank"
+                rel="noopener">Read here</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="pub-item reveal" role="listitem"
+          data-search="Evaluation of sleep architecture in practitioners of Sudarshan Kriya yoga and Vipassana meditation Sulekha S, Thennarasu K, Appajachar Vedamurthachar, TR Raju, Bindu M Kutty"
+          style="animation-delay:1.32s">
+          <div><span class="pub-year">2006</span></div>
+          <div>
+            <p class="pub-title">Evaluation of sleep architecture in practitioners of Sudarshan Kriya yoga and Vipassana
+              meditation</p>
+            <p class="pub-authors">Sulekha S, Thennarasu K, Appajachar Vedamurthachar, TR Raju, Bindu M Kutty</p>
+            <p class="pub-journal">Sleep and Biological Rhythms</p>
+            <div class="pub-links">
+              <a class="pub-link" href="https://doi.org/10.1111/j.1479-8425.2006.00233.x" target="_blank"
+                rel="noopener">Read here</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+      <!-- PUBLICATIONS_END -->
+    </div>
+  </section>
+
+  <!-- ── FACILITIES ─────────────────────────────────── -->
+  <section id="facilities" class="dark section-pad" style="position:relative;overflow:hidden;">
+    <div class="container">
+      <div class="section-header light-header reveal">
+        <span class="label">Facilities</span>
+        <div class="saffron-rule"></div>
+        <h2 style="color:var(--cream);">State-of-the-Art Infrastructure</h2>
+      </div>
+
+      <div class="facilities-layout">
+        <!-- sticky sidebar -->
+        <aside class="fac-sidebar" aria-label="Facility categories">
+          <nav class="fac-nav">
+
+            <div class="fac-nav-item active" data-cat="EEG_/_ERP_Systems">EEG / ERP Systems</div>
+
+            <div class="fac-nav-item " data-cat="Polysomnography">Polysomnography</div>
+
+            <div class="fac-nav-item " data-cat="Portable_&amp;_Wireless">Portable &amp; Wireless</div>
+
+            <div class="fac-nav-item " data-cat="Computing">Computing</div>
+
+            <div class="fac-nav-item " data-cat="Other_Instruments">Other Instruments</div>
+
+          </nav>
+        </aside>
+
+        <!-- scrollable content -->
+        <div class="fac-content">
+
+          <div class="fac-section active" id="fac-EEG_/_ERP_Systems">
+            <h3 class="fac-category-title">EEG / ERP Systems</h3>
+            <p class="fac-placeholder">Detailed technical specifications and instrument models for the EEG and ERP
+              systems facility will be updated shortly.</p>
+            <div class="fac-items-grid">
+
+            </div>
+          </div>
+
+          <div class="fac-section" id="fac-Polysomnography">
+            <h3 class="fac-category-title">Polysomnography</h3>
+            <p class="fac-placeholder">Detailed technical specifications and instrument models for the Polysomnography
+              facility will be updated shortly.</p>
+            <div class="fac-items-grid">
+
+            </div>
+          </div>
+
+          <div class="fac-section" id="fac-Portable_&amp;_Wireless">
+            <h3 class="fac-category-title">Portable &amp; Wireless</h3>
+            <p class="fac-placeholder">Detailed technical specifications and instrument models for the Portable &amp;
+              Wireless facility will be updated shortly.</p>
+            <div class="fac-items-grid">
+
+            </div>
+          </div>
+
+          <div class="fac-section" id="fac-Computing">
+            <h3 class="fac-category-title">Computing</h3>
+            <p class="fac-placeholder">Detailed technical specifications and workstation details for the Computing
+              facility will be updated shortly.</p>
+            <div class="fac-items-grid">
+
+            </div>
+          </div>
+
+          <div class="fac-section" id="fac-Other_Instruments">
+            <h3 class="fac-category-title">Other Instruments</h3>
+            <p class="fac-placeholder">Detailed technical specifications and models for Other Instruments will be
+              updated shortly.</p>
+            <div class="fac-items-grid">
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EVENTS ─────────────────────────────────────── -->
+  <section id="talks" class="light section-pad" style="position:relative;overflow:hidden;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">Events</span>
+        <div class="saffron-rule"></div>
+        <h2>Webinars, Workshops &amp; Conferences</h2>
+      </div>
+      <div class="events-grid">
+
+        <article class="event-card reveal" style="animation-delay:0.0s">
+          <div class="event-date-bar">
+            2022-12-15 — 2022-12-17
+          </div>
+          <div class="event-body">
+            <h3>7th National Workshop — Fundamentals of Polysomnography &amp; Sleep</h3>
+            <p>The seventh edition of the national workshop on Fundamentals of Polysomnography &amp; Sleep, offering
+              hands-on training in sleep recording and scoring techniques.</p>
+            <div class="event-tags">
+
+              <span class="event-tag">Workshop</span>
+
+              <span class="event-tag">Hands-on</span>
+
+            </div>
+            <p class="event-location">📍 Centre for Consciousness Studies (CCS), Bengaluru, India</p>
+          </div>
+        </article>
+
+        <article class="event-card reveal" style="animation-delay:0.08s">
+          <div class="event-date-bar">
+            2022-09-22
+          </div>
+          <div class="event-body">
+            <h3>Man Machine Debate, 2022</h3>
+            <p>Exploring Consciousness: From Non-duality to Non-locality — a structured debate on the nature of
+              consciousness and artificial intelligence.</p>
+            <div class="event-tags">
+
+              <span class="event-tag">Seminar</span>
+
+              <span class="event-tag">Debate</span>
+
+            </div>
+            <p class="event-location">📍 Centre for Consciousness Studies (CCS), Bengaluru, India</p>
+          </div>
+        </article>
+
+        <article class="event-card reveal" style="animation-delay:0.16s">
+          <div class="event-date-bar">
+            2022-04-18
+          </div>
+          <div class="event-body">
+            <h3>Young Investigator Award (SIR-YIA), 2022</h3>
+            <p>Young Investigator Award offering a research grant of up to ₹3 lakhs. SpARC wing of Brahma Kumaris, Mount
+              Abu, in collaboration with CCS.</p>
+            <div class="event-tags">
+
+              <span class="event-tag">Award</span>
+
+              <span class="event-tag">Competition</span>
+
+            </div>
+            <p class="event-location">📍 Centre for Consciousness Studies (CCS), Bengaluru, India</p>
+          </div>
+        </article>
+
+        <article class="event-card reveal" style="animation-delay:0.24s">
+          <div class="event-date-bar">
+            2022-03-18
+          </div>
+          <div class="event-body">
+            <h3>World Sleep Day Panel Discussion, 2022</h3>
+            <p>CCS &amp; NIMHANS Sleep Disorder Clinic panel discussion on World Sleep Day 2022. Theme: Quality Sleep,
+              Sound Mind, Happy World.</p>
+            <div class="event-tags">
+
+              <span class="event-tag">Panel</span>
+
+              <span class="event-tag">Online</span>
+
+            </div>
+            <p class="event-location">📍 Online</p>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── GALLERY ────────────────────────────────────── -->
+  <section id="gallery" class="surface section-pad" style="position:relative;overflow:hidden;">
+    <div class="container">
+      <div class="section-header light-header reveal">
+        <span class="label">Gallery</span>
+        <div class="saffron-rule"></div>
+        <h2 style="color:var(--cream);">Life at CCS</h2>
+      </div>
+      <div class="gallery-grid">
+        <!-- Real image from original site -->
+        <div class="gallery-item reveal"
+          onclick="openLightbox('https://ccsnimhans.netlify.app/home/gallery/gallery/CCS_GroupPhoto.jpg','CCS Group Photo')">
+          <img src="https://ccsnimhans.netlify.app/home/gallery/gallery/CCS_GroupPhoto.jpg" alt="CCS Group Photo"
+            loading="lazy" onerror="this.parentNode.innerHTML='<div class=gallery-placeholder>CCS Group Photo</div>'">
+          <div class="gallery-overlay">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+              aria-hidden="true">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              <line x1="11" y1="8" x2="11" y2="14" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+            </svg>
+          </div>
+        </div>
+        <!-- Placeholder tiles -->
+
+        <div class="gallery-item reveal" style="animation-delay:0.07s">
+          <div class="gallery-placeholder"
+            style="background:linear-gradient(135deg,var(--surface) 0%,var(--teal) 200%)">
+            Research Session
+          </div>
+        </div>
+
+        <div class="gallery-item reveal" style="animation-delay:0.14s">
+          <div class="gallery-placeholder"
+            style="background:linear-gradient(135deg,var(--surface) 0%,rgba(232,131,10,.2) 200%)">
+            Sleep Lab Recording
+          </div>
+        </div>
+
+        <div class="gallery-item reveal" style="animation-delay:0.21000000000000002s">
+          <div class="gallery-placeholder"
+            style="background:linear-gradient(135deg,var(--surface) 0%,var(--teal) 200%)">
+            EEG Setup
+          </div>
+        </div>
+
+        <div class="gallery-item reveal" style="animation-delay:0.28s">
+          <div class="gallery-placeholder"
+            style="background:linear-gradient(135deg,var(--surface) 0%,rgba(232,131,10,.2) 200%)">
+            Workshop 2022
+          </div>
+        </div>
+
+        <div class="gallery-item reveal" style="animation-delay:0.35000000000000003s">
+          <div class="gallery-placeholder"
+            style="background:linear-gradient(135deg,var(--surface) 0%,var(--teal) 200%)">
+            Team Meeting
+          </div>
+        </div>
+
+        <div class="gallery-item reveal" style="animation-delay:0.42000000000000004s">
+          <div class="gallery-placeholder"
+            style="background:linear-gradient(135deg,var(--surface) 0%,rgba(232,131,10,.2) 200%)">
+            PSG Analysis
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image lightbox">
+    <button id="lightbox-close" aria-label="Close lightbox">✕</button>
+    <img id="lightbox-img" src="" alt="">
+  </div>
+
+  <!-- ── OPPORTUNITIES ──────────────────────────────── -->
+  <section id="Opportunities" class="light section-pad" style="position:relative;overflow:hidden;">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="label">Opportunities</span>
+        <div class="saffron-rule"></div>
+        <h2>Join the Pursuit</h2>
+      </div>
+      <div class="opps-grid">
+
+        <div class="opp-card reveal" style="animation-delay:0.0s">
+          <svg class="opp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            aria-hidden="true">
+
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+            <path d="M6 12v5c3 3 9 3 12 0v-5" />
+
+          </svg>
+          <h3>PhD Admissions</h3>
+          <p>NIMHANS Institute Fellowships for PhD admissions are available (3 seats). External fellowships from CSIR,
+            DBT, UGC or other approved funding agencies are also accepted.</p>
+          <a href="https://nimhans.ac.in" class="opp-cta">Apply via NIMHANS →</a>
+        </div>
+
+        <div class="opp-card reveal" style="animation-delay:0.1s">
+          <svg class="opp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            aria-hidden="true">
+
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+            <line x1="16" y1="13" x2="8" y2="13" />
+            <line x1="16" y1="17" x2="8" y2="17" />
+            <polyline points="10 9 9 9 8 9" />
+
+          </svg>
+          <h3>Internships &amp; Dissertations</h3>
+          <p>Students interested in doing internships or final-year dissertations are welcome. Send your CV and a brief
+            statement of interest to our lab email.</p>
+          <a href="/cdn-cgi/l/email-protection#325151415c5b5f5a535c410002000272555f535b5e1c515d5f" class="opp-cta">Write
+            to Us →</a>
+        </div>
+
+        <div class="opp-card reveal" style="animation-delay:0.2s">
+          <svg class="opp-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+            aria-hidden="true">
+
+            <circle cx="12" cy="12" r="10" />
+            <line x1="2" y1="12" x2="22" y2="12" />
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+
+          </svg>
+          <h3>Visiting &amp; Collaborative Research</h3>
+          <p>Scholars and institutions interested in collaborative consciousness research are welcome. We actively seek
+            partnerships across neuroscience, philosophy, and contemplative traditions.</p>
+          <a href="/cdn-cgi/l/email-protection#97f4f4e4f9fefafff6f9e4a5a7a5a7d7f0faf6fefbb9f4f8fa" class="opp-cta">Get
+            in Touch →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONNECT ────────────────────────────────────── -->
+  <section id="Connect" class="dark section-pad" style="position:relative;overflow:hidden;">
+    <div class="container">
+      <div class="section-header light-header reveal">
+        <span class="label">Connect</span>
+        <div class="saffron-rule"></div>
+        <h2 style="color:var(--cream);">Get in Touch</h2>
+      </div>
+      <div class="connect-layout-simple">
+        <!-- Contact info column -->
+        <div class="contact-info reveal">
+          <div class="contact-row">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            <p>Dept. of Neurophysiology, NIMHANS, Hosur Road, Bengaluru – 560029<br><small style="opacity:.7">First
+                floor, Administrative Building (stone building)</small></p>
+          </div>
+          <div class="contact-row">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              aria-hidden="true">
+              <circle cx="12" cy="12" r="10" />
+              <polyline points="12 6 12 12 16 14" />
+            </svg>
+            <p>Monday to Saturday — 09:00 to 17:00 hrs</p>
+          </div>
+          <div class="contact-row">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            <p><a href="/cdn-cgi/l/email-protection#107373637e797d78717e632220222050777d71797c3e737f7d"
+                style="color:var(--teal-lt);"><span class="__cf_email__"
+                  data-cfemail="432020302d2a2e2b222d307173717303242e222a2f6d202c2e">[email&#160;protected]</span></a>
+            </p>
+          </div>
+          <div class="contact-row">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              aria-hidden="true">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+              <rect x="2" y="9" width="4" height="12" />
+              <circle cx="4" cy="4" r="2" />
+            </svg>
+            <p><a href="https://www.linkedin.com/in/nimhans-centre-for-consciousness-studies-386285220" target="_blank"
+                rel="noopener" style="color:var(--teal-lt);">LinkedIn ↗</a></p>
+          </div>
+        </div>
+        <!-- Full-width map -->
+        <div class="map-wrap reveal" style="margin-top:2rem;">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.613!2d77.5953!3d12.9398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae158a5c35be5f%3A0x6b91e5e2a84e9fa0!2sNIMHANS!5e0!3m2!1sen!2sin!4v1700000000000"
+            width="100%" height="420" style="border:0;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            title="NIMHANS location map" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ─────────────────────────────────────────── -->
+  <footer style="background:#070E16;border-top:1px solid rgba(232,131,10,.15);padding:1.5rem 5vw;">
+    <div
+      style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;">
+      <p style="font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.08em;color:rgba(138,155,176,.5);">© 2026
+        Centre for Consciousness Studies, NIMHANS. All rights reserved.</p>
+      <p style="font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.08em;color:rgba(138,155,176,.5);">
+        Bengaluru, India</p>
+    </div>
+  </footer>
+
+  <!-- ── JAVASCRIPT ──────────────────────────────────── -->
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script>
+    /* ── Enable animations only when JS is ready ── */
+    document.documentElement.classList.add('js-loaded');
+
+    /* ── Navbar scroll ── */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 80);
+    }, { passive: true });
+
+    /* ── Mobile menu ── */
+    const hamburger = document.getElementById('hamburger');
+    const overlay = document.getElementById('nav-overlay');
+    hamburger.addEventListener('click', () => {
+      const open = overlay.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    function closeNav() {
+      overlay.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
+
+    /* ── Intersection Observer (reveal + stat counters) ── */
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* stat counter */
+    const statIO = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = +el.dataset.target;
+        const suffix = el.dataset.suffix || '';
+        const dur = 1500;
+        const start = performance.now();
+        function tick(now) {
+          const p = Math.min((now - start) / dur, 1);
+          const ease = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(ease * target) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+        }
+        requestAnimationFrame(tick);
+        statIO.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.stat-value[data-target]').forEach(el => statIO.observe(el));
+
+    /* ── Team tabs ── */
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.dataset.tab;
+        document.querySelectorAll('.tab-btn').forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        const panel = document.getElementById('tab-' + key);
+        if (panel) {
+          panel.classList.add('active');
+          // trigger reveals inside newly-shown panel
+          panel.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+            io.observe(el);
+            // force visible after short delay if still not triggered
+            setTimeout(() => el.classList.add('visible'), 100);
+          });
+        }
+      });
+    });
+
+    /* ── Project filter ── */
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.project-card').forEach(card => {
+          const tags = card.dataset.tags || '';
+          const show = filter === 'all' || tags.includes(filter);
+          card.classList.toggle('hidden', !show);
+        });
+      });
+    });
+
+    /* ── Publications search ── */
+    document.getElementById('pub-search').addEventListener('input', function () {
+      const q = this.value.toLowerCase();
+      document.querySelectorAll('.pub-item').forEach(item => {
+        const text = (item.dataset.search || '').toLowerCase();
+        item.classList.toggle('hidden', q.length > 0 && !text.includes(q));
+      });
+    });
+
+    /* ── Facilities tabs highlight ── */
+    const facSections = document.querySelectorAll('.fac-section');
+    const facNavItems = document.querySelectorAll('.fac-nav-item');
+    if (facSections.length) {
+      facNavItems.forEach(nav => {
+        nav.addEventListener('click', () => {
+          // Remove active class from all nav items
+          facNavItems.forEach(n => n.classList.remove('active'));
+          // Add active class to clicked item
+          nav.classList.add('active');
+
+          // Hide all sections
+          facSections.forEach(s => s.classList.remove('active'));
+
+          // Show target section
+          const target = document.getElementById('fac-' + nav.dataset.cat);
+          if (target) {
+            target.classList.add('active');
+
+            // trigger reveals if inside
+            target.querySelectorAll('.reveal:not(.visible)').forEach(el => {
+              io.observe(el);
+              setTimeout(() => el.classList.add('visible'), 100);
+            });
+          }
+        });
+      });
+    }
+
+    /* ── Gallery lightbox ── */
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxClose = document.getElementById('lightbox-close');
+    function openLightbox(src, alt) {
+      lightboxImg.src = src;
+      lightboxImg.alt = alt || '';
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    lightboxClose.addEventListener('click', () => {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) { lightbox.classList.remove('open'); document.body.style.overflow = ''; }
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && lightbox.classList.contains('open')) {
+        lightbox.classList.remove('open'); document.body.style.overflow = '';
+      }
+    });
+
+    /* ── Monogram canvas fallback ── */
+    function drawMonogram(canvas, name) {
+      const ctx = canvas.getContext('2d');
+      const size = canvas.width;
+      const words = name.split(' ').filter(Boolean);
+      const initials = (words.length >= 2
+        ? words[0][0] + words[words.length - 1][0]
+        : (words[0] || 'X').substring(0, 2)).toUpperCase();
+
+      // Gradient background
+      const grad = ctx.createLinearGradient(0, 0, size, size);
+      grad.addColorStop(0, '#E8830A');
+      grad.addColorStop(1, '#1A6B6B');
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(size / 2, size / 2, size / 2, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#FAF6EF';
+      ctx.font = `600 ${size * 0.38}px 'Cormorant Garamond', Georgia, serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(initials, size / 2, size / 2);
+    }
+
+    document.querySelectorAll('.monogram-canvas').forEach(canvas => {
+      const name = canvas.dataset.name;
+      if (name) {
+        canvas.width = 192;
+        canvas.height = 192;
+        drawMonogram(canvas, name);
+      }
+    });
+  </script>
+</body>
+
+</html>
