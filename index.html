@@ -43,7 +43,7 @@
 
     html {
       scroll-behavior: smooth;
-      font-size: 16px;
+      font-size: 18px;
     }
 
     body {
@@ -414,16 +414,19 @@
       display: grid;
       grid-template-columns: 1fr 1.2fr;
       gap: 4rem;
-      align-items: start;
+      align-items: stretch;
     }
 
     .vision-card {
-      background: var(--ink);
+      background: transparent;
       border-radius: 12px;
       padding: 3rem;
       border: 1px solid rgba(232, 131, 10, .15);
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
 
     .vision-card::before {
@@ -440,14 +443,16 @@
 
     .vision-card .label {
       margin-bottom: 1.5rem;
+      text-align: center;
     }
 
     .vision-card blockquote {
       font-family: var(--ff-disp);
       font-size: clamp(1.4rem, 2.5vw, 1.9rem);
       font-style: italic;
-      color: var(--cream);
+      color: var(--ink);
       line-height: 1.35;
+      text-align: center;
     }
 
     .mission-title {
@@ -492,6 +497,7 @@
       line-height: 1.7;
       border-left: 2px solid rgba(232, 131, 10, .3);
       padding-left: 1rem;
+      text-align: justify;
     }
 
     /* ── HISTORY ────────────────────────────────────────── */
@@ -618,17 +624,19 @@
     }
 
     .preface-cols {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      margin-top: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      max-width: 900px;
+      margin: 3rem auto 0;
     }
 
     .preface-cols p {
       color: rgba(250, 246, 239, .75);
-      font-size: .95rem;
+      font-size: 1.05rem;
       line-height: 1.85;
-      margin-bottom: 1rem;
+      margin-bottom: 0;
+      text-align: justify;
     }
 
     /* ── TEAM ───────────────────────────────────────────── */
@@ -1381,14 +1389,32 @@
       position: relative;
     }
 
+    .gallery-marquee {
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+      display: flex;
+      align-items: center;
+    }
+
     .gallery-grid {
-      columns: 3;
-      column-gap: 1rem;
+      display: flex;
+      gap: 1.5rem;
+      animation: marquee-scroll 30s linear infinite;
+      width: max-content;
+    }
+
+    .gallery-marquee:hover .gallery-grid {
+      animation-play-state: paused;
+    }
+
+    @keyframes marquee-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
 
     .gallery-item {
-      break-inside: avoid;
-      margin-bottom: 1rem;
+      flex: 0 0 280px;
       border-radius: 8px;
       overflow: hidden;
       position: relative;
@@ -1673,9 +1699,7 @@
         grid-template-columns: 1fr;
       }
 
-      .gallery-grid {
-        columns: 2;
-      }
+      /* gallery-grid responsive removed for carousel */
 
       .footer-grid {
         grid-template-columns: 1fr;
@@ -1699,9 +1723,7 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .gallery-grid {
-        columns: 1;
-      }
+      /* gallery-grid responsive removed for carousel */
 
       .footer-bar {
         flex-direction: column;
@@ -1815,7 +1837,7 @@
     <div class="hero-bg"></div>
     <div class="hero-mandala-bg" style="
     position:absolute;inset:0;
-    background-image:url('https://rubinmuseum.org/projecthimalayanart/wp-content/uploads/sites/2/2022/11/Object-046_Fig-01-scaled.jpg');
+    background-image:url('');
     background-size:cover;
     background-position:center top;
     background-repeat:no-repeat;
@@ -1856,34 +1878,12 @@
           <p class="label" style="margin-bottom:1.5rem;">Vision</p>
           <blockquote>To be a global leader of excellence in consciousness studies</blockquote>
 
-          <!-- CCS Logo placeholder -->
-          <div class="ccs-logo-placeholder" title="Place CCS logo here">
-            <div class="ccs-logo-inner">
-              <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="ccs-logo-icon"
-                aria-hidden="true">
-                <!-- Outer ring -->
-                <circle cx="40" cy="40" r="36" stroke="rgba(232,131,10,0.35)" stroke-width="1" />
-                <!-- Middle ring -->
-                <circle cx="40" cy="40" r="26" stroke="rgba(232,131,10,0.5)" stroke-width="1" />
-                <!-- Inner ring -->
-                <circle cx="40" cy="40" r="16" stroke="rgba(232,131,10,0.7)" stroke-width="1" />
-                <!-- Cross lines -->
-                <line x1="40" y1="4" x2="40" y2="76" stroke="rgba(232,131,10,0.2)" stroke-width="0.8" />
-                <line x1="4" y1="40" x2="76" y2="40" stroke="rgba(232,131,10,0.2)" stroke-width="0.8" />
-                <!-- Diagonal lines -->
-                <line x1="14.7" y1="14.7" x2="65.3" y2="65.3" stroke="rgba(232,131,10,0.15)" stroke-width="0.8" />
-                <line x1="65.3" y1="14.7" x2="14.7" y2="65.3" stroke="rgba(232,131,10,0.15)" stroke-width="0.8" />
-                <!-- Centre dot -->
-                <circle cx="40" cy="40" r="3.5" fill="var(--saffron)" opacity="0.9" />
-                <circle cx="40" cy="40" r="7" fill="var(--saffron)" opacity="0.15" />
-              </svg>
-              <span class="ccs-logo-text">CCS</span>
-              <span class="ccs-logo-sub">Logo</span>
-            </div>
-            <p class="ccs-logo-hint">↑ Replace with official logo</p>
+          <!-- CCS Logo -->
+          <div class="ccs-logo-container" style="text-align: center; margin-top: 3rem;">
+            <img src="assets/images/backgrounds/CCS_Logo_Half%208x8cm_trans.png" alt="CCS Logo" style="max-width: 200px; margin: 0 auto; display: block; opacity: 0.9;">
           </div>
         </div>
-        <div class="reveal" style="animation-delay:.15s">
+        <div class="reveal" style="animation-delay:.15s; display: flex; flex-direction: column; justify-content: center;">
           <h3 class="mission-title">Our Mission</h3>
           <div class="mission-list">
 
@@ -2963,397 +2963,91 @@
         <h2>Research Output</h2>
       </div>
 
-      <div class="search-wrap reveal">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          aria-hidden="true">
-          <circle cx="11" cy="11" r="8" />
-          <line x1="21" y1="21" x2="16.65" y2="16.65" />
-        </svg>
-        <input type="search" id="pub-search" placeholder="Search publications by title or author…"
-          aria-label="Search publications">
-      </div>
-
       <!-- PUBLICATIONS_START -->
       <div class="pub-list" role="list">
 
         <article class="pub-item reveal" role="listitem"
-          data-search="People with dyssomnia showed increased vulnerability to CoVID-19 pandemic - a questionnaire-based study exploring the patterns and predictors of sleep quality using the latent class analysis technique in Indian population Arathi Radhakrishnan, Ramajayam Govindaraj, Arun Sasidharan, PN Ravindra, Ravi Yadav, Bindu M Kutty"
-          style="animation-delay:0.00s">
-          <div><span class="pub-year">2021</span></div>
+          data-search="Relaxed Alertness in Novice and Advanced Meditators – A Neurophysiological and Psychological Study of Isha Yoga Practices Saketh Malipeddi, Arun Sasidharan, Ravindra P.N., Seema Mehrotra, John P. John, Bindu M. Kutty">
+          <div><span class="pub-year">2024</span></div>
           <div>
-            <p class="pub-title">People with dyssomnia showed increased vulnerability to CoVID-19 pandemic - a
-              questionnaire-based study exploring the patterns and predictors of sleep quality using the latent class
-              analysis technique in Indian population</p>
-            <p class="pub-authors">Arathi Radhakrishnan, Ramajayam Govindaraj, Arun Sasidharan, PN Ravindra, Ravi Yadav,
-              Bindu M Kutty</p>
-            <p class="pub-journal">Sleep medicine</p>
+            <p class="pub-title">Relaxed Alertness in Novice and Advanced Meditators – A Neurophysiological and Psychological Study of Isha Yoga Practices</p>
+            <p class="pub-authors">Saketh Malipeddi, Arun Sasidharan, Ravindra P.N., Seema Mehrotra, John P. John, Bindu M. Kutty</p>
+            <p class="pub-journal">Mindfulness</p>
             <div class="pub-links">
-              <a class="pub-link" href="https://doi.org/10.1016/j.sleep.2020.12.041" target="_blank" rel="noopener">Read
-                here</a>
+              <a class="pub-link" href="https://doi.org/10.1007/s12671-024-02466-8" target="_blank" rel="noopener">Read here</a>
             </div>
           </div>
         </article>
 
         <article class="pub-item reveal" role="listitem"
-          data-search="Meditation, well-being and cognition in heartfulness meditators – A pilot study Bhuvnesh Sankar Sylapan, Ajay Kumar Nair, Krishnamurthy Jayanna, Saketh Mallipeddi, Sunil Sathyanarayana, Bindu M Kutty"
-          style="animation-delay:0.06s">
-          <div><span class="pub-year">2020</span></div>
+          data-search="Practice and Proficiency of Isha Yoga for Better Mental Health Outcomes: Insights from a COVID-19 Survey Saketh Malipeddi, Seema Mehrotra, John P. John, Bindu M. Kutty">
+          <div><span class="pub-year">2024</span></div>
           <div>
-            <p class="pub-title">Meditation, well-being and cognition in heartfulness meditators – A pilot study</p>
-            <p class="pub-authors">Bhuvnesh Sankar Sylapan, Ajay Kumar Nair, Krishnamurthy Jayanna, Saketh Mallipeddi,
-              Sunil Sathyanarayana, Bindu M Kutty</p>
-            <p class="pub-journal">Consciousness and Cognition</p>
+            <p class="pub-title">Practice and Proficiency of Isha Yoga for Better Mental Health Outcomes: Insights from a COVID-19 Survey</p>
+            <p class="pub-authors">Saketh Malipeddi, Seema Mehrotra, John P. John, Bindu M. Kutty</p>
+            <p class="pub-journal">Frontiers in Public Health</p>
             <div class="pub-links">
-              <a class="pub-link" href="https://doi.org/10.1016/j.concog.2020.103032" target="_blank"
-                rel="noopener">Read here</a>
+              <a class="pub-link" href="https://doi.org/10.3389/fpubh.2024.1280859" target="_blank" rel="noopener">Read here</a>
             </div>
           </div>
         </article>
 
         <article class="pub-item reveal" role="listitem"
-          data-search="State-trait influences of Vipassana meditation practice on P3 EEG dynamics Ratna Jyothi, Ajay Kumar Nair, Arun Sasidharan, John P John, Seema Mehrotra, Ravindra Panth, Bindu M Kutty"
-          style="animation-delay:0.12s">
-          <div><span class="pub-year">2018</span></div>
+          data-search="Development and Validation of Ayurveda Based Assessment Scale for Anxiety Basavaraj R. Tubaki, G.S. Lavekar, C.R. Chandrashekar, T.N. Sathyaprabha, Bindu M. Kutty">
+          <div><span class="pub-year">2023</span></div>
           <div>
-            <p class="pub-title">State-trait influences of Vipassana meditation practice on P3 EEG dynamics</p>
-            <p class="pub-authors">Ratna Jyothi, Ajay Kumar Nair, Arun Sasidharan, John P John, Seema Mehrotra, Ravindra
-              Panth, Bindu M Kutty</p>
-            <p class="pub-journal">Progress in brain research</p>
+            <p class="pub-title">Development and Validation of Ayurveda Based Assessment Scale for Anxiety</p>
+            <p class="pub-authors">Basavaraj R. Tubaki, G.S. Lavekar, C.R. Chandrashekar, T.N. Sathyaprabha, Bindu M. Kutty</p>
+            <p class="pub-journal">Journal of Ayurveda and Integrative Medicine</p>
             <div class="pub-links">
-              <a class="pub-link" href="https://doi.org/10.1016/bs.pbr.2018.10.027" target="_blank" rel="noopener">Read
-                here</a>
-              <a class="pub-link"
-                href="https://books.google.co.in/books?hl=en&amp;lr=&amp;id=LYOGDwAAQBAJ&amp;oi=fnd&amp;pg=PA115&amp;dq=progress+in+brain+research+jyothi+kakumanu&amp;ots=Fdq-kdxn7x&amp;sig=uQoQTVgJSCO3WloV9tBl-RU0jN8#v=onepage&amp;q&amp;f=false"
-                target="_blank" rel="noopener">PDF</a>
+              <a class="pub-link" href="https://doi.org/10.1016/j.jaim.2023.100765" target="_blank" rel="noopener">Read here</a>
             </div>
           </div>
         </article>
 
         <article class="pub-item reveal" role="listitem"
-          data-search="Assessment of Sleep Spindle Density among Genetically Positive Spinocerebellar Ataxias Types 1, 2, and 3 Patients Seshagiri DV, Raghasudha B, Arun Sasidharan, Pramod K Pal, Sanjeev Jain, Ravi Yadav, Bindu M Kutty"
-          style="animation-delay:0.18s">
-          <div><span class="pub-year">2018</span></div>
+          data-search="Differences in Brain Connectivity of Meditators during Assessing Neurocognition via Gamified Experimental Logic Task: A Machine Learning Approach Ashwini S. Savanth, P.A. Vijaya, Ajay Kumar Nair, Bindu Kutty">
+          <div><span class="pub-year">2023</span></div>
           <div>
-            <p class="pub-title">Assessment of Sleep Spindle Density among Genetically Positive Spinocerebellar Ataxias
-              Types 1, 2, and 3 Patients</p>
-            <p class="pub-authors">Seshagiri DV, Raghasudha B, Arun Sasidharan, Pramod K Pal, Sanjeev Jain, Ravi Yadav,
-              Bindu M Kutty</p>
-            <p class="pub-journal">Annals of Neurosciences</p>
+            <p class="pub-title">Differences in Brain Connectivity of Meditators during Assessing Neurocognition via Gamified Experimental Logic Task: A Machine Learning Approach</p>
+            <p class="pub-authors">Ashwini S. Savanth, P.A. Vijaya, Ajay Kumar Nair, Bindu Kutty</p>
+            <p class="pub-journal">Neuroradiology Journal</p>
             <div class="pub-links">
-              <a class="pub-link" href="https://doi.org/10.1159/000484516" target="_blank" rel="noopener">Read here</a>
+              <a class="pub-link" href="https://doi.org/10.1177/19714009221129574" target="_blank" rel="noopener">Read here</a>
             </div>
           </div>
         </article>
 
         <article class="pub-item reveal" role="listitem"
-          data-search="Challenges in sleep stage R scoring in patients with autosomal dominant spinocerebellar ataxias (SCA1, SCA2 and SCA3) and oculomotor abnormalities - a whole night polysomnographic evaluation Seshagiri DV, Arun Sasidharan, Gulshan Kumar, Pramod K Pal, Sanjeev jain, Bindu M Kutty, Ravi Yadav"
-          style="animation-delay:0.24s">
-          <div><span class="pub-year">2018</span></div>
+          data-search="Classification of Rajayoga Meditators Based on the Duration of Practice Using Graph Theoretical Measures of Functional Connectivity from Task-Based Functional Magnetic Resonance Imaging Ashwini S. Savanth, P.A. Vijaya, Ajay Kumar Nair, Bindu M. Kutty">
+          <div><span class="pub-year">2022</span></div>
           <div>
-            <p class="pub-title">Challenges in sleep stage R scoring in patients with autosomal dominant spinocerebellar
-              ataxias (SCA1, SCA2 and SCA3) and oculomotor abnormalities - a whole night polysomnographic evaluation</p>
-            <p class="pub-authors">Seshagiri DV, Arun Sasidharan, Gulshan Kumar, Pramod K Pal, Sanjeev jain, Bindu M
-              Kutty, Ravi Yadav</p>
-            <p class="pub-journal">Sleep Medicine</p>
+            <p class="pub-title">Classification of Rajayoga Meditators Based on the Duration of Practice Using Graph Theoretical Measures of Functional Connectivity from Task-Based Functional Magnetic Resonance Imaging</p>
+            <p class="pub-authors">Ashwini S. Savanth, P.A. Vijaya, Ajay Kumar Nair, Bindu M. Kutty</p>
+            <p class="pub-journal">International Journal of Yoga</p>
             <div class="pub-links">
-              <a class="pub-link" href="https://doi.org/10.1016/j.sleep.2017.09.030" target="_blank" rel="noopener">Read
-                here</a>
+              <a class="pub-link" href="https://doi.org/10.4103/ijoy.ijoy_17_22" target="_blank" rel="noopener">Read here</a>
             </div>
           </div>
         </article>
 
         <article class="pub-item reveal" role="listitem"
-          data-search="What contributes to wellbeing gains – proficiency or duration of meditation related practices? Ajay Kumar Nair, John P John, Seema Mehrotra, Bindu M Kutty"
-          style="animation-delay:0.30s">
-          <div><span class="pub-year">2018</span></div>
+          data-search="Enhanced Dehydroepiandrosterone Levels are Positively Correlated with N3 Sleep Stage in Long-term Mindfulness Meditation Practitioners Ravindra P. Nagendra, Talakad N. Sathyaprabha, Bindu M. Kutty">
+          <div><span class="pub-year">2022</span></div>
           <div>
-            <p class="pub-title">What contributes to wellbeing gains – proficiency or duration of meditation related
-              practices?</p>
-            <p class="pub-authors">Ajay Kumar Nair, John P John, Seema Mehrotra, Bindu M Kutty</p>
-            <p class="pub-journal">International Journal of Wellbeing</p>
+            <p class="pub-title">Enhanced Dehydroepiandrosterone Levels are Positively Correlated with N3 Sleep Stage in Long-term Mindfulness Meditation Practitioners</p>
+            <p class="pub-authors">Ravindra P. Nagendra, Talakad N. Sathyaprabha, Bindu M. Kutty</p>
+            <p class="pub-journal">Sleep Science</p>
             <div class="pub-links">
-              <a class="pub-link" href="https://doi.org/10.5502/ijw.v8i2.696" target="_blank" rel="noopener">Read
-                here</a>
+              <a class="pub-link" href="https://doi.org/10.5935/1984-0063.20220039" target="_blank" rel="noopener">Read here</a>
             </div>
           </div>
         </article>
 
-        <article class="pub-item reveal" role="listitem"
-          data-search="Beyond hypnograms - Assessing sleep stability using acoustic and electrical stimulation Rahul Venugopal, Arun Sasidharan, Vrinda Marigowda, Gulshan Kumar, Ajay Kumar Nair, Sumit Sharma, Chetan Mukundan, Bindu M Kutty"
-          style="animation-delay:0.36s">
-          <div><span class="pub-year">2018</span></div>
-          <div>
-            <p class="pub-title">Beyond hypnograms - Assessing sleep stability using acoustic and electrical stimulation
-            </p>
-            <p class="pub-authors">Rahul Venugopal, Arun Sasidharan, Vrinda Marigowda, Gulshan Kumar, Ajay Kumar Nair,
-              Sumit Sharma, Chetan Mukundan, Bindu M Kutty</p>
-            <p class="pub-journal">Neuromodulation</p>
-            <div class="pub-links">
-              <a class="pub-link" href="https://doi.org/10.1111/ner.12847" target="_blank" rel="noopener">Read here</a>
-            </div>
-          </div>
-        </article>
+      </div>
 
-        <article class="pub-item reveal" role="listitem"
-          data-search="Dissociating meditation proficiency and experience dependent EEG changes during traditional Vipassana meditation practice Ratna Jyothi Kakumanu, Ajay Kumar Nair, Rahul Venugopal, Arun Sasidharan, Prasanta Kumar Ghosh, John P John, Bindu M Kutty"
-          style="animation-delay:0.42s">
-          <div><span class="pub-year">2018</span></div>
-          <div>
-            <p class="pub-title">Dissociating meditation proficiency and experience dependent EEG changes during
-              traditional Vipassana meditation practice</p>
-            <p class="pub-authors">Ratna Jyothi Kakumanu, Ajay Kumar Nair, Rahul Venugopal, Arun Sasidharan, Prasanta
-              Kumar Ghosh, John P John, Bindu M Kutty</p>
-            <p class="pub-journal">Biological Psychology</p>
-            <div class="pub-links">
-              <a class="pub-link" href="https://doi.org/10.1016/j.biopsycho.2018.03.004" target="_blank"
-                rel="noopener">Read here</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="pub-item reveal" role="listitem"
-          data-search="Efficacy of the combination of cognitive training and acoustic stimulation in eliciting lucid dreams during undisturbed sleep - a pilot study using polysomnography, dream reports and questionnaires Gulshan Kumar, Arun Sasidharan, Bindu M Kutty"
-          style="animation-delay:0.48s">
-          <div><span class="pub-year">2018</span></div>
-          <div>
-            <p class="pub-title">Efficacy of the combination of cognitive training and acoustic stimulation in eliciting
-              lucid dreams during undisturbed sleep - a pilot study using polysomnography, dream reports and
-              questionnaires</p>
-            <p class="pub-authors">Gulshan Kumar, Arun Sasidharan, Bindu M Kutty</p>
-            <p class="pub-journal">International Journal of Dream Research</p>
-            <div class="pub-links">
-              <a class="pub-link" href="https://doi.org/10.11588/ijodr.2018.2.46417" target="_blank" rel="noopener">Read
-                here</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="pub-item reveal" role="listitem"
-          data-search="Just a minute meditation - Rapid voluntary conscious state shifts in long term meditators Ajay Kumar Nair, Arun Sasidharan, John P John, Seema Mehrotra, Bindu M Kutty"
-          style="animation-delay:0.54s">
-          <div><span class="pub-year">2017</span></div>
-          <div>
-            <p class="pub-title">Just a minute meditation - Rapid voluntary conscious state shifts in long term
-              meditators</p>
-            <p class="pub-authors">Ajay Kumar Nair, Arun Sasidharan, John P John, Seema Mehrotra, Bindu M Kutty</p>
-            <p class="pub-journal">Consciousness and Cognition</p>
-            <div class="pub-links">
-              <a class="pub-link" href="https://doi.org/10.1016/j.concog.2017.06.002" target="_blank"
-                rel="noopener">Read here</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="pub-item reveal" role="listitem"
-          data-search="Elevated serum adenosine deaminase levels in neuroleptic-naïve patients with recent-onset schizophrenia Arun Sasidharan, Ajay Kumar Nair, John P John, Philip M, Sarada Subramanian, Sanjeev Jain, Bindu M Kutty"
-          style="animation-delay:0.60s">
-          <div><span class="pub-year">2017</span></div>
-          <div>
-            <p class="pub-title">Elevated serum adenosine deaminase levels in neuroleptic-naïve patients with
-              recent-onset schizophrenia</p>
-            <p class="pub-authors">Arun Sasidharan, Ajay Kumar Nair, John P John, Philip M, Sarada Subramanian, Sanjeev
-              Jain, Bindu M Kutty</p>
-            <p class="pub-journal">Asian Journal of Psychiatry</p>
-            <div class="pub-links">
-              <a class="pub-link" href="https://doi.org/10.1016/j.ajp.2017.03.034" target="_blank" rel="noopener">Read
-                here</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="pub-item reveal" role="listitem"
-          data-search="Further evidences for sleep instability and impaired spindle-delta dynamics in schizophrenia - a whole-night polysomnography study with neuroloop-gain and sleep-cycle analysis Arun Sasidharan, Ajay Kumar Nair, Amuu K Lukose, Vrinda Marigowda, John P John, Bindu M Kutty"
-          style="animation-delay:0.66s">
-          <div><span class="pub-year">2017</span></div>
-          <div>
-            <p class="pub-title">Further evidences for sleep instability and impaired spindle-delta dynamics in
-              schizophrenia - a whole-night polysomnography study with neuroloop-gain and sleep-cycle analysis</p>
-            <p class="pub-authors">Arun Sasidharan, Ajay Kumar Nair, Amuu K Lukose, Vrinda Marigowda, John P John, Bindu
-              M Kutty</p>
-            <p class="pub-journal">Sleep Medicine</p>
-            <div class="pub-links">
-              <a class="pub-link" href="https://doi.org/10.1016/j.sleep.2017.02.009" target="_blank" rel="noopener">Read
-                here</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="pub-item reveal" role="listitem"
-          data-search="Vipassana Meditation Practices Enhance the Parasympathetic Activity during Sleep - a Case-Control Study of Heart Rate Variability across Sleep Cycles Ravindra P Nagendra, Sathiamma Sulekha, Arun Sasidharan, Sathyaprabha TN, Nithyanda Pradhan, Raju TR, Bindu M Kutty"
-          style="animation-delay:0.72s">
-          <div><span class="pub-year">2017</span></div>
-          <div>
-            <p class="pub-title">Vipassana Meditation Practices Enhance the Parasympathetic Activity during Sleep - a
-              Case-Control Study of Heart Rate Variability across Sleep Cycles</p>
-            <p class="pub-authors">Ravindra P Nagendra, Sathiamma Sulekha, Arun Sasidharan, Sathyaprabha TN, Nithyanda
-              Pradhan, Raju TR, Bindu M Kutty</p>
-            <p class="pub-journal">International journal of complementary and alternative medicine</p>
-            <div class="pub-links">
-            </div>
-          </div>
-        </article>
-
-        <article class="pub-item reveal" role="listitem"
-          data-search="Senior Vipassana Meditation practitioners exhibit distinct REM sleep organization from that of novice meditators and healthy controls Nirmala Maruthai, Ravindra PN, Arun Sasidharan, Sulekha Srikumar, Karuna Datta, Sunao Uchida, Bindu M Kutty"
-          style="animation-delay:0.78s">
-          <div><span class="pub-year">2016</span></div>
-          <div>
-            <p class="pub-title">Senior Vipassana Meditation practitioners exhibit distinct REM sleep organization from
-              that of novice meditators and healthy controls</p>
-            <p class="pub-authors">Nirmala Maruthai, Ravindra PN, Arun Sasidharan, Sulekha Srikumar, Karuna Datta, Sunao
-              Uchida, Bindu M Kutty</p>
-            <p class="pub-journal">International Review of Psychiatry</p>
-            <div class="pub-links">
-              <a class="pub-link" href="https://doi.org/10.3109/09540261.2016.1159949" target="_blank"
-                rel="noopener">Read here</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="pub-item reveal" role="listitem"
-          data-search="Manasamitra Vataka and Shirodhara treatments preserve slow wave sleep and promote sleep continuity in patients with generalized anxiety disorder and co-morbid generalized social phobia Basavaraj Tubaki, Anupriya Verma, Arun Sasidharan, Sulekha Srikumar, TN Sathyaprabha, D Sudhakar, CR Chandrashekar, GS Lavekar, Bindu M Kutty"
-          style="animation-delay:0.84s">
-          <div><span class="pub-year">2016</span></div>
-          <div>
-            <p class="pub-title">Manasamitra Vataka and Shirodhara treatments preserve slow wave sleep and promote sleep
-              continuity in patients with generalized anxiety disorder and co-morbid generalized social phobia</p>
-            <p class="pub-authors">Basavaraj Tubaki, Anupriya Verma, Arun Sasidharan, Sulekha Srikumar, TN Sathyaprabha,
-              D Sudhakar, CR Chandrashekar, GS Lavekar, Bindu M Kutty</p>
-            <p class="pub-journal">Current Science</p>
-            <div class="pub-links">
-              <a class="pub-link" href="https://doi.org/10.18520/cs/v111/i2/283-292" target="_blank" rel="noopener">Read
-                here</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="pub-item reveal" role="listitem"
-          data-search="Assessing Neurocognition via Gamified Experimental Logic - A Novel Approach to Simultaneous Acquisition of Multiple ERPs Ajay Kumar Nair, Arun Sasidharan, John P John, Seema Mehrotra, Bindu M Kutty"
-          style="animation-delay:0.90s">
-          <div><span class="pub-year">2016</span></div>
-          <div>
-            <p class="pub-title">Assessing Neurocognition via Gamified Experimental Logic - A Novel Approach to
-              Simultaneous Acquisition of Multiple ERPs</p>
-            <p class="pub-authors">Ajay Kumar Nair, Arun Sasidharan, John P John, Seema Mehrotra, Bindu M Kutty</p>
-            <p class="pub-journal">Frontiers in Neuroscience</p>
-            <div class="pub-links">
-              <a class="pub-link" href="https://doi.org/10.3389/fnins.2016.00001" target="_blank" rel="noopener">Read
-                here</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="pub-item reveal" role="listitem"
-          data-search="Endogenous-cue prospective memory involving incremental updating of working memory - an fMRI study Harsha Halahalli, John P John, Ammu K lukose, Sanjeev Jain, Bindu M Kutty"
-          style="animation-delay:0.96s">
-          <div><span class="pub-year">2015</span></div>
-          <div>
-            <p class="pub-title">Endogenous-cue prospective memory involving incremental updating of working memory - an
-              fMRI study</p>
-            <p class="pub-authors">Harsha Halahalli, John P John, Ammu K lukose, Sanjeev Jain, Bindu M Kutty</p>
-            <p class="pub-journal">Brain Structure and Function</p>
-            <div class="pub-links">
-              <a class="pub-link" href="https://doi.org/10.1007/s00429-014-0877-7" target="_blank" rel="noopener">Read
-                here</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="pub-item reveal" role="listitem"
-          data-search="Current understanding on the neurobiology of sleep and wakefulness Arun Sasidharan, Sulekha Srikumar, Bindu M Kutty"
-          style="animation-delay:1.02s">
-          <div><span class="pub-year">2014</span></div>
-          <div>
-            <p class="pub-title">Current understanding on the neurobiology of sleep and wakefulness</p>
-            <p class="pub-authors">Arun Sasidharan, Sulekha Srikumar, Bindu M Kutty</p>
-            <p class="pub-journal">International Journal of Clinical and Experimental Physiology</p>
-            <div class="pub-links">
-              <a class="pub-link" href="https://doi.org/10.4103/2348-8093.129720" target="_blank" rel="noopener">Read
-                here</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="pub-item reveal" role="listitem"
-          data-search="Functional importance of sleep - An overview Ravindra PN, Bindu M Kutty"
-          style="animation-delay:1.08s">
-          <div><span class="pub-year">2012</span></div>
-          <div>
-            <p class="pub-title">Functional importance of sleep - An overview</p>
-            <p class="pub-authors">Ravindra PN, Bindu M Kutty</p>
-            <p class="pub-journal">Indian Journal of Sleep Medicine</p>
-            <div class="pub-links">
-              <a class="pub-link" href="https://doi.org/10.5958/j.0973-340X.7.2.009" target="_blank" rel="noopener">Read
-                here</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="pub-item reveal" role="listitem"
-          data-search="Clinical Efficacy of Manasamitra Vataka (an Ayurveda Medication) on Generalized Anxiety Disorder with Comorbid Generalized Social Phobia - A Randomized Controlled Study Basavaraj Tubaki, CR Chandrashekar, D Sudhakar, TNS Prabha, Lavekar GS, Bindu M Kutty"
-          style="animation-delay:1.14s">
-          <div><span class="pub-year">2012</span></div>
-          <div>
-            <p class="pub-title">Clinical Efficacy of Manasamitra Vataka (an Ayurveda Medication) on Generalized Anxiety
-              Disorder with Comorbid Generalized Social Phobia - A Randomized Controlled Study</p>
-            <p class="pub-authors">Basavaraj Tubaki, CR Chandrashekar, D Sudhakar, TNS Prabha, Lavekar GS, Bindu M Kutty
-            </p>
-            <p class="pub-journal">The Journal of Alternative and Complementary Medicine</p>
-            <div class="pub-links">
-              <a class="pub-link" href="https://doi.org/10.1089/acm.2010.0778" target="_blank" rel="noopener">Read
-                here</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="pub-item reveal" role="listitem"
-          data-search="Meditation and its regulatory role on sleep Ravindra PN, Nirmala Maruthai, Bindu M Kutty"
-          style="animation-delay:1.20s">
-          <div><span class="pub-year">2012</span></div>
-          <div>
-            <p class="pub-title">Meditation and its regulatory role on sleep</p>
-            <p class="pub-authors">Ravindra PN, Nirmala Maruthai, Bindu M Kutty</p>
-            <p class="pub-journal">Frontiers in Neurology</p>
-            <div class="pub-links">
-              <a class="pub-link" href="https://doi.org/10.3389/fneur.2012.00054" target="_blank" rel="noopener">Read
-                here</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="pub-item reveal" role="listitem"
-          data-search="Practitioners of vipassana meditation exhibit enhanced slow wave sleep and REM sleep states across different age groups Ravindra PN, Sulekha Srikumar, TN Sathyaprabha, Nityananda Pradhan, TR Raju, Bindu M Kutty"
-          style="animation-delay:1.26s">
-          <div><span class="pub-year">2010</span></div>
-          <div>
-            <p class="pub-title">Practitioners of vipassana meditation exhibit enhanced slow wave sleep and REM sleep
-              states across different age groups</p>
-            <p class="pub-authors">Ravindra PN, Sulekha Srikumar, TN Sathyaprabha, Nityananda Pradhan, TR Raju, Bindu M
-              Kutty</p>
-            <p class="pub-journal">Sleep and Biological Rhythms</p>
-            <div class="pub-links">
-              <a class="pub-link" href="https://doi.org/10.1111/j.1479-8425.2009.00416.x" target="_blank"
-                rel="noopener">Read here</a>
-            </div>
-          </div>
-        </article>
-
-        <article class="pub-item reveal" role="listitem"
-          data-search="Evaluation of sleep architecture in practitioners of Sudarshan Kriya yoga and Vipassana meditation Sulekha S, Thennarasu K, Appajachar Vedamurthachar, TR Raju, Bindu M Kutty"
-          style="animation-delay:1.32s">
-          <div><span class="pub-year">2006</span></div>
-          <div>
-            <p class="pub-title">Evaluation of sleep architecture in practitioners of Sudarshan Kriya yoga and Vipassana
-              meditation</p>
-            <p class="pub-authors">Sulekha S, Thennarasu K, Appajachar Vedamurthachar, TR Raju, Bindu M Kutty</p>
-            <p class="pub-journal">Sleep and Biological Rhythms</p>
-            <div class="pub-links">
-              <a class="pub-link" href="https://doi.org/10.1111/j.1479-8425.2006.00233.x" target="_blank"
-                rel="noopener">Read here</a>
-            </div>
-          </div>
-        </article>
-
+      <div style="text-align: center; margin-top: 3rem;">
+        <a href="publications.html" class="tab-btn" style="display: inline-block; padding: 0.8rem 2rem; background: var(--saffron); color: var(--ink); text-decoration: none; border-radius: 100px; font-family: var(--ff-mono); text-transform: uppercase; font-size: 0.8rem; font-weight: 500;">View All Publications</a>
       </div>
       <!-- PUBLICATIONS_END -->
     </div>
@@ -3537,6 +3231,7 @@
         <div class="saffron-rule"></div>
         <h2 style="color:var(--cream);">Life at CCS</h2>
       </div>
+      <div class="gallery-marquee">
       <div class="gallery-grid">
         <!-- Real image from original site -->
         <div class="gallery-item reveal"
@@ -3553,50 +3248,94 @@
             </svg>
           </div>
         </div>
-        <!-- Placeholder tiles -->
-
-        <div class="gallery-item reveal" style="animation-delay:0.07s">
+        <div class="gallery-item reveal">
           <div class="gallery-placeholder"
             style="background:linear-gradient(135deg,var(--surface) 0%,var(--teal) 200%)">
             Research Session
           </div>
         </div>
-
-        <div class="gallery-item reveal" style="animation-delay:0.14s">
+        <div class="gallery-item reveal">
           <div class="gallery-placeholder"
             style="background:linear-gradient(135deg,var(--surface) 0%,rgba(232,131,10,.2) 200%)">
             Sleep Lab Recording
           </div>
         </div>
-
-        <div class="gallery-item reveal" style="animation-delay:0.21000000000000002s">
+        <div class="gallery-item reveal">
           <div class="gallery-placeholder"
             style="background:linear-gradient(135deg,var(--surface) 0%,var(--teal) 200%)">
             EEG Setup
           </div>
         </div>
-
-        <div class="gallery-item reveal" style="animation-delay:0.28s">
+        <div class="gallery-item reveal">
           <div class="gallery-placeholder"
             style="background:linear-gradient(135deg,var(--surface) 0%,rgba(232,131,10,.2) 200%)">
             Workshop 2022
           </div>
         </div>
-
-        <div class="gallery-item reveal" style="animation-delay:0.35000000000000003s">
+        <div class="gallery-item reveal">
           <div class="gallery-placeholder"
             style="background:linear-gradient(135deg,var(--surface) 0%,var(--teal) 200%)">
             Team Meeting
           </div>
         </div>
-
-        <div class="gallery-item reveal" style="animation-delay:0.42000000000000004s">
+        <div class="gallery-item reveal">
           <div class="gallery-placeholder"
             style="background:linear-gradient(135deg,var(--surface) 0%,rgba(232,131,10,.2) 200%)">
             PSG Analysis
           </div>
         </div>
-
+        <!-- Duplicate for seamless loop -->
+        <div class="gallery-item reveal"
+          onclick="openLightbox('https://ccsnimhans.netlify.app/home/gallery/gallery/CCS_GroupPhoto.jpg','CCS Group Photo')">
+          <img src="https://ccsnimhans.netlify.app/home/gallery/gallery/CCS_GroupPhoto.jpg" alt="CCS Group Photo"
+            loading="lazy" onerror="this.parentNode.innerHTML='<div class=gallery-placeholder>CCS Group Photo</div>'">
+          <div class="gallery-overlay">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"
+              aria-hidden="true">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              <line x1="11" y1="8" x2="11" y2="14" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+            </svg>
+          </div>
+        </div>
+        <div class="gallery-item reveal">
+          <div class="gallery-placeholder"
+            style="background:linear-gradient(135deg,var(--surface) 0%,var(--teal) 200%)">
+            Research Session
+          </div>
+        </div>
+        <div class="gallery-item reveal">
+          <div class="gallery-placeholder"
+            style="background:linear-gradient(135deg,var(--surface) 0%,rgba(232,131,10,.2) 200%)">
+            Sleep Lab Recording
+          </div>
+        </div>
+        <div class="gallery-item reveal">
+          <div class="gallery-placeholder"
+            style="background:linear-gradient(135deg,var(--surface) 0%,var(--teal) 200%)">
+            EEG Setup
+          </div>
+        </div>
+        <div class="gallery-item reveal">
+          <div class="gallery-placeholder"
+            style="background:linear-gradient(135deg,var(--surface) 0%,rgba(232,131,10,.2) 200%)">
+            Workshop 2022
+          </div>
+        </div>
+        <div class="gallery-item reveal">
+          <div class="gallery-placeholder"
+            style="background:linear-gradient(135deg,var(--surface) 0%,var(--teal) 200%)">
+            Team Meeting
+          </div>
+        </div>
+        <div class="gallery-item reveal">
+          <div class="gallery-placeholder"
+            style="background:linear-gradient(135deg,var(--surface) 0%,rgba(232,131,10,.2) 200%)">
+            PSG Analysis
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   </section>
@@ -3687,7 +3426,7 @@
               <circle cx="12" cy="10" r="3" />
             </svg>
             <p>Dept. of Neurophysiology, NIMHANS, Hosur Road, Bengaluru – 560029<br><small style="opacity:.7">First
-                floor, Administrative Building (stone building)</small></p>
+                floor, Old Administrative Building (stone building, opposite to Director's Office)</small></p>
           </div>
           <div class="contact-row">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
