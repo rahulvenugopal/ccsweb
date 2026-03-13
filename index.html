@@ -1671,28 +1671,33 @@
 
       .timeline {
         flex-direction: column;
+        gap: 2rem;
       }
 
+      /* Vertical line — left edge at 0, centred under the 14px diamond */
       .timeline::before {
         width: 1px;
         height: auto;
         top: 0;
         bottom: 0;
-        left: 20px;
+        left: 7px;    /* half of diamond's 14px width — bisects every diamond */
         right: auto;
+        background: linear-gradient(180deg, transparent, var(--saffron), transparent);
       }
 
       .tl-item {
         flex-direction: row;
         align-items: flex-start;
-        gap: 1rem;
+        gap: 1.2rem;
         text-align: left;
+        padding-left: 0;
       }
 
+      /* Diamond stays at x=0 in the row; the line at left:7px passes through its centre */
       .tl-diamond {
         margin-bottom: 0;
         flex-shrink: 0;
-        margin-top: 4px;
+        margin-top: 3px;  /* optical nudge to align with first line of text */
       }
 
       .advisory-grid {
@@ -2797,10 +2802,11 @@
       <!-- PROJECT_FILTERS_START -->
       <div class="filter-bar reveal" role="group" aria-label="Filter projects by topic">
         <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="Circadian">Circadian</button>
-        <button class="filter-btn" data-filter="Cognition">Cognition</button>
         <button class="filter-btn" data-filter="Meditation">Meditation</button>
         <button class="filter-btn" data-filter="Sleep">Sleep</button>
+        <button class="filter-btn" data-filter="Cognition">Cognition</button>
+        <button class="filter-btn" data-filter="Wellbeing">Wellbeing</button>
+        <button class="filter-btn" data-filter="Circadian">Circadian</button>
       </div>
       <!-- PROJECT_FILTERS_END -->
 
@@ -2811,7 +2817,7 @@
           <div class="project-top saffron"></div>
           <div class="project-body">
             <p class="project-type">DST-CSRI Project</p>
-            <h3>Evaluation of cognitive dysfunction in conditions of Insomnia and Excessive Daytime Sleepiness -
+            <h3>Evaluation of cognitive dysfunction in conditions of Insomnia and Excessive Daytime Sleepiness —
               Efficacy of transcranial alternating current stimulation (tACS) on cognition and sleep</h3>
             <div class="project-tags">
               <span class="proj-tag">Sleep</span>
@@ -2819,172 +2825,30 @@
           </div>
         </article>
 
-        <article class="project-card reveal" data-tags="Sleep" style="animation-delay:0.07s">
-          <div class="project-top "></div>
-          <div class="project-body">
-            <p class="project-type">PhD Project</p>
-            <h3>Neurophysiological basis of dreaming - A comprehensive polysomnography study in healthy human volunteers
-            </h3>
-            <div class="project-tags">
-              <span class="proj-tag">Sleep</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card reveal" data-tags="Meditation" style="animation-delay:0.14s">
+        <article class="project-card reveal" data-tags="Meditation" style="animation-delay:0.07s">
           <div class="project-top saffron"></div>
           <div class="project-body">
             <p class="project-type">Sahaj Marg Project</p>
-            <h3>Meditation and neuroplasticity - A study on Heartfulness meditators using EEG and MRI</h3>
+            <h3>Meditation and neuroplasticity — A study on Heartfulness meditators using EEG and MRI</h3>
             <div class="project-tags">
               <span class="proj-tag">Meditation</span>
             </div>
           </div>
         </article>
 
-        <article class="project-card reveal" data-tags="Circadian" style="animation-delay:0.21s">
+        <article class="project-card reveal" data-tags="Cognition" style="animation-delay:0.14s">
           <div class="project-top "></div>
           <div class="project-body">
-            <p class="project-type">DST-SERB Project</p>
-            <h3>Efficacy of photoperiod manipulation in establishing stress integration and cognitive recovery in
-              ventral subicular-lesioned rats - A behavioural and molecular study</h3>
-            <div class="project-tags">
-              <span class="proj-tag">Circadian</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card reveal" data-tags="Cognition" style="animation-delay:0.28s">
-          <div class="project-top saffron"></div>
-          <div class="project-body">
             <p class="project-type">PhD Project</p>
-            <h3>Neural oscillatory dynamics and cognition - A neurophysiological study</h3>
+            <h3>Neural oscillatory dynamics and cognition — A neurophysiological study</h3>
             <div class="project-tags">
               <span class="proj-tag">Cognition</span>
             </div>
           </div>
         </article>
 
-        <article class="project-card reveal" data-tags="Meditation" style="animation-delay:0.35s">
-          <div class="project-top "></div>
-          <div class="project-body">
-            <p class="project-type">PhD Project</p>
-            <h3>Efficacy of Isha Yoga (Shambhavi Mahamudra) on Cognition and Well-being - A Neuropsychophysiological and
-              Imaging study</h3>
-            <div class="project-tags">
-              <span class="proj-tag">Meditation</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card reveal" data-tags="Sleep" style="animation-delay:0.42s">
+        <article class="project-card reveal" data-tags="Meditation" style="animation-delay:0.21s">
           <div class="project-top saffron"></div>
-          <div class="project-body">
-            <p class="project-type">DST-SATYAM Project</p>
-            <h3>Meditation, Sleep Organization and Well-Being from an Indian Perspective - Evaluation of Micro Sleep
-              Architecture Dynamics, Sleep Consciousness and Psychological Well-Being in Practitioners of Vipassana
-              Meditation</h3>
-            <div class="project-tags">
-              <span class="proj-tag">Sleep</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card reveal" data-tags="Meditation" style="animation-delay:0.49s">
-          <div class="project-top "></div>
-          <div class="project-body">
-            <p class="project-type">DST-SATYAM Project</p>
-            <h3>A Study of Consciousness Measures and Synchrony between Brain and Cardiovascular Dynamics in Yoga
-              Experience</h3>
-            <div class="project-tags">
-              <span class="proj-tag">Meditation</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card reveal" data-tags="Cognition" style="animation-delay:0.56s">
-          <div class="project-top saffron"></div>
-          <div class="project-body">
-            <p class="project-type">Post-doctoral Project</p>
-            <h3>Efficacy of EEG and ERPs as diagnostic biomarkers of prodromal AD - A pre and post CBT intervention
-              study</h3>
-            <div class="project-tags">
-              <span class="proj-tag">Cognition</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card reveal" data-tags="Circadian" style="animation-delay:0.63s">
-          <div class="project-top "></div>
-          <div class="project-body">
-            <p class="project-type">PhD Project</p>
-            <h3>Efficacy of short photoperiod regime on cognitive functions in ventral subicular lesioned rats - A
-              behavioral and electrophysiological study</h3>
-            <div class="project-tags">
-              <span class="proj-tag">Circadian</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card reveal" data-tags="Meditation" style="animation-delay:0.70s">
-          <div class="project-top saffron"></div>
-          <div class="project-body">
-            <p class="project-type">DST-SERB Project</p>
-            <h3>Functional connectivity changes during traditional Vipassana practice – an fMRI study</h3>
-            <div class="project-tags">
-              <span class="proj-tag">Meditation</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card reveal" data-tags="Cognition" style="animation-delay:0.77s">
-          <div class="project-top "></div>
-          <div class="project-body">
-            <p class="project-type">DST-CSRI Project</p>
-            <h3>Chronic Pain - Understanding the cognitive, perceptual, affective underpinnings - A search for a
-              cognitive model</h3>
-            <div class="project-tags">
-              <span class="proj-tag">Cognition</span>
-            </div>
-          </div>
-        </article>
-
-
-        <article class="project-card reveal" data-tags="Cognition" style="animation-delay:0.84s">
-          <div class="project-top saffron"></div>
-          <div class="project-body">
-            <p class="project-type">PhD Project</p>
-            <h3>Neurophenomenological Evaluation of Time Scales of Perception and Modulatory Effect of Resonance Frequency Breathing Intervention in Adolescent Attention Deficit Hyperactivity Disorder</h3>
-            <div class="project-tags">
-              <span class="proj-tag">Cognition</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card reveal" data-tags="Sleep" style="animation-delay:0.91s">
-          <div class="project-top "></div>
-          <div class="project-body">
-            <p class="project-type">PhD Project</p>
-            <h3>Exploring the Effect of Virtual Reality Assisted Induction of Lucid Dreaming – A Neurophenomenological Study of Dream Awareness</h3>
-            <div class="project-tags">
-              <span class="proj-tag">Sleep</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card reveal" data-tags="Cognition" style="animation-delay:0.98s">
-          <div class="project-top saffron"></div>
-          <div class="project-body">
-            <p class="project-type">PhD Project</p>
-            <h3>Mapping of EEG Microstate Dynamics and the Effect of Frontal-Midline-Theta Training on Phenomenology of Spontaneous Mentation</h3>
-            <div class="project-tags">
-              <span class="proj-tag">Cognition</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card reveal" data-tags="Meditation" style="animation-delay:1.05s">
-          <div class="project-top "></div>
           <div class="project-body">
             <p class="project-type">PhD Project</p>
             <h3>A Neurophysiological and Phenomenological Study of Yoga Nidra</h3>
@@ -2994,19 +2858,20 @@
           </div>
         </article>
 
-        <article class="project-card reveal" data-tags="Meditation" style="animation-delay:1.12s">
-          <div class="project-top saffron"></div>
+        <article class="project-card reveal" data-tags="Meditation Wellbeing" style="animation-delay:0.28s">
+          <div class="project-top "></div>
           <div class="project-body">
-            <p class="project-type">PhD Project</p>
-            <h3>EEG Signatures of Meditation Proficiency among Long-term Meditation Practitioners – An Exploratory Study</h3>
+            <p class="project-type">Just Project</p>
+            <h3>Simplified Kundalini Yoga (SKY) Practice and Wellbeing: A Pilot Study to Explore the Importance of Neuro-visceral Integration in Wellbeing</h3>
             <div class="project-tags">
               <span class="proj-tag">Meditation</span>
+              <span class="proj-tag">Wellbeing</span>
             </div>
           </div>
         </article>
 
-        <article class="project-card reveal" data-tags="Meditation Sleep" style="animation-delay:1.19s">
-          <div class="project-top "></div>
+        <article class="project-card reveal" data-tags="Meditation Sleep" style="animation-delay:0.35s">
+          <div class="project-top saffron"></div>
           <div class="project-body">
             <p class="project-type">DST-SATYAM Project</p>
             <h3>Assessment of Neurophysiology and Phenomenology of Dreaming among Long-term Practitioners of Meditation: A Window to Explore the Enduring Effect of Meditation on Consciousness</h3>
@@ -3017,6 +2882,20 @@
           </div>
         </article>
 
+      </div>
+
+      <!-- View All Projects CTA -->
+      <div class="reveal" style="text-align:center;margin-top:3rem;">
+        <a href="projects.html" style="
+          display:inline-flex;align-items:center;gap:.6rem;
+          font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
+          color:var(--cream);border:1px solid rgba(250,246,239,.2);border-radius:100px;
+          padding:.75rem 2rem;transition:all .25s var(--ease);
+        " onmouseover="this.style.borderColor='var(--saffron)';this.style.color='var(--saffron)';"
+           onmouseout="this.style.borderColor='rgba(250,246,239,.2)';this.style.color='var(--cream)';">
+          View All 19 Projects
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
       </div>
       <!-- PROJECTS_END -->
     </div>
