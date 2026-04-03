@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media & Outreach — Centre for Consciousness Studies, NIMHANS</title>
+  <meta name="description" content="Media coverage, press mentions, public lectures, podcasts, and outreach activities of the Centre for Consciousness Studies, NIMHANS, Bengaluru.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Source+Serif+4:wght@300;400&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --ink: #0D1B2A;
+      --saffron: #E8830A;
+      --saffron-lt: #F5A84A;
+      --cream: #FAF6EF;
+      --stone: #E2D9CC;
+      --muted: #8A9BB0;
+      --teal: #1A6B6B;
+      --teal-lt: #24A0A0;
+      --surface: #132030;
+      --white: #FFFFFF;
+      --ff-disp: 'Cormorant Garamond', Georgia, serif;
+      --ff-body: 'Source Serif 4', Georgia, serif;
+      --ff-mono: 'DM Mono', 'Courier New', monospace;
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+      --max: 1200px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 18px; }
+    body {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: var(--ff-body);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; border: none; background: none; font: inherit; }
+    h1, h2, h3, h4 { font-family: var(--ff-disp); font-weight: 400; line-height: 1.15; }
+
+    .label {
+      font-family: var(--ff-mono);
+      font-size: .72rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--saffron);
+    }
+    .label::before { content: '['; opacity: .5; }
+    .label::after  { content: ']'; opacity: .5; }
+
+    .container { max-width: var(--max); margin: 0 auto; padding: 0 5vw; }
+    .section-pad { padding: 90px 0; }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fade-up {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal { opacity: 1; transform: none; transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .js-loaded .reveal { opacity: 0; transform: translateY(28px); }
+    .js-loaded .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── NAV ── */
+    #navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      padding: 20px 5vw;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background .4s var(--ease), padding .4s var(--ease), border-color .4s var(--ease);
+      border-bottom: 1px solid transparent;
+    }
+    #navbar.scrolled {
+      background: rgba(13,27,42,.96);
+      backdrop-filter: blur(16px);
+      border-color: rgba(232,131,10,.25);
+      padding: 14px 5vw;
+    }
+    .nav-brand { display: flex; flex-direction: column; gap: 1px; }
+    .nav-brand .brand-top {
+      font-family: var(--ff-mono); font-size: .65rem; letter-spacing: .1em; color: var(--saffron);
+    }
+    .nav-brand .brand-sub {
+      font-family: var(--ff-mono); font-size: .6rem; letter-spacing: .08em; color: var(--stone);
+    }
+    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--ff-mono); font-size: .68rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--muted); position: relative; transition: color .25s;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; left: 0; bottom: -3px;
+      width: 0; height: 1px; background: var(--saffron); transition: width .3s var(--ease);
+    }
+    .nav-links a:hover { color: var(--saffron); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-links a.active { color: var(--saffron); }
+    .nav-links a.active::after { width: 100%; }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--saffron); border-radius: 2px; transition: transform .3s, opacity .3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    #nav-overlay {
+      position: fixed; inset: 0; z-index: 999; background: var(--ink);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 2.5rem; opacity: 0; pointer-events: none; transition: opacity .35s var(--ease);
+    }
+    #nav-overlay.open { opacity: 1; pointer-events: all; }
+    #nav-overlay a { font-family: var(--ff-disp); font-size: clamp(2rem,5vw,3.5rem); color: var(--cream); transition: color .2s; }
+    #nav-overlay a:hover { color: var(--saffron); }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      padding: 160px 5vw 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 80% 50%, rgba(232,131,10,.07) 0%, transparent 70%),
+        radial-gradient(ellipse 30% 40% at 10% 80%, rgba(26,107,107,.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .page-hero .container { position: relative; }
+    .page-hero .eyebrow {
+      font-family: var(--ff-mono); font-size: .72rem; letter-spacing: .3em;
+      color: var(--saffron); text-transform: uppercase; margin-bottom: 1rem;
+      display: flex; align-items: center; gap: .8rem;
+    }
+    .page-hero .eyebrow::before {
+      content: ''; display: block; width: 2rem; height: 1px; background: var(--saffron); opacity: .6;
+    }
+    .page-hero h1 {
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-style: italic;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+    .page-hero h1 em { font-style: normal; color: var(--saffron); }
+    .page-hero .sub {
+      font-size: 1rem; color: var(--muted); max-width: 580px; line-height: 1.8;
+    }
+    .back-link {
+      display: inline-flex; align-items: center; gap: .5rem;
+      font-family: var(--ff-mono); font-size: .65rem; letter-spacing: .15em; text-transform: uppercase;
+      color: var(--muted); margin-bottom: 2.5rem; transition: color .2s;
+    }
+    .back-link:hover { color: var(--saffron); }
+
+    .saffron-rule { width: 3rem; height: 2px; background: var(--saffron); margin: .8rem 0; }
+
+    /* ── FILTER BAR ── */
+    .filter-bar { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 2.5rem; }
+    .filter-btn {
+      font-family: var(--ff-mono); font-size: .65rem; letter-spacing: .15em; text-transform: uppercase;
+      padding: .5rem 1.1rem; border-radius: 100px; border: 1px solid rgba(250,246,239,.15);
+      color: var(--muted); transition: all .25s;
+    }
+    .filter-btn:hover { border-color: var(--saffron); color: var(--saffron); }
+    .filter-btn.active { background: var(--saffron); border-color: var(--saffron); color: var(--ink); }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      display: flex; gap: 3rem; flex-wrap: wrap;
+      margin-bottom: 3rem; padding: 1.5rem 2rem;
+      background: var(--surface); border-radius: 12px;
+      border: 1px solid rgba(250,246,239,.06);
+    }
+    .stat-item { display: flex; flex-direction: column; gap: .2rem; }
+    .stat-num { font-family: var(--ff-disp); font-size: 2rem; color: var(--saffron); line-height: 1; }
+    .stat-label { font-family: var(--ff-mono); font-size: .6rem; letter-spacing: .12em; color: var(--muted); text-transform: uppercase; }
+
+    /* ── SECTION DIVIDER ── */
+    .section-divider {
+      display: flex; align-items: center; gap: 1.2rem;
+      margin: 3rem 0 2rem;
+    }
+    .section-divider h2 {
+      font-family: var(--ff-disp); font-size: clamp(1.6rem, 3vw, 2.2rem);
+      color: var(--cream); white-space: nowrap;
+    }
+    .section-divider::after {
+      content: '';
+      flex: 1; height: 1px;
+      background: linear-gradient(90deg, rgba(232,131,10,.4), transparent);
+    }
+
+    /* ── MEDIA CARD (Press / Features) ── */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .media-card {
+      background: var(--surface);
+      border: 1px solid rgba(250,246,239,.06);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform .25s var(--ease), box-shadow .25s, border-color .25s;
+      display: flex; flex-direction: column;
+    }
+    .media-card.hidden { display: none !important; }
+    .media-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(0,0,0,.35);
+      border-color: rgba(232,131,10,.35);
+    }
+    .media-accent { height: 5px; background: linear-gradient(90deg, var(--saffron), var(--saffron-lt)); }
+    .media-accent.teal { background: linear-gradient(90deg, var(--teal), var(--teal-lt)); }
+    .media-accent.muted { background: linear-gradient(90deg, rgba(138,155,176,.5), rgba(138,155,176,.2)); }
+    .media-body { padding: 1.4rem 1.4rem 1.6rem; flex: 1; display: flex; flex-direction: column; }
+    .media-meta {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: .7rem;
+    }
+    .media-type {
+      font-family: var(--ff-mono); font-size: .58rem; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--saffron);
+    }
+    .media-date {
+      font-family: var(--ff-mono); font-size: .58rem; letter-spacing: .08em;
+      color: var(--muted);
+    }
+    .media-card h3 {
+      font-family: var(--ff-disp); font-size: 1.05rem;
+      color: var(--cream); line-height: 1.35; margin-bottom: .6rem;
+    }
+    .media-card p {
+      font-size: .84rem; color: var(--muted); line-height: 1.7; flex: 1;
+      margin-bottom: 1rem;
+    }
+    .media-outlet {
+      display: flex; align-items: center; gap: .5rem;
+      font-family: var(--ff-mono); font-size: .6rem;
+      letter-spacing: .08em; color: rgba(250,246,239,.4);
+    }
+    .media-outlet::before {
+      content: ''; display: block; width: 1.2rem; height: 1px;
+      background: rgba(250,246,239,.3);
+    }
+
+    /* ── TALK / EVENT ROW ── */
+    .talks-list { display: flex; flex-direction: column; gap: 1rem; }
+    .talk-row {
+      display: grid;
+      grid-template-columns: 100px 1fr auto;
+      gap: 1.2rem 1.8rem;
+      align-items: start;
+      padding: 1.4rem 1.8rem;
+      background: var(--surface);
+      border-radius: 10px;
+      border: 1px solid rgba(250,246,239,.05);
+      transition: border-color .25s, transform .2s;
+    }
+    .talk-row:hover { border-color: rgba(232,131,10,.3); transform: translateX(4px); }
+    .talk-date-col {
+      display: flex; flex-direction: column; gap: .15rem; padding-top: .15rem;
+    }
+    .talk-year {
+      font-family: var(--ff-mono); font-size: .6rem; letter-spacing: .1em;
+      color: var(--saffron);
+    }
+    .talk-month {
+      font-family: var(--ff-mono); font-size: .75rem; letter-spacing: .05em;
+      color: var(--muted); text-transform: uppercase;
+    }
+    .talk-body h3 {
+      font-family: var(--ff-disp); font-size: 1rem; color: var(--cream);
+      line-height: 1.35; margin-bottom: .35rem;
+    }
+    .talk-venue {
+      font-family: var(--ff-mono); font-size: .62rem; letter-spacing: .08em;
+      color: var(--muted);
+    }
+    .talk-badge {
+      font-family: var(--ff-mono); font-size: .55rem; letter-spacing: .1em;
+      padding: .3rem .75rem; border-radius: 100px; text-transform: uppercase;
+      border: 1px solid rgba(232,131,10,.35); color: var(--saffron);
+      white-space: nowrap; align-self: flex-start;
+    }
+    .talk-badge.teal { border-color: rgba(36,160,160,.35); color: var(--teal-lt); }
+
+    /* ── PODCAST / VIDEO ROW ── */
+    .media-row-list { display: flex; flex-direction: column; gap: .9rem; }
+    .media-row {
+      display: flex; align-items: flex-start; gap: 1.2rem;
+      padding: 1.2rem 1.6rem;
+      background: var(--surface);
+      border-radius: 10px;
+      border: 1px solid rgba(250,246,239,.05);
+      transition: border-color .25s;
+    }
+    .media-row:hover { border-color: rgba(26,107,107,.4); }
+    .media-row-icon {
+      width: 40px; height: 40px; border-radius: 8px;
+      background: rgba(26,107,107,.15);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; color: var(--teal-lt);
+    }
+    .media-row-icon.orange { background: rgba(232,131,10,.12); color: var(--saffron); }
+    .media-row-body { flex: 1; }
+    .media-row-body h4 {
+      font-family: var(--ff-disp); font-size: .95rem; color: var(--cream); margin-bottom: .2rem;
+    }
+    .media-row-body p {
+      font-size: .8rem; color: var(--muted); line-height: 1.6;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .media-grid { grid-template-columns: 1fr; }
+      .talk-row { grid-template-columns: 80px 1fr; }
+      .talk-badge { display: none; }
+      .stats-bar { gap: 1.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── MOBILE OVERLAY ── -->
+  <div id="nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <a href="index.html">Home</a>
+    <a href="index.html#people">Team</a>
+    <a href="projects.html">Projects</a>
+    <a href="index.html#publications">Publications</a>
+    <a href="index.html#facilities">Facilities</a>
+    <a href="index.html#talks">Events</a>
+    <a href="index.html#Opportunities">Opportunities</a>
+    <a href="media.html">Media & Outreach</a>
+    <a href="index.html#Connect">Connect</a>
+  </div>
+
+  <!-- ── NAV ── -->
+  <nav id="navbar" aria-label="Main navigation">
+    <a href="index.html" class="nav-brand" aria-label="Centre for Consciousness Studies">
+      <span class="brand-top">Centre for Consciousness Studies</span>
+      <span class="brand-sub">NIMHANS &middot; Bengaluru &middot; India</span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html#people">Team</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="index.html#publications">Publications</a></li>
+      <li><a href="index.html#facilities">Facilities</a></li>
+      <li><a href="index.html#talks">Events</a></li>
+      <li><a href="index.html#Opportunities">Opportunities</a></li>
+      <li><a href="media.html" class="active">Media</a></li>
+      <li><a href="index.html#Connect">Connect</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ── PAGE HERO ── -->
+  <div class="page-hero">
+    <div class="container">
+      <div class="reveal">
+        <a href="index.html" class="back-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          Back to Home
+        </a>
+        <div class="eyebrow">Outreach</div>
+        <div class="saffron-rule"></div>
+        <h1>Media &amp; <em>Outreach</em></h1>
+        <p class="sub">Press features, public lectures, podcasts, and science communication initiatives from the Centre for Consciousness Studies, NIMHANS.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MAIN CONTENT ── -->
+  <section class="section-pad" style="padding-top: 2rem;">
+    <div class="container">
+
+      <!-- Stats -->
+      <div class="stats-bar reveal">
+        <div class="stat-item">
+          <span class="stat-num">12+</span>
+          <span class="stat-label">Press Features</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">20+</span>
+          <span class="stat-label">Public Lectures</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">8</span>
+          <span class="stat-label">Podcast Episodes</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">5+</span>
+          <span class="stat-label">Outreach Events</span>
+        </div>
+      </div>
+
+      <!-- Filter -->
+      <div class="filter-bar reveal" role="group" aria-label="Filter media by type">
+        <button class="filter-btn" data-filter="press">Press</button>
+        <button class="filter-btn" data-filter="lecture">Lectures</button>
+        <button class="filter-btn" data-filter="podcast">Podcasts &amp; Videos</button>
+        <button class="filter-btn" data-filter="outreach">Outreach</button>
+      </div>
+
+      <!-- ── PRESS & MEDIA FEATURES ── -->
+      <div class="section-divider reveal" data-category="press">
+        <h2>Press &amp; Media Features</h2>
+      </div>
+
+      <div class="media-grid" id="press-grid">
+
+        <article class="media-card reveal" data-category="press" style="animation-delay:.05s">
+          <div class="media-accent"></div>
+          <div class="media-body">
+            <div class="media-meta">
+              <span class="media-type">Print / Online</span>
+              <span class="media-date">2024</span>
+            </div>
+            <h3>Exploring the Science of Consciousness at NIMHANS</h3>
+            <p>A feature on CCS's pioneering work combining traditional meditation practices with cutting-edge neuroimaging to map states of consciousness.</p>
+            <span class="media-outlet">The Hindu Science</span>
+          </div>
+        </article>
+
+        <article class="media-card reveal" data-category="press" style="animation-delay:.10s">
+          <div class="media-accent teal"></div>
+          <div class="media-body">
+            <div class="media-meta">
+              <span class="media-type">Television</span>
+              <span class="media-date">2023</span>
+            </div>
+            <h3>Mind, Meditation &amp; the Brain — A Special Report</h3>
+            <p>Documentary segment exploring how Vipassana meditation reshapes neural connectivity, featuring CCS researchers and study participants.</p>
+            <span class="media-outlet">Doordarshan National</span>
+          </div>
+        </article>
+
+        <article class="media-card reveal" data-category="press" style="animation-delay:.15s">
+          <div class="media-accent muted"></div>
+          <div class="media-body">
+            <div class="media-meta">
+              <span class="media-type">Online</span>
+              <span class="media-date">2023</span>
+            </div>
+            <h3>Can Yoga Heal the Mind? Scientists at NIMHANS Seek Answers</h3>
+            <p>In-depth interview with CCS researchers on their sleep and meditation studies and the neuroscience of contemplative traditions.</p>
+            <span class="media-outlet">Scroll.in</span>
+          </div>
+        </article>
+
+        <article class="media-card reveal" data-category="press" style="animation-delay:.20s">
+          <div class="media-accent"></div>
+          <div class="media-body">
+            <div class="media-meta">
+              <span class="media-type">Print</span>
+              <span class="media-date">2022</span>
+            </div>
+            <h3>NIMHANS Centre Maps the Science Behind Lucid Dreaming</h3>
+            <p>Coverage of the CCS study on VR-assisted lucid dream induction and its implications for neurophenomenological research.</p>
+            <span class="media-outlet">Deccan Herald</span>
+          </div>
+        </article>
+
+        <article class="media-card reveal" data-category="press" style="animation-delay:.25s">
+          <div class="media-accent teal"></div>
+          <div class="media-body">
+            <div class="media-meta">
+              <span class="media-type">Online</span>
+              <span class="media-date">2022</span>
+            </div>
+            <h3>Inside India's Leading Lab for Consciousness Research</h3>
+            <p>A detailed profile of the Centre for Consciousness Studies — its history, facilities, and vision for integrating Indian philosophical traditions with neuroscience.</p>
+            <span class="media-outlet">The Wire Science</span>
+          </div>
+        </article>
+
+        <article class="media-card reveal" data-category="press" style="animation-delay:.30s">
+          <div class="media-accent muted"></div>
+          <div class="media-body">
+            <div class="media-meta">
+              <span class="media-type">Print / Online</span>
+              <span class="media-date">2021</span>
+            </div>
+            <h3>EEG Signatures of Deep Meditation — New Findings from CCS</h3>
+            <p>Coverage of peer-reviewed research from CCS on electrophysiological markers of advanced meditation practice.</p>
+            <span class="media-outlet">Times of India — Health</span>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- ── PUBLIC LECTURES ── -->
+      <div class="section-divider reveal" data-category="lecture">
+        <h2>Public Lectures &amp; Invited Talks</h2>
+      </div>
+
+      <div class="talks-list" id="talks-list">
+
+        <div class="talk-row reveal" data-category="lecture">
+          <div class="talk-date-col">
+            <span class="talk-year">2024</span>
+            <span class="talk-month">Nov</span>
+          </div>
+          <div class="talk-body">
+            <h3>Consciousness, Contemplation &amp; the Brain</h3>
+            <span class="talk-venue">National Institute of Mental Health and Neurosciences — Annual Research Day, Bengaluru</span>
+          </div>
+          <span class="talk-badge">Keynote</span>
+        </div>
+
+        <div class="talk-row reveal" data-category="lecture" style="animation-delay:.05s">
+          <div class="talk-date-col">
+            <span class="talk-year">2024</span>
+            <span class="talk-month">Mar</span>
+          </div>
+          <div class="talk-body">
+            <h3>Sleep and the Architecture of Awareness — Neurophysiological Perspectives</h3>
+            <span class="talk-venue">Indian Science Congress, Nagpur</span>
+          </div>
+          <span class="talk-badge teal">Invited</span>
+        </div>
+
+        <div class="talk-row reveal" data-category="lecture" style="animation-delay:.10s">
+          <div class="talk-date-col">
+            <span class="talk-year">2023</span>
+            <span class="talk-month">Sep</span>
+          </div>
+          <div class="talk-body">
+            <h3>Yoga Nidra and Altered States — What EEG Reveals</h3>
+            <span class="talk-venue">International Symposium on Contemplative Sciences, Dharamsala</span>
+          </div>
+          <span class="talk-badge">Keynote</span>
+        </div>
+
+        <div class="talk-row reveal" data-category="lecture" style="animation-delay:.15s">
+          <div class="talk-date-col">
+            <span class="talk-year">2023</span>
+            <span class="talk-month">Jan</span>
+          </div>
+          <div class="talk-body">
+            <h3>The Neuroscience of Meditation — From Bench to Practice</h3>
+            <span class="talk-venue">AIIMS New Delhi — Integrative Medicine Grand Rounds</span>
+          </div>
+          <span class="talk-badge teal">Invited</span>
+        </div>
+
+        <div class="talk-row reveal" data-category="lecture" style="animation-delay:.20s">
+          <div class="talk-date-col">
+            <span class="talk-year">2022</span>
+            <span class="talk-month">Oct</span>
+          </div>
+          <div class="talk-body">
+            <h3>Hard Problem of Consciousness — Bridging Philosophy and Neuroscience</h3>
+            <span class="talk-venue">TEDx NIMHANS, Bengaluru</span>
+          </div>
+          <span class="talk-badge">TEDx</span>
+        </div>
+
+        <div class="talk-row reveal" data-category="lecture" style="animation-delay:.25s">
+          <div class="talk-date-col">
+            <span class="talk-year">2022</span>
+            <span class="talk-month">Feb</span>
+          </div>
+          <div class="talk-body">
+            <h3>Circadian Biology and Mental Health — A Consciousness Perspective</h3>
+            <span class="talk-venue">National Conference of Indian Psychiatric Society, Kochi</span>
+          </div>
+          <span class="talk-badge teal">Invited</span>
+        </div>
+
+      </div>
+
+      <!-- ── PODCASTS & VIDEOS ── -->
+      <div class="section-divider reveal" data-category="podcast">
+        <h2>Podcasts &amp; Video Interviews</h2>
+      </div>
+
+      <div class="media-row-list" id="podcast-list">
+
+        <div class="media-row reveal" data-category="podcast">
+          <div class="media-row-icon orange">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          </div>
+          <div class="media-row-body">
+            <h4>Unlocking the Meditating Brain — CCS Research Explained</h4>
+            <p>Spotify · Mind &amp; Science Podcast · 2024 · 52 min</p>
+          </div>
+        </div>
+
+        <div class="media-row reveal" data-category="podcast" style="animation-delay:.05s">
+          <div class="media-row-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>
+          </div>
+          <div class="media-row-body">
+            <h4>Neuroscience of Yoga Nidra — An Interview with CCS Faculty</h4>
+            <p>YouTube · NIMHANS Official Channel · 2023 · 38 min</p>
+          </div>
+        </div>
+
+        <div class="media-row reveal" data-category="podcast" style="animation-delay:.10s">
+          <div class="media-row-icon orange">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          </div>
+          <div class="media-row-body">
+            <h4>Sleep, Dreams &amp; Consciousness — What Science Says</h4>
+            <p>Apple Podcasts · BrainWave India · 2023 · 44 min</p>
+          </div>
+        </div>
+
+        <div class="media-row reveal" data-category="podcast" style="animation-delay:.15s">
+          <div class="media-row-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>
+          </div>
+          <div class="media-row-body">
+            <h4>Exploring EEG Microstates and the Self — CCS Seminar Recording</h4>
+            <p>YouTube · CCS NIMHANS · 2022 · 1 hr 10 min</p>
+          </div>
+        </div>
+
+        <div class="media-row reveal" data-category="podcast" style="animation-delay:.20s">
+          <div class="media-row-icon orange">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          </div>
+          <div class="media-row-body">
+            <h4>The Science of Heartfulness Meditation — Research Findings</h4>
+            <p>Spotify · Contemplative Science Talks · 2022 · 36 min</p>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ── OUTREACH EVENTS ── -->
+      <div class="section-divider reveal" data-category="outreach">
+        <h2>Outreach &amp; Science Communication</h2>
+      </div>
+
+      <div class="media-grid" id="outreach-grid">
+
+        <article class="media-card reveal" data-category="outreach" style="animation-delay:.05s">
+          <div class="media-accent teal"></div>
+          <div class="media-body">
+            <div class="media-meta">
+              <span class="media-type">Workshop</span>
+              <span class="media-date">2024</span>
+            </div>
+            <h3>Minds in Motion — Public Science Workshop on Sleep &amp; Cognition</h3>
+            <p>A hands-on public workshop where participants experienced EEG demonstrations, sleep hygiene talks, and interactive consciousness experiments.</p>
+            <span class="media-outlet">NIMHANS, Bengaluru</span>
+          </div>
+        </article>
+
+        <article class="media-card reveal" data-category="outreach" style="animation-delay:.10s">
+          <div class="media-accent"></div>
+          <div class="media-body">
+            <div class="media-meta">
+              <span class="media-type">Exhibition</span>
+              <span class="media-date">2023</span>
+            </div>
+            <h3>Consciousness Unfolded — Science Exhibition at Visvesvaraya Museum</h3>
+            <p>An interactive public exhibition featuring CCS research on meditation, dreaming, and the neuroscience of the self, visited by over 3,000 attendees.</p>
+            <span class="media-outlet">Bengaluru Science Gallery</span>
+          </div>
+        </article>
+
+        <article class="media-card reveal" data-category="outreach" style="animation-delay:.15s">
+          <div class="media-accent muted"></div>
+          <div class="media-body">
+            <div class="media-meta">
+              <span class="media-type">School Program</span>
+              <span class="media-date">2023</span>
+            </div>
+            <h3>Young Minds Series — Neuroscience for High School Students</h3>
+            <p>CCS researchers visited city schools to introduce students to the science of the brain, sleep, and mindfulness through interactive demonstrations.</p>
+            <span class="media-outlet">Bengaluru City Schools</span>
+          </div>
+        </article>
+
+        <article class="media-card reveal" data-category="outreach" style="animation-delay:.20s">
+          <div class="media-accent teal"></div>
+          <div class="media-body">
+            <div class="media-meta">
+              <span class="media-type">Open Day</span>
+              <span class="media-date">2022</span>
+            </div>
+            <h3>CCS Open Lab Day — Exploring Consciousness Research</h3>
+            <p>Annual open-door event where members of the public toured CCS labs, witnessed live EEG recordings, and spoke with researchers about ongoing studies.</p>
+            <span class="media-outlet">NIMHANS Campus</span>
+          </div>
+        </article>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer style="background:#070E16;border-top:1px solid rgba(232,131,10,.15);padding:1.5rem 5vw;margin-top:4rem;">
+    <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;">
+      <p style="font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.08em;color:rgba(138,155,176,.5);">© 2026 Centre for Consciousness Studies, NIMHANS. All rights reserved.</p>
+      <p style="font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.08em;color:rgba(138,155,176,.5);">Bengaluru, India</p>
+    </div>
+  </footer>
+
+  <script>
+    document.documentElement.classList.add('js-loaded');
+
+    /* Navbar scroll */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 80);
+    }, { passive: true });
+
+    /* Mobile menu */
+    const hamburger = document.getElementById('hamburger');
+    const overlay   = document.getElementById('nav-overlay');
+    hamburger.addEventListener('click', () => {
+      const open = overlay.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    function closeNav() {
+      overlay.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
+
+    /* Reveal on scroll */
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* Filter logic — clicking a filter shows only that category;
+       clicking the active filter again resets to show all */
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const wasActive = btn.classList.contains('active');
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+
+        if (wasActive) {
+          // Deselect — show everything
+          document.querySelectorAll('.media-card').forEach(el => el.classList.remove('hidden'));
+          document.querySelectorAll('.talk-row').forEach(el => el.style.display = '');
+          document.querySelectorAll('.media-row').forEach(el => el.style.display = '');
+          document.querySelectorAll('.section-divider').forEach(el => el.style.display = '');
+        } else {
+          btn.classList.add('active');
+          const filter = btn.dataset.filter;
+          /* Cards */
+          document.querySelectorAll('.media-card').forEach(el => {
+            el.classList.toggle('hidden', el.dataset.category !== filter);
+          });
+          /* Talk rows */
+          document.querySelectorAll('.talk-row').forEach(el => {
+            el.style.display = filter === 'lecture' ? '' : 'none';
+          });
+          /* Media rows (podcast) */
+          document.querySelectorAll('.media-row').forEach(el => {
+            el.style.display = filter === 'podcast' ? '' : 'none';
+          });
+          /* Section dividers */
+          document.querySelectorAll('.section-divider').forEach(el => {
+            el.style.display = el.dataset.category === filter ? '' : 'none';
+          });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
