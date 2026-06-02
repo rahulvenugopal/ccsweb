@@ -318,6 +318,24 @@
       font-size: .8rem; color: var(--muted); line-height: 1.6;
     }
 
+    /* ── CARD LINKS ── */
+    .card-link { display: contents; }
+    .media-card h3 a, .media-row-body h4 a {
+      color: inherit; text-decoration: none;
+      transition: color .2s;
+    }
+    .media-card h3 a:hover, .media-row-body h4 a:hover { color: var(--saffron); }
+    .media-outlet a {
+      color: inherit; text-decoration: none; border-bottom: 1px solid rgba(250,246,239,.2);
+      transition: border-color .2s, color .2s;
+    }
+    .media-outlet a:hover { color: var(--saffron); border-color: var(--saffron); }
+    .media-row-body p a {
+      color: var(--teal-lt); text-decoration: none; border-bottom: 1px solid rgba(36,160,160,.3);
+      transition: border-color .2s, color .2s;
+    }
+    .media-row-body p a:hover { color: var(--saffron); border-color: var(--saffron); }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .nav-links { display: none; }
@@ -389,16 +407,16 @@
       <!-- Stats -->
       <div class="stats-bar reveal">
         <div class="stat-item">
-          <span class="stat-num">12+</span>
-          <span class="stat-label">Press Features</span>
+          <span class="stat-num">20+</span>
+          <span class="stat-label">International Outlets</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-num">10M+</span>
+          <span class="stat-label">Media Impressions</span>
         </div>
         <div class="stat-item">
           <span class="stat-num">20+</span>
           <span class="stat-label">Public Lectures</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">8</span>
-          <span class="stat-label">Podcast Episodes</span>
         </div>
         <div class="stat-item">
           <span class="stat-num">5+</span>
@@ -425,12 +443,12 @@
           <div class="media-accent"></div>
           <div class="media-body">
             <div class="media-meta">
-              <span class="media-type">Print / Online</span>
-              <span class="media-date">2024</span>
+              <span class="media-type">Online</span>
+              <span class="media-date">Apr 2026</span>
             </div>
-            <h3>Exploring the Science of Consciousness at NIMHANS</h3>
-            <p>A feature on CCS's pioneering work combining traditional meditation practices with cutting-edge neuroimaging to map states of consciousness.</p>
-            <span class="media-outlet">The Hindu Science</span>
+            <h3><a href="https://www.newsweek.com/scientists-reveal-how-long-meditate-change-brain-neuroscience-11767707" target="_blank" rel="noopener">Meditation Triggers Brain Changes in Just 7 Minutes, Study Finds</a></h3>
+            <p>Coverage of the time-to-onset EEG study showing significant alpha, theta, and beta1 brainwave shifts begin within 2–3 minutes of breath-watching meditation and peak at 7–10 minutes — even in beginners.</p>
+            <span class="media-outlet"><a href="https://www.newsweek.com/scientists-reveal-how-long-meditate-change-brain-neuroscience-11767707" target="_blank" rel="noopener">Newsweek</a></span>
           </div>
         </article>
 
@@ -438,12 +456,12 @@
           <div class="media-accent teal"></div>
           <div class="media-body">
             <div class="media-meta">
-              <span class="media-type">Television</span>
-              <span class="media-date">2023</span>
+              <span class="media-type">Online</span>
+              <span class="media-date">Mar 30, 2026</span>
             </div>
-            <h3>Mind, Meditation &amp; the Brain — A Special Report</h3>
-            <p>Documentary segment exploring how Vipassana meditation reshapes neural connectivity, featuring CCS researchers and study participants.</p>
-            <span class="media-outlet">Doordarshan National</span>
+            <h3><a href="https://www.psychologytoday.com/us/blog/a-subtle-impact/202603/meditation-works-faster-than-previously-thought" target="_blank" rel="noopener">Meditation 'Works' Faster Than Previously Thought</a></h3>
+            <p>Feature article on the finding that brief, digitally delivered meditation sessions of as little as 7 minutes may provide scalable benefits for mental well-being, based on CCS research led by Saketh M.</p>
+            <span class="media-outlet"><a href="https://www.psychologytoday.com/us/blog/a-subtle-impact/202603/meditation-works-faster-than-previously-thought" target="_blank" rel="noopener">Psychology Today</a></span>
           </div>
         </article>
 
@@ -452,11 +470,11 @@
           <div class="media-body">
             <div class="media-meta">
               <span class="media-type">Online</span>
-              <span class="media-date">2023</span>
+              <span class="media-date">May 22, 2026</span>
             </div>
-            <h3>Can Yoga Heal the Mind? Scientists at NIMHANS Seek Answers</h3>
-            <p>In-depth interview with CCS researchers on their sleep and meditation studies and the neuroscience of contemplative traditions.</p>
-            <span class="media-outlet">Scroll.in</span>
+            <h3><a href="https://www.psypost.org/brain-changes-during-meditation-begin-within-minutes-and-peak-around-the-7-minute-mark-study-finds/" target="_blank" rel="noopener">Brain Activity Changes During Breath-Watching Begin in as Little as Two Minutes</a></h3>
+            <p>Detailed write-up of the time-to-onset preprint, noting the moment-to-moment temporal dynamics tracked across meditation-naïve, novice, and advanced Isha Yoga practitioners using 128-channel HD-EEG.</p>
+            <span class="media-outlet"><a href="https://www.psypost.org/brain-changes-during-meditation-begin-within-minutes-and-peak-around-the-7-minute-mark-study-finds/" target="_blank" rel="noopener">PsyPost</a></span>
           </div>
         </article>
 
@@ -464,12 +482,12 @@
           <div class="media-accent"></div>
           <div class="media-body">
             <div class="media-meta">
-              <span class="media-type">Print</span>
-              <span class="media-date">2022</span>
+              <span class="media-type">Online / Print</span>
+              <span class="media-date">2026</span>
             </div>
-            <h3>NIMHANS Centre Maps the Science Behind Lucid Dreaming</h3>
-            <p>Coverage of the CCS study on VR-assisted lucid dream induction and its implications for neurophenomenological research.</p>
-            <span class="media-outlet">Deccan Herald</span>
+            <h3><a href="https://www.washingtonpost.com/wellness/2026/04/23/two-minutes-meditation-brain/" target="_blank" rel="noopener">The Neuroscience of Meditation: How Quickly the Brain Responds</a></h3>
+            <p>Report on CCS research demonstrating that measurable neural changes emerge within minutes of beginning meditation practice, with implications for accessible mental health interventions.</p>
+            <span class="media-outlet"><a href="https://www.washingtonpost.com/wellness/2026/04/23/two-minutes-meditation-brain/" target="_blank" rel="noopener">The Washington Post</a></span>
           </div>
         </article>
 
@@ -478,24 +496,11 @@
           <div class="media-body">
             <div class="media-meta">
               <span class="media-type">Online</span>
-              <span class="media-date">2022</span>
+              <span class="media-date">2026</span>
             </div>
-            <h3>Inside India's Leading Lab for Consciousness Research</h3>
-            <p>A detailed profile of the Centre for Consciousness Studies — its history, facilities, and vision for integrating Indian philosophical traditions with neuroscience.</p>
-            <span class="media-outlet">The Wire Science</span>
-          </div>
-        </article>
-
-        <article class="media-card reveal" data-category="press" style="animation-delay:.30s">
-          <div class="media-accent muted"></div>
-          <div class="media-body">
-            <div class="media-meta">
-              <span class="media-type">Print / Online</span>
-              <span class="media-date">2021</span>
-            </div>
-            <h3>EEG Signatures of Deep Meditation — New Findings from CCS</h3>
-            <p>Coverage of peer-reviewed research from CCS on electrophysiological markers of advanced meditation practice.</p>
-            <span class="media-outlet">Times of India — Health</span>
+            <h3><a href="https://www.forbes.com/health/mind/meditation-brain-changes-minutes-how-to-try-lmandp5/" target="_blank" rel="noopener">Science Confirms: Meditation Rewires Your Brain in Under 10 Minutes</a></h3>
+            <p>Forbes coverage of the NIMHANS-led study on rapid-onset neurophysiological effects of breath-watching meditation, co-led with Harvard Medical School collaborators.</p>
+            <span class="media-outlet"><a href="https://www.forbes.com/health/mind/meditation-brain-changes-minutes-how-to-try-lmandp5/" target="_blank" rel="noopener">Forbes</a></span>
           </div>
         </article>
 
@@ -510,74 +515,14 @@
 
         <div class="talk-row reveal" data-category="lecture">
           <div class="talk-date-col">
-            <span class="talk-year">2024</span>
-            <span class="talk-month">Nov</span>
-          </div>
-          <div class="talk-body">
-            <h3>Consciousness, Contemplation &amp; the Brain</h3>
-            <span class="talk-venue">National Institute of Mental Health and Neurosciences — Annual Research Day, Bengaluru</span>
-          </div>
-          <span class="talk-badge">Keynote</span>
-        </div>
-
-        <div class="talk-row reveal" data-category="lecture" style="animation-delay:.05s">
-          <div class="talk-date-col">
-            <span class="talk-year">2024</span>
+            <span class="talk-year">2021</span>
             <span class="talk-month">Mar</span>
           </div>
           <div class="talk-body">
-            <h3>Sleep and the Architecture of Awareness — Neurophysiological Perspectives</h3>
-            <span class="talk-venue">Indian Science Congress, Nagpur</span>
+            <h3><a href="https://www.youtube.com/watch?v=1w8dbvFQrHM" target="_blank" rel="noopener">Your Brain on Yoga</a></h3>
+            <span class="talk-venue">YouTube · Public Science Talk — Saketh M discusses how yogic practices (meditation &amp; pranayama) reshape brain oscillations, cognition, and well-being, drawn from his PhD research at NIMHANS.</span>
           </div>
-          <span class="talk-badge teal">Invited</span>
-        </div>
-
-        <div class="talk-row reveal" data-category="lecture" style="animation-delay:.10s">
-          <div class="talk-date-col">
-            <span class="talk-year">2023</span>
-            <span class="talk-month">Sep</span>
-          </div>
-          <div class="talk-body">
-            <h3>Yoga Nidra and Altered States — What EEG Reveals</h3>
-            <span class="talk-venue">International Symposium on Contemplative Sciences, Dharamsala</span>
-          </div>
-          <span class="talk-badge">Keynote</span>
-        </div>
-
-        <div class="talk-row reveal" data-category="lecture" style="animation-delay:.15s">
-          <div class="talk-date-col">
-            <span class="talk-year">2023</span>
-            <span class="talk-month">Jan</span>
-          </div>
-          <div class="talk-body">
-            <h3>The Neuroscience of Meditation — From Bench to Practice</h3>
-            <span class="talk-venue">AIIMS New Delhi — Integrative Medicine Grand Rounds</span>
-          </div>
-          <span class="talk-badge teal">Invited</span>
-        </div>
-
-        <div class="talk-row reveal" data-category="lecture" style="animation-delay:.20s">
-          <div class="talk-date-col">
-            <span class="talk-year">2022</span>
-            <span class="talk-month">Oct</span>
-          </div>
-          <div class="talk-body">
-            <h3>Hard Problem of Consciousness — Bridging Philosophy and Neuroscience</h3>
-            <span class="talk-venue">TEDx NIMHANS, Bengaluru</span>
-          </div>
-          <span class="talk-badge">TEDx</span>
-        </div>
-
-        <div class="talk-row reveal" data-category="lecture" style="animation-delay:.25s">
-          <div class="talk-date-col">
-            <span class="talk-year">2022</span>
-            <span class="talk-month">Feb</span>
-          </div>
-          <div class="talk-body">
-            <h3>Circadian Biology and Mental Health — A Consciousness Perspective</h3>
-            <span class="talk-venue">National Conference of Indian Psychiatric Society, Kochi</span>
-          </div>
-          <span class="talk-badge teal">Invited</span>
+          <span class="talk-badge teal">Talk</span>
         </div>
 
       </div>
@@ -590,52 +535,52 @@
       <div class="media-row-list" id="podcast-list">
 
         <div class="media-row reveal" data-category="podcast">
-          <div class="media-row-icon orange">
+          <div class="media-row-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
           </div>
           <div class="media-row-body">
-            <h4>Unlocking the Meditating Brain — CCS Research Explained</h4>
-            <p>Spotify · Mind &amp; Science Podcast · 2024 · 52 min</p>
+            <h4><a href="https://www.youtube.com/watch?v=Rj_I3ppMT98&t=7s" target="_blank" rel="noopener">Neuroscientist | Dr. Saket Malipeddi — EP 04</a></h4>
+            <p><a href="https://www.youtube.com/@WhoseRaceAreYouRunning" target="_blank" rel="noopener">Whose Race Are You Running?</a> · Part 1 of 4 · Podcast — Saketh M on the neuroscience of meditation, consciousness, and the science of the self.</p>
           </div>
         </div>
 
         <div class="media-row reveal" data-category="podcast" style="animation-delay:.05s">
           <div class="media-row-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
           </div>
           <div class="media-row-body">
-            <h4>Neuroscience of Yoga Nidra — An Interview with CCS Faculty</h4>
-            <p>YouTube · NIMHANS Official Channel · 2023 · 38 min</p>
+            <h4><a href="https://www.youtube.com/@WhoseRaceAreYouRunning/search?query=saketh" target="_blank" rel="noopener">Neuroscientist | Dr. Saket Malipeddi — EP 05</a></h4>
+            <p><a href="https://www.youtube.com/@WhoseRaceAreYouRunning" target="_blank" rel="noopener">Whose Race Are You Running?</a> · Part 2 of 4 · Podcast — Continuing the conversation on meditation, brain states, and altered consciousness.</p>
           </div>
         </div>
 
         <div class="media-row reveal" data-category="podcast" style="animation-delay:.10s">
-          <div class="media-row-icon orange">
+          <div class="media-row-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
           </div>
           <div class="media-row-body">
-            <h4>Sleep, Dreams &amp; Consciousness — What Science Says</h4>
-            <p>Apple Podcasts · BrainWave India · 2023 · 44 min</p>
+            <h4><a href="https://www.youtube.com/@WhoseRaceAreYouRunning/search?query=saketh" target="_blank" rel="noopener">Neuroscientist | Dr. Saket Malipeddi — EP 06</a></h4>
+            <p><a href="https://www.youtube.com/@WhoseRaceAreYouRunning" target="_blank" rel="noopener">Whose Race Are You Running?</a> · Part 3 of 4 · Podcast — How meditative states influence consciousness and cognitive function.</p>
           </div>
         </div>
 
         <div class="media-row reveal" data-category="podcast" style="animation-delay:.15s">
           <div class="media-row-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
           </div>
           <div class="media-row-body">
-            <h4>Exploring EEG Microstates and the Self — CCS Seminar Recording</h4>
-            <p>YouTube · CCS NIMHANS · 2022 · 1 hr 10 min</p>
+            <h4><a href="https://www.youtube.com/@WhoseRaceAreYouRunning/search?query=saketh" target="_blank" rel="noopener">Neuroscientist | Dr. Saket Malipeddi — EP 07</a></h4>
+            <p><a href="https://www.youtube.com/@WhoseRaceAreYouRunning" target="_blank" rel="noopener">Whose Race Are You Running?</a> · Part 4 of 4 · Podcast — Insights into the neuroscience of well-being and the meditative self.</p>
           </div>
         </div>
 
         <div class="media-row reveal" data-category="podcast" style="animation-delay:.20s">
-          <div class="media-row-icon orange">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          <div class="media-row-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2"/><polyline points="17 2 12 7 7 2"/></svg>
           </div>
           <div class="media-row-body">
-            <h4>The Science of Heartfulness Meditation — Research Findings</h4>
-            <p>Spotify · Contemplative Science Talks · 2022 · 36 min</p>
+            <h4><a href="https://www.youtube.com/watch?v=1w8dbvFQrHM" target="_blank" rel="noopener">Effects of Practice of Meditation on Brain EEG Dynamics</a></h4>
+            <p><a href="https://www.youtube.com/watch?v=1w8dbvFQrHM" target="_blank" rel="noopener">YouTube</a> · Neuromatch Conference 3.0 · Oct 2020 · Conference Talk — Saketh M presents PhD research on Isha Yoga's effect on frontal mid-line theta, gamma, and parasympathetic activation across novice, advanced, and control groups using 128-channel EEG.</p>
           </div>
         </div>
 
@@ -648,55 +593,16 @@
 
       <div class="media-grid" id="outreach-grid">
 
-        <article class="media-card reveal" data-category="outreach" style="animation-delay:.05s">
+        <article class="media-card reveal" data-category="outreach">
           <div class="media-accent teal"></div>
           <div class="media-body">
             <div class="media-meta">
-              <span class="media-type">Workshop</span>
-              <span class="media-date">2024</span>
+              <span class="media-type">Public Talk</span>
+              <span class="media-date">May 15</span>
             </div>
-            <h3>Minds in Motion — Public Science Workshop on Sleep &amp; Cognition</h3>
-            <p>A hands-on public workshop where participants experienced EEG demonstrations, sleep hygiene talks, and interactive consciousness experiments.</p>
-            <span class="media-outlet">NIMHANS, Bengaluru</span>
-          </div>
-        </article>
-
-        <article class="media-card reveal" data-category="outreach" style="animation-delay:.10s">
-          <div class="media-accent"></div>
-          <div class="media-body">
-            <div class="media-meta">
-              <span class="media-type">Exhibition</span>
-              <span class="media-date">2023</span>
-            </div>
-            <h3>Consciousness Unfolded — Science Exhibition at Visvesvaraya Museum</h3>
-            <p>An interactive public exhibition featuring CCS research on meditation, dreaming, and the neuroscience of the self, visited by over 3,000 attendees.</p>
-            <span class="media-outlet">Bengaluru Science Gallery</span>
-          </div>
-        </article>
-
-        <article class="media-card reveal" data-category="outreach" style="animation-delay:.15s">
-          <div class="media-accent muted"></div>
-          <div class="media-body">
-            <div class="media-meta">
-              <span class="media-type">School Program</span>
-              <span class="media-date">2023</span>
-            </div>
-            <h3>Young Minds Series — Neuroscience for High School Students</h3>
-            <p>CCS researchers visited city schools to introduce students to the science of the brain, sleep, and mindfulness through interactive demonstrations.</p>
-            <span class="media-outlet">Bengaluru City Schools</span>
-          </div>
-        </article>
-
-        <article class="media-card reveal" data-category="outreach" style="animation-delay:.20s">
-          <div class="media-accent teal"></div>
-          <div class="media-body">
-            <div class="media-meta">
-              <span class="media-type">Open Day</span>
-              <span class="media-date">2022</span>
-            </div>
-            <h3>CCS Open Lab Day — Exploring Consciousness Research</h3>
-            <p>Annual open-door event where members of the public toured CCS labs, witnessed live EEG recordings, and spoke with researchers about ongoing studies.</p>
-            <span class="media-outlet">NIMHANS Campus</span>
+            <h3><a href="https://luma.com/1ey48t7w" target="_blank" rel="noopener">Mind and Consciousness: Eastern and Western Perspectives</a></h3>
+            <p>Saketh M discussed his research bridging modern neuroscience with ancient mind-body traditions — exploring how meditation affects neural dynamics, the sense of self, and how measurable brain changes emerge within minutes of practice.</p>
+            <span class="media-outlet"><a href="https://luma.com/1ey48t7w" target="_blank" rel="noopener">Lossfunk, Bengaluru</a></span>
           </div>
         </article>
 
