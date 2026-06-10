@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>All Projects — Centre for Consciousness Studies, NIMHANS</title>
-  <meta name="description" content="Complete list of active research investigations at the Centre for Consciousness Studies, NIMHANS, Bengaluru.">
+  <meta name="description"
+    content="Complete list of active research investigations at the Centre for Consciousness Studies, NIMHANS, Bengaluru.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -31,9 +32,18 @@
       --max: 1200px;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    html { scroll-behavior: smooth; font-size: 18px; }
+    html {
+      scroll-behavior: smooth;
+      font-size: 18px;
+    }
 
     body {
       background: var(--ink);
@@ -44,11 +54,31 @@
       overflow-x: hidden;
     }
 
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
-    button { cursor: pointer; border: none; background: none; font: inherit; }
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-    h1, h2, h3, h4 { font-family: var(--ff-disp); font-weight: 400; line-height: 1.15; }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      font: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: var(--ff-disp);
+      font-weight: 400;
+      line-height: 1.15;
+    }
 
     .label {
       font-family: var(--ff-mono);
@@ -57,65 +87,193 @@
       text-transform: uppercase;
       color: var(--saffron);
     }
-    .label::before { content: '['; opacity: .5; }
-    .label::after  { content: ']'; opacity: .5; }
 
-    .container { max-width: var(--max); margin: 0 auto; padding: 0 5vw; }
-    .section-pad { padding: 100px 0; }
+    .label::before {
+      content: '[';
+      opacity: .5;
+    }
+
+    .label::after {
+      content: ']';
+      opacity: .5;
+    }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 5vw;
+    }
+
+    .section-pad {
+      padding: 100px 0;
+    }
 
     /* ── ANIMATIONS ── */
     @keyframes fade-up {
-      from { opacity: 0; transform: translateY(28px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .reveal { opacity: 1; transform: none; transition: opacity .7s var(--ease), transform .7s var(--ease); }
-    .js-loaded .reveal { opacity: 0; transform: translateY(28px); }
-    .js-loaded .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: opacity .7s var(--ease), transform .7s var(--ease);
+    }
+
+    .js-loaded .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+
+    .js-loaded .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     /* ── NAV ── */
     #navbar {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
       padding: 20px 5vw;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       transition: background .4s var(--ease), padding .4s var(--ease), border-color .4s var(--ease);
       border-bottom: 1px solid transparent;
     }
+
     #navbar.scrolled {
-      background: rgba(13,27,42,.96);
+      background: rgba(13, 27, 42, .96);
       backdrop-filter: blur(16px);
-      border-color: rgba(232,131,10,.25);
+      border-color: rgba(232, 131, 10, .25);
       padding: 14px 5vw;
     }
-    .nav-brand { display: flex; flex-direction: column; gap: 1px; }
-    .nav-brand .brand-top { font-family: var(--ff-mono); font-size: .75rem; letter-spacing: .15em; color: var(--saffron); }
-    .nav-brand .brand-sub { font-family: var(--ff-mono); font-size: .6rem; letter-spacing: .1em; color: var(--muted); text-transform: uppercase; }
-    .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
-    .nav-links a {
-      font-family: var(--ff-mono); font-size: .68rem; letter-spacing: .18em; text-transform: uppercase;
-      color: var(--muted); position: relative; transition: color .25s;
-    }
-    .nav-links a::after {
-      content: ''; position: absolute; left: 0; bottom: -3px;
-      width: 0; height: 1px; background: var(--saffron); transition: width .3s var(--ease);
-    }
-    .nav-links a:hover { color: var(--saffron); }
-    .nav-links a:hover::after { width: 100%; }
 
-    .hamburger { display: none; flex-direction: column; gap: 5px; padding: 4px; }
-    .hamburger span { display: block; width: 24px; height: 2px; background: var(--saffron); border-radius: 2px; transition: transform .3s, opacity .3s; }
-    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .hamburger.open span:nth-child(2) { opacity: 0; }
-    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .nav-brand .brand-top {
+      font-family: var(--ff-mono);
+      font-size: .75rem;
+      letter-spacing: .15em;
+      color: var(--saffron);
+    }
+
+    .nav-brand .brand-sub {
+      font-family: var(--ff-mono);
+      font-size: .6rem;
+      letter-spacing: .1em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--ff-mono);
+      font-size: .68rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      position: relative;
+      transition: color .25s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 1px;
+      background: var(--saffron);
+      transition: width .3s var(--ease);
+    }
+
+    .nav-links a:hover {
+      color: var(--saffron);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--saffron);
+      border-radius: 2px;
+      transition: transform .3s, opacity .3s;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
 
     #nav-overlay {
-      position: fixed; inset: 0; z-index: 999; background: var(--ink);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      gap: 2.5rem; opacity: 0; pointer-events: none; transition: opacity .35s var(--ease);
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: var(--ink);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .35s var(--ease);
     }
-    #nav-overlay.open { opacity: 1; pointer-events: all; }
-    #nav-overlay a { font-family: var(--ff-disp); font-size: clamp(2rem,5vw,3.5rem); color: var(--cream); transition: color .2s; }
-    #nav-overlay a:hover { color: var(--saffron); }
+
+    #nav-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    #nav-overlay a {
+      font-family: var(--ff-disp);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--cream);
+      transition: color .2s;
+    }
+
+    #nav-overlay a:hover {
+      color: var(--saffron);
+    }
 
     /* ── PAGE HERO ── */
     .page-hero {
@@ -123,53 +281,115 @@
       position: relative;
       overflow: hidden;
     }
+
     .page-hero::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(26,107,107,.1) 0%, transparent 70%),
-                  radial-gradient(ellipse 30% 40% at 10% 80%, rgba(232,131,10,.05) 0%, transparent 60%);
+      background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(26, 107, 107, .1) 0%, transparent 70%),
+        radial-gradient(ellipse 30% 40% at 10% 80%, rgba(232, 131, 10, .05) 0%, transparent 60%);
       pointer-events: none;
     }
-    .page-hero .container { position: relative; }
+
+    .page-hero .container {
+      position: relative;
+    }
+
     .page-hero .eyebrow {
-      font-family: var(--ff-mono); font-size: .72rem; letter-spacing: .3em;
-      color: var(--saffron); text-transform: uppercase; margin-bottom: 1rem;
-      display: flex; align-items: center; gap: .8rem;
+      font-family: var(--ff-mono);
+      font-size: .72rem;
+      letter-spacing: .3em;
+      color: var(--saffron);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .8rem;
     }
+
     .page-hero .eyebrow::before {
-      content: ''; display: block; width: 2rem; height: 1px; background: var(--saffron); opacity: .6;
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--saffron);
+      opacity: .6;
     }
+
     .page-hero h1 {
       font-size: clamp(2.8rem, 5vw, 4.5rem);
       font-style: italic;
       color: var(--cream);
       margin-bottom: 1rem;
     }
-    .page-hero h1 em { font-style: normal; color: var(--saffron); }
-    .page-hero .sub {
-      font-size: 1rem; color: var(--muted); max-width: 560px; line-height: 1.8;
+
+    .page-hero h1 em {
+      font-style: normal;
+      color: var(--saffron);
     }
+
+    .page-hero .sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.8;
+    }
+
     .back-link {
-      display: inline-flex; align-items: center; gap: .5rem;
-      font-family: var(--ff-mono); font-size: .65rem; letter-spacing: .15em; text-transform: uppercase;
-      color: var(--muted); margin-bottom: 2.5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-family: var(--ff-mono);
+      font-size: .65rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
       transition: color .2s;
     }
-    .back-link:hover { color: var(--saffron); }
+
+    .back-link:hover {
+      color: var(--saffron);
+    }
 
     /* ── SAFFRON RULE ── */
-    .saffron-rule { width: 3rem; height: 2px; background: var(--saffron); margin: .8rem 0; }
+    .saffron-rule {
+      width: 3rem;
+      height: 2px;
+      background: var(--saffron);
+      margin: .8rem 0;
+    }
 
     /* ── FILTER BAR ── */
-    .filter-bar { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 2.5rem; }
-    .filter-btn {
-      font-family: var(--ff-mono); font-size: .65rem; letter-spacing: .15em; text-transform: uppercase;
-      padding: .5rem 1.1rem; border-radius: 100px; border: 1px solid rgba(250,246,239,.15);
-      color: var(--muted); transition: all .25s;
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-bottom: 2.5rem;
     }
-    .filter-btn:hover { border-color: var(--saffron); color: var(--saffron); }
-    .filter-btn.active { background: var(--saffron); border-color: var(--saffron); color: var(--ink); }
+
+    .filter-btn {
+      font-family: var(--ff-mono);
+      font-size: .65rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      padding: .5rem 1.1rem;
+      border-radius: 100px;
+      border: 1px solid rgba(250, 246, 239, .15);
+      color: var(--muted);
+      transition: all .25s;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--saffron);
+      color: var(--saffron);
+    }
+
+    .filter-btn.active {
+      background: var(--saffron);
+      border-color: var(--saffron);
+      color: var(--ink);
+    }
 
     /* ── PROJECTS GRID ── */
     .projects-grid {
@@ -181,30 +401,73 @@
     .project-card {
       background: var(--surface);
       border-radius: 12px;
-      border: 1px solid rgba(250,246,239,.06);
+      border: 1px solid rgba(250, 246, 239, .06);
       overflow: hidden;
       transition: transform .25s var(--ease), box-shadow .25s, opacity .35s, border-color .25s;
     }
-    .project-card.hidden { display: none !important; }
+
+    .project-card.hidden {
+      display: none !important;
+    }
+
     .project-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 0 40px rgba(26,107,107,.2);
-      border-color: rgba(26,107,107,.4);
+      box-shadow: 0 0 40px rgba(26, 107, 107, .2);
+      border-color: rgba(26, 107, 107, .4);
     }
-    .project-top { height: 6px; background: linear-gradient(90deg, var(--teal), var(--teal-lt)); }
-    .project-top.saffron { background: linear-gradient(90deg, var(--saffron), var(--saffron-lt)); }
-    .project-body { padding: 1.5rem; }
+
+    .project-top {
+      height: 6px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-lt));
+    }
+
+    .project-top.saffron {
+      background: linear-gradient(90deg, var(--saffron), var(--saffron-lt));
+    }
+
+    .project-body {
+      padding: 1.5rem;
+    }
+
     .project-type {
-      font-family: var(--ff-mono); font-size: .6rem; letter-spacing: .12em;
-      color: var(--saffron); margin-bottom: .6rem; text-transform: uppercase;
+      font-family: var(--ff-mono);
+      font-size: .6rem;
+      letter-spacing: .12em;
+      color: var(--saffron);
+      margin-bottom: .6rem;
+      text-transform: uppercase;
     }
-    .project-card h3 { font-family: var(--ff-disp); font-size: 1.1rem; color: var(--cream); line-height: 1.3; margin-bottom: .8rem; }
-    .project-card p { font-size: .85rem; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
-    .project-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+
+    .project-card h3 {
+      font-family: var(--ff-disp);
+      font-size: 1.1rem;
+      color: var(--cream);
+      line-height: 1.3;
+      margin-bottom: .8rem;
+    }
+
+    .project-card p {
+      font-size: .85rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+
     .proj-tag {
-      font-family: var(--ff-mono); font-size: .55rem; letter-spacing: .1em;
-      padding: .25rem .7rem; border-radius: 100px;
-      border: 1px solid rgba(26,107,107,.4); color: var(--teal-lt); text-transform: uppercase;
+      font-family: var(--ff-mono);
+      font-size: .55rem;
+      letter-spacing: .1em;
+      padding: .25rem .7rem;
+      border-radius: 100px;
+      border: 1px solid rgba(26, 107, 107, .4);
+      color: var(--teal-lt);
+      text-transform: uppercase;
     }
 
     /* ── STATS BAR ── */
@@ -216,20 +479,47 @@
       padding: 1.5rem 2rem;
       background: var(--surface);
       border-radius: 12px;
-      border: 1px solid rgba(250,246,239,.06);
+      border: 1px solid rgba(250, 246, 239, .06);
     }
-    .stat-item { display: flex; flex-direction: column; gap: .2rem; }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: .2rem;
+    }
+
     .stat-num {
-      font-family: var(--ff-disp); font-size: 2rem; color: var(--saffron); line-height: 1;
+      font-family: var(--ff-disp);
+      font-size: 2rem;
+      color: var(--saffron);
+      line-height: 1;
     }
-    .stat-label { font-family: var(--ff-mono); font-size: .6rem; letter-spacing: .12em; color: var(--muted); text-transform: uppercase; }
+
+    .stat-label {
+      font-family: var(--ff-mono);
+      font-size: .6rem;
+      letter-spacing: .12em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .stats-bar { gap: 1.5rem; }
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-bar {
+        gap: 1.5rem;
+      }
     }
   </style>
 </head>
@@ -273,13 +563,17 @@
     <div class="container">
       <div class="reveal">
         <a href="index.html" class="back-link">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="19" y1="12" x2="5" y2="12" />
+            <polyline points="12 19 5 12 12 5" />
+          </svg>
           Back to Home
         </a>
         <div class="eyebrow">Research</div>
         <div class="saffron-rule"></div>
         <h1><em>Active</em> Investigations</h1>
-        <p class="sub">A complete view of ongoing research across sleep, meditation, cognition, circadian biology, and wellbeing at CCS, NIMHANS.</p>
+        <p class="sub">A complete view of ongoing research across sleep, meditation, cognition, circadian biology, and
+          wellbeing at CCS, NIMHANS.</p>
       </div>
     </div>
   </div>
@@ -291,7 +585,7 @@
       <!-- Stats Bar -->
       <div class="stats-bar reveal">
         <div class="stat-item">
-          <span class="stat-num">19</span>
+          <span class="stat-num">20</span>
           <span class="stat-label">Total Projects</span>
         </div>
         <div class="stat-item">
@@ -303,7 +597,7 @@
           <span class="stat-label">PhD Projects</span>
         </div>
         <div class="stat-item">
-          <span class="stat-num">5</span>
+          <span class="stat-num">6</span>
           <span class="stat-label">Funded Projects</span>
         </div>
       </div>
@@ -326,7 +620,8 @@
           <div class="project-top saffron"></div>
           <div class="project-body">
             <p class="project-type">DST-CSRI Project</p>
-            <h3>Evaluation of cognitive dysfunction in conditions of Insomnia and Excessive Daytime Sleepiness — Efficacy of transcranial alternating current stimulation (tACS) on cognition and sleep</h3>
+            <h3>Evaluation of cognitive dysfunction in conditions of Insomnia and Excessive Daytime Sleepiness —
+              Efficacy of transcranial alternating current stimulation (tACS) on cognition and sleep</h3>
             <div class="project-tags"><span class="proj-tag">Sleep</span></div>
           </div>
         </article>
@@ -336,7 +631,8 @@
           <div class="project-top"></div>
           <div class="project-body">
             <p class="project-type">PhD Project</p>
-            <h3>Neurophysiological basis of dreaming — A comprehensive polysomnography study in healthy human volunteers</h3>
+            <h3>Neurophysiological basis of dreaming — A comprehensive polysomnography study in healthy human volunteers
+            </h3>
             <div class="project-tags"><span class="proj-tag">Sleep</span></div>
           </div>
         </article>
@@ -356,7 +652,8 @@
           <div class="project-top"></div>
           <div class="project-body">
             <p class="project-type">DST-SERB Project</p>
-            <h3>Efficacy of photoperiod manipulation in establishing stress integration and cognitive recovery in ventral subicular-lesioned rats — A behavioural and molecular study</h3>
+            <h3>Efficacy of photoperiod manipulation in establishing stress integration and cognitive recovery in
+              ventral subicular-lesioned rats — A behavioural and molecular study</h3>
             <div class="project-tags"><span class="proj-tag">Circadian</span></div>
           </div>
         </article>
@@ -376,7 +673,8 @@
           <div class="project-top"></div>
           <div class="project-body">
             <p class="project-type">PhD Project</p>
-            <h3>Efficacy of Isha Yoga (Shambhavi Mahamudra) on Cognition and Well-being — A Neuropsychophysiological and Imaging study</h3>
+            <h3>Efficacy of Isha Yoga (Shambhavi Mahamudra) on Cognition and Well-being — A Neuropsychophysiological and
+              Imaging study</h3>
             <div class="project-tags"><span class="proj-tag">Meditation</span></div>
           </div>
         </article>
@@ -386,7 +684,9 @@
           <div class="project-top saffron"></div>
           <div class="project-body">
             <p class="project-type">DST-SATYAM Project</p>
-            <h3>Meditation, Sleep Organization and Well-Being from an Indian Perspective — Evaluation of Micro Sleep Architecture Dynamics, Sleep Consciousness and Psychological Well-Being in Practitioners of Vipassana Meditation</h3>
+            <h3>Meditation, Sleep Organization and Well-Being from an Indian Perspective — Evaluation of Micro Sleep
+              Architecture Dynamics, Sleep Consciousness and Psychological Well-Being in Practitioners of Vipassana
+              Meditation</h3>
             <div class="project-tags"><span class="proj-tag">Sleep</span></div>
           </div>
         </article>
@@ -396,7 +696,8 @@
           <div class="project-top"></div>
           <div class="project-body">
             <p class="project-type">DST-SATYAM Project</p>
-            <h3>A Study of Consciousness Measures and Synchrony between Brain and Cardiovascular Dynamics in Yoga Experience</h3>
+            <h3>A Study of Consciousness Measures and Synchrony between Brain and Cardiovascular Dynamics in Yoga
+              Experience</h3>
             <div class="project-tags"><span class="proj-tag">Meditation</span></div>
           </div>
         </article>
@@ -406,7 +707,8 @@
           <div class="project-top saffron"></div>
           <div class="project-body">
             <p class="project-type">Post-doctoral Project</p>
-            <h3>Efficacy of EEG and ERPs as diagnostic biomarkers of prodromal AD — A pre and post CBT intervention study</h3>
+            <h3>Efficacy of EEG and ERPs as diagnostic biomarkers of prodromal AD — A pre and post CBT intervention
+              study</h3>
             <div class="project-tags"><span class="proj-tag">Cognition</span></div>
           </div>
         </article>
@@ -416,7 +718,8 @@
           <div class="project-top"></div>
           <div class="project-body">
             <p class="project-type">PhD Project</p>
-            <h3>Efficacy of short photoperiod regime on cognitive functions in ventral subicular lesioned rats — A behavioral and electrophysiological study</h3>
+            <h3>Efficacy of short photoperiod regime on cognitive functions in ventral subicular lesioned rats — A
+              behavioral and electrophysiological study</h3>
             <div class="project-tags"><span class="proj-tag">Circadian</span></div>
           </div>
         </article>
@@ -436,7 +739,8 @@
           <div class="project-top"></div>
           <div class="project-body">
             <p class="project-type">DST-CSRI Project</p>
-            <h3>Chronic Pain — Understanding the cognitive, perceptual, affective underpinnings — A search for a cognitive model</h3>
+            <h3>Chronic Pain — Understanding the cognitive, perceptual, affective underpinnings — A search for a
+              cognitive model</h3>
             <div class="project-tags"><span class="proj-tag">Cognition</span></div>
           </div>
         </article>
@@ -446,7 +750,8 @@
           <div class="project-top saffron"></div>
           <div class="project-body">
             <p class="project-type">PhD Project</p>
-            <h3>Neurophenomenological Evaluation of Time Scales of Perception and Modulatory Effect of Resonance Frequency Breathing Intervention in Adolescent Attention Deficit Hyperactivity Disorder</h3>
+            <h3>Neurophenomenological Evaluation of Time Scales of Perception and Modulatory Effect of Resonance
+              Frequency Breathing Intervention in Adolescent Attention Deficit Hyperactivity Disorder</h3>
             <div class="project-tags"><span class="proj-tag">Cognition</span></div>
           </div>
         </article>
@@ -456,7 +761,8 @@
           <div class="project-top"></div>
           <div class="project-body">
             <p class="project-type">PhD Project</p>
-            <h3>Exploring the Effect of Virtual Reality Assisted Induction of Lucid Dreaming — A Neurophenomenological Study of Dream Awareness</h3>
+            <h3>Exploring the Effect of Virtual Reality Assisted Induction of Lucid Dreaming — A Neurophenomenological
+              Study of Dream Awareness</h3>
             <div class="project-tags"><span class="proj-tag">Sleep</span></div>
           </div>
         </article>
@@ -466,7 +772,8 @@
           <div class="project-top saffron"></div>
           <div class="project-body">
             <p class="project-type">PhD Project</p>
-            <h3>Mapping of EEG Microstate Dynamics and the Effect of Frontal-Midline-Theta Training on Phenomenology of Spontaneous Mentation</h3>
+            <h3>Mapping of EEG Microstate Dynamics and the Effect of Frontal-Midline-Theta Training on Phenomenology of
+              Spontaneous Mentation</h3>
             <div class="project-tags"><span class="proj-tag">Cognition</span></div>
           </div>
         </article>
@@ -486,7 +793,8 @@
           <div class="project-top saffron"></div>
           <div class="project-body">
             <p class="project-type">PhD Project</p>
-            <h3>EEG Signatures of Meditation Proficiency among Long-term Meditation Practitioners — An Exploratory Study</h3>
+            <h3>EEG Signatures of Meditation Proficiency among Long-term Meditation Practitioners — An Exploratory Study
+            </h3>
             <div class="project-tags"><span class="proj-tag">Meditation</span></div>
           </div>
         </article>
@@ -496,7 +804,8 @@
           <div class="project-top"></div>
           <div class="project-body">
             <p class="project-type">DST-SATYAM Project</p>
-            <h3>Assessment of Neurophysiology and Phenomenology of Dreaming among Long-term Practitioners of Meditation: A Window to Explore the Enduring Effect of Meditation on Consciousness</h3>
+            <h3>Assessment of Neurophysiology and Phenomenology of Dreaming among Long-term Practitioners of Meditation:
+              A Window to Explore the Enduring Effect of Meditation on Consciousness</h3>
             <div class="project-tags">
               <span class="proj-tag">Meditation</span>
               <span class="proj-tag">Sleep</span>
@@ -508,12 +817,23 @@
         <article class="project-card reveal" data-tags="Meditation Wellbeing" style="animation-delay:0.90s">
           <div class="project-top saffron"></div>
           <div class="project-body">
-            <p class="project-type">Just Project</p>
-            <h3>Simplified Kundalini Yoga (SKY) Practice and Wellbeing: A Pilot Study to Explore the Importance of Neuro-visceral Integration in Wellbeing</h3>
+            <p class="project-type">SKY Project</p>
+            <h3>Simplified Kundalini Yoga (SKY) Practice and Wellbeing: A Pilot Study to Explore the Importance of
+              Neuro-visceral Integration in Wellbeing</h3>
             <div class="project-tags">
               <span class="proj-tag">Meditation</span>
               <span class="proj-tag">Wellbeing</span>
             </div>
+          </div>
+        </article>
+
+        <!-- 20 -->
+        <article class="project-card reveal" data-tags="Meditation" style="animation-delay:0.95s">
+          <div class="project-top"></div>
+          <div class="project-body">
+            <p class="project-type">SpARC funded project</p>
+            <h3>Development and Validation of Rajayoga Well-being Scale</h3>
+            <div class="project-tags"><span class="proj-tag">Meditation</span></div>
           </div>
         </article>
 
@@ -523,9 +843,12 @@
 
   <!-- ── FOOTER ── -->
   <footer style="background:#070E16;border-top:1px solid rgba(232,131,10,.15);padding:1.5rem 5vw;margin-top:4rem;">
-    <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;">
-      <p style="font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.08em;color:rgba(138,155,176,.5);">© 2026 Centre for Consciousness Studies, NIMHANS. All rights reserved.</p>
-      <p style="font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.08em;color:rgba(138,155,176,.5);">Bengaluru, India</p>
+    <div
+      style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;">
+      <p style="font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.08em;color:rgba(138,155,176,.5);">© 2026
+        Centre for Consciousness Studies, NIMHANS. All rights reserved.</p>
+      <p style="font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.08em;color:rgba(138,155,176,.5);">
+        Bengaluru, India</p>
     </div>
   </footer>
 
@@ -540,7 +863,7 @@
 
     /* Mobile menu */
     const hamburger = document.getElementById('hamburger');
-    const overlay   = document.getElementById('nav-overlay');
+    const overlay = document.getElementById('nav-overlay');
     hamburger.addEventListener('click', () => {
       const open = overlay.classList.toggle('open');
       hamburger.classList.toggle('open', open);
