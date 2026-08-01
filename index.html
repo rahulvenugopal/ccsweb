@@ -1213,23 +1213,18 @@
       animation: fadeIn .4s var(--ease);
     }
 
-    .fac-placeholder {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.6;
-      max-width: 600px;
-      margin-bottom: 2rem;
-    }
-
     .fac-category-title {
       font-family: var(--ff-mono);
-      font-size: .65rem;
-      letter-spacing: .2em;
+      font-size: .75rem;
+      letter-spacing: .15em;
       color: var(--saffron);
       text-transform: uppercase;
-      margin-bottom: 1rem;
-      border-bottom: 1px solid rgba(232, 131, 10, .2);
-      padding-bottom: .5rem;
+      margin-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(232, 131, 10, .25);
+      padding-bottom: .6rem;
+      display: flex;
+      align-items: center;
+      gap: .6rem;
     }
 
     .fac-items-grid {
@@ -2048,41 +2043,64 @@
       <!-- Tab bar -->
       <div class="tab-bar reveal" role="tablist" aria-label="Team groups">
 
-        <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-current" data-tab="current">
+        <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-current" data-tab="current" onclick="switchTeamTab('current')">
           Current Research Team
         </button>
 
-        <button class="tab-btn " role="tab" aria-selected="false" aria-controls="tab-postdoc" data-tab="postdoc">
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-postdoc" data-tab="postdoc" onclick="switchTeamTab('postdoc')">
           Post-Doctoral Fellows
         </button>
 
-        <button class="tab-btn " role="tab" aria-selected="false" aria-controls="tab-phd" data-tab="phd">
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-phd" data-tab="phd" onclick="switchTeamTab('phd')">
           Graduate Students
         </button>
 
-        <button class="tab-btn " role="tab" aria-selected="false" aria-controls="tab-staff" data-tab="staff">
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-staff" data-tab="staff" onclick="switchTeamTab('staff')">
           Project Staff
         </button>
 
-        <button class="tab-btn " role="tab" aria-selected="false" aria-controls="tab-admin" data-tab="admin">
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-admin" data-tab="admin" onclick="switchTeamTab('admin')">
           Administration
         </button>
 
-        <button class="tab-btn " role="tab" aria-selected="false" aria-controls="tab-alumni" data-tab="alumni">
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-alumni" data-tab="alumni" onclick="switchTeamTab('alumni')">
           Alumni
         </button>
 
-        <button class="tab-btn " role="tab" aria-selected="false" aria-controls="tab-historical" data-tab="historical">
-          Founders (1980–1992)
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-historical" data-tab="historical" onclick="switchTeamTab('historical')">
+          Founders (1980&ndash;1992)
         </button>
 
-        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-advisory"
-          data-tab="advisory">Research Partners</button>
-        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-consortium"
-          data-tab="consortium">Collaborators</button>
-        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-trainee"
-          data-tab="trainee">Trainee</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-advisory" data-tab="advisory" onclick="switchTeamTab('advisory')">Research Partners</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-consortium" data-tab="consortium" onclick="switchTeamTab('consortium')">Collaborators</button>
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-trainee" data-tab="trainee" onclick="switchTeamTab('trainee')">Trainee</button>
       </div>
+
+      <script>
+        function switchTeamTab(tabKey) {
+          document.querySelectorAll('.tab-bar .tab-btn').forEach(function (btn) {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-selected', 'false');
+          });
+          var activeBtn = document.querySelector('.tab-bar .tab-btn[data-tab="' + tabKey + '"]');
+          if (activeBtn) {
+            activeBtn.classList.add('active');
+            activeBtn.setAttribute('aria-selected', 'true');
+          }
+          document.querySelectorAll('#people .tab-panel').forEach(function (p) {
+            p.classList.remove('active');
+            p.style.display = 'none';
+          });
+          var targetPanel = document.getElementById('tab-' + tabKey);
+          if (targetPanel) {
+            targetPanel.classList.add('active');
+            targetPanel.style.display = 'block';
+            targetPanel.querySelectorAll('.reveal').forEach(function (el) {
+              el.classList.add('visible');
+            });
+          }
+        }
+      </script>
 
       <!-- Member panels -->
       <!-- TEAM_DYNAMIC_START -->
@@ -2838,10 +2856,24 @@
 
       <!-- Trainee panel -->
       <div class="tab-panel" id="tab-trainee" role="tabpanel">
-        <div class="consortium-grid">
-          <div class="consortium-row">
-            <div class="cons-name">Trainee Name Placeholder</div>
-            <div class="cons-dept">Trainee Detailed Info Placeholder</div>
+        <div class="team-grid">
+          <div class="team-card reveal" style="animation-delay:0.00s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap">
+              <img src="assets/images/team/vaishnavi.jpeg" alt="Vaishnavi G Nair avatar"
+                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            </div>
+            <h3>Vaishnavi G Nair</h3>
+            <p class="role">M.Sc. Neuroscience, NIMHANS</p>
+          </div>
+          <div class="team-card reveal" style="animation-delay:0.18s">
+            <div class="card-border-bottom"></div>
+            <div class="card-avatar-wrap"
+              style="background:var(--navy-light,#152338);display:flex;align-items:center;justify-content:center;color:var(--saffron,#e5a93c);font-family:'DM Serif Display',serif;font-size:1.6rem;font-weight:600;border:1px solid rgba(229,169,60,0.2);">
+              SG
+            </div>
+            <h3>Saakshi Goswami</h3>
+            <p class="role">M.Sc. Neuroscience, NIMHANS</p>
           </div>
         </div>
       </div>
@@ -3088,63 +3120,404 @@
         <aside class="fac-sidebar" aria-label="Facility categories">
           <nav class="fac-nav">
 
-            <div class="fac-nav-item active" data-cat="EEG_/_ERP_Systems">EEG / ERP Systems</div>
+            <div class="fac-nav-item active" id="tab-btn-eeg-erp" onclick="switchFacTab('eeg-erp')">EEG &amp; ERP Systems</div>
 
-            <div class="fac-nav-item " data-cat="Polysomnography">Polysomnography</div>
+            <div class="fac-nav-item" id="tab-btn-polysomnography" onclick="switchFacTab('polysomnography')">Polysomnography &amp; Sleep</div>
 
-            <div class="fac-nav-item " data-cat="Portable_&amp;_Wireless">Portable &amp; Wireless</div>
+            <div class="fac-nav-item" id="tab-btn-neuromodulation" onclick="switchFacTab('neuromodulation')">Neuromodulation &amp; Stimulation</div>
 
-            <div class="fac-nav-item " data-cat="Computing">Computing</div>
+            <div class="fac-nav-item" id="tab-btn-extended-imaging" onclick="switchFacTab('extended-imaging')">Extended Imaging &amp; VR</div>
 
-            <div class="fac-nav-item " data-cat="Other_Instruments">Other Instruments</div>
+            <div class="fac-nav-item" id="tab-btn-sensors-behavior" onclick="switchFacTab('sensors-behavior')">Sensors &amp; Behavioral</div>
+
+            <div class="fac-nav-item" id="tab-btn-computing" onclick="switchFacTab('computing')">Computing &amp; Data</div>
 
           </nav>
         </aside>
 
+        <script>
+          function switchFacTab(catId) {
+            document.querySelectorAll('.fac-nav-item').forEach(function (item) {
+              item.classList.remove('active');
+            });
+            var btn = document.getElementById('tab-btn-' + catId);
+            if (btn) btn.classList.add('active');
+
+            document.querySelectorAll('.fac-section').forEach(function (sec) {
+              sec.classList.remove('active');
+              sec.style.display = 'none';
+            });
+
+            var target = document.getElementById('fac-' + catId);
+            if (target) {
+              target.classList.add('active');
+              target.style.display = 'block';
+              target.querySelectorAll('.reveal').forEach(function (el) {
+                el.classList.add('visible');
+              });
+            }
+          }
+        </script>
+
         <!-- scrollable content -->
         <div class="fac-content">
 
-          <div class="fac-section active" id="fac-EEG_/_ERP_Systems">
-            <h3 class="fac-category-title">EEG / ERP Systems</h3>
-            <p class="fac-placeholder">Detailed technical specifications and instrument models for the EEG and ERP
-              systems facility will be updated shortly.</p>
+          <!-- 1. EEG & ERP SYSTEMS -->
+          <div class="fac-section active" id="fac-eeg-erp" style="display: block;">
+            <h3 class="fac-category-title">EEG &amp; ERP Systems</h3>
             <div class="fac-items-grid">
+
+              <div class="fac-card">
+                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M2 12h3l2-5 3 10 3-7 2 4h7"/>
+                  <path d="M18 6a4 4 0 0 1 4 4"/>
+                  <path d="M20 3a7 7 0 0 1 3 3"/>
+                </svg>
+                <div class="fac-name">LiveAmp 32</div>
+                <div class="fac-vendor">Brain Products GmbH</div>
+                <span class="fac-count">2 Units &bull; 32 Channels</span>
+                <ul class="fac-specs">
+                  <li>32-Channel ultra-lightweight wearable wireless EEG system</li>
+                  <li>24 referential + 8 bipolar ExG channel flexibility</li>
+                  <li>24-bit A/D conversion with up to 1,000 Hz sampling rate</li>
+                  <li>Integrated 3-axis accelerometer for movement tracking</li>
+                  <li>MicroSD onboard recording &amp; 2.4 GHz wireless telemetry</li>
+                </ul>
+              </div>
+
+              <div class="fac-card">
+                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="4" width="18" height="16" rx="2"/>
+                  <path d="M7 8h10"/>
+                  <path d="M7 12h10"/>
+                  <path d="M7 16h6"/>
+                  <circle cx="17" cy="16" r="1" fill="currentColor"/>
+                </svg>
+                <div class="fac-name">actiCHamp / actiCHamp Plus</div>
+                <div class="fac-vendor">Brain Products GmbH</div>
+                <span class="fac-count">64 Channels</span>
+                <ul class="fac-specs">
+                  <li>64 Active EEG channels with actiCAP active electrode technology</li>
+                  <li>High sampling rates up to 50 kHz with 24-bit per-channel resolution</li>
+                  <li>8 integrated AUX ports for physiological sensors (EMG/ECG/EOG)</li>
+                  <li>Dedicated lithium-ion PowerUnit for ultra-low noise recording</li>
+                  <li>Multimodal synchronization with TMS, fNIRS, and eye-tracking</li>
+                </ul>
+              </div>
+
+              <div class="fac-card">
+                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2a10 10 0 0 0-10 10c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34"/>
+                  <path d="M2 12h4l2-4 3 8 3-6 2 2h6"/>
+                </svg>
+                <div class="fac-name">SynAmps2 / SynAmps RT</div>
+                <div class="fac-vendor">Compumedics Neuroscan</div>
+                <span class="fac-count">64 Channels</span>
+                <ul class="fac-specs">
+                  <li>64 Monopolar + 4 Bipolar + 2 High-level channels (70 channels total)</li>
+                  <li>High signal-to-noise ratio for ERP, EP, and cognitive EEG research</li>
+                  <li>Up to 20,000 Hz sampling rate per channel</li>
+                  <li>Integrated CURRY acquisition and signal processing suite</li>
+                  <li>Quik-Cap sintered Ag/AgCl high-density electrode array</li>
+                </ul>
+              </div>
+
+              <div class="fac-card">
+                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9"/>
+                  <path d="M12 3a9 9 0 0 0 0 18"/>
+                  <path d="M3 12h18"/>
+                  <path d="M4.5 7.5h15"/>
+                  <path d="M4.5 16.5h15"/>
+                </svg>
+                <div class="fac-name">HydroCel Geodesic Sensor Net (GES 400)</div>
+                <div class="fac-vendor">Electrical Geodesics, Inc. (EGI) / Philips</div>
+                <span class="fac-count">128 Channels</span>
+                <ul class="fac-specs">
+                  <li>128-Channel high-density dense-array spatial EEG sampling</li>
+                  <li>Saline-based HydroCel Geodesic Sensor Net (HGSN) for rapid setup</li>
+                  <li>Whole-head coverage for precise source localization &amp; ERP analysis</li>
+                  <li>Net Amps amplifier with high input impedance and ultra-low noise</li>
+                </ul>
+              </div>
+
+              <div class="fac-card">
+                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="4" y="5" width="16" height="14" rx="2"/>
+                  <path d="M8 9h8"/>
+                  <path d="M8 13h5"/>
+                  <circle cx="16" cy="13" r="1" fill="currentColor"/>
+                </svg>
+                <div class="fac-name">Axxonet Xamp EEG / ERP System</div>
+                <div class="fac-vendor">Axxonet System Technologies</div>
+                <span class="fac-count">2 Units</span>
+                <ul class="fac-specs">
+                  <li>Dual multi-channel electrophysiology acquisition amplifiers</li>
+                  <li>High sampling rate &amp; 24-bit per-channel signal resolution</li>
+                  <li>Integrated event-related potential (ERP) &amp; EP software platform</li>
+                  <li>Supports simultaneous multi-subject &amp; clinical electrophysiology</li>
+                </ul>
+              </div>
+
+              <div class="fac-card">
+                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 11a8 8 0 0 1 16 0"/>
+                  <path d="M2 11c0 2.5 1 4 3 4"/>
+                  <path d="M22 11c0 2.5-1 4-3 4"/>
+                  <path d="M7 11a5 5 0 0 1 10 0"/>
+                </svg>
+                <div class="fac-name">Muse Headband</div>
+                <div class="fac-vendor">Interaxon Inc.</div>
+                <span class="fac-count">Portable EEG / BCI</span>
+                <ul class="fac-specs">
+                  <li>4 Dry EEG channels (AF7, AF8, TP9, TP10) plus reference</li>
+                  <li>Multi-sensor array: EEG, PPG (heart rate), accelerometer &amp; gyro</li>
+                  <li>Real-time mobile wireless Bluetooth neurofeedback &amp; tracking</li>
+                  <li>Rapid deployment for ambulatory &amp; field cognitive studies</li>
+                </ul>
+              </div>
+
+              <div class="fac-card">
+                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="5" y="2" width="14" height="20" rx="2"/>
+                  <path d="M9 7h6"/>
+                  <path d="M8 12l2 2 4-4"/>
+                  <line x1="12" y1="17" x2="12" y2="17.01"/>
+                </svg>
+                <div class="fac-name">Portable 4-Channel EEG Devices</div>
+                <div class="fac-vendor">Portable &amp; Wireless Systems</div>
+                <span class="fac-count">4 Channels</span>
+                <ul class="fac-specs">
+                  <li>Compact 4-channel ambulatory EEG recording setups</li>
+                  <li>Lightweight wearable design for mobile &amp; ecological validity research</li>
+                  <li>Real-time brainwave acquisition and wearable neurofeedback</li>
+                </ul>
+              </div>
 
             </div>
           </div>
 
-          <div class="fac-section" id="fac-Polysomnography">
-            <h3 class="fac-category-title">Polysomnography</h3>
-            <p class="fac-placeholder">Detailed technical specifications and instrument models for the Polysomnography
-              facility will be updated shortly.</p>
+          <!-- 2. POLYSOMNOGRAPHY & SLEEP DIAGNOSTICS -->
+          <div class="fac-section" id="fac-polysomnography" style="display: none;">
+            <h3 class="fac-category-title">Polysomnography &amp; Sleep Diagnostics</h3>
             <div class="fac-items-grid">
+
+              <div class="fac-card">
+                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                  <path d="M2 20h20"/>
+                </svg>
+                <div class="fac-name">Nihon Kohden Polysomnography System (32-Channel)</div>
+                <div class="fac-vendor">Nihon Kohden Corporation</div>
+                <span class="fac-count">32 Channels</span>
+                <ul class="fac-specs">
+                  <li>32-Channel clinical-grade sleep diagnostic &amp; monitoring system</li>
+                  <li>Comprehensive PSG montage: EEG, EOG, EMG, ECG, SpO2 &amp; airflow</li>
+                  <li>High CMRR (&gt;105 dB) and low-noise amplifiers</li>
+                  <li>Integrated Polysmith sleep scoring &amp; analysis software suite</li>
+                </ul>
+              </div>
+
+              <div class="fac-card">
+                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                  <path d="M3 17h6l2-3 3 5 2-2h5"/>
+                </svg>
+                <div class="fac-name">Nihon Kohden Polysomnography System (64-Channel)</div>
+                <div class="fac-vendor">Nihon Kohden Corporation</div>
+                <span class="fac-count">64 Channels</span>
+                <ul class="fac-specs">
+                  <li>High-density 64-channel sleep acquisition &amp; diagnostic system</li>
+                  <li>Expanded EEG electrode placement for sleep neurodynamics</li>
+                  <li>High sampling rate (up to 10,000 Hz) with IP-addressable junction boxes</li>
+                  <li>Automated micro-arousal detection, sleep staging &amp; HL7 integration</li>
+                </ul>
+              </div>
 
             </div>
           </div>
 
-          <div class="fac-section" id="fac-Portable_&amp;_Wireless">
-            <h3 class="fac-category-title">Portable &amp; Wireless</h3>
-            <p class="fac-placeholder">Detailed technical specifications and instrument models for the Portable &amp;
-              Wireless facility will be updated shortly.</p>
+          <!-- 3. NEUROMODULATION & BRAIN STIMULATION -->
+          <div class="fac-section" id="fac-neuromodulation" style="display: none;">
+            <h3 class="fac-category-title">Neuromodulation &amp; Brain Stimulation</h3>
             <div class="fac-items-grid">
+
+              <div class="fac-card">
+                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                </svg>
+                <div class="fac-name">Soterix HD-tES / HD-tDCS System</div>
+                <div class="fac-vendor">Soterix Medical Inc.</div>
+                <span class="fac-count">High-Definition Stimulation</span>
+                <ul class="fac-specs">
+                  <li>Non-invasive high-definition transcranial direct/alternating current stimulation</li>
+                  <li>Targeted sub-centimeter focal cortical stimulation using 4x1 ring electrodes</li>
+                  <li>Supports HD-tDCS, HD-tACS, and HD-tRNS precision protocols</li>
+                  <li>Real-time impedance monitoring &amp; current flow modeling integration</li>
+                </ul>
+              </div>
+
+              <div class="fac-card">
+                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M18.36 5.64a9 9 0 1 1-12.73 0"/>
+                  <line x1="12" y1="2" x2="12" y2="12"/>
+                </svg>
+                <div class="fac-name">Soterix taVNS Portable Stimulator</div>
+                <div class="fac-vendor">Soterix Medical Inc.</div>
+                <span class="fac-count">Portable Vagus Stimulation</span>
+                <ul class="fac-specs">
+                  <li>Transcutaneous Auricular Vagus Nerve Stimulation (taVNS) wearable unit</li>
+                  <li>Targeted stimulation of auricular branch of vagus nerve (ABVN)</li>
+                  <li>Modulates autonomic nervous system &amp; locus coeruleus noradrenergic pathways</li>
+                  <li>Compact, lightweight battery-powered design for field neuromodulation</li>
+                </ul>
+              </div>
 
             </div>
           </div>
 
-          <div class="fac-section" id="fac-Computing">
-            <h3 class="fac-category-title">Computing</h3>
-            <p class="fac-placeholder">Detailed technical specifications and workstation details for the Computing
-              facility will be updated shortly.</p>
+          <!-- 4. EXTENDED IMAGING & EYE TRACKING -->
+          <div class="fac-section" id="fac-extended-imaging" style="display: none;">
+            <h3 class="fac-category-title">Extended Imaging &amp; Eye Tracking</h3>
             <div class="fac-items-grid">
+
+              <div class="fac-card">
+                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="6" width="20" height="10" rx="4"/>
+                  <path d="M12 16v3"/>
+                  <path d="M8 19h8"/>
+                  <circle cx="8" cy="11" r="2"/>
+                  <circle cx="16" cy="11" r="2"/>
+                </svg>
+                <div class="fac-name">HTC VIVE Mixed Reality Headsets</div>
+                <div class="fac-vendor">HTC VIVE</div>
+                <span class="fac-count">2 Headsets</span>
+                <ul class="fac-specs">
+                  <li>Dual high-resolution immersive mixed reality (MR) &amp; VR headsets</li>
+                  <li>Sub-millimeter spatial tracking &amp; high refresh-rate optics</li>
+                  <li>Integrated for 3D virtual environments &amp; neuro-behavioral experiments</li>
+                </ul>
+              </div>
+
+              <div class="fac-card">
+                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+                <div class="fac-name">Tobii Eye Tracker</div>
+                <div class="fac-vendor">Tobii AB</div>
+                <span class="fac-count">120 Hz Sampling Rate</span>
+                <ul class="fac-specs">
+                  <li>High-precision 120 Hz eye tracking and pupilometry system</li>
+                  <li>Accurate fixation, saccade, and gaze-point dynamics capture</li>
+                  <li>Hardware synchronization with EEG, fNIRS &amp; stimulus software</li>
+                </ul>
+              </div>
+
+              <div class="fac-card">
+                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="5"/>
+                  <line x1="12" y1="1" x2="12" y2="3"/>
+                  <line x1="12" y1="21" x2="12" y2="23"/>
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                  <line x1="1" y1="12" x2="3" y2="12"/>
+                  <line x1="21" y1="12" x2="23" y2="12"/>
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <div class="fac-name">NIRSport 2 fNIRS System</div>
+                <div class="fac-vendor">NIRx Medical Technologies</div>
+                <span class="fac-count">Wireless fNIRS System</span>
+                <ul class="fac-specs">
+                  <li>Wearable multi-channel functional near-infrared spectroscopy system</li>
+                  <li>Dual wavelengths (760 nm &amp; 850 nm) for Oxy- and Deoxy-Hb tracking</li>
+                  <li>Integrated 9-axis accelerometer &amp; short-distance scalp noise filters</li>
+                  <li>Supports multi-subject hyperscanning &amp; co-registration with EEG/VR</li>
+                </ul>
+              </div>
 
             </div>
           </div>
 
-          <div class="fac-section" id="fac-Other_Instruments">
-            <h3 class="fac-category-title">Other Instruments</h3>
-            <p class="fac-placeholder">Detailed technical specifications and models for Other Instruments will be
-              updated shortly.</p>
+          <!-- 5. PHYSIOLOGICAL SENSORS & BEHAVIORAL RESPONSE -->
+          <div class="fac-section" id="fac-sensors-behavior" style="display: none;">
+            <h3 class="fac-category-title">Physiological Sensors &amp; Behavioral Response</h3>
             <div class="fac-items-grid">
+
+              <div class="fac-card">
+                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+                <div class="fac-name">PST Chronos Timing &amp; Response Console</div>
+                <div class="fac-vendor">Psychology Software Tools (PST)</div>
+                <span class="fac-count">Sub-Millisecond Precision</span>
+                <ul class="fac-specs">
+                  <li>Millisecond-accurate response collection engine for E-Prime &amp; Psychopy</li>
+                  <li>Multi-modal response keys, voice key, digital I/O &amp; audio/visual timing</li>
+                  <li>Hardware TTL trigger generation for microsecond EEG, PSG &amp; fNIRS sync</li>
+                  <li>Photo-sensor &amp; microphone inputs for precise perceptual latency tracking</li>
+                </ul>
+              </div>
+
+              <div class="fac-card">
+                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                </svg>
+                <div class="fac-name">Auxiliary Multi-Parameter Physiological Sensors</div>
+                <div class="fac-vendor">Multi-Modal Sensor Suite</div>
+                <span class="fac-count">PPG, SpO2, GSR &amp; Autonomic</span>
+                <ul class="fac-specs">
+                  <li>Photoplethysmography (PPG) pulse sensor for heart rate variability (HRV)</li>
+                  <li>Continuous Pulse Oximetry (SpO2) blood oxygen saturation monitoring</li>
+                  <li>Galvanic Skin Response (GSR) / Electrodermal Activity (EDA) skin conductance</li>
+                  <li>Respiration effort belts, skin temperature &amp; autonomic response transducers</li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- 6. COMPUTING & DATA INFRASTRUCTURE -->
+          <div class="fac-section" id="fac-computing" style="display: none;">
+            <h3 class="fac-category-title">Computing &amp; Data Infrastructure</h3>
+            <div class="fac-items-grid">
+
+              <div class="fac-card">
+                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2"/>
+                  <line x1="8" y1="21" x2="16" y2="21"/>
+                  <line x1="12" y1="17" x2="12" y2="21"/>
+                </svg>
+                <div class="fac-name">High-Performance Neuroimaging Compute Server</div>
+                <div class="fac-vendor">Custom Enterprise GPU Server Suite</div>
+                <span class="fac-count">2 TB RAM &bull; Dual NVIDIA A100 (40GB)</span>
+                <ul class="fac-specs">
+                  <li>2 TB high-speed ECC system memory for large-scale neuro-computation</li>
+                  <li>Dual NVIDIA A100 Tensor Core GPUs (2x 40GB single-wide acceleration)</li>
+                  <li>Accelerated deep learning, EEG source localization &amp; microstate modeling</li>
+                  <li>Pre-configured with EEGLAB, FieldTrip, Brainstorm, PyEEG, MNE-Python &amp; PyTorch</li>
+                </ul>
+              </div>
+
+              <div class="fac-card">
+                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="2" y="2" width="20" height="8" rx="2"/>
+                  <rect x="2" y="14" width="20" height="8" rx="2"/>
+                  <line x1="6" y1="6" x2="6.01" y2="6"/>
+                  <line x1="6" y1="18" x2="6.01" y2="18"/>
+                </svg>
+                <div class="fac-name">High-Capacity Central Storage NAS</div>
+                <div class="fac-vendor">Enterprise Storage NAS Array</div>
+                <span class="fac-count">120 TB High-Speed Storage</span>
+                <ul class="fac-specs">
+                  <li>120 TB redundant RAID-backed NAS storage array for lab-wide data</li>
+                  <li>Automated backup protocols for high-density EEG, PSG &amp; fNIRS datasets</li>
+                  <li>High-speed 10GbE network interconnect for multi-workstation data streaming</li>
+                  <li>BIDS-compliant neuroimaging data repository &amp; secure access controls</li>
+                </ul>
+              </div>
 
             </div>
           </div>
@@ -3520,24 +3893,30 @@
 
     /* ── Navbar scroll ── */
     const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      navbar.classList.toggle('scrolled', window.scrollY > 80);
-    }, { passive: true });
+    if (navbar) {
+      window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 80);
+      }, { passive: true });
+    }
 
     /* ── Mobile menu ── */
     const hamburger = document.getElementById('hamburger');
     const overlay = document.getElementById('nav-overlay');
-    hamburger.addEventListener('click', () => {
-      const open = overlay.classList.toggle('open');
-      hamburger.classList.toggle('open', open);
-      hamburger.setAttribute('aria-expanded', open);
-      document.body.style.overflow = open ? 'hidden' : '';
-    });
+    if (hamburger && overlay) {
+      hamburger.addEventListener('click', () => {
+        const open = overlay.classList.toggle('open');
+        hamburger.classList.toggle('open', open);
+        hamburger.setAttribute('aria-expanded', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+      });
+    }
     function closeNav() {
-      overlay.classList.remove('open');
-      hamburger.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
+      if (overlay && hamburger) {
+        overlay.classList.remove('open');
+        hamburger.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
     }
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
 
@@ -3611,18 +3990,21 @@
     });
 
     /* ── Publications search ── */
-    document.getElementById('pub-search').addEventListener('input', function () {
-      const q = this.value.toLowerCase();
-      document.querySelectorAll('.pub-item').forEach(item => {
-        const text = (item.dataset.search || '').toLowerCase();
-        item.classList.toggle('hidden', q.length > 0 && !text.includes(q));
+    const pubSearchInput = document.getElementById('pub-search');
+    if (pubSearchInput) {
+      pubSearchInput.addEventListener('input', function () {
+        const q = this.value.toLowerCase();
+        document.querySelectorAll('.pub-item').forEach(item => {
+          const text = (item.dataset.search || '').toLowerCase();
+          item.classList.toggle('hidden', q.length > 0 && !text.includes(q));
+        });
       });
-    });
+    }
 
-    /* ── Facilities tabs highlight ── */
+    /* ── Facilities tabs switching ── */
     const facSections = document.querySelectorAll('.fac-section');
     const facNavItems = document.querySelectorAll('.fac-nav-item');
-    if (facSections.length) {
+    if (facSections.length && facNavItems.length) {
       facNavItems.forEach(nav => {
         nav.addEventListener('click', () => {
           // Remove active class from all nav items
@@ -3634,15 +4016,11 @@
           facSections.forEach(s => s.classList.remove('active'));
 
           // Show target section
-          const target = document.getElementById('fac-' + nav.dataset.cat);
+          const targetId = 'fac-' + nav.dataset.cat;
+          const target = document.getElementById(targetId);
           if (target) {
             target.classList.add('active');
-
-            // trigger reveals if inside
-            target.querySelectorAll('.reveal:not(.visible)').forEach(el => {
-              io.observe(el);
-              setTimeout(() => el.classList.add('visible'), 100);
-            });
+            target.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
           }
         });
       });
@@ -3653,18 +4031,22 @@
     const lightboxImg = document.getElementById('lightbox-img');
     const lightboxClose = document.getElementById('lightbox-close');
     function openLightbox(src, alt) {
-      lightboxImg.src = src;
-      lightboxImg.alt = alt || '';
-      lightbox.classList.add('open');
-      document.body.style.overflow = 'hidden';
+      if (lightbox && lightboxImg) {
+        lightboxImg.src = src;
+        lightboxImg.alt = alt || '';
+        lightbox.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
     }
-    lightboxClose.addEventListener('click', () => {
-      lightbox.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-    lightbox.addEventListener('click', e => {
-      if (e.target === lightbox) { lightbox.classList.remove('open'); document.body.style.overflow = ''; }
-    });
+    if (lightboxClose && lightbox) {
+      lightboxClose.addEventListener('click', () => {
+        lightbox.classList.remove('open');
+        document.body.style.overflow = '';
+      });
+      lightbox.addEventListener('click', e => {
+        if (e.target === lightbox) { lightbox.classList.remove('open'); document.body.style.overflow = ''; }
+      });
+    }
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape' && lightbox.classList.contains('open')) {
         lightbox.classList.remove('open'); document.body.style.overflow = '';
