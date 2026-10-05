@@ -1,0 +1,121 @@
+{
+  "generated": "2026-10-05T13:29:56",
+  "ideas_total": 43,
+  "taken_forward": 11,
+  "by_year": {
+    "2020": 4,
+    "2021": 13,
+    "2022": 6,
+    "2023": 7,
+    "2024": 4,
+    "2025": 6,
+    "2026": 3
+  },
+  "by_area": [
+    {
+      "key": "sleep",
+      "label": "Sleep & dream science",
+      "count": 14
+    },
+    {
+      "key": "mindbody",
+      "label": "Mind–body & contemplative science",
+      "count": 9
+    },
+    {
+      "key": "clinical",
+      "label": "Clinical & developmental neuroscience",
+      "count": 8
+    },
+    {
+      "key": "neurotech",
+      "label": "Neurotechnology & translational neuroscience",
+      "count": 8
+    },
+    {
+      "key": "cross",
+      "label": "Cross-cutting methods",
+      "count": 4
+    }
+  ],
+  "partners_approached": {
+    "Foundations & international": [
+      {
+        "name": "RERF-SpARC",
+        "count": 4
+      },
+      {
+        "name": "SVYASA",
+        "count": 2
+      },
+      {
+        "name": "Temple of Consciousness",
+        "count": 2
+      },
+      {
+        "name": "Mind & Life (PEACE)",
+        "count": 1
+      },
+      {
+        "name": "SreePVF",
+        "count": 1
+      }
+    ],
+    "Government": [
+      {
+        "name": "DST-CSRI",
+        "count": 9
+      },
+      {
+        "name": "DST-SATYAM / SHRI",
+        "count": 8
+      },
+      {
+        "name": "ICMR",
+        "count": 7
+      },
+      {
+        "name": "ANRF",
+        "count": 4
+      },
+      {
+        "name": "DST-BDTD",
+        "count": 4
+      },
+      {
+        "name": "IKS (MoE)",
+        "count": 4
+      },
+      {
+        "name": "DBT",
+        "count": 3
+      },
+      {
+        "name": "DST-CRG",
+        "count": 3
+      },
+      {
+        "name": "DST-SERB",
+        "count": 2
+      },
+      {
+        "name": "BIRAC",
+        "count": 1
+      },
+      {
+        "name": "CCRAS-AYUSH",
+        "count": 1
+      }
+    ],
+    "Industry": [
+      {
+        "name": "Turtle Technologies",
+        "count": 2
+      },
+      {
+        "name": "Wakefit",
+        "count": 1
+      }
+    ]
+  }
+}

@@ -1304,6 +1304,23 @@
       opacity: .6;
     }
 
+
+    /* flip cards (facilities.json) */
+    .fac-card { padding: 0; background: none; border: 0; perspective: 1100px; cursor: pointer; }
+    .fac-card:hover { transform: none; border: 0; }
+    .fac-flip { display: grid; transition: transform .6s var(--ease); transform-style: preserve-3d; height: 100%; }
+    .fac-card.flipped .fac-flip { transform: rotateY(180deg); }
+    .fac-face { grid-area: 1 / 1; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 10px; border: 1px solid rgba(250,246,239,.06); overflow: hidden; }
+    .fac-front { background: var(--surface); padding: 1.5rem; transition: border-color .2s; }
+    .fac-card:hover .fac-front { border-color: rgba(26,107,107,.4); }
+    .fac-back { transform: rotateY(180deg); background: #0b1622; display: flex; flex-direction: column; }
+    .fac-back img { width: 100%; flex: 1; min-height: 0; object-fit: cover; display: block; }
+    .fac-back .fac-ph { flex: 1; display: flex; align-items: center; justify-content: center; text-align: center; padding: 1.5rem; color: var(--muted); font-family: var(--ff-mono); font-size: .66rem; letter-spacing: .1em; text-transform: uppercase; line-height: 1.8; }
+    .fac-back .fac-ph[hidden] { display: none; }
+    .fac-back .fac-cap { padding: .7rem 1rem; font-family: var(--ff-mono); font-size: .62rem; letter-spacing: .08em; color: var(--cream); background: rgba(7,14,22,.9); }
+    .fac-flip-hint { margin-top: 1rem; font-family: var(--ff-mono); font-size: .56rem; letter-spacing: .14em; text-transform: uppercase; color: var(--teal-lt); opacity: .85; }
+    @media (prefers-reduced-motion: reduce) { .fac-flip { transition: none; } }
+
     /* ── EVENTS ─────────────────────────────────────────── */
     #talks {
       position: relative;
@@ -1815,7 +1832,8 @@
   <div id="nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
     <a href="#hero" onclick="closeNav()">Home</a>
     <a href="#people" onclick="closeNav()">Team</a>
-    <a href="#projects" onclick="closeNav()">Projects</a>
+    <a href="research.html" onclick="closeNav()">Research</a>
+    <a href="impact.html" onclick="closeNav()">Impact</a>
     <a href="#publications" onclick="closeNav()">Publications</a>
     <a href="#facilities" onclick="closeNav()">Facilities</a>
     <a href="#talks" onclick="closeNav()">Events</a>
@@ -1832,7 +1850,8 @@
     </a>
     <ul class="nav-links" role="list">
       <li><a href="#people">Team</a></li>
-      <li><a href="#projects">Projects</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="impact.html">Impact</a></li>
       <li><a href="#publications">Publications</a></li>
       <li><a href="#facilities">Facilities</a></li>
       <li><a href="#talks">Events</a></li>
@@ -1881,6 +1900,42 @@
   </section>
 
 
+
+  <!-- ── STATS BAND (filled from assets/data/site-data.json; edit the Google Sheet export, not this) ── -->
+  <section id="stats" class="dark" style="padding:2.5rem 5vw;border-top:1px solid rgba(232,131,10,.15);border-bottom:1px solid rgba(232,131,10,.15);" hidden>
+    <style>
+      .stats-band { max-width: var(--max); margin: 0 auto; display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.5rem; text-align: center; }
+      .stat-num { font-family: var(--ff-disp); font-size: 2.6rem; line-height: 1; color: var(--saffron-lt); }
+      .stat-label { margin-top: .5rem; font-family: var(--ff-mono); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); line-height: 1.5; }
+      @media (max-width: 900px) { .stats-band { grid-template-columns: repeat(3, 1fr); } }
+      @media (max-width: 520px) { .stats-band { grid-template-columns: repeat(2, 1fr); } .stat-num { font-size: 2.1rem; } }
+    </style>
+    <div class="stats-band" id="stats-band" aria-label="CCS at a glance"></div>
+  </section>
+  <script>
+    /* Reads assets/data/site-data.json (built by tools/build_data.py). Hides the band if the data is unavailable. */
+    fetch('assets/data/site-data.json', { cache: 'no-cache' })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (d) {
+        var s = d.stats;
+        var tiles = [
+          [s.sanctioned_projects, 'Sanctioned projects'],
+          [s.papers_since_2020, 'Papers published since 2020'],
+          [s.student_intern_placements, 'Student & intern placements'],
+          [s.intern_institutions, 'Institutions trained'],
+          [s.invited_talks + ' \u00b7 ' + s.events_organised, 'Invited talks \u00b7 events organised']
+        ];
+        var el = document.getElementById('stats-band');
+        tiles.forEach(function (t) {
+          var c = document.createElement('div');
+          var n = document.createElement('div'); n.className = 'stat-num'; n.textContent = t[0];
+          var l = document.createElement('div'); l.className = 'stat-label'; l.textContent = t[1];
+          c.appendChild(n); c.appendChild(l); el.appendChild(c);
+        });
+        document.getElementById('stats').hidden = false;
+      })
+      .catch(function () { /* leave band hidden */ });
+  </script>
 
   <!-- ── VISION & MISSION ───────────────────────────── -->
   <section id="about" class="light section-pad" style="position:relative;overflow:hidden;">
@@ -2882,118 +2937,59 @@
 
   <!-- ── PROJECTS ───────────────────────────────────── -->
   <section id="projects" class="dark section-pad" style="position:relative;overflow:hidden;">
+    <style>
+      .home-areas { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; }
+      .home-area { display: flex; flex-direction: column; padding: 1.8rem; background: var(--surface); border: 1px solid rgba(250,246,239,.08); border-top: 3px solid var(--saffron); border-radius: 4px; color: var(--cream); text-decoration: none; transition: transform .25s var(--ease), border-color .25s var(--ease); }
+      .home-area:hover { transform: translateY(-4px); border-color: var(--saffron); }
+      .home-area .n { font-family: var(--ff-mono); font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: var(--saffron); }
+      .home-area h3 { font-family: var(--ff-disp); font-size: 1.5rem; line-height: 1.2; margin: .5rem 0; }
+      .home-area .tag { font-style: italic; color: var(--saffron-lt); font-size: .9rem; margin-bottom: 1rem; }
+      .home-area ul { list-style: none; font-size: .82rem; color: var(--muted); line-height: 1.6; flex: 1; }
+      .home-area li::before { content: "\25C6"; color: var(--saffron); font-size: .5rem; margin-right: .6rem; vertical-align: middle; }
+      .home-area .counts { margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid rgba(250,246,239,.1); font-family: var(--ff-mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--saffron-lt); }
+      @media (max-width: 1000px) { .home-areas { grid-template-columns: repeat(2, 1fr); } }
+      @media (max-width: 560px) { .home-areas { grid-template-columns: 1fr; } }
+    </style>
     <div class="container">
       <div class="section-header light-header reveal">
         <span class="label">Research</span>
         <div class="saffron-rule"></div>
-        <h2 style="color:var(--cream);">Active Investigations</h2>
+        <h2 style="color:var(--cream);">Four Core Research Areas</h2>
       </div>
 
-      <!-- PROJECT_FILTERS_START -->
-      <div class="filter-bar reveal" role="group" aria-label="Filter projects by topic">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="Meditation">Meditation</button>
-        <button class="filter-btn" data-filter="Sleep">Sleep</button>
-        <button class="filter-btn" data-filter="Cognition">Cognition</button>
-        <button class="filter-btn" data-filter="Wellbeing">Wellbeing</button>
-        <button class="filter-btn" data-filter="Circadian">Circadian</button>
-      </div>
-      <!-- PROJECT_FILTERS_END -->
-
-      <!-- PROJECTS_START -->
-      <div class="projects-grid">
-
-        <article class="project-card reveal" data-tags="Sleep" style="animation-delay:0.00s">
-          <div class="project-top saffron"></div>
-          <div class="project-body">
-            <p class="project-type">DST-CSRI Project</p>
-            <h3>Evaluation of cognitive dysfunction in conditions of Insomnia and Excessive Daytime Sleepiness —
-              Efficacy of transcranial alternating current stimulation (tACS) on cognition and sleep</h3>
-            <div class="project-tags">
-              <span class="proj-tag">Sleep</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card reveal" data-tags="Meditation" style="animation-delay:0.07s">
-          <div class="project-top saffron"></div>
-          <div class="project-body">
-            <p class="project-type">Sahaj Marg Project</p>
-            <h3>Meditation and neuroplasticity — A study on Heartfulness meditators using EEG and MRI</h3>
-            <div class="project-tags">
-              <span class="proj-tag">Meditation</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card reveal" data-tags="Cognition" style="animation-delay:0.14s">
-          <div class="project-top "></div>
-          <div class="project-body">
-            <p class="project-type">PhD Project</p>
-            <h3>Neural oscillatory dynamics and cognition — A neurophysiological study</h3>
-            <div class="project-tags">
-              <span class="proj-tag">Cognition</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card reveal" data-tags="Meditation" style="animation-delay:0.21s">
-          <div class="project-top saffron"></div>
-          <div class="project-body">
-            <p class="project-type">PhD Project</p>
-            <h3>A Neurophysiological and Phenomenological Study of Yoga Nidra</h3>
-            <div class="project-tags">
-              <span class="proj-tag">Meditation</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card reveal" data-tags="Meditation Wellbeing" style="animation-delay:0.28s">
-          <div class="project-top "></div>
-          <div class="project-body">
-            <p class="project-type"> Project</p>
-            <h3>Simplified Kundalini Yoga (SKY) Practice and Wellbeing: A Pilot Study to Explore the Importance of
-              Neuro-visceral Integration in Wellbeing</h3>
-            <div class="project-tags">
-              <span class="proj-tag">Meditation</span>
-              <span class="proj-tag">Wellbeing</span>
-            </div>
-          </div>
-        </article>
-
-        <article class="project-card reveal" data-tags="Meditation Sleep" style="animation-delay:0.35s">
-          <div class="project-top saffron"></div>
-          <div class="project-body">
-            <p class="project-type">DST-SATYAM Project</p>
-            <h3>Assessment of Neurophysiology and Phenomenology of Dreaming among Long-term Practitioners of Meditation:
-              A Window to Explore the Enduring Effect of Meditation on Consciousness</h3>
-            <div class="project-tags">
-              <span class="proj-tag">Meditation</span>
-              <span class="proj-tag">Sleep</span>
-            </div>
-          </div>
-        </article>
-
+      <div class="home-areas reveal" id="home-areas">
+        <a class="home-area" href="research.html#area-sleep" data-area="sleep">
+          <span class="n">Area 1</span><h3>Sleep &amp; dream science</h3><p class="tag">From brain rhythms to inner worlds</p>
+          <ul><li>Sleep stability &amp; architecture</li><li>Dream recall &amp; lucid dreaming</li><li>Ageing, sleep &amp; sleep engineering</li></ul>
+          <div class="counts">&nbsp;</div></a>
+        <a class="home-area" href="research.html#area-mindbody" data-area="mindbody">
+          <span class="n">Area 2</span><h3>Mind&ndash;body &amp; contemplative science</h3><p class="tag">Ancient wisdom. Modern neuroscience.</p>
+          <ul><li>Vipassana, Rajayoga, Isha Yoga, Heartfulness</li><li>State &rarr; trait transformation</li><li>Relaxed alertness, balanced mind, non-duality</li></ul>
+          <div class="counts">&nbsp;</div></a>
+        <a class="home-area" href="research.html#area-clinical" data-area="clinical">
+          <span class="n">Area 3</span><h3>Clinical &amp; developmental neuroscience</h3><p class="tag">From mechanisms to meaningful change</p>
+          <ul><li>Schizophrenia microstates &amp; sleep</li><li>Adolescent depression</li><li>Anxiety, chronic pain &amp; resilience</li></ul>
+          <div class="counts">&nbsp;</div></a>
+        <a class="home-area" href="research.html#area-neurotech" data-area="neurotech">
+          <span class="n">Area 4</span><h3>Neurotechnology &amp; translational neuroscience</h3><p class="tag">From measurement to modulation, bench to bedside</p>
+          <ul><li>tACS &amp; auditory stimulation</li><li>Wearable EEG &amp; neurofeedback</li><li>Closed-loop brain-state modulation</li><li>Animal &amp; cell models of brain disorders</li></ul>
+          <div class="counts">&nbsp;</div></a>
       </div>
 
-      <!-- View All Projects CTA -->
-      <div class="reveal" style="text-align:center;margin-top:3rem;">
-        <a href="projects.html" style="
-          display:inline-flex;align-items:center;gap:.6rem;
-          font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;
-          color:var(--cream);border:1px solid rgba(250,246,239,.2);border-radius:100px;
-          padding:.75rem 2rem;transition:all .25s var(--ease);
-        " onmouseover="this.style.borderColor='var(--saffron)';this.style.color='var(--saffron)';"
-          onmouseout="this.style.borderColor='rgba(250,246,239,.2)';this.style.color='var(--cream)';">
-          View All 19 Projects
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="5" y1="12" x2="19" y2="12" />
-            <polyline points="12 5 19 12 12 19" />
-          </svg>
-        </a>
+      <div class="reveal" style="text-align:center;margin-top:3rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="research.html" style="display:inline-flex;align-items:center;gap:.6rem;font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);background:var(--saffron);border-radius:100px;padding:.75rem 2rem;">Explore the research</a>
+        <a href="projects.html" style="display:inline-flex;align-items:center;gap:.6rem;font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cream);border:1px solid rgba(250,246,239,.2);border-radius:100px;padding:.75rem 2rem;">All investigations</a>
       </div>
-      <!-- PROJECTS_END -->
     </div>
+    <script>
+      /* Fill each area card's counts from assets/data/site-data.json */
+      fetch('assets/data/site-data.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (d) {
+        document.querySelectorAll('#home-areas .home-area').forEach(function (c) {
+          var a = d.areas[c.dataset.area]; if (!a) return;
+          c.querySelector('.counts').textContent = a.sanctioned + (a.sanctioned === 1 ? ' sanctioned project' : ' sanctioned projects') + ' · ' + a.students + ' student projects';
+        });
+      }).catch(function () {});
+    </script>
   </section>
 
   <!-- ── PUBLICATIONS ───────────────────────────────── -->
@@ -3118,21 +3114,7 @@
       <div class="facilities-layout">
         <!-- sticky sidebar -->
         <aside class="fac-sidebar" aria-label="Facility categories">
-          <nav class="fac-nav">
-
-            <div class="fac-nav-item active" id="tab-btn-eeg-erp" onclick="switchFacTab('eeg-erp')">EEG &amp; ERP Systems</div>
-
-            <div class="fac-nav-item" id="tab-btn-polysomnography" onclick="switchFacTab('polysomnography')">Polysomnography &amp; Sleep</div>
-
-            <div class="fac-nav-item" id="tab-btn-neuromodulation" onclick="switchFacTab('neuromodulation')">Neuromodulation &amp; Stimulation</div>
-
-            <div class="fac-nav-item" id="tab-btn-extended-imaging" onclick="switchFacTab('extended-imaging')">Extended Imaging &amp; VR</div>
-
-            <div class="fac-nav-item" id="tab-btn-sensors-behavior" onclick="switchFacTab('sensors-behavior')">Sensors &amp; Behavioral</div>
-
-            <div class="fac-nav-item" id="tab-btn-computing" onclick="switchFacTab('computing')">Computing &amp; Data</div>
-
-          </nav>
+          <nav class="fac-nav" id="fac-nav" aria-label="Facility categories"></nav>
         </aside>
 
         <script>
@@ -3160,372 +3142,60 @@
         </script>
 
         <!-- scrollable content -->
-        <div class="fac-content">
-
-          <!-- 1. EEG & ERP SYSTEMS -->
-          <div class="fac-section active" id="fac-eeg-erp" style="display: block;">
-            <h3 class="fac-category-title">EEG &amp; ERP Systems</h3>
-            <div class="fac-items-grid">
-
-              <div class="fac-card">
-                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M2 12h3l2-5 3 10 3-7 2 4h7"/>
-                  <path d="M18 6a4 4 0 0 1 4 4"/>
-                  <path d="M20 3a7 7 0 0 1 3 3"/>
-                </svg>
-                <div class="fac-name">LiveAmp 32</div>
-                <div class="fac-vendor">Brain Products GmbH</div>
-                <span class="fac-count">2 Units &bull; 32 Channels</span>
-                <ul class="fac-specs">
-                  <li>32-Channel ultra-lightweight wearable wireless EEG system</li>
-                  <li>24 referential + 8 bipolar ExG channel flexibility</li>
-                  <li>24-bit A/D conversion with up to 1,000 Hz sampling rate</li>
-                  <li>Integrated 3-axis accelerometer for movement tracking</li>
-                  <li>MicroSD onboard recording &amp; 2.4 GHz wireless telemetry</li>
-                </ul>
-              </div>
-
-              <div class="fac-card">
-                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="4" width="18" height="16" rx="2"/>
-                  <path d="M7 8h10"/>
-                  <path d="M7 12h10"/>
-                  <path d="M7 16h6"/>
-                  <circle cx="17" cy="16" r="1" fill="currentColor"/>
-                </svg>
-                <div class="fac-name">actiCHamp / actiCHamp Plus</div>
-                <div class="fac-vendor">Brain Products GmbH</div>
-                <span class="fac-count">64 Channels</span>
-                <ul class="fac-specs">
-                  <li>64 Active EEG channels with actiCAP active electrode technology</li>
-                  <li>High sampling rates up to 50 kHz with 24-bit per-channel resolution</li>
-                  <li>8 integrated AUX ports for physiological sensors (EMG/ECG/EOG)</li>
-                  <li>Dedicated lithium-ion PowerUnit for ultra-low noise recording</li>
-                  <li>Multimodal synchronization with TMS, fNIRS, and eye-tracking</li>
-                </ul>
-              </div>
-
-              <div class="fac-card">
-                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 2a10 10 0 0 0-10 10c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34"/>
-                  <path d="M2 12h4l2-4 3 8 3-6 2 2h6"/>
-                </svg>
-                <div class="fac-name">SynAmps2 / SynAmps RT</div>
-                <div class="fac-vendor">Compumedics Neuroscan</div>
-                <span class="fac-count">64 Channels</span>
-                <ul class="fac-specs">
-                  <li>64 Monopolar + 4 Bipolar + 2 High-level channels (70 channels total)</li>
-                  <li>High signal-to-noise ratio for ERP, EP, and cognitive EEG research</li>
-                  <li>Up to 20,000 Hz sampling rate per channel</li>
-                  <li>Integrated CURRY acquisition and signal processing suite</li>
-                  <li>Quik-Cap sintered Ag/AgCl high-density electrode array</li>
-                </ul>
-              </div>
-
-              <div class="fac-card">
-                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="9"/>
-                  <path d="M12 3a9 9 0 0 0 0 18"/>
-                  <path d="M3 12h18"/>
-                  <path d="M4.5 7.5h15"/>
-                  <path d="M4.5 16.5h15"/>
-                </svg>
-                <div class="fac-name">HydroCel Geodesic Sensor Net (GES 400)</div>
-                <div class="fac-vendor">Electrical Geodesics, Inc. (EGI) / Philips</div>
-                <span class="fac-count">128 Channels</span>
-                <ul class="fac-specs">
-                  <li>128-Channel high-density dense-array spatial EEG sampling</li>
-                  <li>Saline-based HydroCel Geodesic Sensor Net (HGSN) for rapid setup</li>
-                  <li>Whole-head coverage for precise source localization &amp; ERP analysis</li>
-                  <li>Net Amps amplifier with high input impedance and ultra-low noise</li>
-                </ul>
-              </div>
-
-              <div class="fac-card">
-                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="4" y="5" width="16" height="14" rx="2"/>
-                  <path d="M8 9h8"/>
-                  <path d="M8 13h5"/>
-                  <circle cx="16" cy="13" r="1" fill="currentColor"/>
-                </svg>
-                <div class="fac-name">Axxonet Xamp EEG / ERP System</div>
-                <div class="fac-vendor">Axxonet System Technologies</div>
-                <span class="fac-count">2 Units</span>
-                <ul class="fac-specs">
-                  <li>Dual multi-channel electrophysiology acquisition amplifiers</li>
-                  <li>High sampling rate &amp; 24-bit per-channel signal resolution</li>
-                  <li>Integrated event-related potential (ERP) &amp; EP software platform</li>
-                  <li>Supports simultaneous multi-subject &amp; clinical electrophysiology</li>
-                </ul>
-              </div>
-
-              <div class="fac-card">
-                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 11a8 8 0 0 1 16 0"/>
-                  <path d="M2 11c0 2.5 1 4 3 4"/>
-                  <path d="M22 11c0 2.5-1 4-3 4"/>
-                  <path d="M7 11a5 5 0 0 1 10 0"/>
-                </svg>
-                <div class="fac-name">Muse Headband</div>
-                <div class="fac-vendor">Interaxon Inc.</div>
-                <span class="fac-count">Portable EEG / BCI</span>
-                <ul class="fac-specs">
-                  <li>4 Dry EEG channels (AF7, AF8, TP9, TP10) plus reference</li>
-                  <li>Multi-sensor array: EEG, PPG (heart rate), accelerometer &amp; gyro</li>
-                  <li>Real-time mobile wireless Bluetooth neurofeedback &amp; tracking</li>
-                  <li>Rapid deployment for ambulatory &amp; field cognitive studies</li>
-                </ul>
-              </div>
-
-              <div class="fac-card">
-                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="5" y="2" width="14" height="20" rx="2"/>
-                  <path d="M9 7h6"/>
-                  <path d="M8 12l2 2 4-4"/>
-                  <line x1="12" y1="17" x2="12" y2="17.01"/>
-                </svg>
-                <div class="fac-name">Portable 4-Channel EEG Devices</div>
-                <div class="fac-vendor">Portable &amp; Wireless Systems</div>
-                <span class="fac-count">4 Channels</span>
-                <ul class="fac-specs">
-                  <li>Compact 4-channel ambulatory EEG recording setups</li>
-                  <li>Lightweight wearable design for mobile &amp; ecological validity research</li>
-                  <li>Real-time brainwave acquisition and wearable neurofeedback</li>
-                </ul>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- 2. POLYSOMNOGRAPHY & SLEEP DIAGNOSTICS -->
-          <div class="fac-section" id="fac-polysomnography" style="display: none;">
-            <h3 class="fac-category-title">Polysomnography &amp; Sleep Diagnostics</h3>
-            <div class="fac-items-grid">
-
-              <div class="fac-card">
-                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                  <path d="M2 20h20"/>
-                </svg>
-                <div class="fac-name">Nihon Kohden Polysomnography System (32-Channel)</div>
-                <div class="fac-vendor">Nihon Kohden Corporation</div>
-                <span class="fac-count">32 Channels</span>
-                <ul class="fac-specs">
-                  <li>32-Channel clinical-grade sleep diagnostic &amp; monitoring system</li>
-                  <li>Comprehensive PSG montage: EEG, EOG, EMG, ECG, SpO2 &amp; airflow</li>
-                  <li>High CMRR (&gt;105 dB) and low-noise amplifiers</li>
-                  <li>Integrated Polysmith sleep scoring &amp; analysis software suite</li>
-                </ul>
-              </div>
-
-              <div class="fac-card">
-                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                  <path d="M3 17h6l2-3 3 5 2-2h5"/>
-                </svg>
-                <div class="fac-name">Nihon Kohden Polysomnography System (64-Channel)</div>
-                <div class="fac-vendor">Nihon Kohden Corporation</div>
-                <span class="fac-count">64 Channels</span>
-                <ul class="fac-specs">
-                  <li>High-density 64-channel sleep acquisition &amp; diagnostic system</li>
-                  <li>Expanded EEG electrode placement for sleep neurodynamics</li>
-                  <li>High sampling rate (up to 10,000 Hz) with IP-addressable junction boxes</li>
-                  <li>Automated micro-arousal detection, sleep staging &amp; HL7 integration</li>
-                </ul>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- 3. NEUROMODULATION & BRAIN STIMULATION -->
-          <div class="fac-section" id="fac-neuromodulation" style="display: none;">
-            <h3 class="fac-category-title">Neuromodulation &amp; Brain Stimulation</h3>
-            <div class="fac-items-grid">
-
-              <div class="fac-card">
-                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
-                </svg>
-                <div class="fac-name">Soterix HD-tES / HD-tDCS System</div>
-                <div class="fac-vendor">Soterix Medical Inc.</div>
-                <span class="fac-count">High-Definition Stimulation</span>
-                <ul class="fac-specs">
-                  <li>Non-invasive high-definition transcranial direct/alternating current stimulation</li>
-                  <li>Targeted sub-centimeter focal cortical stimulation using 4x1 ring electrodes</li>
-                  <li>Supports HD-tDCS, HD-tACS, and HD-tRNS precision protocols</li>
-                  <li>Real-time impedance monitoring &amp; current flow modeling integration</li>
-                </ul>
-              </div>
-
-              <div class="fac-card">
-                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M18.36 5.64a9 9 0 1 1-12.73 0"/>
-                  <line x1="12" y1="2" x2="12" y2="12"/>
-                </svg>
-                <div class="fac-name">Soterix taVNS Portable Stimulator</div>
-                <div class="fac-vendor">Soterix Medical Inc.</div>
-                <span class="fac-count">Portable Vagus Stimulation</span>
-                <ul class="fac-specs">
-                  <li>Transcutaneous Auricular Vagus Nerve Stimulation (taVNS) wearable unit</li>
-                  <li>Targeted stimulation of auricular branch of vagus nerve (ABVN)</li>
-                  <li>Modulates autonomic nervous system &amp; locus coeruleus noradrenergic pathways</li>
-                  <li>Compact, lightweight battery-powered design for field neuromodulation</li>
-                </ul>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- 4. EXTENDED IMAGING & EYE TRACKING -->
-          <div class="fac-section" id="fac-extended-imaging" style="display: none;">
-            <h3 class="fac-category-title">Extended Imaging &amp; Eye Tracking</h3>
-            <div class="fac-items-grid">
-
-              <div class="fac-card">
-                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="6" width="20" height="10" rx="4"/>
-                  <path d="M12 16v3"/>
-                  <path d="M8 19h8"/>
-                  <circle cx="8" cy="11" r="2"/>
-                  <circle cx="16" cy="11" r="2"/>
-                </svg>
-                <div class="fac-name">HTC VIVE Mixed Reality Headsets</div>
-                <div class="fac-vendor">HTC VIVE</div>
-                <span class="fac-count">2 Headsets</span>
-                <ul class="fac-specs">
-                  <li>Dual high-resolution immersive mixed reality (MR) &amp; VR headsets</li>
-                  <li>Sub-millimeter spatial tracking &amp; high refresh-rate optics</li>
-                  <li>Integrated for 3D virtual environments &amp; neuro-behavioral experiments</li>
-                </ul>
-              </div>
-
-              <div class="fac-card">
-                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                  <circle cx="12" cy="12" r="3"/>
-                </svg>
-                <div class="fac-name">Tobii Eye Tracker</div>
-                <div class="fac-vendor">Tobii AB</div>
-                <span class="fac-count">120 Hz Sampling Rate</span>
-                <ul class="fac-specs">
-                  <li>High-precision 120 Hz eye tracking and pupilometry system</li>
-                  <li>Accurate fixation, saccade, and gaze-point dynamics capture</li>
-                  <li>Hardware synchronization with EEG, fNIRS &amp; stimulus software</li>
-                </ul>
-              </div>
-
-              <div class="fac-card">
-                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="5"/>
-                  <line x1="12" y1="1" x2="12" y2="3"/>
-                  <line x1="12" y1="21" x2="12" y2="23"/>
-                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
-                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-                  <line x1="1" y1="12" x2="3" y2="12"/>
-                  <line x1="21" y1="12" x2="23" y2="12"/>
-                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
-                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
-                </svg>
-                <div class="fac-name">NIRSport 2 fNIRS System</div>
-                <div class="fac-vendor">NIRx Medical Technologies</div>
-                <span class="fac-count">Wireless fNIRS System</span>
-                <ul class="fac-specs">
-                  <li>Wearable multi-channel functional near-infrared spectroscopy system</li>
-                  <li>Dual wavelengths (760 nm &amp; 850 nm) for Oxy- and Deoxy-Hb tracking</li>
-                  <li>Integrated 9-axis accelerometer &amp; short-distance scalp noise filters</li>
-                  <li>Supports multi-subject hyperscanning &amp; co-registration with EEG/VR</li>
-                </ul>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- 5. PHYSIOLOGICAL SENSORS & BEHAVIORAL RESPONSE -->
-          <div class="fac-section" id="fac-sensors-behavior" style="display: none;">
-            <h3 class="fac-category-title">Physiological Sensors &amp; Behavioral Response</h3>
-            <div class="fac-items-grid">
-
-              <div class="fac-card">
-                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"/>
-                  <polyline points="12 6 12 12 16 14"/>
-                </svg>
-                <div class="fac-name">PST Chronos Timing &amp; Response Console</div>
-                <div class="fac-vendor">Psychology Software Tools (PST)</div>
-                <span class="fac-count">Sub-Millisecond Precision</span>
-                <ul class="fac-specs">
-                  <li>Millisecond-accurate response collection engine for E-Prime &amp; Psychopy</li>
-                  <li>Multi-modal response keys, voice key, digital I/O &amp; audio/visual timing</li>
-                  <li>Hardware TTL trigger generation for microsecond EEG, PSG &amp; fNIRS sync</li>
-                  <li>Photo-sensor &amp; microphone inputs for precise perceptual latency tracking</li>
-                </ul>
-              </div>
-
-              <div class="fac-card">
-                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                </svg>
-                <div class="fac-name">Auxiliary Multi-Parameter Physiological Sensors</div>
-                <div class="fac-vendor">Multi-Modal Sensor Suite</div>
-                <span class="fac-count">PPG, SpO2, GSR &amp; Autonomic</span>
-                <ul class="fac-specs">
-                  <li>Photoplethysmography (PPG) pulse sensor for heart rate variability (HRV)</li>
-                  <li>Continuous Pulse Oximetry (SpO2) blood oxygen saturation monitoring</li>
-                  <li>Galvanic Skin Response (GSR) / Electrodermal Activity (EDA) skin conductance</li>
-                  <li>Respiration effort belts, skin temperature &amp; autonomic response transducers</li>
-                </ul>
-              </div>
-
-            </div>
-          </div>
-
-          <!-- 6. COMPUTING & DATA INFRASTRUCTURE -->
-          <div class="fac-section" id="fac-computing" style="display: none;">
-            <h3 class="fac-category-title">Computing &amp; Data Infrastructure</h3>
-            <div class="fac-items-grid">
-
-              <div class="fac-card">
-                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="3" width="20" height="14" rx="2"/>
-                  <line x1="8" y1="21" x2="16" y2="21"/>
-                  <line x1="12" y1="17" x2="12" y2="21"/>
-                </svg>
-                <div class="fac-name">High-Performance Neuroimaging Compute Server</div>
-                <div class="fac-vendor">Custom Enterprise GPU Server Suite</div>
-                <span class="fac-count">2 TB RAM &bull; Dual NVIDIA A100 (40GB)</span>
-                <ul class="fac-specs">
-                  <li>2 TB high-speed ECC system memory for large-scale neuro-computation</li>
-                  <li>Dual NVIDIA A100 Tensor Core GPUs (2x 40GB single-wide acceleration)</li>
-                  <li>Accelerated deep learning, EEG source localization &amp; microstate modeling</li>
-                  <li>Pre-configured with EEGLAB, FieldTrip, Brainstorm, PyEEG, MNE-Python &amp; PyTorch</li>
-                </ul>
-              </div>
-
-              <div class="fac-card">
-                <svg class="fac-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="2" y="2" width="20" height="8" rx="2"/>
-                  <rect x="2" y="14" width="20" height="8" rx="2"/>
-                  <line x1="6" y1="6" x2="6.01" y2="6"/>
-                  <line x1="6" y1="18" x2="6.01" y2="18"/>
-                </svg>
-                <div class="fac-name">High-Capacity Central Storage NAS</div>
-                <div class="fac-vendor">Enterprise Storage NAS Array</div>
-                <span class="fac-count">120 TB High-Speed Storage</span>
-                <ul class="fac-specs">
-                  <li>120 TB redundant RAID-backed NAS storage array for lab-wide data</li>
-                  <li>Automated backup protocols for high-density EEG, PSG &amp; fNIRS datasets</li>
-                  <li>High-speed 10GbE network interconnect for multi-workstation data streaming</li>
-                  <li>BIDS-compliant neuroimaging data repository &amp; secure access controls</li>
-                </ul>
-              </div>
-
-            </div>
-          </div>
-
-        </div>
+        <div class="fac-content" id="fac-content"><p class="fac-loading" style="color:var(--muted)">Loading facilities…</p></div>
       </div>
     </div>
   </section>
+  <script>
+    /* Facilities: rendered from assets/data/facilities.json; photos live in assets/images/facilities/ */
+    (function () {
+      var nav = document.getElementById('fac-nav'), box = document.getElementById('fac-content');
+      if (!nav || !box) return;
+      function mk(t, c, x) { var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
+      function photo(item, img, ph, cap) {
+        var names = item.image ? [item.image] : [item.id + '.jpg', item.id + '.png', item.id + '.webp'], i = 0;
+        img.onerror = function () { i++; if (i < names.length) img.src = 'assets/images/facilities/' + names[i]; else { img.remove(); ph.hidden = false; } };
+        img.onload = function () { ph.hidden = true; };
+        img.src = 'assets/images/facilities/' + names[0];
+      }
+      fetch('assets/data/facilities.json', { cache: 'no-cache' }).then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(function (d) {
+        box.textContent = '';
+        d.categories.forEach(function (c, ci) {
+          var n = mk('div', 'fac-nav-item' + (ci === 0 ? ' active' : ''), c.nav || c.title); n.id = 'tab-btn-' + c.id;
+          n.setAttribute('role', 'button'); n.tabIndex = 0;
+          n.onclick = function () { switchFacTab(c.id); };
+          n.onkeydown = function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); switchFacTab(c.id); } };
+          nav.appendChild(n);
+          var sec = mk('div', 'fac-section' + (ci === 0 ? ' active' : '')); sec.id = 'fac-' + c.id; sec.style.display = ci === 0 ? 'block' : 'none';
+          sec.appendChild(mk('h3', 'fac-category-title', c.title));
+          var grid = mk('div', 'fac-items-grid');
+          c.items.forEach(function (it) {
+            var card = mk('div', 'fac-card'); card.tabIndex = 0; card.setAttribute('role', 'button');
+            card.setAttribute('aria-label', it.name + ': flip to show photo');
+            var flip = mk('div', 'fac-flip');
+            var front = mk('div', 'fac-face fac-front');
+            if (it.icon) { var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); svg.setAttribute('class', 'fac-icon'); svg.setAttribute('viewBox', '0 0 24 24'); svg.setAttribute('fill', 'none'); svg.setAttribute('stroke', 'currentColor'); svg.setAttribute('stroke-width', '1.8'); svg.setAttribute('stroke-linecap', 'round'); svg.setAttribute('stroke-linejoin', 'round'); svg.innerHTML = it.icon; front.appendChild(svg); }
+            front.appendChild(mk('div', 'fac-name', it.name));
+            if (it.vendor) front.appendChild(mk('div', 'fac-vendor', it.vendor));
+            if (it.count) front.appendChild(mk('span', 'fac-count', it.count));
+            var ul = mk('ul', 'fac-specs'); (it.specs || []).forEach(function (t) { ul.appendChild(mk('li', null, t)); }); front.appendChild(ul);
+            front.appendChild(mk('div', 'fac-flip-hint', '\u21bb Tap to see the device'));
+            var back = mk('div', 'fac-face fac-back'); back.setAttribute('aria-hidden', 'true');
+            var ph = mk('div', 'fac-ph', 'Photo coming soon'); ph.hidden = true;
+            var img = mk('img'); img.alt = it.name; img.loading = 'lazy';
+            back.appendChild(img); back.appendChild(ph); back.appendChild(mk('div', 'fac-cap', it.name + (it.vendor ? ' \u00b7 ' + it.vendor : '')));
+            photo(it, img, ph);
+            flip.appendChild(front); flip.appendChild(back); card.appendChild(flip);
+            function toggle() { card.classList.toggle('flipped'); }
+            card.onclick = toggle; card.onkeydown = function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } };
+            grid.appendChild(card);
+          });
+          sec.appendChild(grid); box.appendChild(sec);
+        });
+      }).catch(function () { box.textContent = 'Facility details are temporarily unavailable.'; });
+    })();
+  </script>
+
 
   <!-- ── EVENTS ─────────────────────────────────────── -->
   <section id="talks" class="light section-pad" style="position:relative;overflow:hidden;">
@@ -3535,7 +3205,7 @@
         <div class="saffron-rule"></div>
         <h2>Webinars, Workshops &amp; Conferences</h2>
       </div>
-      <div class="events-grid">
+      <div class="events-grid" id="events-grid">
 
         <article class="event-card reveal" style="animation-delay:0.0s">
           <div class="event-date-bar">
@@ -3618,7 +3288,32 @@
   </section>
 
   <!-- ── GALLERY ────────────────────────────────────── -->
-  <section id="gallery" class="surface section-pad" style="position:relative;overflow:hidden;">
+    <script>
+    /* Add events from the register that are not already listed (matched on start date), newest first */
+    fetch('assets/data/site-data.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (d) {
+      var grid = document.getElementById('events-grid'); if (!grid) return;
+      function dateOf(c) { return c.querySelector('.event-date-bar').textContent.trim().slice(0, 10); }
+      function keyOf(c) { return dateOf(c) + '|' + c.querySelector('h3').textContent.trim().toLowerCase().slice(0, 12); }
+      var have = Array.prototype.map.call(grid.children, keyOf);
+      d.events_organised.forEach(function (e) {
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(e.start || '') || have.indexOf(e.start + '|' + e.title.toLowerCase().slice(0, 12)) !== -1) return;
+        var end = e.start;
+        if (e.days && e.days > 1) { var t = new Date(e.start + 'T00:00:00Z'); t.setUTCDate(t.getUTCDate() + e.days - 1); end = t.toISOString().slice(0, 10); }
+        var card = document.createElement('article'); card.className = 'event-card reveal visible';
+        var bar = document.createElement('div'); bar.className = 'event-date-bar'; bar.textContent = end === e.start ? e.start : e.start + ' — ' + end;
+        var body = document.createElement('div'); body.className = 'event-body';
+        var h3 = document.createElement('h3'); h3.textContent = e.title; body.appendChild(h3);
+        if (e.organised_with) { var p = document.createElement('p'); p.textContent = 'With ' + e.organised_with; body.appendChild(p); }
+        if (e.type) { var tg = document.createElement('div'); tg.className = 'event-tags'; var s = document.createElement('span'); s.className = 'event-tag'; s.textContent = e.type; tg.appendChild(s); body.appendChild(tg); }
+        if (e.place) { var l = document.createElement('p'); l.className = 'event-location'; l.textContent = '📍 ' + e.place; body.appendChild(l); }
+        card.appendChild(bar); card.appendChild(body); grid.appendChild(card);
+      });
+      Array.prototype.slice.call(grid.children).sort(function (a, b) { return dateOf(b).localeCompare(dateOf(a)); })
+        .forEach(function (c) { grid.appendChild(c); });
+    }).catch(function () {});
+  </script>
+
+<section id="gallery" class="surface section-pad" style="position:relative;overflow:hidden;">
     <div class="container">
       <div class="section-header light-header reveal">
         <span class="label">Gallery</span>

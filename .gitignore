@@ -1,0 +1,6 @@
+
+# Private workbook: never publish (repo and site are public)
+assets/*.xlsx
+*.xlsx
+Claude outputs/
+__pycache__/

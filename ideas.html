@@ -4,9 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>All Projects — Centre for Consciousness Studies, NIMHANS</title>
-  <meta name="description"
-    content="Complete list of active research investigations at the Centre for Consciousness Studies, NIMHANS, Bengaluru.">
+  <title>Idea generation (internal) — CCS, NIMHANS</title>
+  <meta name="robots" content="noindex, nofollow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -521,7 +520,51 @@
         gap: 1.5rem;
       }
     }
+
+    /* ── RESEARCH PAGE ─────────────────────────── */
+    .area-block { padding: 4rem 0; border-top: 1px solid rgba(232,131,10,.15); }
+    .area-head { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: end; margin-bottom: 2rem; }
+    .area-num { font-family: var(--ff-mono); font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--saffron); }
+    .area-head h2 { font-family: var(--ff-disp); font-size: 2.4rem; font-weight: 600; color: var(--cream); line-height: 1.15; margin: .3rem 0; }
+    .area-head h2 em { color: var(--saffron-lt); font-style: italic; }
+    .area-tag { color: var(--muted); font-size: .95rem; }
+    .area-themes { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+    .area-fund { text-align: right; }
+    .area-fund .big { font-family: var(--ff-disp); font-size: 2.8rem; line-height: 1; color: var(--saffron-lt); }
+    .area-fund .small { font-family: var(--ff-mono); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-top: .4rem; }
+    .proj-meta { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; font-family: var(--ff-mono); font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+    .proj-meta .amt { color: var(--saffron-lt); }
+    .status-pill { display: inline-block; padding: .1rem .6rem; border: 1px solid rgba(232,131,10,.4); border-radius: 100px; color: var(--saffron-lt); }
+
+    .area-pipe { display:flex; flex-wrap:wrap; gap:.6rem 1.6rem; margin:1.2rem 0 0; font-family:var(--ff-mono); font-size:.66rem; letter-spacing:.08em; color:var(--muted); }
+    .area-pipe b { color:var(--saffron-lt); font-weight:500; font-size:.85rem; }
+    details.stu { margin:1rem 0 1.4rem; border:1px solid rgba(250,246,239,.08); border-radius:4px; background:var(--surface); }
+    details.stu summary { cursor:pointer; padding:.8rem 1.1rem; font-family:var(--ff-mono); font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--saffron-lt); }
+    details.stu ul { margin:0; padding:0 1.1rem 1rem 2.2rem; color:var(--cream); font-size:.9rem; line-height:1.55; }
+    .kf-filter { display:flex; flex-wrap:wrap; gap:.5rem; margin:1.2rem 0 2rem; }
+    .kf-filter button { background:transparent; border:1px solid rgba(250,246,239,.2); color:var(--cream); border-radius:99px; padding:.4rem 1rem; font-family:var(--ff-mono); font-size:.64rem; letter-spacing:.08em; cursor:pointer; }
+    .kf-filter button.on { background:var(--saffron); border-color:var(--saffron); color:var(--ink); }
+    .kf-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:1.4rem; }
+    .kf-card { background:var(--surface); border:1px solid rgba(250,246,239,.08); border-radius:4px; overflow:hidden; display:flex; flex-direction:column; }
+    .kf-card a.img { background:#fff; display:block; }
+    .kf-card img { width:100%; display:block; aspect-ratio:16/10; object-fit:contain; }
+    .kf-body { padding:1.2rem 1.4rem 1.4rem; }
+    .kf-body .k { font-family:var(--ff-mono); font-size:.58rem; letter-spacing:.16em; text-transform:uppercase; color:var(--saffron); }
+    .kf-body h3 { font-family:var(--ff-disp); font-size:1.3rem; line-height:1.25; color:var(--cream); margin:.4rem 0 .6rem; }
+    .kf-body p { color:var(--cream); opacity:.82; font-size:.9rem; line-height:1.55; }
+    .kf-body .cite { font-family:var(--ff-mono); font-size:.6rem; letter-spacing:.04em; color:var(--muted); margin-top:.8rem; }
+    .kf-body .cite a { color:var(--saffron-lt); }
+    .area-note { font-family: var(--ff-mono); font-size: .62rem; letter-spacing: .1em; color: var(--muted); text-align: center; margin-top: 3rem; }
+    .overview-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; margin-bottom: 1rem; }
+    .overview-card { display: block; padding: 1.6rem; background: var(--surface); border: 1px solid rgba(250,246,239,.08); border-top: 3px solid var(--saffron); border-radius: 4px; transition: transform .25s var(--ease), border-color .25s var(--ease); color: var(--cream); text-decoration: none; }
+    .overview-card:hover { transform: translateY(-3px); border-color: var(--saffron); }
+    .overview-card h3 { font-family: var(--ff-disp); font-size: 1.35rem; line-height: 1.2; margin: .4rem 0 .5rem; }
+    .overview-card p { font-size: .85rem; color: var(--muted); line-height: 1.5; }
+    .overview-card .counts { margin-top: 1rem; font-family: var(--ff-mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--saffron-lt); }
+    @media (max-width: 900px) { .overview-grid { grid-template-columns: repeat(2, 1fr); } .area-head { grid-template-columns: 1fr; } .area-fund { text-align: left; } }
+    @media (max-width: 520px) { .overview-grid { grid-template-columns: 1fr; } .area-head h2 { font-size: 1.9rem; } }
   </style>
+  <link rel="stylesheet" href="assets/js/ccs-charts.css">
 </head>
 
 <body>
@@ -547,7 +590,7 @@
     </a>
     <ul class="nav-links" role="list">
       <li><a href="index.html#people">Team</a></li>
-      <li><a href="research.html">Research</a></li>
+      <li><a href="research.html" style="color:var(--saffron);">Research</a></li>
       <li><a href="impact.html">Impact</a></li>
       <li><a href="index.html#publications">Publications</a></li>
       <li><a href="index.html#facilities">Facilities</a></li>
@@ -564,286 +607,54 @@
   <div class="page-hero">
     <div class="container">
       <div class="reveal">
-        <a href="index.html" class="back-link">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="19" y1="12" x2="5" y2="12" />
-            <polyline points="12 19 5 12 12 5" />
-          </svg>
-          Back to Home
+        <a href="research.html" class="back-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12" /><polyline points="12 19 5 12 12 5" /></svg>
+          Back to Research
         </a>
-        <div class="eyebrow">Research</div>
+        <div class="eyebrow">Internal</div>
         <div class="saffron-rule"></div>
-        <h1><em>Active</em> Investigations</h1>
-        <p class="sub">A complete view of ongoing research across sleep, meditation, cognition, circadian biology, and
-          wellbeing at CCS, NIMHANS.</p>
+        <h1>Idea <em>generation</em></h1>
+        <p class="sub">A working view of the research ideas CCS has developed into funding proposals since 2020, by year and by core area. Counts only; drawn from the research activity register. This page is not linked from the main site.</p>
       </div>
     </div>
   </div>
 
-  <!-- ── PROJECTS SECTION ── -->
   <section class="section-pad" style="padding-top:2rem;">
     <div class="container">
-
-      <!-- Stats Bar -->
-      <div class="stats-bar reveal">
-        <div class="stat-item">
-          <span class="stat-num">20</span>
-          <span class="stat-label">Total Projects</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">5</span>
-          <span class="stat-label">Research Areas</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">8</span>
-          <span class="stat-label">PhD Projects</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-num">6</span>
-          <span class="stat-label">Funded Projects</span>
-        </div>
+      <div class="stats-bar reveal" id="id-stats"></div>
+      <div class="chart-grid">
+        <div class="ccs-chart reveal"><h3>Ideas developed, by year</h3><p class="ccs-cap">Number of proposals prepared each year</p><div id="id-years"></div></div>
+        <div class="ccs-chart reveal"><h3>Ideas by core area</h3><p class="ccs-cap">Number of proposals prepared since 2020</p><div id="id-areas"></div></div>
+        <div class="ccs-chart wide reveal"><h3>Partners we have approached</h3><p class="ccs-cap">Organisations to which ideas have been taken</p><div class="chip-groups" id="id-partners"></div></div>
       </div>
-
-      <!-- Filter Bar -->
-      <div class="filter-bar reveal" role="group" aria-label="Filter projects by topic">
-        <button class="filter-btn active" data-filter="all">All Projects</button>
-        <button class="filter-btn" data-filter="Meditation">Meditation</button>
-        <button class="filter-btn" data-filter="Sleep">Sleep</button>
-        <button class="filter-btn" data-filter="Cognition">Cognition</button>
-        <button class="filter-btn" data-filter="Wellbeing">Wellbeing</button>
-        <button class="filter-btn" data-filter="Circadian">Circadian</button>
-      </div>
-
-      <!-- Projects Grid — all 19 -->
-      <div class="projects-grid">
-
-        <!-- 1 -->
-        <article class="project-card reveal" data-tags="Sleep" style="animation-delay:0.00s">
-          <div class="project-top saffron"></div>
-          <div class="project-body">
-            <p class="project-type">DST-CSRI Project</p>
-            <h3>Evaluation of cognitive dysfunction in conditions of Insomnia and Excessive Daytime Sleepiness —
-              Efficacy of transcranial alternating current stimulation (tACS) on cognition and sleep</h3>
-            <div class="project-tags"><span class="proj-tag">Sleep</span></div>
-          </div>
-        </article>
-
-        <!-- 2 -->
-        <article class="project-card reveal" data-tags="Sleep" style="animation-delay:0.05s">
-          <div class="project-top"></div>
-          <div class="project-body">
-            <p class="project-type">PhD Project</p>
-            <h3>Neurophysiological basis of dreaming — A comprehensive polysomnography study in healthy human volunteers
-            </h3>
-            <div class="project-tags"><span class="proj-tag">Sleep</span></div>
-          </div>
-        </article>
-
-        <!-- 3 -->
-        <article class="project-card reveal" data-tags="Meditation" style="animation-delay:0.10s">
-          <div class="project-top saffron"></div>
-          <div class="project-body">
-            <p class="project-type">Sahaj Marg Project</p>
-            <h3>Meditation and neuroplasticity — A study on Heartfulness meditators using EEG and MRI</h3>
-            <div class="project-tags"><span class="proj-tag">Meditation</span></div>
-          </div>
-        </article>
-
-        <!-- 4 -->
-        <article class="project-card reveal" data-tags="Circadian" style="animation-delay:0.15s">
-          <div class="project-top"></div>
-          <div class="project-body">
-            <p class="project-type">DST-SERB Project</p>
-            <h3>Efficacy of photoperiod manipulation in establishing stress integration and cognitive recovery in
-              ventral subicular-lesioned rats — A behavioural and molecular study</h3>
-            <div class="project-tags"><span class="proj-tag">Circadian</span></div>
-          </div>
-        </article>
-
-        <!-- 5 -->
-        <article class="project-card reveal" data-tags="Cognition" style="animation-delay:0.20s">
-          <div class="project-top saffron"></div>
-          <div class="project-body">
-            <p class="project-type">PhD Project</p>
-            <h3>Neural oscillatory dynamics and cognition — A neurophysiological study</h3>
-            <div class="project-tags"><span class="proj-tag">Cognition</span></div>
-          </div>
-        </article>
-
-        <!-- 6 -->
-        <article class="project-card reveal" data-tags="Meditation" style="animation-delay:0.25s">
-          <div class="project-top"></div>
-          <div class="project-body">
-            <p class="project-type">PhD Project</p>
-            <h3>Efficacy of Isha Yoga (Shambhavi Mahamudra) on Cognition and Well-being — A Neuropsychophysiological and
-              Imaging study</h3>
-            <div class="project-tags"><span class="proj-tag">Meditation</span></div>
-          </div>
-        </article>
-
-        <!-- 7 -->
-        <article class="project-card reveal" data-tags="Sleep" style="animation-delay:0.30s">
-          <div class="project-top saffron"></div>
-          <div class="project-body">
-            <p class="project-type">DST-SATYAM Project</p>
-            <h3>Meditation, Sleep Organization and Well-Being from an Indian Perspective — Evaluation of Micro Sleep
-              Architecture Dynamics, Sleep Consciousness and Psychological Well-Being in Practitioners of Vipassana
-              Meditation</h3>
-            <div class="project-tags"><span class="proj-tag">Sleep</span></div>
-          </div>
-        </article>
-
-        <!-- 8 -->
-        <article class="project-card reveal" data-tags="Meditation" style="animation-delay:0.35s">
-          <div class="project-top"></div>
-          <div class="project-body">
-            <p class="project-type">DST-SATYAM Project</p>
-            <h3>A Study of Consciousness Measures and Synchrony between Brain and Cardiovascular Dynamics in Yoga
-              Experience</h3>
-            <div class="project-tags"><span class="proj-tag">Meditation</span></div>
-          </div>
-        </article>
-
-        <!-- 9 -->
-        <article class="project-card reveal" data-tags="Cognition" style="animation-delay:0.40s">
-          <div class="project-top saffron"></div>
-          <div class="project-body">
-            <p class="project-type">Post-doctoral Project</p>
-            <h3>Efficacy of EEG and ERPs as diagnostic biomarkers of prodromal AD — A pre and post CBT intervention
-              study</h3>
-            <div class="project-tags"><span class="proj-tag">Cognition</span></div>
-          </div>
-        </article>
-
-        <!-- 10 -->
-        <article class="project-card reveal" data-tags="Circadian" style="animation-delay:0.45s">
-          <div class="project-top"></div>
-          <div class="project-body">
-            <p class="project-type">PhD Project</p>
-            <h3>Efficacy of short photoperiod regime on cognitive functions in ventral subicular lesioned rats — A
-              behavioral and electrophysiological study</h3>
-            <div class="project-tags"><span class="proj-tag">Circadian</span></div>
-          </div>
-        </article>
-
-        <!-- 11 -->
-        <article class="project-card reveal" data-tags="Meditation" style="animation-delay:0.50s">
-          <div class="project-top saffron"></div>
-          <div class="project-body">
-            <p class="project-type">DST-SERB Project</p>
-            <h3>Functional connectivity changes during traditional Vipassana practice — an fMRI study</h3>
-            <div class="project-tags"><span class="proj-tag">Meditation</span></div>
-          </div>
-        </article>
-
-        <!-- 12 -->
-        <article class="project-card reveal" data-tags="Cognition" style="animation-delay:0.55s">
-          <div class="project-top"></div>
-          <div class="project-body">
-            <p class="project-type">DST-CSRI Project</p>
-            <h3>Chronic Pain — Understanding the cognitive, perceptual, affective underpinnings — A search for a
-              cognitive model</h3>
-            <div class="project-tags"><span class="proj-tag">Cognition</span></div>
-          </div>
-        </article>
-
-        <!-- 13 -->
-        <article class="project-card reveal" data-tags="Cognition" style="animation-delay:0.60s">
-          <div class="project-top saffron"></div>
-          <div class="project-body">
-            <p class="project-type">PhD Project</p>
-            <h3>Neurophenomenological Evaluation of Time Scales of Perception and Modulatory Effect of Resonance
-              Frequency Breathing Intervention in Adolescent Attention Deficit Hyperactivity Disorder</h3>
-            <div class="project-tags"><span class="proj-tag">Cognition</span></div>
-          </div>
-        </article>
-
-        <!-- 14 -->
-        <article class="project-card reveal" data-tags="Sleep" style="animation-delay:0.65s">
-          <div class="project-top"></div>
-          <div class="project-body">
-            <p class="project-type">PhD Project</p>
-            <h3>Exploring the Effect of Virtual Reality Assisted Induction of Lucid Dreaming — A Neurophenomenological
-              Study of Dream Awareness</h3>
-            <div class="project-tags"><span class="proj-tag">Sleep</span></div>
-          </div>
-        </article>
-
-        <!-- 15 -->
-        <article class="project-card reveal" data-tags="Cognition" style="animation-delay:0.70s">
-          <div class="project-top saffron"></div>
-          <div class="project-body">
-            <p class="project-type">PhD Project</p>
-            <h3>Mapping of EEG Microstate Dynamics and the Effect of Frontal-Midline-Theta Training on Phenomenology of
-              Spontaneous Mentation</h3>
-            <div class="project-tags"><span class="proj-tag">Cognition</span></div>
-          </div>
-        </article>
-
-        <!-- 16 — NEW -->
-        <article class="project-card reveal" data-tags="Meditation" style="animation-delay:0.75s">
-          <div class="project-top"></div>
-          <div class="project-body">
-            <p class="project-type">PhD Project</p>
-            <h3>A Neurophysiological and Phenomenological Study of Yoga Nidra</h3>
-            <div class="project-tags"><span class="proj-tag">Meditation</span></div>
-          </div>
-        </article>
-
-        <!-- 17 -->
-        <article class="project-card reveal" data-tags="Meditation" style="animation-delay:0.80s">
-          <div class="project-top saffron"></div>
-          <div class="project-body">
-            <p class="project-type">PhD Project</p>
-            <h3>EEG Signatures of Meditation Proficiency among Long-term Meditation Practitioners — An Exploratory Study
-            </h3>
-            <div class="project-tags"><span class="proj-tag">Meditation</span></div>
-          </div>
-        </article>
-
-        <!-- 18 -->
-        <article class="project-card reveal" data-tags="Meditation Sleep" style="animation-delay:0.85s">
-          <div class="project-top"></div>
-          <div class="project-body">
-            <p class="project-type">DST-SATYAM Project</p>
-            <h3>Assessment of Neurophysiology and Phenomenology of Dreaming among Long-term Practitioners of Meditation:
-              A Window to Explore the Enduring Effect of Meditation on Consciousness</h3>
-            <div class="project-tags">
-              <span class="proj-tag">Meditation</span>
-              <span class="proj-tag">Sleep</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- 19 — NEW -->
-        <article class="project-card reveal" data-tags="Meditation Wellbeing" style="animation-delay:0.90s">
-          <div class="project-top saffron"></div>
-          <div class="project-body">
-            <p class="project-type">SKY Project</p>
-            <h3>Simplified Kundalini Yoga (SKY) Practice and Wellbeing: A Pilot Study to Explore the Importance of
-              Neuro-visceral Integration in Wellbeing</h3>
-            <div class="project-tags">
-              <span class="proj-tag">Meditation</span>
-              <span class="proj-tag">Wellbeing</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- 20 -->
-        <article class="project-card reveal" data-tags="Meditation" style="animation-delay:0.95s">
-          <div class="project-top"></div>
-          <div class="project-body">
-            <p class="project-type">SpARC funded project</p>
-            <h3>Development and Validation of Rajayoga Well-being Scale</h3>
-            <div class="project-tags"><span class="proj-tag">Meditation</span></div>
-          </div>
-        </article>
-
-      </div>
+      <p class="area-note" id="id-note"></p>
     </div>
   </section>
 
-  <!-- ── FOOTER ── -->
+  <script src="assets/js/ccs-charts.js"></script>
+  <script>
+    fetch('assets/data/ideas.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (d) {
+      var K = CCSCharts, col = K.colors;
+      [[d.ideas_total, 'Ideas developed'], [d.taken_forward, 'Taken forward'], [Object.keys(d.by_year).length, 'Years of activity']].forEach(function (t) {
+        var i = K.el('div', 'stat-item'); i.appendChild(K.el('span', 'stat-num', t[0])); i.appendChild(K.el('span', 'stat-label', t[1]));
+        document.getElementById('id-stats').appendChild(i);
+      });
+      K.bars(document.getElementById('id-years'), Object.keys(d.by_year).map(function (y) { return { label: y, value: d.by_year[y] }; }),
+        { label: 'Ideas developed by year', color: col.saffron, width: 560, height: 260, xName: 'Year', yName: 'Ideas' });
+      var short = { sleep: 'Sleep & dream', mindbody: 'Mind\u2013body & contemplative', clinical: 'Clinical & developmental', neurotech: 'Neurotech & translational', cross: 'Cross-cutting methods' };
+      K.hbars(document.getElementById('id-areas'), d.by_area.map(function (a) { return { label: short[a.key] || a.label, value: a.count, valueText: String(a.count) }; }),
+        { label: 'Ideas by core area', width: 640, left: 250, right: 60, rowH: 46, maxChars: 34, color: col.teal, xName: 'Core area', yName: 'Ideas' });
+      var host = document.getElementById('id-partners');
+      ['Government', 'Industry', 'Foundations & international'].forEach(function (g) {
+        var list = d.partners_approached[g]; if (!list) return;
+        var box = K.el('div', 'chip-group'); box.appendChild(K.el('h4', null, g)); var chips = K.el('div', 'chips');
+        list.forEach(function (f) { chips.appendChild(K.el('span', 'chip', f.name)); });
+        box.appendChild(chips); host.appendChild(box);
+      });
+      document.getElementById('id-note').textContent = 'Data updated ' + d.generated.slice(0, 10) + '.';
+    }).catch(function () { document.getElementById('id-note').textContent = 'Data is temporarily unavailable.'; });
+  </script>
+
   <footer style="background:#070E16;border-top:1px solid rgba(232,131,10,.15);padding:1.5rem 5vw;margin-top:4rem;">
     <div
       style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;">

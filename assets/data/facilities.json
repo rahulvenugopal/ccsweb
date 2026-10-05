@@ -1,0 +1,299 @@
+{
+  "_readme": "Add a device by adding an item to a category (or a new category). Put the photo in assets/images/facilities/ and set \"image\" to its file name; if \"image\" is empty the site looks for <id>.jpg, <id>.png or <id>.webp in that folder.",
+  "categories": [
+    {
+      "id": "eeg-erp",
+      "nav": "EEG & ERP Systems",
+      "title": "EEG & ERP Systems",
+      "items": [
+        {
+          "id": "liveamp-32",
+          "name": "LiveAmp 32",
+          "vendor": "Brain Products GmbH",
+          "count": "2 Units • 32 Channels",
+          "specs": [
+            "32-Channel ultra-lightweight wearable wireless EEG system",
+            "24 referential + 8 bipolar ExG channel flexibility",
+            "24-bit A/D conversion with up to 1,000 Hz sampling rate",
+            "Integrated 3-axis accelerometer for movement tracking",
+            "MicroSD onboard recording & 2.4 GHz wireless telemetry"
+          ],
+          "icon": "<path d=\"M2 12h3l2-5 3 10 3-7 2 4h7\"/> <path d=\"M18 6a4 4 0 0 1 4 4\"/> <path d=\"M20 3a7 7 0 0 1 3 3\"/>",
+          "image": ""
+        },
+        {
+          "id": "actichamp-actichamp-plus",
+          "name": "actiCHamp / actiCHamp Plus",
+          "vendor": "Brain Products GmbH",
+          "count": "64 Channels",
+          "specs": [
+            "64 Active EEG channels with actiCAP active electrode technology",
+            "High sampling rates up to 50 kHz with 24-bit per-channel resolution",
+            "8 integrated AUX ports for physiological sensors (EMG/ECG/EOG)",
+            "Dedicated lithium-ion PowerUnit for ultra-low noise recording",
+            "Multimodal synchronization with TMS, fNIRS, and eye-tracking"
+          ],
+          "icon": "<rect x=\"3\" y=\"4\" width=\"18\" height=\"16\" rx=\"2\"/> <path d=\"M7 8h10\"/> <path d=\"M7 12h10\"/> <path d=\"M7 16h6\"/> <circle cx=\"17\" cy=\"16\" r=\"1\" fill=\"currentColor\"/>",
+          "image": ""
+        },
+        {
+          "id": "synamps2-synamps-rt",
+          "name": "SynAmps2 / SynAmps RT",
+          "vendor": "Compumedics Neuroscan",
+          "count": "64 Channels",
+          "specs": [
+            "64 Monopolar + 4 Bipolar + 2 High-level channels (70 channels total)",
+            "High signal-to-noise ratio for ERP, EP, and cognitive EEG research",
+            "Up to 20,000 Hz sampling rate per channel",
+            "Integrated CURRY acquisition and signal processing suite",
+            "Quik-Cap sintered Ag/AgCl high-density electrode array"
+          ],
+          "icon": "<path d=\"M12 2a10 10 0 0 0-10 10c0 4.42 2.87 8.17 6.84 9.5c.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34\"/> <path d=\"M2 12h4l2-4 3 8 3-6 2 2h6\"/>",
+          "image": ""
+        },
+        {
+          "id": "hydrocel-geodesic-sensor-net-ges-400",
+          "name": "HydroCel Geodesic Sensor Net (GES 400)",
+          "vendor": "Electrical Geodesics, Inc. (EGI) / Philips",
+          "count": "128 Channels",
+          "specs": [
+            "128-Channel high-density dense-array spatial EEG sampling",
+            "Saline-based HydroCel Geodesic Sensor Net (HGSN) for rapid setup",
+            "Whole-head coverage for precise source localization & ERP analysis",
+            "Net Amps amplifier with high input impedance and ultra-low noise"
+          ],
+          "icon": "<circle cx=\"12\" cy=\"12\" r=\"9\"/> <path d=\"M12 3a9 9 0 0 0 0 18\"/> <path d=\"M3 12h18\"/> <path d=\"M4.5 7.5h15\"/> <path d=\"M4.5 16.5h15\"/>",
+          "image": ""
+        },
+        {
+          "id": "axxonet-xamp-eeg-erp-system",
+          "name": "Axxonet Xamp EEG / ERP System",
+          "vendor": "Axxonet System Technologies",
+          "count": "2 Units",
+          "specs": [
+            "Dual multi-channel electrophysiology acquisition amplifiers",
+            "High sampling rate & 24-bit per-channel signal resolution",
+            "Integrated event-related potential (ERP) & EP software platform",
+            "Supports simultaneous multi-subject & clinical electrophysiology"
+          ],
+          "icon": "<rect x=\"4\" y=\"5\" width=\"16\" height=\"14\" rx=\"2\"/> <path d=\"M8 9h8\"/> <path d=\"M8 13h5\"/> <circle cx=\"16\" cy=\"13\" r=\"1\" fill=\"currentColor\"/>",
+          "image": ""
+        },
+        {
+          "id": "muse-headband",
+          "name": "Muse Headband",
+          "vendor": "Interaxon Inc.",
+          "count": "Portable EEG / BCI",
+          "specs": [
+            "4 Dry EEG channels (AF7, AF8, TP9, TP10) plus reference",
+            "Multi-sensor array: EEG, PPG (heart rate), accelerometer & gyro",
+            "Real-time mobile wireless Bluetooth neurofeedback & tracking",
+            "Rapid deployment for ambulatory & field cognitive studies"
+          ],
+          "icon": "<path d=\"M4 11a8 8 0 0 1 16 0\"/> <path d=\"M2 11c0 2.5 1 4 3 4\"/> <path d=\"M22 11c0 2.5-1 4-3 4\"/> <path d=\"M7 11a5 5 0 0 1 10 0\"/>",
+          "image": ""
+        },
+        {
+          "id": "portable-4-channel-eeg-devices",
+          "name": "Portable 4-Channel EEG Devices",
+          "vendor": "Portable & Wireless Systems",
+          "count": "4 Channels",
+          "specs": [
+            "Compact 4-channel ambulatory EEG recording setups",
+            "Lightweight wearable design for mobile & ecological validity research",
+            "Real-time brainwave acquisition and wearable neurofeedback"
+          ],
+          "icon": "<rect x=\"5\" y=\"2\" width=\"14\" height=\"20\" rx=\"2\"/> <path d=\"M9 7h6\"/> <path d=\"M8 12l2 2 4-4\"/> <line x1=\"12\" y1=\"17\" x2=\"12\" y2=\"17.01\"/>",
+          "image": ""
+        }
+      ]
+    },
+    {
+      "id": "polysomnography",
+      "nav": "Polysomnography & Sleep",
+      "title": "Polysomnography & Sleep Diagnostics",
+      "items": [
+        {
+          "id": "nihon-kohden-polysomnography-system-32-channel",
+          "name": "Nihon Kohden Polysomnography System (32-Channel)",
+          "vendor": "Nihon Kohden Corporation",
+          "count": "32 Channels",
+          "specs": [
+            "32-Channel clinical-grade sleep diagnostic & monitoring system",
+            "Comprehensive PSG montage: EEG, EOG, EMG, ECG, SpO2 & airflow",
+            "High CMRR (>105 dB) and low-noise amplifiers",
+            "Integrated Polysmith sleep scoring & analysis software suite"
+          ],
+          "icon": "<path d=\"M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z\"/> <path d=\"M2 20h20\"/>",
+          "image": ""
+        },
+        {
+          "id": "nihon-kohden-polysomnography-system-64-channel",
+          "name": "Nihon Kohden Polysomnography System (64-Channel)",
+          "vendor": "Nihon Kohden Corporation",
+          "count": "64 Channels",
+          "specs": [
+            "High-density 64-channel sleep acquisition & diagnostic system",
+            "Expanded EEG electrode placement for sleep neurodynamics",
+            "High sampling rate (up to 10,000 Hz) with IP-addressable junction boxes",
+            "Automated micro-arousal detection, sleep staging & HL7 integration"
+          ],
+          "icon": "<path d=\"M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z\"/> <path d=\"M3 17h6l2-3 3 5 2-2h5\"/>",
+          "image": ""
+        }
+      ]
+    },
+    {
+      "id": "neuromodulation",
+      "nav": "Neuromodulation & Stimulation",
+      "title": "Neuromodulation & Brain Stimulation",
+      "items": [
+        {
+          "id": "soterix-hd-tes-hd-tdcs-system",
+          "name": "Soterix HD-tES / HD-tDCS System",
+          "vendor": "Soterix Medical Inc.",
+          "count": "High-Definition Stimulation",
+          "specs": [
+            "Non-invasive high-definition transcranial direct/alternating current stimulation",
+            "Targeted sub-centimeter focal cortical stimulation using 4x1 ring electrodes",
+            "Supports HD-tDCS, HD-tACS, and HD-tRNS precision protocols",
+            "Real-time impedance monitoring & current flow modeling integration"
+          ],
+          "icon": "<path d=\"M13 2L3 14h9l-1 8 10-12h-9l1-8z\"/>",
+          "image": ""
+        },
+        {
+          "id": "soterix-tavns-portable-stimulator",
+          "name": "Soterix taVNS Portable Stimulator",
+          "vendor": "Soterix Medical Inc.",
+          "count": "Portable Vagus Stimulation",
+          "specs": [
+            "Transcutaneous Auricular Vagus Nerve Stimulation (taVNS) wearable unit",
+            "Targeted stimulation of auricular branch of vagus nerve (ABVN)",
+            "Modulates autonomic nervous system & locus coeruleus noradrenergic pathways",
+            "Compact, lightweight battery-powered design for field neuromodulation"
+          ],
+          "icon": "<path d=\"M18.36 5.64a9 9 0 1 1-12.73 0\"/> <line x1=\"12\" y1=\"2\" x2=\"12\" y2=\"12\"/>",
+          "image": ""
+        }
+      ]
+    },
+    {
+      "id": "extended-imaging",
+      "nav": "Extended Imaging & VR",
+      "title": "Extended Imaging & Eye Tracking",
+      "items": [
+        {
+          "id": "htc-vive-mixed-reality-headsets",
+          "name": "HTC VIVE Mixed Reality Headsets",
+          "vendor": "HTC VIVE",
+          "count": "2 Headsets",
+          "specs": [
+            "Dual high-resolution immersive mixed reality (MR) & VR headsets",
+            "Sub-millimeter spatial tracking & high refresh-rate optics",
+            "Integrated for 3D virtual environments & neuro-behavioral experiments"
+          ],
+          "icon": "<rect x=\"2\" y=\"6\" width=\"20\" height=\"10\" rx=\"4\"/> <path d=\"M12 16v3\"/> <path d=\"M8 19h8\"/> <circle cx=\"8\" cy=\"11\" r=\"2\"/> <circle cx=\"16\" cy=\"11\" r=\"2\"/>",
+          "image": ""
+        },
+        {
+          "id": "tobii-eye-tracker",
+          "name": "Tobii Eye Tracker",
+          "vendor": "Tobii AB",
+          "count": "120 Hz Sampling Rate",
+          "specs": [
+            "High-precision 120 Hz eye tracking and pupilometry system",
+            "Accurate fixation, saccade, and gaze-point dynamics capture",
+            "Hardware synchronization with EEG, fNIRS & stimulus software"
+          ],
+          "icon": "<path d=\"M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z\"/> <circle cx=\"12\" cy=\"12\" r=\"3\"/>",
+          "image": ""
+        },
+        {
+          "id": "nirsport-2-fnirs-system",
+          "name": "NIRSport 2 fNIRS System",
+          "vendor": "NIRx Medical Technologies",
+          "count": "Wireless fNIRS System",
+          "specs": [
+            "Wearable multi-channel functional near-infrared spectroscopy system",
+            "Dual wavelengths (760 nm & 850 nm) for Oxy- and Deoxy-Hb tracking",
+            "Integrated 9-axis accelerometer & short-distance scalp noise filters",
+            "Supports multi-subject hyperscanning & co-registration with EEG/VR"
+          ],
+          "icon": "<circle cx=\"12\" cy=\"12\" r=\"5\"/> <line x1=\"12\" y1=\"1\" x2=\"12\" y2=\"3\"/> <line x1=\"12\" y1=\"21\" x2=\"12\" y2=\"23\"/> <line x1=\"4.22\" y1=\"4.22\" x2=\"5.64\" y2=\"5.64\"/> <line x1=\"18.36\" y1=\"18.36\" x2=\"19.78\" y2=\"19.78\"/> <line x1=\"1\" y1=\"12\" x2=\"3\" y2=\"12\"/> <line x1=\"21\" y1=\"12\" x2=\"23\" y2=\"12\"/> <line x1=\"4.22\" y1=\"19.78\" x2=\"5.64\" y2=\"18.36\"/> <line x1=\"18.36\" y1=\"5.64\" x2=\"19.78\" y2=\"4.22\"/>",
+          "image": ""
+        }
+      ]
+    },
+    {
+      "id": "sensors-behavior",
+      "nav": "Sensors & Behavioral",
+      "title": "Physiological Sensors & Behavioral Response",
+      "items": [
+        {
+          "id": "pst-chronos-timing-response-console",
+          "name": "PST Chronos Timing & Response Console",
+          "vendor": "Psychology Software Tools (PST)",
+          "count": "Sub-Millisecond Precision",
+          "specs": [
+            "Millisecond-accurate response collection engine for E-Prime & Psychopy",
+            "Multi-modal response keys, voice key, digital I/O & audio/visual timing",
+            "Hardware TTL trigger generation for microsecond EEG, PSG & fNIRS sync",
+            "Photo-sensor & microphone inputs for precise perceptual latency tracking"
+          ],
+          "icon": "<circle cx=\"12\" cy=\"12\" r=\"10\"/> <polyline points=\"12 6 12 12 16 14\"/>",
+          "image": ""
+        },
+        {
+          "id": "auxiliary-multi-parameter-physiological-sensors",
+          "name": "Auxiliary Multi-Parameter Physiological Sensors",
+          "vendor": "Multi-Modal Sensor Suite",
+          "count": "PPG, SpO2, GSR & Autonomic",
+          "specs": [
+            "Photoplethysmography (PPG) pulse sensor for heart rate variability (HRV)",
+            "Continuous Pulse Oximetry (SpO2) blood oxygen saturation monitoring",
+            "Galvanic Skin Response (GSR) / Electrodermal Activity (EDA) skin conductance",
+            "Respiration effort belts, skin temperature & autonomic response transducers"
+          ],
+          "icon": "<path d=\"M22 12h-4l-3 9L9 3l-3 9H2\"/>",
+          "image": ""
+        }
+      ]
+    },
+    {
+      "id": "computing",
+      "nav": "Computing & Data",
+      "title": "Computing & Data Infrastructure",
+      "items": [
+        {
+          "id": "high-performance-neuroimaging-compute-server",
+          "name": "High-Performance Neuroimaging Compute Server",
+          "vendor": "Custom Enterprise GPU Server Suite",
+          "count": "2 TB RAM • Dual NVIDIA A100 (40GB)",
+          "specs": [
+            "2 TB high-speed ECC system memory for large-scale neuro-computation",
+            "Dual NVIDIA A100 Tensor Core GPUs (2x 40GB single-wide acceleration)",
+            "Accelerated deep learning, EEG source localization & microstate modeling",
+            "Pre-configured with EEGLAB, FieldTrip, Brainstorm, PyEEG, MNE-Python & PyTorch"
+          ],
+          "icon": "<rect x=\"2\" y=\"3\" width=\"20\" height=\"14\" rx=\"2\"/> <line x1=\"8\" y1=\"21\" x2=\"16\" y2=\"21\"/> <line x1=\"12\" y1=\"17\" x2=\"12\" y2=\"21\"/>",
+          "image": ""
+        },
+        {
+          "id": "high-capacity-central-storage-nas",
+          "name": "High-Capacity Central Storage NAS",
+          "vendor": "Enterprise Storage NAS Array",
+          "count": "120 TB High-Speed Storage",
+          "specs": [
+            "120 TB redundant RAID-backed NAS storage array for lab-wide data",
+            "Automated backup protocols for high-density EEG, PSG & fNIRS datasets",
+            "High-speed 10GbE network interconnect for multi-workstation data streaming",
+            "BIDS-compliant neuroimaging data repository & secure access controls"
+          ],
+          "icon": "<rect x=\"2\" y=\"2\" width=\"20\" height=\"8\" rx=\"2\"/> <rect x=\"2\" y=\"14\" width=\"20\" height=\"8\" rx=\"2\"/> <line x1=\"6\" y1=\"6\" x2=\"6.01\" y2=\"6\"/> <line x1=\"6\" y1=\"18\" x2=\"6.01\" y2=\"18\"/>",
+          "image": ""
+        }
+      ]
+    }
+  ]
+}

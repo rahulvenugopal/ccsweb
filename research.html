@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Research — Centre for Consciousness Studies, NIMHANS</title>
+  <meta name="description"
+    content="Four core research areas, sanctioned projects at the Centre for Consciousness Studies, NIMHANS, Bengaluru.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Source+Serif+4:wght@300;400&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --ink: #0D1B2A;
+      --saffron: #E8830A;
+      --saffron-lt: #F5A84A;
+      --cream: #FAF6EF;
+      --stone: #E2D9CC;
+      --muted: #8A9BB0;
+      --teal: #1A6B6B;
+      --teal-lt: #24A0A0;
+      --surface: #132030;
+      --white: #FFFFFF;
+      --ff-disp: 'Cormorant Garamond', Georgia, serif;
+      --ff-body: 'Source Serif 4', Georgia, serif;
+      --ff-mono: 'DM Mono', 'Courier New', monospace;
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+      --max: 1200px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 18px;
+    }
+
+    body {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: var(--ff-body);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      font: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: var(--ff-disp);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .label {
+      font-family: var(--ff-mono);
+      font-size: .72rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--saffron);
+    }
+
+    .label::before {
+      content: '[';
+      opacity: .5;
+    }
+
+    .label::after {
+      content: ']';
+      opacity: .5;
+    }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 5vw;
+    }
+
+    .section-pad {
+      padding: 100px 0;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: opacity .7s var(--ease), transform .7s var(--ease);
+    }
+
+    .js-loaded .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+
+    .js-loaded .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── NAV ── */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 20px 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background .4s var(--ease), padding .4s var(--ease), border-color .4s var(--ease);
+      border-bottom: 1px solid transparent;
+    }
+
+    #navbar.scrolled {
+      background: rgba(13, 27, 42, .96);
+      backdrop-filter: blur(16px);
+      border-color: rgba(232, 131, 10, .25);
+      padding: 14px 5vw;
+    }
+
+    .nav-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .nav-brand .brand-top {
+      font-family: var(--ff-mono);
+      font-size: .75rem;
+      letter-spacing: .15em;
+      color: var(--saffron);
+    }
+
+    .nav-brand .brand-sub {
+      font-family: var(--ff-mono);
+      font-size: .6rem;
+      letter-spacing: .1em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--ff-mono);
+      font-size: .68rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      position: relative;
+      transition: color .25s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 1px;
+      background: var(--saffron);
+      transition: width .3s var(--ease);
+    }
+
+    .nav-links a:hover {
+      color: var(--saffron);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--saffron);
+      border-radius: 2px;
+      transition: transform .3s, opacity .3s;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    #nav-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: var(--ink);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .35s var(--ease);
+    }
+
+    #nav-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    #nav-overlay a {
+      font-family: var(--ff-disp);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--cream);
+      transition: color .2s;
+    }
+
+    #nav-overlay a:hover {
+      color: var(--saffron);
+    }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      padding: 160px 5vw 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(26, 107, 107, .1) 0%, transparent 70%),
+        radial-gradient(ellipse 30% 40% at 10% 80%, rgba(232, 131, 10, .05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .page-hero .container {
+      position: relative;
+    }
+
+    .page-hero .eyebrow {
+      font-family: var(--ff-mono);
+      font-size: .72rem;
+      letter-spacing: .3em;
+      color: var(--saffron);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+    }
+
+    .page-hero .eyebrow::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--saffron);
+      opacity: .6;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-style: italic;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+
+    .page-hero h1 em {
+      font-style: normal;
+      color: var(--saffron);
+    }
+
+    .page-hero .sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.8;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-family: var(--ff-mono);
+      font-size: .65rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      transition: color .2s;
+    }
+
+    .back-link:hover {
+      color: var(--saffron);
+    }
+
+    /* ── SAFFRON RULE ── */
+    .saffron-rule {
+      width: 3rem;
+      height: 2px;
+      background: var(--saffron);
+      margin: .8rem 0;
+    }
+
+    /* ── FILTER BAR ── */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .filter-btn {
+      font-family: var(--ff-mono);
+      font-size: .65rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      padding: .5rem 1.1rem;
+      border-radius: 100px;
+      border: 1px solid rgba(250, 246, 239, .15);
+      color: var(--muted);
+      transition: all .25s;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--saffron);
+      color: var(--saffron);
+    }
+
+    .filter-btn.active {
+      background: var(--saffron);
+      border-color: var(--saffron);
+      color: var(--ink);
+    }
+
+    /* ── PROJECTS GRID ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border-radius: 12px;
+      border: 1px solid rgba(250, 246, 239, .06);
+      overflow: hidden;
+      transition: transform .25s var(--ease), box-shadow .25s, opacity .35s, border-color .25s;
+    }
+
+    .project-card.hidden {
+      display: none !important;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 40px rgba(26, 107, 107, .2);
+      border-color: rgba(26, 107, 107, .4);
+    }
+
+    .project-top {
+      height: 6px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-lt));
+    }
+
+    .project-top.saffron {
+      background: linear-gradient(90deg, var(--saffron), var(--saffron-lt));
+    }
+
+    .project-body {
+      padding: 1.5rem;
+    }
+
+    .project-type {
+      font-family: var(--ff-mono);
+      font-size: .6rem;
+      letter-spacing: .12em;
+      color: var(--saffron);
+      margin-bottom: .6rem;
+      text-transform: uppercase;
+    }
+
+    .project-card h3 {
+      font-family: var(--ff-disp);
+      font-size: 1.1rem;
+      color: var(--cream);
+      line-height: 1.3;
+      margin-bottom: .8rem;
+    }
+
+    .project-card p {
+      font-size: .85rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+
+    .proj-tag {
+      font-family: var(--ff-mono);
+      font-size: .55rem;
+      letter-spacing: .1em;
+      padding: .25rem .7rem;
+      border-radius: 100px;
+      border: 1px solid rgba(26, 107, 107, .4);
+      color: var(--teal-lt);
+      text-transform: uppercase;
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+      padding: 1.5rem 2rem;
+      background: var(--surface);
+      border-radius: 12px;
+      border: 1px solid rgba(250, 246, 239, .06);
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: .2rem;
+    }
+
+    .stat-num {
+      font-family: var(--ff-disp);
+      font-size: 2rem;
+      color: var(--saffron);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: var(--ff-mono);
+      font-size: .6rem;
+      letter-spacing: .12em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-bar {
+        gap: 1.5rem;
+      }
+    }
+
+    /* ── RESEARCH PAGE ─────────────────────────── */
+    .area-block { padding: 4rem 0; border-top: 1px solid rgba(232,131,10,.15); }
+    .area-head { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: end; margin-bottom: 2rem; }
+    .area-num { font-family: var(--ff-mono); font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--saffron); }
+    .area-head h2 { font-family: var(--ff-disp); font-size: 2.4rem; font-weight: 600; color: var(--cream); line-height: 1.15; margin: .3rem 0; }
+    .area-head h2 em { color: var(--saffron-lt); font-style: italic; }
+    .area-tag { color: var(--muted); font-size: .95rem; }
+    .area-themes { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+    .area-fund { text-align: right; }
+    .area-fund .big { font-family: var(--ff-disp); font-size: 2.8rem; line-height: 1; color: var(--saffron-lt); }
+    .area-fund .small { font-family: var(--ff-mono); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-top: .4rem; }
+    .proj-meta { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; font-family: var(--ff-mono); font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+    .proj-meta .amt { color: var(--saffron-lt); }
+    .status-pill { display: inline-block; padding: .1rem .6rem; border: 1px solid rgba(232,131,10,.4); border-radius: 100px; color: var(--saffron-lt); }
+
+    .area-pipe { display:flex; flex-wrap:wrap; gap:.6rem 1.6rem; margin:1.2rem 0 0; font-family:var(--ff-mono); font-size:.66rem; letter-spacing:.08em; color:var(--muted); }
+    .area-pipe b { color:var(--saffron-lt); font-weight:500; font-size:.85rem; }
+    details.stu { margin:1rem 0 1.4rem; border:1px solid rgba(250,246,239,.08); border-radius:4px; background:var(--surface); }
+    details.stu summary { cursor:pointer; padding:.8rem 1.1rem; font-family:var(--ff-mono); font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--saffron-lt); }
+    details.stu ul { margin:0; padding:0 1.1rem 1rem 2.2rem; color:var(--cream); font-size:.9rem; line-height:1.55; }
+    .kf-filter { display:flex; flex-wrap:wrap; gap:.5rem; margin:1.2rem 0 2rem; }
+    .kf-filter button { background:transparent; border:1px solid rgba(250,246,239,.2); color:var(--cream); border-radius:99px; padding:.4rem 1rem; font-family:var(--ff-mono); font-size:.64rem; letter-spacing:.08em; cursor:pointer; }
+    .kf-filter button.on { background:var(--saffron); border-color:var(--saffron); color:var(--ink); }
+    .kf-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:1.4rem; }
+    .kf-card { background:var(--surface); border:1px solid rgba(250,246,239,.08); border-radius:4px; overflow:hidden; display:flex; flex-direction:column; }
+    .kf-card a.img { background:#fff; display:block; }
+    .kf-card img { width:100%; display:block; aspect-ratio:16/10; object-fit:contain; }
+    .kf-body { padding:1.2rem 1.4rem 1.4rem; }
+    .kf-body .k { font-family:var(--ff-mono); font-size:.58rem; letter-spacing:.16em; text-transform:uppercase; color:var(--saffron); }
+    .kf-body h3 { font-family:var(--ff-disp); font-size:1.3rem; line-height:1.25; color:var(--cream); margin:.4rem 0 .6rem; }
+    .kf-body p { color:var(--cream); opacity:.82; font-size:.9rem; line-height:1.55; }
+    .kf-body .cite { font-family:var(--ff-mono); font-size:.6rem; letter-spacing:.04em; color:var(--muted); margin-top:.8rem; }
+    .kf-body .cite a { color:var(--saffron-lt); }
+    .area-note { font-family: var(--ff-mono); font-size: .62rem; letter-spacing: .1em; color: var(--muted); text-align: center; margin-top: 3rem; }
+    .overview-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; margin-bottom: 1rem; }
+    .overview-card { display: block; padding: 1.6rem; background: var(--surface); border: 1px solid rgba(250,246,239,.08); border-top: 3px solid var(--saffron); border-radius: 4px; transition: transform .25s var(--ease), border-color .25s var(--ease); color: var(--cream); text-decoration: none; }
+    .overview-card:hover { transform: translateY(-3px); border-color: var(--saffron); }
+    .overview-card h3 { font-family: var(--ff-disp); font-size: 1.35rem; line-height: 1.2; margin: .4rem 0 .5rem; }
+    .overview-card p { font-size: .85rem; color: var(--muted); line-height: 1.5; }
+    .overview-card .counts { margin-top: 1rem; font-family: var(--ff-mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--saffron-lt); }
+    @media (max-width: 900px) { .overview-grid { grid-template-columns: repeat(2, 1fr); } .area-head { grid-template-columns: 1fr; } .area-fund { text-align: left; } }
+    @media (max-width: 520px) { .overview-grid { grid-template-columns: 1fr; } .area-head h2 { font-size: 1.9rem; } }
+  </style>
+  <link rel="stylesheet" href="assets/js/ccs-charts.css">
+</head>
+
+<body>
+
+  <!-- ── MOBILE OVERLAY ── -->
+  <div id="nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <a href="index.html">Home</a>
+    <a href="index.html#people">Team</a>
+    <a href="research.html">Research</a>
+    <a href="impact.html">Impact</a>
+    <a href="index.html#publications">Publications</a>
+    <a href="index.html#facilities">Facilities</a>
+    <a href="index.html#talks">Events</a>
+    <a href="index.html#Connect">Connect</a>
+    <a href="media.html">Media &amp; Outreach</a>
+  </div>
+
+  <!-- ── NAV ── -->
+  <nav id="navbar" aria-label="Main navigation">
+    <a href="index.html" class="nav-brand" aria-label="Centre for Consciousness Studies">
+      <span class="brand-top">Centre for Consciousness Studies</span>
+      <span class="brand-sub">NIMHANS &middot; Bengaluru &middot; India</span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html#people">Team</a></li>
+      <li><a href="research.html" style="color:var(--saffron);">Research</a></li>
+      <li><a href="impact.html">Impact</a></li>
+      <li><a href="index.html#publications">Publications</a></li>
+      <li><a href="index.html#facilities">Facilities</a></li>
+      <li><a href="index.html#talks">Events</a></li>
+      <li><a href="index.html#Connect">Connect</a></li>
+      <li><a href="media.html">Media</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ── PAGE HERO ── -->
+  <div class="page-hero">
+    <div class="container">
+      <div class="reveal">
+        <a href="index.html" class="back-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12" /><polyline points="12 19 5 12 12 5" /></svg>
+          Back to Home
+        </a>
+        <div class="eyebrow">Research</div>
+        <div class="saffron-rule"></div>
+        <h1>Four areas, <em>one integrative lens</em></h1>
+        <p class="sub">From understanding experience to personalised wellbeing: sleep, contemplative practice, clinical
+          neuroscience and neurotechnology, studied across rest, task, meditation and sleep.</p>
+      </div>
+    </div>
+  </div>
+
+  <section class="section-pad" style="padding-top:2rem;">
+    <div class="container">
+
+      <div class="stats-bar reveal" id="res-stats"></div>
+
+      <!-- ── Framework (deck slides 4, 5, 7, 9) ── -->
+      <style>
+        .fw { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; position: relative; margin: 1rem 0 2.5rem; }
+        .fw-tile { background: var(--surface); border: 1px solid rgba(250,246,239,.08); border-radius: 4px; padding: 1.6rem 1.8rem; }
+        .fw-tile .k { font-family: var(--ff-mono); font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: var(--saffron); margin-bottom: .6rem; }
+        .fw-tile p.big { font-family: var(--ff-disp); font-size: 1.5rem; line-height: 1.25; color: var(--cream); }
+        .fw-pills { display: flex; flex-wrap: wrap; gap: .5rem; }
+        .fw-pills span { font-family: var(--ff-mono); font-size: .68rem; letter-spacing: .06em; color: var(--cream); border: 1px solid rgba(250,246,239,.25); border-radius: 100px; padding: .3rem .9rem; }
+        .fw-logo { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 116px; height: 116px; border-radius: 50%; background: #FAF6EF; padding: 7px; box-shadow: 0 0 0 6px var(--ink-bg, #0D1B2A); }
+        .fw-logo img { width: 100%; height: 100%; object-fit: contain; }
+        .oa { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 2.5rem; }
+        .oa h3 { font-family: var(--ff-mono); font-size: .66rem; letter-spacing: .18em; text-transform: uppercase; color: var(--saffron-lt); margin-bottom: .8rem; }
+        .oa ol { list-style: none; counter-reset: n; display: grid; gap: .6rem; }
+        .oa li { counter-increment: n; display: flex; gap: 1rem; align-items: center; background: var(--surface); border-left: 3px solid var(--saffron); border-radius: 0 4px 4px 0; padding: .9rem 1.2rem; font-family: var(--ff-disp); font-size: 1.15rem; color: var(--cream); }
+        .oa li::before { content: counter(n); font-family: var(--ff-mono); font-size: .75rem; color: var(--saffron-lt); }
+        .figs { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 3rem; }
+        .figs figure { background: var(--surface); border: 1px solid rgba(250,246,239,.08); border-radius: 4px; padding: .8rem; }
+        .figs img { width: 100%; height: auto; border-radius: 2px; background: #fff; }
+        .figs figcaption { font-family: var(--ff-mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin: .7rem .2rem .2rem; }
+        .figs a { color: var(--saffron-lt); }
+        .blk-title { font-family: var(--ff-disp); font-size: 2rem; color: var(--cream); margin: 3rem 0 .4rem; }
+        .blk-sub { color: var(--muted); font-size: .95rem; margin-bottom: 1.4rem; max-width: 60ch; }
+        @media (max-width: 760px) { .fw, .oa, .figs { grid-template-columns: 1fr; } .fw-logo { display: none; } }
+      </style>
+      <h2 class="blk-title reveal">Our research framework</h2>
+      <p class="blk-sub reveal">Concepts from neuroscience and Indian philosophical insight, studied across states of rest, task, meditation and sleep, in wellness, normal and illness samples.</p>
+      <div class="fw reveal" aria-label="Research framework: concepts, states, samples and techniques">
+        <div class="fw-tile"><div class="k">Concepts / ideas</div><p class="big">Neuroscience<br>+ Indian philosophical insights</p></div>
+        <div class="fw-tile"><div class="k">States / levels</div><div class="fw-pills"><span>Rest</span><span>Task</span><span>Meditation</span><span>Sleep</span></div></div>
+        <div class="fw-tile"><div class="k">Samples / models</div><div class="fw-pills"><span>Wellness</span><span>Normal</span><span>Illness</span></div></div>
+        <div class="fw-tile"><div class="k">Techniques / approaches</div><p class="big">Neurophysiological<br>+ Cognitive neuroscience</p></div>
+        <div class="fw-logo" aria-hidden="true"><img src="assets/images/backgrounds/CCS_Logo_Half%208x8cm_trans.png" alt=""></div>
+      </div>
+      <div class="oa reveal">
+        <div><h3>Three objectives</h3><ol><li>Multidimensional nature of awareness</li><li>Role of brain&ndash;body harmony in wellbeing</li><li>Application-oriented research</li></ol></div>
+        <div><h3>Three approaches</h3><ol><li>Neurophenomenological approaches</li><li>Modern multivariate analysis approaches</li><li>Novel technology for real-world settings</li></ol></div>
+      </div>
+      <div class="figs reveal">
+        <figure><a href="assets/images/figures/ccs-path-to-wellbeing.jpg" target="_blank" rel="noopener"><img src="assets/images/figures/ccs-path-to-wellbeing.jpg" alt="Hand-drawn map of the CCS path from understanding experience to personalised wellbeing, showing the five research areas around the architecture of experiences" loading="lazy"></a><figcaption>The CCS path: from understanding experience to personalised wellbeing (<a href="assets/images/figures/ccs-path-to-wellbeing.jpg" target="_blank" rel="noopener">open full size</a>)</figcaption></figure>
+        <figure><a href="assets/images/figures/architecture-of-experiences.jpg" target="_blank" rel="noopener"><img src="assets/images/figures/architecture-of-experiences.jpg" alt="Architecture of experiences and wellbeing framework poster" loading="lazy"></a><figcaption>Architecture of experiences &amp; wellbeing framework (<a href="assets/images/figures/architecture-of-experiences.jpg" target="_blank" rel="noopener">open full size</a>)</figcaption></figure>
+      </div>
+
+
+
+      <div class="overview-grid" id="overview"></div>
+
+            <!-- ── Portfolio charts (deck slides 12, 18); all drawn from the register ── -->
+      <h2 class="blk-title reveal">Portfolio at a glance</h2>
+      <p class="blk-sub reveal">Sanctioned projects, student and intern work, and the partners who support us, drawn live from the CCS research activity register.</p>
+      <div class="chart-grid">
+        <div class="ccs-chart reveal"><h3>Sanctioned projects by core area</h3><p class="ccs-cap">Number of projects</p><div id="ch-funding"></div></div>
+        <div class="ccs-chart reveal"><h3>Student &amp; intern projects by core area</h3><p class="ccs-cap">Number of projects since 2020</p><div id="ch-outcome"></div></div>
+        <div class="ccs-chart wide reveal"><h3>Our funding partners</h3><p class="ccs-cap">Organisations supporting sanctioned CCS projects</p><div class="chip-groups" id="ch-funders"></div></div>
+      </div>
+
+      <h2 class="blk-title reveal">The four areas in detail</h2>
+      <div id="areas"></div>
+      <h2 class="blk-title reveal" id="findings">Key findings from our science</h2>
+      <p class="blk-sub reveal">Selected results from CCS research on meditation, sleep, illness and dreaming. Figures are reproduced from our published work.</p>
+      <div class="kf-filter" id="kf-filter"></div>
+      <div class="kf-grid" id="kf-grid"></div>
+      <p class="blk-sub reveal" id="cross-note"></p>
+      <p class="area-note" id="res-note"></p>
+    </div>
+  </section>
+
+  <script>
+    var AREAS = [
+      { key: 'sleep', title: 'Sleep & <em>dream</em> science', tag: 'From brain rhythms to inner worlds',
+        themes: ['Sleep stability & architecture', 'Dream recall & lucid dreaming', 'Ageing, sleep & sleep engineering'] },
+      { key: 'mindbody', title: 'Mind\u2013body & <em>contemplative</em> science', tag: 'Ancient wisdom. Modern neuroscience.',
+        themes: ['Vipassana, Rajayoga, Isha Yoga, Heartfulness', 'State \u2192 trait transformation', 'Relaxed alertness, balanced mind, non-duality'] },
+      { key: 'clinical', title: 'Clinical & <em>developmental</em> neuroscience', tag: 'From mechanisms to meaningful change',
+        themes: ['Schizophrenia microstates & sleep', 'Adolescent depression', 'Anxiety, chronic pain & resilience'] },
+      { key: 'neurotech', title: 'Neurotechnology & <em>translational</em> neuroscience', tag: 'From measurement to modulation, and from bench to bedside',
+        themes: ['tACS & auditory stimulation', 'Wearable EEG & neurofeedback', 'Closed-loop brain-state modulation', 'Animal & cell models of brain disorders'] }
+    ];
+    function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+    function money(l) { return l >= 100 ? '\u20b9' + (l / 100).toFixed(2) + ' Cr' : '\u20b9' + l.toFixed(1) + ' L'; }
+
+    fetch('assets/data/site-data.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (d) {
+      var s = d.stats;
+      [[s.sanctioned_projects, 'Sanctioned projects'], [s.papers_since_2020, 'Papers since 2020'],
+       [s.student_intern_placements, 'Student & intern placements'], [s.intern_institutions, 'Institutions trained']]
+        .forEach(function (t) {
+          var i = el('div', 'stat-item'); i.appendChild(el('span', 'stat-num', t[0])); i.appendChild(el('span', 'stat-label', t[1]));
+          document.getElementById('res-stats').appendChild(i);
+        });
+
+      AREAS.forEach(function (a, idx) {
+        var info = d.areas[a.key] || { sanctioned: 0, students: 0 };
+        var plainTitle = a.title.replace(/<[^>]+>/g, '');
+        // overview card
+        var card = el('a', 'overview-card'); card.href = '#area-' + a.key;
+        card.appendChild(el('div', 'area-num', 'Area ' + (idx + 1)));
+        card.appendChild(el('h3', null, plainTitle));
+        card.appendChild(el('p', null, a.tag));
+        card.appendChild(el('div', 'counts', info.sanctioned + (info.sanctioned === 1 ? ' sanctioned project' : ' sanctioned projects') + ' \u00b7 ' + info.students + ' student projects'));
+        document.getElementById('overview').appendChild(card);
+
+        // area block
+        var blk = el('div', 'area-block'); blk.id = 'area-' + a.key;
+        var head = el('div', 'area-head');
+        var left = el('div');
+        left.appendChild(el('div', 'area-num', 'Core area ' + (idx + 1)));
+        var h = el('h2'); h.innerHTML = a.title; left.appendChild(h);   // static text from this file only
+        left.appendChild(el('p', 'area-tag', a.tag));
+        var th = el('div', 'area-themes'); a.themes.forEach(function (t) { th.appendChild(el('span', 'proj-tag', t)); }); left.appendChild(th);
+        var fund = el('div', 'area-fund'); fund.appendChild(el('div', 'big', String(info.sanctioned)));
+        fund.appendChild(el('div', 'small', 'sanctioned project' + (info.sanctioned === 1 ? '' : 's')));
+        head.appendChild(left); head.appendChild(fund); blk.appendChild(head);
+        var pipe = el('div', 'area-pipe');
+        [[info.students, 'student & intern projects']].forEach(function (t) {
+          var sp = el('span'); var b = el('b', null, String(t[0] || 0)); sp.appendChild(b); sp.appendChild(document.createTextNode(' ' + t[1])); pipe.appendChild(sp);
+        });
+        blk.appendChild(pipe);
+        if (info.student_titles && info.student_titles.length) {
+          var det = el('details', 'stu'); det.appendChild(el('summary', null, 'Student & intern project titles (' + info.student_titles.length + ')'));
+          var ul = el('ul'); info.student_titles.forEach(function (t) { ul.appendChild(el('li', null, t)); }); det.appendChild(ul); blk.appendChild(det);
+        }
+
+        var grid = el('div', 'projects-grid');
+        d.sanctioned_projects.filter(function (p) { return p.area === a.key; }).forEach(function (p) {
+          var art = el('article', 'project-card visible'); art.appendChild(el('div', 'project-top saffron'));
+          var b = el('div', 'project-body');
+          b.appendChild(el('p', 'project-type', p.agency || 'Project'));
+          b.appendChild(el('h3', null, p.title));
+          var m = el('div', 'proj-meta');
+          m.appendChild(el('span', 'amt', p.start_year ? 'Since ' + p.start_year : ''));
+          m.appendChild(el('span', 'status-pill', p.status));
+          b.appendChild(m); art.appendChild(b); grid.appendChild(art);
+        });
+        blk.appendChild(grid); document.getElementById('areas').appendChild(blk);
+      });
+      var cx = d.areas.cross; if (cx) document.getElementById('cross-note').textContent = 'Cross-cutting methods (EEG, ERP and connectivity analysis, heart\u2013brain coupling, brain-age and criticality): ' + cx.students + ' student and intern projects support all four areas.';
+      var kf = d.key_findings || [], themes = ['All'];
+      kf.forEach(function (f) { if (f.theme && themes.indexOf(f.theme) < 0) themes.push(f.theme); });
+      var grid2 = document.getElementById('kf-grid'), bar = document.getElementById('kf-filter');
+      function drawKF(theme) {
+        grid2.textContent = '';
+        kf.filter(function (f) { return theme === 'All' || f.theme === theme; }).forEach(function (f) {
+          var c = el('article', 'kf-card');
+          if (f.image) { var a = el('a', 'img'); a.href = 'assets/images/findings/' + f.image; a.target = '_blank'; a.rel = 'noopener';
+            var im = el('img'); im.src = 'assets/images/findings/' + f.image; im.alt = f.title; im.loading = 'lazy'; a.appendChild(im); c.appendChild(a); }
+          var b = el('div', 'kf-body'); b.appendChild(el('div', 'k', f.theme)); b.appendChild(el('h3', null, f.title)); b.appendChild(el('p', null, f.text));
+          if (f.citation) { var ct = el('div', 'cite', f.citation);
+            if (/^https?:\/\//.test(f.link || '')) { ct.appendChild(document.createTextNode(' \u00b7 ')); var l = el('a', null, 'Read the paper'); l.href = f.link; l.target = '_blank'; l.rel = 'noopener'; ct.appendChild(l); }
+            b.appendChild(ct); }
+          c.appendChild(b); grid2.appendChild(c);
+        });
+        Array.prototype.forEach.call(bar.children, function (bt) { bt.className = bt.textContent === theme ? 'on' : ''; });
+      }
+      themes.forEach(function (t) { var bt = el('button', null, t); bt.type = 'button'; bt.onclick = function () { drawKF(t); }; bar.appendChild(bt); });
+      drawKF('All');
+      document.getElementById('res-note').textContent = 'Data updated ' + d.generated.slice(0, 10) + ' from the CCS research activity register.';
+    }).catch(function () {
+      document.getElementById('res-note').textContent = 'Project data is temporarily unavailable.';
+    });
+  </script>
+
+  <script src="assets/js/ccs-charts.js"></script>
+  <script>
+    fetch('assets/data/site-data.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (d) {
+      var K = CCSCharts, col = K.colors;
+      var names = { sleep: 'Sleep & dream', mindbody: 'Mind\u2013body & contemplative', clinical: 'Clinical & developmental', neurotech: 'Neurotech & translational', cross: 'Cross-cutting methods' };
+      function plural(n, w) { return n + ' ' + w + (n === 1 ? '' : 's'); }
+      K.hbars(document.getElementById('ch-funding'),
+        ['sleep', 'mindbody', 'clinical', 'neurotech'].map(function (k) { var a = d.areas[k]; return { label: names[k], value: a.sanctioned, valueText: String(a.sanctioned), sub: plural(a.sanctioned, 'sanctioned project') }; }),
+        { label: 'Sanctioned projects by core area', width: 640, left: 250, right: 60, rowH: 52, maxChars: 34, color: col.saffron, xName: 'Core area', yName: 'Sanctioned projects', max: Math.max.apply(null, ['sleep', 'mindbody', 'clinical', 'neurotech'].map(function (k) { return d.areas[k].sanctioned; })) + 1 });
+      K.hbars(document.getElementById('ch-outcome'),
+        ['sleep', 'mindbody', 'clinical', 'neurotech', 'cross'].map(function (k) { var a = d.areas[k]; return { label: names[k], value: a.students, valueText: String(a.students), sub: plural(a.students, 'student & intern project') }; }),
+        { label: 'Student and intern projects by core area', width: 640, left: 250, right: 60, rowH: 46, maxChars: 34, color: col.teal, xName: 'Core area', yName: 'Student & intern projects' });
+      var host = document.getElementById('ch-funders');
+      ['Government', 'Industry', 'Foundations & international'].forEach(function (g) {
+        var list = d.funders[g]; if (!list) return;
+        var box = K.el('div', 'chip-group'); box.appendChild(K.el('h4', null, g));
+        var chips = K.el('div', 'chips');
+        list.forEach(function (f) { chips.appendChild(K.el('span', 'chip', f)); });
+        box.appendChild(chips); host.appendChild(box);
+      });
+    }).catch(function () {});
+  </script>
+
+  <footer style="background:#070E16;border-top:1px solid rgba(232,131,10,.15);padding:1.5rem 5vw;margin-top:4rem;">
+    <div
+      style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;">
+      <p style="font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.08em;color:rgba(138,155,176,.5);">© 2026
+        Centre for Consciousness Studies, NIMHANS. All rights reserved.</p>
+      <p style="font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.08em;color:rgba(138,155,176,.5);">
+        Bengaluru, India</p>
+    </div>
+  </footer>
+
+  <script>
+    document.documentElement.classList.add('js-loaded');
+
+    /* Navbar scroll */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 80);
+    }, { passive: true });
+
+    /* Mobile menu */
+    const hamburger = document.getElementById('hamburger');
+    const overlay = document.getElementById('nav-overlay');
+    hamburger.addEventListener('click', () => {
+      const open = overlay.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    function closeNav() {
+      overlay.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
+
+    /* Reveal on scroll */
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* Project filter */
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.project-card').forEach(card => {
+          const tags = card.dataset.tags || '';
+          const show = filter === 'all' || tags.includes(filter);
+          card.classList.toggle('hidden', !show);
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

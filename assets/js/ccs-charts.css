@@ -1,0 +1,26 @@
+/* Styles for CCSCharts (loaded by research.html and impact.html) */
+.ccs-chart { background: var(--surface); border: 1px solid rgba(250,246,239,.08); border-radius: 4px; padding: 1.4rem 1.4rem 1rem; }
+.ccs-chart h3 { font-family: var(--ff-disp); font-size: 1.3rem; color: var(--cream); margin-bottom: .2rem; }
+.ccs-chart .ccs-cap { font-family: var(--ff-mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
+.ccs-svg { width: 100%; height: auto; display: block; overflow: visible; }
+.ccs-svg g:focus, .ccs-svg path:focus { outline: none; }
+.ccs-svg g:focus-visible, .ccs-svg path:focus-visible { outline: 2px solid var(--saffron-lt); }
+.ccs-legend { display: flex; flex-wrap: wrap; gap: .4rem 1.2rem; margin-top: .8rem; font-size: .8rem; color: var(--cream); }
+.ccs-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: .5rem; }
+.ccs-donut { display: grid; grid-template-columns: minmax(150px, 220px) 1fr; gap: 1.5rem; align-items: center; }
+.ccs-donut-side .ccs-legend { flex-direction: column; margin-top: 0; font-size: .9rem; gap: .6rem; }
+.ccs-table { margin-top: 1rem; font-size: .78rem; color: var(--muted); }
+.ccs-table summary { cursor: pointer; font-family: var(--ff-mono); font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; }
+.ccs-table table { margin-top: .6rem; border-collapse: collapse; width: 100%; }
+.ccs-table th, .ccs-table td { text-align: left; padding: .25rem .6rem .25rem 0; border-bottom: 1px solid rgba(250,246,239,.08); }
+.ccs-tip { position: fixed; z-index: 999; display: none; pointer-events: none; background: #070E16; color: var(--cream); border: 1px solid rgba(232,131,10,.4); border-radius: 4px; padding: .5rem .75rem; font-size: .8rem; line-height: 1.4; }
+.ccs-tip strong { display: block; font-family: var(--ff-mono); font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: var(--saffron-lt); }
+.ccs-tip span { display: block; }
+.chart-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem; margin-top: 1.4rem; }
+.chart-grid .wide { grid-column: 1 / -1; }
+.chip-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+.chip-group h4 { font-family: var(--ff-mono); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: var(--saffron-lt); margin-bottom: .6rem; }
+.chip-group .chips { display: flex; flex-wrap: wrap; gap: .4rem; }
+.chip { font-family: var(--ff-mono); font-size: .62rem; letter-spacing: .06em; color: var(--cream); border: 1px solid rgba(250,246,239,.18); border-radius: 100px; padding: .2rem .7rem; }
+.chip b { color: var(--saffron-lt); font-weight: 500; margin-left: .35rem; }
+@media (max-width: 900px) { .chart-grid, .chip-groups { grid-template-columns: 1fr; } .ccs-donut { grid-template-columns: 1fr; } }

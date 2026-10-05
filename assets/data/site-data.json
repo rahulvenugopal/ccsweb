@@ -1,0 +1,702 @@
+{
+  "generated": "2026-10-05T13:29:56",
+  "stats": {
+    "sanctioned_projects": 18,
+    "student_intern_placements": 63,
+    "intern_institutions": 33,
+    "intern_institutions_international": 4,
+    "invited_talks": 46,
+    "events_organised": 11,
+    "publications_published": 60,
+    "papers_since_2020": 45
+  },
+  "areas": {
+    "neurotech": {
+      "sanctioned": 3,
+      "students": 8,
+      "student_titles": [
+        "Sleep interface Olfactometer for targeted memory activation in vulnerable population",
+        "EEG oscillations and applications in Neurofeedback",
+        "Closed loop sleep stimulation and its effectiveness in enhancing slow wave characteristics in spindle-slow wave coupling in schizophrenia",
+        "Closed loop sleep stimulation and its effectiveness in enhancing spindle characteristic in spindle slow wave coupling",
+        "Understanding Nasal cycles in Neurophenomenology – device development",
+        "Dissertation titled \"ECG phase-locked auditory stimulation and its influence on brain waves: A pilot study\"",
+        "Optimisation of a closed loop protocol for TMR stimulation during nap",
+        "Adaptive Personalization of Short Cognitive Training Using a Wearable EEG/PPG Band"
+      ]
+    },
+    "sleep": {
+      "sanctioned": 2,
+      "students": 13,
+      "student_titles": [
+        "Understanding the features of EEG alpha oscillation in Wake and Sleep (Spindles)",
+        "A Comparative Study of K Complex Density in N2 Stage of Sleep between Patients with Generalized Anxiety Disorder And Co-Morbid Generalized Social Phobia and Normal Control Subjects",
+        "Decoding Multivariate EEG pattern between dream and no dream from High density PSG data",
+        "Combining both manual and automated quantitative analysis of dream content from multiple dream reports of a single night's sleep - an exploratory study",
+        "Wakeful alertness in meditators during deep sleep - an EEG connectivity study",
+        "Relation between sleep-wake activity pattern and mental health among elderly - an actigraphy based study",
+        "Research Observership - Sleep Study training",
+        "Respiration-ECG-EEG coupling in Nap data",
+        "Actigraphy profile of Elderly",
+        "Heart Evoked Potential across sleep stages",
+        "Self Referential processing in Sleep"
+      ]
+    },
+    "clinical": {
+      "sanctioned": 4,
+      "students": 4,
+      "student_titles": [
+        "Alpha Dynamics and Thalamo-cortical integrity in wake and sleep: An EEG-based exploration study",
+        "Assessment of mental stress using EEG and behavioural measures",
+        "Exploring the Excitation/Inhibition (E/I) Balance in Schizophrenia using EEG",
+        "Epilepsy Prediction using Multi-Variate EEG pattern dynamics"
+      ]
+    },
+    "mindbody": {
+      "sanctioned": 9,
+      "students": 10,
+      "student_titles": [
+        "Estimating Periodic and Aperiodic EEG Activity In Vipassana Meditators",
+        "Neurobehavioural evaluation of Meditation Proficiency",
+        "Enhanced delta and theta frequency in Yoga-based breathing-preliminary investigation findings",
+        "Effect of Yoga based focus-defocus exercise on event related potential- EEG pilot study",
+        "EEG-Resp-HRV Synch in Brahmakumari Meditators",
+        "Mind Wandering content across sessions - a survey and EEG based study",
+        "Mind Wandering and Breathwatch training - a survey and EEG based study",
+        "Prodicting Brain age in Meditators using ML-based multivariate approach on EEG data",
+        "Training in EEG Acquisition, paradigm designing, advanced EEG analysis on Advanced meditator datasets | Multivariate EEG patterns across traditions using ML approach",
+        "P300 studies in Meditators"
+      ]
+    },
+    "cross": {
+      "sanctioned": 0,
+      "students": 23,
+      "student_titles": [
+        "Neurocognition: EEG analysis of working memory and microstates",
+        "EEG dynamics and working memory",
+        "Relation between ERP, EEG oscillations and emotion",
+        "Investigating the Correlation between EEG Power spectrum and fMRI Activity in the Default Mode Network, Salience Network, and Frontoparietal Network",
+        "Examining EEG Features that are consistent across days between two Individuals",
+        "EEG/ERP Analysis in MATLAB",
+        "Comparison of two multivariate approaches to study three different ERP components from the existing dataset",
+        "Comparing different connectivity measures to distinguish rest and task conditions.",
+        "Research Observership",
+        "Eye Tracking based Neurophenomenology of Imagination",
+        "Brain Age Index",
+        "Heart Evoked Potential under varying working memory loads",
+        "EEG Dynamics in Foresic Interview",
+        "Training in HRV advanced analysis",
+        "Neural mass models",
+        "Sense of Agency",
+        "Basic EEG Analysis",
+        "Neural Speech Tracking",
+        "Psiconnect dataset, Brain Criticality",
+        "Heartbeat Evoked Potentials"
+      ]
+    }
+  },
+  "funders": {
+    "Foundations & international": [
+      "RERF-SpARC",
+      "SVYASA",
+      "Temple of Consciousness"
+    ],
+    "Government": [
+      "DST-BDTD",
+      "DST-CSRI",
+      "DST-SATYAM / SHRI",
+      "DST-SERB",
+      "IKS (MoE)"
+    ],
+    "Industry": [
+      "Turtle Technologies"
+    ]
+  },
+  "institutions": {
+    "IITs, IISERs & national institutes": [
+      {
+        "name": "IISER Mohali",
+        "count": 10
+      },
+      {
+        "name": "IISER Tirupati",
+        "count": 3
+      },
+      {
+        "name": "IIT Mandi",
+        "count": 3
+      },
+      {
+        "name": "IIT Gandhinagar",
+        "count": 2
+      },
+      {
+        "name": "Rashtriya Raksha University",
+        "count": 2
+      },
+      {
+        "name": "IISER Berhampur",
+        "count": 1
+      },
+      {
+        "name": "IISER Pune",
+        "count": 1
+      },
+      {
+        "name": "IIT Madras",
+        "count": 1
+      },
+      {
+        "name": "NFSU, Gandhinagar",
+        "count": 1
+      },
+      {
+        "name": "UM-DAE CEBS, Mumbai",
+        "count": 1
+      }
+    ],
+    "Medical & health sciences": [
+      {
+        "name": "JSS AHER, Mysuru",
+        "count": 8
+      },
+      {
+        "name": "MAHE, Manipal",
+        "count": 2
+      },
+      {
+        "name": "AIIMS Bhopal",
+        "count": 1
+      },
+      {
+        "name": "Govt. Medical College, Thiruvananthapuram",
+        "count": 1
+      },
+      {
+        "name": "S-VYASA, Bengaluru",
+        "count": 1
+      }
+    ],
+    "Universities & colleges": [
+      {
+        "name": "Christ University",
+        "count": 5
+      },
+      {
+        "name": "CUSAT, Kochi",
+        "count": 2
+      },
+      {
+        "name": "Jiwaji University, Gwalior",
+        "count": 2
+      },
+      {
+        "name": "St Joseph's University",
+        "count": 2
+      },
+      {
+        "name": "Bangalore Inst. of Technology",
+        "count": 1
+      },
+      {
+        "name": "Dayananda Sagar University",
+        "count": 1
+      },
+      {
+        "name": "GITAM",
+        "count": 1
+      },
+      {
+        "name": "IGNOU",
+        "count": 1
+      },
+      {
+        "name": "JAIN University",
+        "count": 1
+      },
+      {
+        "name": "M.S. Ramaiah University",
+        "count": 1
+      },
+      {
+        "name": "MIT World Peace University",
+        "count": 1
+      },
+      {
+        "name": "University of Hyderabad",
+        "count": 1
+      },
+      {
+        "name": "University of Rajasthan",
+        "count": 1
+      },
+      {
+        "name": "VIT, Vellore",
+        "count": 1
+      }
+    ],
+    "International": [
+      {
+        "name": "Trinity College Dublin",
+        "count": 1
+      },
+      {
+        "name": "University of Amsterdam",
+        "count": 1
+      },
+      {
+        "name": "University of Sydney",
+        "count": 1
+      },
+      {
+        "name": "University of Turin",
+        "count": 1
+      }
+    ]
+  },
+  "talks_by_year": {
+    "2021": 17,
+    "2022": 2,
+    "2023": 1,
+    "2025": 9,
+    "2026": 17
+  },
+  "placements_by_year": {
+    "2021": 6,
+    "2022": 6,
+    "2023": 11,
+    "2024": 16,
+    "2025": 9,
+    "2026": 6
+  },
+  "publications": {
+    "since": 2020,
+    "total": 45,
+    "citations": 0,
+    "has_citations": false,
+    "other_outputs": {
+      "Preprint": 7,
+      "Conference paper": 6,
+      "Abstract / poster": 2
+    },
+    "by_area": [
+      {
+        "key": "sleep",
+        "label": "Sleep & dream science",
+        "papers": 16,
+        "citations": 0
+      },
+      {
+        "key": "mindbody",
+        "label": "Mind–body & contemplative science",
+        "papers": 12,
+        "citations": 0
+      },
+      {
+        "key": "clinical",
+        "label": "Clinical & developmental neuroscience",
+        "papers": 5,
+        "citations": 0
+      },
+      {
+        "key": "neurotech",
+        "label": "Neurotechnology & translational neuroscience",
+        "papers": 11,
+        "citations": 0
+      },
+      {
+        "key": "cross",
+        "label": "Cross-cutting methods",
+        "papers": 1,
+        "citations": 0
+      }
+    ],
+    "summary": [
+      {
+        "theme": "Sleep & dreaming",
+        "papers": 38.0,
+        "citations": 384.0,
+        "as_of": "September 2026"
+      },
+      {
+        "theme": "Meditation",
+        "papers": 26.0,
+        "citations": 355.0,
+        "as_of": "September 2026"
+      }
+    ],
+    "journals": [
+      "Sleep Medicine",
+      "Sleep and Biological Rhythms",
+      "Consciousness and Cognition",
+      "Annals of Indian Academy of Neurology",
+      "Biological Psychology",
+      "Mindfulness",
+      "Frontiers in Neurology",
+      "Brain Research",
+      "Communications Biology"
+    ]
+  },
+  "key_findings": [
+    {
+      "order": 1.0,
+      "theme": "Meditation & the brain",
+      "title": "Vipassana practice has a distinct EEG signature",
+      "text": "Meditators show distinct combinations of periodic and aperiodic EEG activity (a marker of excitation/inhibition balance), and meditation is distinct from the sleep state.",
+      "citation": "CCS lab archives (data)",
+      "link": "",
+      "image": "finding-vipassana-eeg.jpg"
+    },
+    {
+      "order": 2.0,
+      "theme": "Meditation & the brain",
+      "title": "Each meditation tradition has its own EEG signature",
+      "text": "Brahma Kumaris: similar periodic and slower aperiodic activity. Isha Yoga: slower periodic and faster aperiodic. Heartfulness: slower periodic and similar aperiodic. Vipassana shows its own combination.",
+      "citation": "CCS lab archives (data)",
+      "link": "",
+      "image": "finding-tradition-signatures.jpg"
+    },
+    {
+      "order": 3.0,
+      "theme": "Meditation & sleep",
+      "title": "Meditation practice enhances deep and REM sleep",
+      "text": "Whole-night polysomnography shows enhanced slow-wave sleep with Sudarshan Kriya Yoga, and enhanced slow-wave and REM sleep with Vipassana.",
+      "citation": "Sulekha et al., Sleep and Biological Rhythms (2006) 4:207-214",
+      "link": "",
+      "image": "finding-sky-vipassana-sleep.jpg"
+    },
+    {
+      "order": 4.0,
+      "theme": "Meditation & sleep",
+      "title": "Meditation attenuates age-associated changes in slow-wave sleep",
+      "text": "Vipassana practitioners keep enhanced slow-wave and REM sleep across age groups, while controls lose slow-wave sleep with age.",
+      "citation": "Ravindra et al., Sleep and Biological Rhythms (2010), 34-41",
+      "link": "",
+      "image": "finding-age-sws.jpg"
+    },
+    {
+      "order": 5.0,
+      "theme": "Meditation & sleep",
+      "title": "Meditation and sleep-regulating hormones",
+      "text": "Meditators have higher melatonin levels, and DHEA levels correlate positively with the share of N3 (deep) sleep.",
+      "citation": "Ravindra et al., Sleep Science 2022;15(2):179-187",
+      "link": "",
+      "image": "finding-hormones.jpg"
+    },
+    {
+      "order": 6.0,
+      "theme": "Meditation & sleep",
+      "title": "REM sleep micro-architecture in meditators",
+      "text": "Senior meditators show more phasic REM events, higher REM density and longer REM bursts, with less N2 and wake after sleep onset and more deep sleep.",
+      "citation": "Nirmala et al., International Review of Psychiatry (2016)",
+      "link": "",
+      "image": "finding-rem-microarchitecture.jpg"
+    },
+    {
+      "order": 7.0,
+      "theme": "Meditation & sleep",
+      "title": "Meditation mitigates age-related decline in spindle integrity",
+      "text": "Age-related decline in sleep-spindle oscillations is weaker in meditators (r = -0.29) than in controls (r = -0.45).",
+      "citation": "Safoora et al., Sleep Medicine (2022)",
+      "link": "",
+      "image": "finding-spindles.jpg"
+    },
+    {
+      "order": 8.0,
+      "theme": "Meditation & sleep",
+      "title": "How long-term Vipassana practice reshapes sleep",
+      "text": "Long-term practice is linked to refined sleep spindles, denser REM sleep, more slow-wave and REM sleep with less N2, and a more resilient, restorative sleep state.",
+      "citation": "CCS sleep studies (synthesis)",
+      "link": "",
+      "image": "finding-vipassana-sleep-model.jpg"
+    },
+    {
+      "order": 9.0,
+      "theme": "Sleep in treatment and illness",
+      "title": "Ayurvedic treatment preserves deep sleep; clonazepam suppresses it",
+      "text": "Slow-wave sleep was 20.5% with Ayurvedic treatment versus 7.2% with clonazepam: restorative deep sleep is preserved with Ayurveda and significantly suppressed with clonazepam.",
+      "citation": "Tubaki et al., Current Science (2016)",
+      "link": "",
+      "image": "finding-ayurveda-clonazepam.jpg"
+    },
+    {
+      "order": 10.0,
+      "theme": "Sleep in treatment and illness",
+      "title": "Failed sleep homeostasis in schizophrenia: chemical",
+      "text": "Higher evening ADA (adenosine deaminase) levels correlate with positive symptoms such as auditory hallucinations; the evening-to-morning difference trends towards a negative correlation with avolition-apathy.",
+      "citation": "Sasidharan et al., Asian Journal of Psychiatry (2017)",
+      "link": "",
+      "image": "finding-schizophrenia-chemical.jpg"
+    },
+    {
+      "order": 11.0,
+      "theme": "Sleep in treatment and illness",
+      "title": "Failed sleep homeostasis in schizophrenia: architecture",
+      "text": "Patients' sleep is fragmented: 330% longer sleep onset latency, 16% lower sleep efficiency, 256% more wake after sleep onset and 48% more stage transitions.",
+      "citation": "Sasidharan et al., Sleep Medicine (2017)",
+      "link": "",
+      "image": "finding-schizophrenia-architecture.jpg"
+    },
+    {
+      "order": 12.0,
+      "theme": "Sleep in treatment and illness",
+      "title": "Failed sleep homeostasis in schizophrenia: oscillations",
+      "text": "Spindle deficits in one NREM period are positively correlated with awakenings in the following REM period, suggesting a causal link between failing spindles and sleep-cycle instability.",
+      "citation": "Sasidharan et al., Sleep Medicine (2017)",
+      "link": "",
+      "image": "finding-schizophrenia-oscillations.jpg"
+    },
+    {
+      "order": 13.0,
+      "theme": "Dreaming",
+      "title": "Inducing lucidity in dreams",
+      "text": "Cognitive training plus auditory cues induced lucid dreams in 5 of 6 trained participants (83.3%) versus 1 of 5 untrained controls (20%).",
+      "citation": "Gulshan et al., International Journal of Dream Research (2018)",
+      "link": "",
+      "image": "finding-lucid-dreams.jpg"
+    },
+    {
+      "order": 14.0,
+      "theme": "Dreaming",
+      "title": "Decoding dream content",
+      "text": "A rise in beta-band power (15-30 Hz) was the key electrophysiological feature preceding successful dream recall, in both N2 and REM sleep.",
+      "citation": "Gulshan et al., Cognition & Consciousness (2025)",
+      "link": "",
+      "image": "finding-decoding-dreams.jpg"
+    },
+    {
+      "order": 15.0,
+      "theme": "Dreaming",
+      "title": "Shaping dream content",
+      "text": "10.42% of auditory cues were directly incorporated into the next dream report; targeted memory reactivation cut sadness in dreams from 33.3% to 4.5%.",
+      "citation": "Gulshan et al., Cognition & Consciousness (2025)",
+      "link": "",
+      "image": "finding-shaping-dreams.jpg"
+    }
+  ],
+  "area_labels": {
+    "sleep": "Sleep & dream science",
+    "mindbody": "Mind–body & contemplative science",
+    "clinical": "Clinical & developmental neuroscience",
+    "neurotech": "Neurotechnology & translational neuroscience",
+    "cross": "Cross-cutting methods"
+  },
+  "sanctioned_projects": [
+    {
+      "title": "Effect of Rāja yoga Meditation on psychological and functional outcomes in spinal cord injury patient",
+      "agency": "Non-Funded",
+      "status": "Completed",
+      "start_year": null,
+      "area": "mindbody"
+    },
+    {
+      "title": "Evaluation of cognitive dysfunction in conditions of Insomnia and Excessive Daytime Sleepiness: Efficacy of transcranial alternating current stimulation (tACS) on cognition and sleep.",
+      "agency": "DST-CSRI",
+      "status": "On hold",
+      "start_year": null,
+      "area": "neurotech"
+    },
+    {
+      "title": "Efficacy of photoperiod manipulation in establishing stress integration and cognitive recovery in ventral subicular-lesioned rats: A behavioural and molecular study",
+      "agency": "DST-SERB",
+      "status": "Completed",
+      "start_year": 2018,
+      "area": "clinical"
+    },
+    {
+      "title": "A Study of Consciousness Measures and Synchrony between Brain & Cardiovascular Dynamics in Yoga Experience",
+      "agency": "DST-SATYAM",
+      "status": "Ongoing",
+      "start_year": null,
+      "area": "mindbody"
+    },
+    {
+      "title": "Chronic Pain: Understanding the cognitive, perceptual, affective underpinnings - A search for a cognitive model",
+      "agency": "DST-CSRI",
+      "status": "Completed",
+      "start_year": 2019,
+      "area": "clinical"
+    },
+    {
+      "title": "Technology development for a novel combination of neurofeedback and closed-loop auditory neuromodulation (Closed-loop Assisted Brain Training) and its pilot scale testing as an add-on therapy in patients with Chronic pain",
+      "agency": "DST-BDTD",
+      "status": "Ongoing",
+      "start_year": 2021,
+      "area": "neurotech"
+    },
+    {
+      "title": "Smart tVNS: A device that uses closed-loop technology and machine learning to optimise non-invasive transcutaneous vagal nerve stimulation (tVNS) for refractory epilepsy monitoring and treatment",
+      "agency": "DST-BDTD",
+      "status": "Ongoing",
+      "start_year": 2021,
+      "area": "neurotech"
+    },
+    {
+      "title": "Development and validation of Vipassana Wellbeing scale (Extension of Dr Jyothi’s PhD Thesis work)",
+      "agency": "Non-Funded",
+      "status": "Manuscript under review",
+      "start_year": null,
+      "area": "mindbody"
+    },
+    {
+      "title": "Effect of Meditation on Cognitive control deautomatization of biased response",
+      "agency": "DST-CSRI",
+      "status": "Ongoing",
+      "start_year": null,
+      "area": "mindbody"
+    },
+    {
+      "title": "Evaluating the efficacy of Yoga as an add-on intervention in Adolescent depression: A comprehensive study",
+      "agency": "DST-SATYAM",
+      "status": "Ongoing",
+      "start_year": 2022,
+      "area": "clinical"
+    },
+    {
+      "title": "Assessment of neurophysiology and phenomenology of dreaming among long term practitioners of meditation: a window to explore the enduring effect of meditation on consciousness",
+      "agency": "DST-SATYAM",
+      "status": "Sanctioned",
+      "start_year": 2022,
+      "area": "sleep"
+    },
+    {
+      "title": "Development and validation of Rajayoga wellbeing scale",
+      "agency": "RERF-SpARC",
+      "status": "Sanctioned",
+      "start_year": 2022,
+      "area": "mindbody"
+    },
+    {
+      "title": "Neurobehavioural evaluation of meditation proficiency-a pilot study",
+      "agency": "RERF-SpARC",
+      "status": "Sanctioned",
+      "start_year": 2022,
+      "area": "mindbody"
+    },
+    {
+      "title": "EEG signatures of Meditation proficiency among long-term Rajayoga meditation practitioners [Praerna PhD Dissertation]",
+      "agency": "SVYASA-NIMHANS",
+      "status": "Sanctioned",
+      "start_year": 2022,
+      "area": "mindbody"
+    },
+    {
+      "title": "Simplified Kundalini Yoga (SKY) Practice and wellbeing: A pilot study to explore the importance of neurovisceral integration in wellbeing",
+      "agency": "Temple of consciousness",
+      "status": "Sanctioned",
+      "start_year": 2023,
+      "area": "mindbody"
+    },
+    {
+      "title": "An exploratory study to evaluate an objective metric to monitor sleep quality in adults",
+      "agency": "Turtle technologies Pvt Ltd",
+      "status": "Sanctioned",
+      "start_year": 2023,
+      "area": "sleep"
+    },
+    {
+      "title": "Effect of add-on Yoga based intervention on neurophysiological attention mechanisms in schizophrenia - a multicentric randomized controlled trial",
+      "agency": "DST-SHRI (SATYAM)",
+      "status": "Sanctioned",
+      "start_year": 2025,
+      "area": "clinical"
+    },
+    {
+      "title": "Mandukya Upanishad and neural states of consciousness",
+      "agency": "IKS (MoE)",
+      "status": "Sanctioned",
+      "start_year": 2025,
+      "area": "mindbody"
+    }
+  ],
+  "events_organised": [
+    {
+      "title": "Mind, Self and healing in Ancient Indian Philosophies and Ayurveda: Traditions and Prospects",
+      "type": "EEG Workshop",
+      "start": "2026-02-23",
+      "days": 1.0,
+      "organised_with": "Christ University (Yeshwantpur Campus)",
+      "place": "Bengaluru, India"
+    },
+    {
+      "title": "Neurophysiological Tools to study Mind-body harmony workshop",
+      "type": "EEG Workshop",
+      "start": "2026-01-07",
+      "days": 1.0,
+      "organised_with": "Christ University",
+      "place": "Christ University (Central Campus), Bengaluru, India"
+    },
+    {
+      "title": "ASSOPICON Preworkshop - Cognitive Neurophysiology",
+      "type": "Workshop",
+      "start": "2025-12-08",
+      "days": 1.0,
+      "organised_with": "Dept. of Neurophysiology, NIMHANS",
+      "place": "Bengaluru"
+    },
+    {
+      "title": "Tukdam Project Meeting",
+      "type": "EEG Workshop",
+      "start": "2025-12-03",
+      "days": 1.0,
+      "organised_with": "The Dalai Lama Institute for Higher Education",
+      "place": "Bengaluru, India"
+    },
+    {
+      "title": "Hands on Sleep Diagnostic Workshop",
+      "type": "Workshop",
+      "start": "2025-09-09",
+      "days": 3.0,
+      "organised_with": "ISSR, Indian Society for Sleep Research",
+      "place": "International Centre Goa, Goa, India"
+    },
+    {
+      "title": "International Symposium on Sleep, Well-being & Consciousness",
+      "type": "Hybrid Symposium",
+      "start": "2025-05-29",
+      "days": 1.0,
+      "organised_with": "CCS & Dept of Neurophysiology NIMHANS",
+      "place": "Convention Center, NIMHANS, Bengaluru"
+    },
+    {
+      "title": "International conference on: \"Exploring Consciousness- From Non- Locality to Non- Duality: The Man- Machine Debate\"",
+      "type": "Offline Conference",
+      "start": "2022-09-22",
+      "days": 3.0,
+      "organised_with": "CCS, NIMHANS & India Foundation & FKCCI",
+      "place": "Convention Center, NIMHANS, Bengaluru"
+    },
+    {
+      "title": "6th National workshop - Fundamentals of Polysomnography & Sleep",
+      "type": "Online Workshop",
+      "start": "2021-12-09",
+      "days": 3.0,
+      "organised_with": "CCS, NIMHANS & ISSR Bangalore Chapter",
+      "place": "CCS, NIMHANS, Bengaluru"
+    },
+    {
+      "title": "International webinar on: Concepts of Consciousness - Neuroscience and Indian Philosophical Perspective",
+      "type": "Online Conference",
+      "start": "2021-09-27",
+      "days": 4.0,
+      "organised_with": "CCS, NIMHANS & Indian Council for Philosophical Research (ICPR)",
+      "place": "CCS, NIMHANS, Bengaluru"
+    },
+    {
+      "title": "5th National workshop - Fundamentals of Polysomnography & Sleep",
+      "type": "Online Workshop",
+      "start": "2020-12-21",
+      "days": 3.0,
+      "organised_with": "CCS, NIMHANS & ISSR Bangalore Chapter",
+      "place": "CCS, NIMHANS, Bengaluru"
+    },
+    {
+      "title": "7th National workshop - Fundamentals of Polysomnography & Sleep",
+      "type": "Workshop",
+      "start": null,
+      "days": null,
+      "organised_with": "",
+      "place": "LH 1, Old Admin Block, NIMHANS, Bengaluru"
+    }
+  ]
+}
