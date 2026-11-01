@@ -566,6 +566,10 @@
     @media (max-width: 520px) { .overview-grid { grid-template-columns: 1fr; } .area-head h2 { font-size: 1.9rem; } }
   </style>
   <link rel="stylesheet" href="assets/js/ccs-charts.css">
+  <style>/* keep the 9-link header on one line on laptop widths */
+    .nav-brand .brand-top, .nav-brand .brand-sub { white-space: nowrap; }
+    @media (max-width: 1440px) and (min-width: 1025px) { .nav-links { gap: 1.25rem; } .nav-links a { letter-spacing: .1em; } }
+  </style>
 </head>
 
 <body>
@@ -574,6 +578,7 @@
   <div id="nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
     <a href="index.html">Home</a>
     <a href="index.html#people">Team</a>
+    <a href="architecture.html" onclick="closeNav()">Architecture</a>
     <a href="research.html">Research</a>
     <a href="impact.html">Impact</a>
     <a href="index.html#publications">Publications</a>
@@ -591,6 +596,7 @@
     </a>
     <ul class="nav-links" role="list">
       <li><a href="index.html#people">Team</a></li>
+      <li><a href="architecture.html">Architecture</a></li>
       <li><a href="research.html" style="color:var(--saffron);">Research</a></li>
       <li><a href="impact.html">Impact</a></li>
       <li><a href="index.html#publications">Publications</a></li>
@@ -651,18 +657,11 @@
         @media (max-width: 760px) { .fw, .oa, .figs { grid-template-columns: 1fr; } .fw-logo { display: none; } }
       </style>
       <h2 class="blk-title reveal">Our research framework</h2>
-      <p class="blk-sub reveal">Concepts from neuroscience and Indian philosophical insight, studied across states of rest, task, meditation and sleep, in wellness, normal and illness samples.</p>
-      <div class="fw reveal" aria-label="Research framework: concepts, states, samples and techniques">
-        <div class="fw-tile"><div class="k">Concepts / ideas</div><p class="big">Neuroscience<br>+ Indian philosophical insights</p></div>
-        <div class="fw-tile"><div class="k">States / levels</div><div class="fw-pills"><span>Rest</span><span>Task</span><span>Meditation</span><span>Sleep</span></div></div>
-        <div class="fw-tile"><div class="k">Samples / models</div><div class="fw-pills"><span>Wellness</span><span>Normal</span><span>Illness</span></div></div>
-        <div class="fw-tile"><div class="k">Techniques / approaches</div><p class="big">Neurophysiological<br>+ Cognitive neuroscience</p></div>
-        <div class="fw-logo" aria-hidden="true"><img src="assets/images/backgrounds/CCS_Logo_Half%208x8cm_trans.png" alt=""></div>
-      </div>
-      <div class="oa reveal">
-        <div><h3>Three objectives</h3><ol><li>Multidimensional nature of awareness</li><li>Role of brain&ndash;body harmony in wellbeing</li><li>Application-oriented research</li></ol></div>
-        <div><h3>Three approaches</h3><ol><li>Neurophenomenological approaches</li><li>Modern multivariate analysis approaches</li><li>Novel technology for real-world settings</li></ol></div>
-      </div>
+      <a class="fw-link reveal" href="architecture.html#framework" style="display:flex;gap:1.5rem;align-items:center;justify-content:space-between;flex-wrap:wrap;background:var(--surface);border:1px solid rgba(232,131,10,.35);border-left:3px solid var(--saffron);border-radius:4px;padding:1.4rem 1.8rem;margin:1rem 0 2.5rem;text-decoration:none;color:var(--cream);">
+        <span style="max-width:62ch;"><span style="display:block;font-family:var(--ff-disp);font-size:1.4rem;line-height:1.25;">Concepts from neuroscience and Indian philosophy, studied across rest, task, meditation and sleep, in wellness, normal and illness samples.</span>
+        <span class="fw-pills" style="margin-top:.8rem;"><span>Rest</span><span>Task</span><span>Meditation</span><span>Sleep</span></span></span>
+        <span style="font-family:var(--ff-mono);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--saffron-lt);">Framework, objectives &amp; approaches &rarr;</span>
+      </a>
       <div class="figs reveal">
         <figure><a href="assets/images/figures/ccs-path-to-wellbeing.jpg" target="_blank" rel="noopener"><img src="assets/images/figures/ccs-path-to-wellbeing.jpg" alt="Hand-drawn map of the CCS path from understanding experience to personalised wellbeing, showing the five research areas around the architecture of experiences" loading="lazy"></a><figcaption>The CCS path: from understanding experience to personalised wellbeing (<a href="assets/images/figures/ccs-path-to-wellbeing.jpg" target="_blank" rel="noopener">open full size</a>)</figcaption></figure>
         <figure><a href="assets/images/figures/architecture-of-experiences.jpg" target="_blank" rel="noopener"><img src="assets/images/figures/architecture-of-experiences.jpg" alt="Architecture of experiences and wellbeing framework poster" loading="lazy"></a><figcaption>Architecture of experiences &amp; wellbeing framework (<a href="assets/images/figures/architecture-of-experiences.jpg" target="_blank" rel="noopener">open full size</a>)</figcaption></figure>

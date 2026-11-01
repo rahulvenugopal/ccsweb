@@ -346,6 +346,10 @@
       .stats-bar { gap: 1.5rem; }
     }
   </style>
+  <style>/* keep the 9-link header on one line on laptop widths */
+    .nav-brand .brand-top, .nav-brand .brand-sub { white-space: nowrap; }
+    @media (max-width: 1440px) and (min-width: 1025px) { .nav-links { gap: 1.25rem; } .nav-links a { letter-spacing: .1em; } }
+  </style>
 </head>
 
 <body>
@@ -354,6 +358,7 @@
   <div id="nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
     <a href="index.html">Home</a>
     <a href="index.html#people">Team</a>
+    <a href="architecture.html" onclick="closeNav()">Architecture</a>
     <a href="research.html">Research</a>
     <a href="impact.html">Impact</a>
     <a href="index.html#publications">Publications</a>
@@ -372,6 +377,7 @@
     </a>
     <ul class="nav-links" role="list">
       <li><a href="index.html#people">Team</a></li>
+      <li><a href="architecture.html">Architecture</a></li>
       <li><a href="research.html">Research</a></li>
       <li><a href="impact.html">Impact</a></li>
       <li><a href="index.html#publications">Publications</a></li>

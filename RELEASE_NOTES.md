@@ -1,5 +1,14 @@
 # Release notes
 
+## Unreleased
+
+- **New page `architecture.html`**: the deck's architecture of experience (three pillars on three foundations, four decades, middle ground and research framework, four voices with selected results, neurotechnology, and a "What's next" card for UNISON and NIYAMITA). Includes a few flagged preliminary or unpublished results.
+- **Home**: hero now shows the live pillar diagram (links to the new page); "Our Legacy" timeline condensed to match.
+- **Research**: the framework tiles are replaced by a link card to `architecture.html#framework`.
+- **Nav**: "Architecture" added on every page, with a small CSS rule keeping the header on one line on laptop widths.
+- Reverses the v2.0.0 decision to leave out UNISON and NIYAMITA; the HEP-mood result still needs a full reference.
+
+
 ## v2.0.0 (5 October 2026)
 
 A major update that brings the CCS overview deck's content into the site and makes it data-driven.

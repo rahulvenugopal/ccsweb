@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Architecture of Experience — Centre for Consciousness Studies, NIMHANS</title>
+  <meta name="description"
+    content="Four core research areas, sanctioned projects at the Centre for Consciousness Studies, NIMHANS, Bengaluru.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Source+Serif+4:wght@300;400&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    /* ── TOKENS ─────────────────────────────────────────── */
+    :root {
+      --ink: #0D1B2A;
+      --saffron: #E8830A;
+      --saffron-lt: #F5A84A;
+      --cream: #FAF6EF;
+      --stone: #E2D9CC;
+      --muted: #8A9BB0;
+      --teal: #1A6B6B;
+      --teal-lt: #24A0A0;
+      --surface: #132030;
+      --white: #FFFFFF;
+      --ff-disp: 'Cormorant Garamond', Georgia, serif;
+      --ff-body: 'Source Serif 4', Georgia, serif;
+      --ff-mono: 'DM Mono', 'Courier New', monospace;
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+      --max: 1200px;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 18px;
+    }
+
+    body {
+      background: var(--ink);
+      color: var(--cream);
+      font-family: var(--ff-body);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+      font: inherit;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: var(--ff-disp);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+
+    .label {
+      font-family: var(--ff-mono);
+      font-size: .72rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--saffron);
+    }
+
+    .label::before {
+      content: '[';
+      opacity: .5;
+    }
+
+    .label::after {
+      content: ']';
+      opacity: .5;
+    }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 5vw;
+    }
+
+    .section-pad {
+      padding: 100px 0;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(28px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: opacity .7s var(--ease), transform .7s var(--ease);
+    }
+
+    .js-loaded .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+    }
+
+    .js-loaded .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── NAV ── */
+    #navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 20px 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background .4s var(--ease), padding .4s var(--ease), border-color .4s var(--ease);
+      border-bottom: 1px solid transparent;
+    }
+
+    #navbar.scrolled {
+      background: rgba(13, 27, 42, .96);
+      backdrop-filter: blur(16px);
+      border-color: rgba(232, 131, 10, .25);
+      padding: 14px 5vw;
+    }
+
+    .nav-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .nav-brand .brand-top {
+      font-family: var(--ff-mono);
+      font-size: .75rem;
+      letter-spacing: .15em;
+      color: var(--saffron);
+    }
+
+    .nav-brand .brand-sub {
+      font-family: var(--ff-mono);
+      font-size: .6rem;
+      letter-spacing: .1em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--ff-mono);
+      font-size: .68rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      position: relative;
+      transition: color .25s;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      width: 0;
+      height: 1px;
+      background: var(--saffron);
+      transition: width .3s var(--ease);
+    }
+
+    .nav-links a:hover {
+      color: var(--saffron);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--saffron);
+      border-radius: 2px;
+      transition: transform .3s, opacity .3s;
+    }
+
+    .hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .hamburger.open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    #nav-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      background: var(--ink);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .35s var(--ease);
+    }
+
+    #nav-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    #nav-overlay a {
+      font-family: var(--ff-disp);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--cream);
+      transition: color .2s;
+    }
+
+    #nav-overlay a:hover {
+      color: var(--saffron);
+    }
+
+    /* ── PAGE HERO ── */
+    .page-hero {
+      padding: 160px 5vw 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 80% 50%, rgba(26, 107, 107, .1) 0%, transparent 70%),
+        radial-gradient(ellipse 30% 40% at 10% 80%, rgba(232, 131, 10, .05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .page-hero .container {
+      position: relative;
+    }
+
+    .page-hero .eyebrow {
+      font-family: var(--ff-mono);
+      font-size: .72rem;
+      letter-spacing: .3em;
+      color: var(--saffron);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+    }
+
+    .page-hero .eyebrow::before {
+      content: '';
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: var(--saffron);
+      opacity: .6;
+    }
+
+    .page-hero h1 {
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-style: italic;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+
+    .page-hero h1 em {
+      font-style: normal;
+      color: var(--saffron);
+    }
+
+    .page-hero .sub {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.8;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-family: var(--ff-mono);
+      font-size: .65rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2.5rem;
+      transition: color .2s;
+    }
+
+    .back-link:hover {
+      color: var(--saffron);
+    }
+
+    /* ── SAFFRON RULE ── */
+    .saffron-rule {
+      width: 3rem;
+      height: 2px;
+      background: var(--saffron);
+      margin: .8rem 0;
+    }
+
+    /* ── FILTER BAR ── */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .filter-btn {
+      font-family: var(--ff-mono);
+      font-size: .65rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      padding: .5rem 1.1rem;
+      border-radius: 100px;
+      border: 1px solid rgba(250, 246, 239, .15);
+      color: var(--muted);
+      transition: all .25s;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--saffron);
+      color: var(--saffron);
+    }
+
+    .filter-btn.active {
+      background: var(--saffron);
+      border-color: var(--saffron);
+      color: var(--ink);
+    }
+
+    /* ── PROJECTS GRID ── */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border-radius: 12px;
+      border: 1px solid rgba(250, 246, 239, .06);
+      overflow: hidden;
+      transition: transform .25s var(--ease), box-shadow .25s, opacity .35s, border-color .25s;
+    }
+
+    .project-card.hidden {
+      display: none !important;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 40px rgba(26, 107, 107, .2);
+      border-color: rgba(26, 107, 107, .4);
+    }
+
+    .project-top {
+      height: 6px;
+      background: linear-gradient(90deg, var(--teal), var(--teal-lt));
+    }
+
+    .project-top.saffron {
+      background: linear-gradient(90deg, var(--saffron), var(--saffron-lt));
+    }
+
+    .project-body {
+      padding: 1.5rem;
+    }
+
+    .project-type {
+      font-family: var(--ff-mono);
+      font-size: .6rem;
+      letter-spacing: .12em;
+      color: var(--saffron);
+      margin-bottom: .6rem;
+      text-transform: uppercase;
+    }
+
+    .project-card h3 {
+      font-family: var(--ff-disp);
+      font-size: 1.1rem;
+      color: var(--cream);
+      line-height: 1.3;
+      margin-bottom: .8rem;
+    }
+
+    .project-card p {
+      font-size: .85rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+
+    .proj-tag {
+      font-family: var(--ff-mono);
+      font-size: .55rem;
+      letter-spacing: .1em;
+      padding: .25rem .7rem;
+      border-radius: 100px;
+      border: 1px solid rgba(26, 107, 107, .4);
+      color: var(--teal-lt);
+      text-transform: uppercase;
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+      margin-bottom: 3rem;
+      padding: 1.5rem 2rem;
+      background: var(--surface);
+      border-radius: 12px;
+      border: 1px solid rgba(250, 246, 239, .06);
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: .2rem;
+    }
+
+    .stat-num {
+      font-family: var(--ff-disp);
+      font-size: 2rem;
+      color: var(--saffron);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: var(--ff-mono);
+      font-size: .6rem;
+      letter-spacing: .12em;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stats-bar {
+        gap: 1.5rem;
+      }
+    }
+
+    /* ── RESEARCH PAGE ─────────────────────────── */
+    .area-block { padding: 4rem 0; border-top: 1px solid rgba(232,131,10,.15); }
+    .area-head { display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: end; margin-bottom: 2rem; }
+    .area-num { font-family: var(--ff-mono); font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--saffron); }
+    .area-head h2 { font-family: var(--ff-disp); font-size: 2.4rem; font-weight: 600; color: var(--cream); line-height: 1.15; margin: .3rem 0; }
+    .area-head h2 em { color: var(--saffron-lt); font-style: italic; }
+    .area-tag { color: var(--muted); font-size: .95rem; }
+    .area-themes { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1rem; }
+    .area-fund { text-align: right; }
+    .area-fund .big { font-family: var(--ff-disp); font-size: 2.8rem; line-height: 1; color: var(--saffron-lt); }
+    .area-fund .small { font-family: var(--ff-mono); font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-top: .4rem; }
+    .proj-meta { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-top: 1rem; font-family: var(--ff-mono); font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+    .proj-meta .amt { color: var(--saffron-lt); }
+    .status-pill { display: inline-block; padding: .1rem .6rem; border: 1px solid rgba(232,131,10,.4); border-radius: 100px; color: var(--saffron-lt); }
+
+    .area-pipe { display:flex; flex-wrap:wrap; gap:.6rem 1.6rem; margin:1.2rem 0 0; font-family:var(--ff-mono); font-size:.66rem; letter-spacing:.08em; color:var(--muted); }
+    .area-pipe b { color:var(--saffron-lt); font-weight:500; font-size:.85rem; }
+    details.stu { margin:1rem 0 1.4rem; border:1px solid rgba(250,246,239,.08); border-radius:4px; background:var(--surface); }
+    details.stu summary { cursor:pointer; padding:.8rem 1.1rem; font-family:var(--ff-mono); font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--saffron-lt); }
+    details.stu ul { margin:0; padding:0 1.1rem 1rem 2.2rem; color:var(--cream); font-size:.9rem; line-height:1.55; }
+    .kf-filter { display:flex; flex-wrap:wrap; gap:.5rem; margin:1.2rem 0 2rem; }
+    .kf-filter button { background:transparent; border:1px solid rgba(250,246,239,.2); color:var(--cream); border-radius:99px; padding:.4rem 1rem; font-family:var(--ff-mono); font-size:.64rem; letter-spacing:.08em; cursor:pointer; }
+    .kf-filter button.on { background:var(--saffron); border-color:var(--saffron); color:var(--ink); }
+    .kf-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(320px,1fr)); gap:1.4rem; }
+    .kf-card { background:var(--surface); border:1px solid rgba(250,246,239,.08); border-radius:4px; overflow:hidden; display:flex; flex-direction:column; }
+    .kf-card a.img { background:#fff; display:block; }
+    .kf-card img { width:100%; display:block; aspect-ratio:16/10; object-fit:contain; }
+    .kf-body { padding:1.2rem 1.4rem 1.4rem; }
+    .kf-body .k { font-family:var(--ff-mono); font-size:.58rem; letter-spacing:.16em; text-transform:uppercase; color:var(--saffron); }
+    .kf-body h3 { font-family:var(--ff-disp); font-size:1.3rem; line-height:1.25; color:var(--cream); margin:.4rem 0 .6rem; }
+    .kf-body p { color:var(--cream); opacity:.82; font-size:.9rem; line-height:1.55; }
+    .kf-body .cite { font-family:var(--ff-mono); font-size:.6rem; letter-spacing:.04em; color:var(--muted); margin-top:.8rem; }
+    .kf-body .cite a { color:var(--saffron-lt); }
+    .area-note { font-family: var(--ff-mono); font-size: .62rem; letter-spacing: .1em; color: var(--muted); text-align: center; margin-top: 3rem; }
+    .overview-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; margin-bottom: 1rem; }
+    .overview-card { display: block; padding: 1.6rem; background: var(--surface); border: 1px solid rgba(250,246,239,.08); border-top: 3px solid var(--saffron); border-radius: 4px; transition: transform .25s var(--ease), border-color .25s var(--ease); color: var(--cream); text-decoration: none; }
+    .overview-card:hover { transform: translateY(-3px); border-color: var(--saffron); }
+    .overview-card h3 { font-family: var(--ff-disp); font-size: 1.35rem; line-height: 1.2; margin: .4rem 0 .5rem; }
+    .overview-card p { font-size: .85rem; color: var(--muted); line-height: 1.5; }
+    .overview-card .counts { margin-top: 1rem; font-family: var(--ff-mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--saffron-lt); }
+    @media (max-width: 900px) { .overview-grid { grid-template-columns: repeat(2, 1fr); } .area-head { grid-template-columns: 1fr; } .area-fund { text-align: left; } }
+    @media (max-width: 520px) { .overview-grid { grid-template-columns: 1fr; } .area-head h2 { font-size: 1.9rem; } }
+  </style>
+
+<style>
+  /* ── Architecture page (scoped .ax-) ── */
+  html { scroll-padding-top: 110px; }
+  .ax-sub { position: sticky; top: 58px; z-index: 60; background: rgba(13,27,42,.94); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(232,131,10,.18); }
+  .ax-sub ul { max-width: var(--max); margin: 0 auto; padding: .7rem 5vw; display: flex; gap: .4rem 1.6rem; list-style: none; overflow-x: auto; white-space: nowrap; scrollbar-width: none; }
+  .ax-sub a { font-family: var(--ff-mono); font-size: .64rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: .25rem 0; border-bottom: 1px solid transparent; }
+  .ax-sub a:hover, .ax-sub a.on { color: var(--saffron-lt); border-color: var(--saffron); }
+  .ax-block { padding: 3.2rem 0 .5rem; }
+  .ax-h2 { font-family: var(--ff-disp); font-size: 2.1rem; line-height: 1.15; color: var(--cream); margin: .3rem 0 .4rem; font-weight: 600; }
+  .ax-h2 em { color: var(--saffron-lt); }
+  .ax-lede { color: var(--muted); font-size: .98rem; max-width: 62ch; margin-bottom: 1.6rem; }
+  .ax-k { font-family: var(--ff-mono); font-size: .6rem; letter-spacing: .18em; text-transform: uppercase; color: var(--saffron); }
+
+  /* architecture diagram */
+  .ax-arch { position: relative; margin-top: 1rem; }
+  .ax-roof { position: relative; text-align: center; padding: 1.1rem 1rem; font-family: var(--ff-disp); font-size: 1.6rem; color: var(--ink); background: linear-gradient(90deg, var(--saffron), var(--saffron-lt)); clip-path: polygon(4% 0, 96% 0, 100% 100%, 0 100%); letter-spacing: .02em; }
+  .ax-roof small { display: block; font-family: var(--ff-mono); font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; opacity: .75; }
+  .ax-pillars { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; padding: 0 1.2rem; margin-top: .6rem; }
+  .ax-pillar { background: linear-gradient(180deg, #17304a, var(--surface)); border: 1px solid rgba(250,246,239,.1); border-top: 3px solid var(--saffron-lt); border-radius: 6px; padding: 1.3rem 1.3rem 1.2rem; display: flex; flex-direction: column; gap: .5rem; }
+  .ax-pillar h3 { font-family: var(--ff-disp); font-size: 1.45rem; line-height: 1.15; color: var(--cream); }
+  .ax-pillar p { font-size: .86rem; color: var(--muted); line-height: 1.5; flex: 1; }
+  .ax-held { display: flex; align-items: center; gap: .3rem; margin-top: .4rem; padding-top: .7rem; border-top: 1px dashed rgba(250,246,239,.14); font-family: var(--ff-mono); font-size: .54rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .ax-held img { width: 26px; height: 26px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--saffron); margin-left: -4px; background: var(--surface); }
+  .ax-held span { margin-right: .5rem; }
+  .ax-base { margin: .9rem 1.2rem 0; position: relative; padding: 1.7rem 1.4rem 1.1rem; background: var(--teal); border-radius: 6px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .ax-base::before { content: 'Resting on three foundations'; position: absolute; top: .55rem; left: 0; right: 0; text-align: center; font-family: var(--ff-mono); font-size: .56rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(234,247,247,.75); }
+  .ax-slab { padding: .2rem 1.2rem; font-size: .8rem; line-height: 1.35; color: #EAF7F7; text-align: center; }
+  .ax-slab + .ax-slab { border-left: 1px solid rgba(234,247,247,.3); }
+  .ax-slab b { display: block; font-family: var(--ff-disp); font-size: 1.12rem; color: #fff; font-weight: 600; }
+  .ax-ground { height: 8px; background: linear-gradient(90deg, transparent, var(--teal-lt), transparent); margin-top: .6rem; opacity: .6; border-radius: 4px; }
+
+  /* timeline */
+  .ax-tl { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; margin-top: .5rem; }
+  .ax-tl::before { content: ''; position: absolute; left: 3%; right: 3%; top: 11px; height: 2px; background: linear-gradient(90deg, var(--saffron), var(--teal-lt)); }
+  .ax-tl-i { position: relative; padding: 2rem 1.1rem 0 0; }
+  .ax-tl-i::before { content: ''; position: absolute; top: 4px; left: 0; width: 16px; height: 16px; transform: rotate(45deg); background: var(--ink); border: 2px solid var(--saffron); }
+  .ax-tl-i:last-child::before { background: var(--saffron); }
+  .ax-yr { font-family: var(--ff-disp); font-size: 1.7rem; color: var(--saffron-lt); line-height: 1; }
+  .ax-tl-i h4 { font-family: var(--ff-disp); font-size: 1.15rem; color: var(--cream); margin: .35rem 0 .3rem; font-weight: 600; }
+  .ax-tl-i p { font-size: .8rem; color: var(--muted); line-height: 1.5; }
+  .ax-lesson { margin-top: 1.4rem; padding: 1rem 1.3rem; border-left: 3px solid var(--saffron); background: var(--surface); border-radius: 0 6px 6px 0; font-family: var(--ff-disp); font-size: 1.2rem; color: var(--cream); line-height: 1.35; }
+  .ax-lesson span { display: block; margin-top: .3rem; font-family: var(--ff-mono); font-size: .58rem; letter-spacing: .1em; color: var(--muted); text-transform: uppercase; }
+
+  /* middle ground */
+  .ax-mid { display: grid; grid-template-columns: 1fr 1.25fr 1fr; gap: 1rem; align-items: stretch; }
+  .ax-side { background: var(--surface); border: 1px solid rgba(250,246,239,.08); border-radius: 6px; padding: 1.3rem; }
+  .ax-side h3 { font-family: var(--ff-disp); font-size: 1.3rem; color: var(--cream); margin: .2rem 0 .6rem; }
+  .ax-side ul { list-style: none; font-size: .86rem; color: var(--muted); line-height: 1.7; }
+  .ax-side li::before { content: '\25C6'; color: var(--saffron); font-size: .45rem; margin-right: .6rem; vertical-align: middle; }
+  .ax-side.e { border-top: 3px solid var(--saffron); } .ax-side.w { border-top: 3px solid var(--teal-lt); }
+  .ax-core { background: radial-gradient(circle at 50% 0%, rgba(232,131,10,.22), transparent 70%), var(--surface); border: 1px solid rgba(232,131,10,.4); border-radius: 6px; padding: 1.3rem; text-align: center; display: flex; flex-direction: column; justify-content: center; }
+  .ax-core h3 { font-family: var(--ff-disp); font-size: 1.5rem; color: var(--saffron-lt); margin: .3rem 0 .5rem; }
+  .ax-core p { font-size: .86rem; color: var(--cream); opacity: .85; line-height: 1.5; }
+  .ax-core .tri { display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem; margin-top: .8rem; }
+  .ax-pill { font-family: var(--ff-mono); font-size: .62rem; letter-spacing: .06em; color: var(--cream); border: 1px solid rgba(250,246,239,.25); border-radius: 100px; padding: .22rem .8rem; }
+  .ax-cont { margin-top: 1.2rem; padding: 1.3rem 1.5rem 1.2rem; background: var(--surface); border: 1px solid rgba(250,246,239,.08); border-radius: 6px; }
+  .ax-bar { position: relative; height: 14px; border-radius: 8px; background: linear-gradient(90deg, #6d7d93 0%, var(--saffron) 45%, var(--teal-lt) 100%); margin: 1rem 0 .5rem; }
+  .ax-bar i { position: absolute; top: -5px; width: 24px; height: 24px; border-radius: 50%; background: var(--cream); border: 3px solid var(--ink); box-shadow: 0 0 0 1px rgba(250,246,239,.3); transform: translateX(-50%); }
+  .ax-ends { display: flex; justify-content: space-between; font-family: var(--ff-disp); font-size: 1.15rem; color: var(--cream); }
+  .ax-ends span:nth-child(2) { color: var(--saffron-lt); }
+  .ax-cont .row { display: flex; flex-wrap: wrap; gap: .5rem 1rem; align-items: center; margin-top: 1rem; font-size: .85rem; color: var(--muted); }
+  .ax-frame { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.2rem; }
+  .ax-ladder { background: var(--surface); border: 1px solid rgba(250,246,239,.08); border-radius: 6px; padding: 1.1rem 1.3rem; }
+  .ax-ladder h4 { font-family: var(--ff-mono); font-size: .62rem; letter-spacing: .16em; text-transform: uppercase; color: var(--saffron-lt); margin-bottom: .7rem; font-weight: 500; }
+  .ax-ladder ol { list-style: none; display: grid; gap: .3rem; }
+  .ax-ladder li { display: flex; gap: .8rem; align-items: baseline; padding: .38rem .7rem; border-radius: 4px; font-size: .82rem; color: var(--cream); background: rgba(250,246,239,.04); }
+  .ax-ladder li b { font-family: var(--ff-disp); font-size: 1.02rem; min-width: 6.6rem; font-weight: 600; }
+  .ax-ladder li span { color: var(--muted); }
+  .ax-ladder.k li { border-left: 3px solid var(--saffron); } .ax-ladder.b li { border-left: 3px solid var(--teal-lt); }
+  .ax-note { font-family: var(--ff-mono); font-size: .58rem; letter-spacing: .06em; color: var(--muted); margin-top: .8rem; line-height: 1.6; }
+
+  /* voices */
+  .ax-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem; margin: 1rem 0 1.4rem; }
+  .ax-tab { display: flex; align-items: center; gap: .9rem; text-align: left; background: var(--surface); border: 1px solid rgba(250,246,239,.1); border-bottom: 3px solid transparent; border-radius: 6px; padding: .8rem 1rem; color: var(--cream); cursor: pointer; font: inherit; transition: border-color .25s, transform .25s; }
+  .ax-tab:hover { transform: translateY(-2px); border-color: rgba(232,131,10,.5); }
+  .ax-tab[aria-selected="true"] { border-bottom-color: var(--saffron); background: linear-gradient(180deg, #17304a, var(--surface)); border-color: rgba(232,131,10,.45); }
+  .ax-tab img { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; object-position: center 20%; border: 2px solid var(--saffron); flex: none; }
+  .ax-tab .t1 { display: block; font-family: var(--ff-disp); font-size: 1.12rem; line-height: 1.15; }
+  .ax-tab .t2 { display: block; font-family: var(--ff-mono); font-size: .56rem; letter-spacing: .12em; text-transform: uppercase; color: var(--saffron-lt); margin-top: .2rem; }
+  .js-loaded .ax-vp[hidden] { display: none; }
+  .ax-vp-head { display: flex; gap: 1.4rem; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; margin-bottom: 1.2rem; }
+  .ax-thesis { font-family: var(--ff-disp); font-size: 1.65rem; line-height: 1.22; color: var(--cream); max-width: 40ch; }
+  .ax-thesis em { color: var(--saffron-lt); }
+  .ax-tags { display: flex; gap: .4rem; flex-wrap: wrap; }
+  .ax-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .ax-card { background: var(--surface); border: 1px solid rgba(250,246,239,.08); border-top: 3px solid var(--saffron); border-radius: 4px; padding: 1.2rem 1.3rem 1rem; display: flex; flex-direction: column; }
+  .ax-card.t { border-top-color: var(--teal-lt); } .ax-card.wide { grid-column: span 2; } .ax-card.full { grid-column: 1 / -1; }
+  .ax-big { font-family: var(--ff-disp); font-size: 2.6rem; line-height: 1; color: var(--saffron-lt); }
+  .ax-card.t .ax-big { color: var(--teal-lt); }
+  .ax-big small { font-size: 1rem; color: var(--muted); margin-left: .3rem; }
+  .ax-card h4 { font-family: var(--ff-disp); font-size: 1.2rem; line-height: 1.22; color: var(--cream); margin: .5rem 0 .35rem; font-weight: 600; }
+  .ax-card p { font-size: .84rem; line-height: 1.55; color: var(--cream); opacity: .8; flex: 1; }
+  .ax-card cite { display: block; margin-top: .8rem; font-family: var(--ff-mono); font-style: normal; font-size: .56rem; letter-spacing: .05em; line-height: 1.5; color: var(--muted); }
+  .ax-flag { display: inline-block; margin-left: .5rem; font-family: var(--ff-mono); font-size: .52rem; letter-spacing: .12em; text-transform: uppercase; color: var(--saffron-lt); border: 1px solid rgba(232,131,10,.45); border-radius: 100px; padding: 0 .5rem; vertical-align: middle; }
+  .ax-vs { display: grid; gap: .45rem; margin: .7rem 0 .3rem; }
+  .ax-vs div { display: grid; grid-template-columns: 5.2rem 1fr 3.4rem; gap: .6rem; align-items: center; font-family: var(--ff-mono); font-size: .6rem; letter-spacing: .06em; color: var(--muted); }
+  .ax-vs .tr { height: 10px; border-radius: 5px; background: rgba(250,246,239,.08); overflow: hidden; }
+  .ax-vs .tr i { display: block; height: 100%; border-radius: 5px; background: var(--saffron); }
+  .ax-vs .tr i.g { background: #6d7d93; } .ax-vs .tr i.tl { background: var(--teal-lt); }
+  .ax-vs b { color: var(--cream); font-weight: 500; text-align: right; }
+  .ax-chips { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .7rem; }
+  .ax-chips span { font-size: .78rem; color: var(--cream); background: rgba(250,246,239,.06); border: 1px solid rgba(250,246,239,.12); border-radius: 4px; padding: .3rem .65rem; line-height: 1.3; }
+  .ax-chips span b { color: var(--saffron-lt); font-family: var(--ff-mono); font-size: .62rem; margin-right: .4rem; font-weight: 500; }
+  .ax-split { display: grid; grid-template-columns: 1.1fr 1fr; gap: 1.4rem; align-items: center; }
+  .ax-loop svg { width: 100%; max-width: 250px; height: auto; display: block; margin: 0 auto; }
+  .ax-loop ol { list-style: none; display: grid; gap: .45rem; }
+  .ax-loop li { font-size: .8rem; color: var(--muted); line-height: 1.4; display: grid; grid-template-columns: 1.6rem 1fr; gap: .5rem; }
+  .ax-loop li i { font-style: normal; display: inline-grid; place-items: center; width: 1.4rem; height: 1.4rem; border-radius: 50%; background: var(--saffron); color: var(--ink); font-family: var(--ff-mono); font-size: .62rem; font-weight: 500; }
+  .ax-loop li b { color: var(--cream); font-family: var(--ff-disp); font-size: .98rem; font-weight: 600; }
+  .ax-loop li q { display: block; font-style: italic; color: var(--saffron-lt); quotes: '\201C' '\201D'; }
+
+  /* lab to life */
+  .ax-pipe { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin: .6rem 0 1.2rem; }
+  .ax-step { position: relative; padding: 1.1rem 1.5rem 1.1rem 1.4rem; background: var(--surface); border: 1px solid rgba(250,246,239,.08); clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 0 100%, 18px 50%); }
+  .ax-step:first-child { clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 0 100%); }
+  .ax-step:nth-child(1) { background: #17304a; } .ax-step:nth-child(2) { background: #1b3a4a; } .ax-step:nth-child(3) { background: #1d4448; } .ax-step:nth-child(4) { background: #1A6B6B; }
+  .ax-step .n { font-family: var(--ff-mono); font-size: .58rem; letter-spacing: .18em; color: var(--saffron-lt); }
+  .ax-step b { display: block; font-family: var(--ff-disp); font-size: 1.5rem; color: var(--cream); line-height: 1.1; font-weight: 600; }
+  .ax-step span { font-size: .76rem; color: #cfdbe6; line-height: 1.4; display: block; margin-top: .2rem; }
+  .ax-two { display: grid; grid-template-columns: 1fr 1.25fr; gap: 1rem; }
+  .ax-gap { display: grid; gap: .6rem; }
+  .ax-gap div { display: flex; align-items: baseline; gap: .9rem; background: var(--surface); border-left: 3px solid var(--teal-lt); border-radius: 0 4px 4px 0; padding: .7rem 1rem; }
+  .ax-gap b { font-family: var(--ff-disp); font-size: 1.5rem; color: var(--teal-lt); min-width: 5.6rem; line-height: 1; font-weight: 600; }
+  .ax-gap span { font-size: .82rem; color: var(--cream); opacity: .85; line-height: 1.4; }
+  .ax-proj { display: grid; gap: .45rem; }
+  .ax-proj div { display: grid; grid-template-columns: 1.4rem 1fr auto; gap: .7rem; align-items: baseline; background: var(--surface); border: 1px solid rgba(250,246,239,.07); border-radius: 4px; padding: .6rem .9rem; font-size: .83rem; color: var(--cream); }
+  .ax-proj i { font-style: normal; font-family: var(--ff-mono); font-size: .62rem; color: var(--saffron); }
+  .ax-proj em { font-style: normal; font-family: var(--ff-mono); font-size: .54rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); text-align: right; }
+  .ax-cta { margin: 3.5rem 0 1rem; padding: 2rem 2.2rem; border-radius: 8px; background: linear-gradient(120deg, rgba(232,131,10,.18), rgba(26,107,107,.25)); border: 1px solid rgba(232,131,10,.35); display: flex; gap: 1.5rem; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+  .ax-cta h3 { font-family: var(--ff-disp); font-size: 1.7rem; color: var(--cream); font-weight: 600; }
+  .ax-cta p { color: var(--cream); opacity: .85; font-size: .92rem; }
+  .ax-btn { display: inline-flex; align-items: center; gap: .6rem; font-family: var(--ff-mono); font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ink); background: var(--saffron); border-radius: 100px; padding: .8rem 1.6rem; text-decoration: none; }
+  .ax-btn.o { background: transparent; color: var(--cream); border: 1px solid rgba(250,246,239,.3); }
+
+  .ax-fw { display: grid; grid-template-columns: repeat(4, 1fr); gap: .8rem; margin-top: 1.2rem; }
+  .ax-fw > div { background: var(--surface); border: 1px solid rgba(250,246,239,.08); border-radius: 6px; padding: .9rem 1rem; }
+  .ax-fw p { font-family: var(--ff-disp); font-size: 1.12rem; line-height: 1.25; color: var(--cream); margin-top: .3rem; }
+  .ax-fw .ax-chips { margin-top: .4rem; } .ax-fw .ax-chips span { font-family: var(--ff-mono); font-size: .62rem; padding: .2rem .55rem; }
+  .ax-oa { display: grid; grid-template-columns: 1fr 1fr; gap: .8rem; margin-top: .8rem; }
+  .ax-oa > div { background: var(--surface); border-left: 3px solid var(--saffron); border-radius: 0 6px 6px 0; padding: .8rem 1rem; }
+  .ax-oa ol { margin: .4rem 0 0 1.1rem; font-size: .84rem; color: var(--cream); line-height: 1.6; }
+  .ax-next { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .ax-next .ax-card { border-top-color: var(--teal-lt); padding: 1.4rem 1.5rem 1.2rem; }
+  .ax-next h4 { font-size: 1.5rem; margin-top: .3rem; } .ax-next h4 small { display: block; font-family: var(--ff-mono); font-size: .6rem; letter-spacing: .14em; text-transform: uppercase; color: var(--saffron-lt); margin-top: .35rem; font-weight: 400; }
+  .ax-next ul { list-style: none; font-size: .84rem; line-height: 1.55; color: var(--cream); opacity: .85; margin-top: .6rem; }
+  .ax-next li::before { content: '\25C6'; color: var(--saffron); font-size: .45rem; margin-right: .6rem; vertical-align: middle; }
+  @media (max-width: 960px) {
+    .ax-fw { grid-template-columns: 1fr 1fr; } .ax-next, .ax-oa { grid-template-columns: 1fr; }
+    .ax-cards { grid-template-columns: repeat(2, 1fr); } .ax-card.wide { grid-column: span 2; }
+    .ax-tabs { grid-template-columns: repeat(2, 1fr); }
+    .ax-mid, .ax-two, .ax-frame { grid-template-columns: 1fr; }
+    .ax-pipe { grid-template-columns: 1fr 1fr; gap: .5rem; } .ax-step, .ax-step:first-child { clip-path: none; border-radius: 6px; }
+  }
+  @media (max-width: 680px) {
+    .ax-pillars { grid-template-columns: 1fr; padding: 0; } .ax-base { grid-template-columns: 1fr; margin: .9rem 0 0; } .ax-slab + .ax-slab { border-left: 0; border-top: 1px solid rgba(234,247,247,.3); margin-top: .6rem; padding-top: .8rem; }
+    .ax-roof { font-size: 1.25rem; }
+    .ax-tl { grid-template-columns: 1fr; } .ax-tl::before { left: 7px; right: auto; top: 0; bottom: 0; width: 2px; height: auto; }
+    .ax-tl-i { padding: 0 0 1.4rem 2rem; } .ax-tl-i::before { top: 2px; }
+    .ax-cards { grid-template-columns: 1fr; } .ax-card.wide { grid-column: auto; }
+    .ax-tabs { grid-template-columns: 1fr 1fr; } .ax-tab { padding: .6rem; gap: .5rem; } .ax-tab img { width: 36px; height: 36px; } .ax-tab .t1 { font-size: .98rem; }
+    .ax-split { grid-template-columns: 1fr; } .ax-pipe { grid-template-columns: 1fr; }
+    .ax-h2 { font-size: 1.7rem; } .ax-thesis { font-size: 1.35rem; }
+  }
+</style>
+  <style>/* keep the 9-link header on one line on laptop widths */
+    .nav-brand .brand-top, .nav-brand .brand-sub { white-space: nowrap; }
+    @media (max-width: 1440px) and (min-width: 1025px) { .nav-links { gap: 1.25rem; } .nav-links a { letter-spacing: .1em; } }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── MOBILE OVERLAY ── -->
+  <div id="nav-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <a href="index.html">Home</a>
+    <a href="index.html#people">Team</a>
+    <a href="architecture.html" style="color:var(--saffron);">Architecture</a>
+    <a href="research.html">Research</a>
+    <a href="impact.html">Impact</a>
+    <a href="index.html#publications">Publications</a>
+    <a href="index.html#facilities">Facilities</a>
+    <a href="index.html#talks">Events</a>
+    <a href="index.html#Connect">Connect</a>
+    <a href="media.html">Media &amp; Outreach</a>
+  </div>
+
+  <!-- ── NAV ── -->
+  <nav id="navbar" aria-label="Main navigation">
+    <a href="index.html" class="nav-brand" aria-label="Centre for Consciousness Studies">
+      <span class="brand-top">Centre for Consciousness Studies</span>
+      <span class="brand-sub">NIMHANS &middot; Bengaluru &middot; India</span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html#people">Team</a></li>
+      <li><a href="architecture.html" style="color:var(--saffron);">Architecture</a></li>
+      <li><a href="research.html">Research</a></li>
+      <li><a href="impact.html">Impact</a></li>
+      <li><a href="index.html#publications">Publications</a></li>
+      <li><a href="index.html#facilities">Facilities</a></li>
+      <li><a href="index.html#talks">Events</a></li>
+      <li><a href="index.html#Connect">Connect</a></li>
+      <li><a href="media.html">Media</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  
+  <div class="page-hero" style="padding-bottom:2.2rem;">
+    <div class="container">
+      <div class="reveal">
+        <a href="index.html" class="back-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12" /><polyline points="12 19 5 12 12 5" /></svg>
+          Back to Home
+        </a>
+        <div class="eyebrow">Architecture of experience</div>
+        <div class="saffron-rule"></div>
+        <h1>Decoding the <em>embodied</em> architecture of experience</h1>
+        <p class="sub">From contemplative to clinical sciences: how one question, <em>how does experience arise from a living body?</em>, shapes four decades of work at NIMHANS.</p>
+      </div>
+    </div>
+  </div>
+
+  <nav class="ax-sub" aria-label="On this page">
+    <ul>
+      <li><a href="#architecture">Architecture</a></li>
+      <li><a href="#legacy">Four decades</a></li>
+      <li><a href="#middle">Middle ground</a></li>
+      <li><a href="#voices">Four voices</a></li>
+      <li><a href="#lab-to-life">Lab to life</a></li>
+      <li><a href="#next">What&rsquo;s next</a></li>
+    </ul>
+  </nav>
+
+  <main class="container">
+
+    <div class="stats-bar reveal" id="ax-stats" style="margin-top:2rem;margin-bottom:0;"></div>
+
+    <!-- 1 · ARCHITECTURE -->
+    <section class="ax-block" id="architecture">
+      <div class="ax-k reveal">The framework</div>
+      <h2 class="ax-h2 reveal">Three pillars, standing on <em>three foundations</em></h2>
+      <p class="ax-lede reveal">Every CCS project holds up at least one pillar and rests on all three foundations.</p>
+      <div class="ax-arch reveal">
+        <div class="ax-roof"><small>Centre for Consciousness Studies</small>Architecture of Experience</div>
+        <div class="ax-pillars">
+          <div class="ax-pillar">
+            <h3>Multidimensional awareness</h3>
+            <p>Consciousness across rest, task, meditation and sleep.</p>
+          </div>
+          <div class="ax-pillar">
+            <h3>Application-oriented research</h3>
+            <p>Schools, clinics, meditation centres and wearables.</p>
+          </div>
+          <div class="ax-pillar">
+            <h3>Embodied self</h3>
+            <p>The brain&ndash;body&ndash;environment loop, with interoception as the root of selfhood.</p>
+          </div>
+        </div>
+        <div class="ax-base">
+          <div class="ax-slab"><b>Experiential Indian Knowledge Systems</b>Practical mastery via traditional methods</div>
+          <div class="ax-slab"><b>Lived experience &amp; contributor expertise</b>Practitioners and patients as co-investigators</div>
+          <div class="ax-slab"><b>Inter-disciplinary neurophysiology</b>EEG, sleep, heart, breath, imaging, wearables</div>
+        </div>
+        <div class="ax-ground"></div>
+      </div>
+    </section>
+
+    <!-- 2 · LEGACY -->
+    <section class="ax-block" id="legacy">
+      <div class="ax-k reveal">Legacy &rarr; today</div>
+      <h2 class="ax-h2 reveal">Four decades, <em>one question</em></h2>
+      <div class="ax-tl reveal">
+        <div class="ax-tl-i"><div class="ax-yr">1976</div><h4>Project Consciousness</h4><p>Inaugurated at NIMHANS (Dept. of Neurophysiology, ICMR-funded under Prof. T. Desiraju). A whole-body study of yoga and meditation in sound-proof cabins: 91 men registered; TM, Rajayoga, Yoga Nidra, pranayama.</p></div>
+        <div class="ax-tl-i"><div class="ax-yr">1982&ndash;85</div><h4>Symposium and first lab</h4><p>A 1982 symposium on Yoga, Brain &amp; Consciousness brought yoga, neuroscience and philosophy together; the first lab followed with a 13-channel EEG polygraph, a 4-channel portable polygraph and Russian collaborators.</p></div>
+        <div class="ax-tl-i"><div class="ax-yr">2000&ndash;2020</div><h4>Cognitive &amp; Sleep Lab</h4><p>Whole-night polysomnography as a window on consciousness: meditators&rsquo; sleep, Ayurveda and yoga trials, schizophrenia, lucid dreaming, dream decoding.</p></div>
+        <div class="ax-tl-i"><div class="ax-yr">2020+</div><h4>Centre for Consciousness Studies</h4><p>Four core areas: sleep &amp; dreams, mind&ndash;body &amp; contemplative, clinical &amp; developmental, neurotechnology. Cross-tradition EEG, wearables, open-source tools.</p></div>
+      </div>
+      <div class="ax-lesson reveal">Yoga is not a relaxation switch. It trains homeostatic adaptability.
+        <span>Lesson of Project Consciousness: after TM, ventilation fell; after Rajayoga and pranayama it rose. Every person showed their own pattern, session to session.</span></div>
+    </section>
+
+    <!-- 3 · MIDDLE GROUND -->
+    <section class="ax-block" id="middle">
+      <div class="ax-k reveal">Why a middle ground</div>
+      <h2 class="ax-h2 reveal">Two ways of knowing, <em>one human being</em></h2>
+      <div class="ax-mid reveal">
+        <div class="ax-side e"><div class="ax-k">Eastern &middot; contemplative</div><h3>First-person wisdom</h3><ul><li>Subjective introspection</li><li>Qualitative assessment</li><li>Holistic: connectedness</li></ul></div>
+        <div class="ax-core"><div class="ax-k">Middle ground</div><h3>A consciousness lens, with health as a continuum</h3><p>Measurement from neuroscience, maps of a healthy, flexible mind from tradition, tested in real-world settings with advanced neurotechnology.</p>
+          <div class="tri"><span class="ax-pill">Neurophenomenological designs</span><span class="ax-pill">Multivariate analysis</span><span class="ax-pill">Real-world technology</span></div></div>
+        <div class="ax-side w"><div class="ax-k">Western &middot; neuroscientific</div><h3>Third-person measurement</h3><ul><li>Objective evaluation</li><li>Quantifiable data</li><li>Reductionist, materialistic</li></ul></div>
+      </div>
+      <div class="ax-cont reveal">
+        <div class="ax-k">Health as a continuum, not a binary</div>
+        <div class="ax-bar" role="img" aria-label="A continuum from illness through normal to wellbeing"></div>
+        <div class="ax-ends"><span>Illness</span><span>Normal</span><span>Wellbeing</span></div>
+        <div class="row"><span>A person&rsquo;s position shifts with the state they are in. We use four states as lenses:</span><span class="ax-pill">Rest</span><span class="ax-pill">Task</span><span class="ax-pill">Meditation</span><span class="ax-pill">Sleep</span></div>
+      </div>
+      <div class="ax-k reveal" id="framework" style="margin-top:2rem;">Our research framework</div>
+      <div class="ax-fw reveal" aria-label="Concepts, states, samples and techniques">
+        <div><div class="ax-k">Concepts / ideas</div><p>Neuroscience + Indian philosophical insights</p></div>
+        <div><div class="ax-k">States / levels</div><div class="ax-chips"><span>Rest</span><span>Task</span><span>Meditation</span><span>Sleep</span></div></div>
+        <div><div class="ax-k">Samples / models</div><div class="ax-chips"><span>Wellness</span><span>Normal</span><span>Illness</span></div></div>
+        <div><div class="ax-k">Techniques / approaches</div><p>Neurophysiological + cognitive neuroscience</p></div>
+      </div>
+      <div class="ax-oa reveal">
+        <div><div class="ax-k">Three objectives</div><ol><li>Multidimensional nature of awareness</li><li>Role of brain&ndash;body harmony in wellbeing</li><li>Application-oriented research</li></ol></div>
+        <div><div class="ax-k">Three approaches</div><ol><li>Neurophenomenological designs</li><li>Modern multivariate analysis</li><li>Novel technology for real-world settings</li></ol></div>
+      </div>
+      <div class="ax-frame reveal">
+        <div class="ax-ladder b"><h4>Bennett &middot; five evolutionary functions</h4><ol>
+          <li><b>Speaking</b><span>symbols, grammar, inner narrative</span></li><li><b>Mentalizing</b><span>metacognition, theory of mind</span></li><li><b>Simulating</b><span>world models, replay, imagination</span></li><li><b>Reinforcing</b><span>reward learning, habits</span></li><li><b>Steering</b><span>taxis and reflexes</span></li></ol></div>
+        <div class="ax-ladder k"><h4>Pa&ntilde;cakośa &middot; five layers of lived experience</h4><ol>
+          <li><b>Ānandamaya</b><span>wholeness, wellbeing</span></li><li><b>Vijñānamaya</b><span>discernment, agency</span></li><li><b>Manomaya</b><span>sensing, feeling mind</span></li><li><b>Prāṇamaya</b><span>breath, vitality, homeostasis</span></li><li><b>Annamaya</b><span>physical body</span></li></ol></div>
+      </div>
+      <p class="ax-note reveal">Two independent frameworks: Bennett asks functional questions, Pa&ntilde;cakośa offers experiential distinctions. We use both without forcing a one-to-one mapping. Temporo-spatial theory (Northoff &amp; Zilio, 2022) is a candidate bridge to test between them.</p>
+    </section>
+
+    <!-- 4 · FOUR VOICES -->
+    <section class="ax-block" id="voices">
+      <div class="ax-k reveal">One architecture &middot; four vantage points</div>
+      <h2 class="ax-h2 reveal">Four voices, <em>selected results</em></h2>
+      <p class="ax-lede reveal">The same architecture, seen from the body, the clinic, the traditions and the self. Choose a voice.</p>
+
+      <div class="ax-tabs reveal" role="tablist" aria-label="Four vantage points">
+        <button class="ax-tab" role="tab" id="tab-body" aria-controls="vp-body" aria-selected="true"><img src="assets/images/team/ravindra.jpg" alt=""><span><span class="t1">Ravindra Nagendra</span><span class="t2">The body</span></span></button>
+        <button class="ax-tab" role="tab" id="tab-clinic" aria-controls="vp-clinic" aria-selected="false" tabindex="-1"><img src="assets/images/team/arun.jpg" alt=""><span><span class="t1">Arun Sasidharan</span><span class="t2">The clinic</span></span></button>
+        <button class="ax-tab" role="tab" id="tab-traditions" aria-controls="vp-traditions" aria-selected="false" tabindex="-1"><img src="assets/images/team/praerna.jpg" alt=""><span><span class="t1">Praerna Chowdhury</span><span class="t2">The traditions</span></span></button>
+        <button class="ax-tab" role="tab" id="tab-self" aria-controls="vp-self" aria-selected="false" tabindex="-1"><img src="assets/images/team/rahul.png" alt=""><span><span class="t1">Rahul Venugopal</span><span class="t2">Beyond the brain</span></span></button>
+      </div>
+
+      <!-- BODY -->
+      <div class="ax-vp" id="vp-body" role="tabpanel" aria-labelledby="tab-body">
+        <div class="ax-vp-head"><p class="ax-thesis">Yoga trains adaptability. The <em>heart&ndash;brain&ndash;breath loop</em> is trainable, and sleep is its overnight readout.</p>
+          <div class="ax-tags"><span class="ax-pill">Embodied self</span><span class="ax-pill">Multidimensional awareness</span></div></div>
+        <div class="ax-cards">
+          <article class="ax-card"><div class="ax-big">Individual</div><h4>No single &ldquo;relaxation response&rdquo;</h4><p>Tidal volume and ventilation fell after TM but rose after Rajayoga and pranayama; lactate and cortisol fell in some seniors and rose in others. Effects read as adaptive optimisation across repeated sessions. CCS now records repeated, multi-day sessions and always includes rest and task conditions.</p><cite>NIMHANS&ndash;ICMR Project Consciousness report (Desiraju)</cite></article>
+          <article class="ax-card t"><div class="ax-big">11&ndash;13%<small>deep sleep</small></div><h4>Meditators keep their deep sleep with age</h4>
+            <div class="ax-vs"><div><span>Controls</span><span class="tr"><i class="g" style="width:28%"></i></span><b>3.7%</b></div><div><span>Meditators</span><span class="tr"><i class="tl" style="width:92%"></i></span><b>11&ndash;13%</b></div></div>
+            <p>Slow-wave (N3) share in middle-aged yoga and Vipassana meditators versus age-matched controls, with higher vagal tone through the night.</p><cite>Sulekha et al., Sleep Biol Rhythms 2006; Nagendra et al., Int J CAM 2017; Sleep Sci 2023</cite></article>
+          <article class="ax-card"><div class="ax-big">60<small>patients, RCT</small></div><h4>Yoga added to migraine care raised vagal tone</h4><p>Five days a week for six weeks: a greater reduction in headache frequency and intensity, with more vagal and less sympathetic activity. Hypothesis in progress: practice trains a loop, not a single organ.</p><cite>Kisan et al., Int J Yoga 2014</cite></article>
+          <article class="ax-card t"><div class="ax-big">Awareness<small>inside sleep</small></div><h4>Sleep is more than disconnection: its responsiveness can be measured</h4><p>The same tones evoke stage-dependent ERP waves (P200, N350, N550&ndash;P900) awake and in NREM sleep. Meditators show more dynamic NREM and REM patterns, and larger N550&ndash;P900 complexes correlate with fewer NREM disruptions, so K-complexes may be a protective gate against external sounds.</p><cite>Venugopal et al., 2018 (n = 12 healthy volunteers); Venugopal et al., 2019</cite></article>
+          <article class="ax-card t"><div class="ax-big">r = &minus;0.49</div><h4>A quieter heart signal in REM predicts a better morning<span class="ax-flag">preliminary</span></h4><p>Lower heart-evoked potential amplitude (300&ndash;400 ms after the R-peak) during REM sleep goes with higher mood ratings after waking (p = 0.047): reduced cortical processing of cardiac signals may reflect less self-referential, interoceptive processing, a link between sleep-based interoception and next-day mood.</p><cite>CCS sleep study; full reference to be added</cite></article>
+          <article class="ax-card"><div class="ax-big">5<small>lessons</small></div><h4>Five Project Consciousness lessons still in our protocols</h4><p>Single sessions mislead, subtract the sitting control, expect individual patterns, think non-linearly, and treat health as a continuum.</p><cite>Desiraju report; CCS current protocols</cite></article>
+        </div>
+      </div>
+
+      <!-- CLINIC -->
+      <div class="ax-vp" id="vp-clinic" role="tabpanel" aria-labelledby="tab-clinic" hidden>
+        <div class="ax-vp-head"><p class="ax-thesis">Through a consciousness lens, health is a <em>continuum</em> measured with one ruler at both ends.</p>
+          <div class="ax-tags"><span class="ax-pill">Application-oriented research</span></div></div>
+        <div class="ax-cards">
+          <article class="ax-card"><div class="ax-big">45 <small>vs 39 controls</small></div><h4>Schizophrenia: altered coordination across states</h4><p>Whole-night sleep in patients shows more and longer awakenings, reduced N2, and unstable sleep cycles. Elevated serum adenosine deaminase in antipsychotic-na&iuml;ve patients. Task EEG and fMRI show shared coordination differences with near-normal performance.</p><cite>Sasidharan et al., Sleep Medicine 2017; Asian J Psychiatry 2017; PhD thesis 2015</cite></article>
+          <article class="ax-card t"><div class="ax-big">&minus;18.2<small>vs &minus;7.5</small></div><h4>Add-on yoga in adolescent depression<span class="ax-flag">thesis</span></h4><div class="ax-vs"><div><span>Yoga + care</span><span class="tr"><i class="tl" style="width:100%"></i></span><b>&minus;18.22</b></div><div><span>Care alone</span><span class="tr"><i class="g" style="width:41%"></i></span><b>&minus;7.49</b></div></div><p>Change in depression score (HDRS). Delta-band information transfer from anterior cingulate to insula tracked the improvement (r = &minus;0.57, p = 0.001).</p><cite>Bhaskar, PhD thesis, NIMHANS 2026</cite></article>
+          <article class="ax-card"><div class="ax-big">72<small>patients</small></div><h4>Ayurveda for anxiety and sleep, objectively tested</h4><p>In generalised anxiety, Manasamitra Vataka &plusmn; Shirodhara preserved slow-wave sleep and continuity, whereas clonazepam reduced N3. Whole-night polysomnography adds information beyond symptom ratings.</p><cite>Tubaki et al., Current Science 2016</cite></article>
+          <article class="ax-card t"><div class="ax-big">5/6<small>vs 1/5</small></div><h4>Reading and gently shaping dreams</h4><p>Five of six participants trained in lucid dreaming (reality testing, autosuggestion, intention plus a REM auditory cue) achieved it, against one of five controls, with higher fronto-central gamma. In 29 healthy high-recallers, recall tracked beta power and default-mode connectivity; 10.4% of sleep cues surfaced in the next dream report. <b>Not dream decoding.</b></p><cite>Kumar et al., Int J Dream Research 2018; Consciousness &amp; Cognition 2025</cite></article>
+          <article class="ax-card"><div class="ax-big">140<small>4 &times; 35, triple-blind</small></div><h4>Music reorganises engagement</h4><p>Ten minutes of bansuri: alpha fell in every group, most in the control; frontal beta1 depended on the raga. Some ragas also gave smaller responses to unrelated sounds.</p><cite>Kunikullaya et al., IJPP 2025; Music &amp; Medicine 2022, 2025</cite></article>
+          <article class="ax-card t"><div class="ax-big">3<small>disorders</small></div><h4>Sleep as a clinical window</h4><div class="ax-chips"><span><b>SCZ</b>unstable cycles</span><span><b>PSP</b>reduced, fragmented sleep</span><span><b>CD</b>fewer spindles, less REM</span></div><p style="margin-top:.7rem">Each condition leaves its own signature, a sensitive window on brain function and disease progression. PSP and cervical dystonia: whole-night recordings in 22 and 13 patients.</p><cite>Boini 2021, 2022; Ray 2021</cite></article>
+        </div>
+      </div>
+
+      <!-- TRADITIONS -->
+      <div class="ax-vp" id="vp-traditions" role="tabpanel" aria-labelledby="tab-traditions" hidden>
+        <div class="ax-vp-head"><p class="ax-thesis">Respect a tradition&rsquo;s architecture and <em>real differences</em> appear in practice, time and experience.</p>
+          <div class="ax-tags"><span class="ax-pill">Multidimensional awareness</span></div></div>
+        <div class="ax-cards">
+          <article class="ax-card wide"><div class="ax-k">One word, many practices<span class="ax-flag">preprints</span></div><h4>Traditions leave different neural fingerprints</h4>
+            <div class="ax-vs" style="grid-template-columns:1fr 1fr;column-gap:2rem;">
+              <div style="grid-template-columns:6.4rem 1fr 2.6rem;"><span>Brahma Kumaris</span><span class="tr"><i style="width:100%"></i></span><b>1.00</b></div>
+              <div style="grid-template-columns:6.4rem 1fr 2.6rem;"><span>Vipassana</span><span class="tr"><i style="width:95%"></i></span><b>0.95</b></div>
+              <div style="grid-template-columns:6.4rem 1fr 2.6rem;"><span>Isha Yoga</span><span class="tr"><i style="width:91%"></i></span><b>0.91</b></div>
+              <div style="grid-template-columns:6.4rem 1fr 2.6rem;"><span>Heartfulness</span><span class="tr"><i style="width:87%"></i></span><b>0.87</b></div>
+            </div>
+            <p>Classification performance (AUC) of EEG features for each tradition. Nonlinear features contribute most overall, though oscillatory features lead for Vipassana and Isha. Theta&ndash;alpha power is highly reliable across two days (ICC = 0.97). Different techniques, common goal: multiple neural pathways to meditative states.</p><cite>Shrimali et al., bioRxiv 2025; Ventura et al., Neurosci Conscious 2026; Chowdhury et al., bioRxiv 2026</cite></article>
+          <article class="ax-card t"><div class="ax-big">&rho; = &minus;0.31</div><h4>When inner and outer clocks converge</h4><p>Intrinsic neural timescales are longer for internal (breath) than external attention. Advanced meditators show no gap, and the smaller the gap, the stronger the reported non-duality (p = .02, 53 paired observations).</p><cite>Saketh et al., Communications Biology 2026</cite></article>
+          <article class="ax-card t"><div class="ax-big">2&ndash;3<small>min to onset</small></div><h4>Meditation is a trajectory, not a snapshot</h4><p>EEG changes begin within 2&ndash;3 minutes and peak at 7&ndash;10. Long-term meditators switch between rest and meditation within a minute on demand; controls do not.</p><cite>Malipeddi et al., 2025; Nair et al., Consciousness &amp; Cognition 2017</cite></article>
+          <article class="ax-card"><div class="ax-big">51.6%<small>of variance</small></div><h4>Wellbeing follows practice proficiency</h4><p>Across 1,009 Brahma Kumaris practitioners, proficiency predicted wellbeing better than years of practice. Isha practitioners (n = 1,352) report lower stress than controls, with a dose&ndash;response to practice; proficient Heartfulness meditators score higher on wellbeing.</p><cite>Nair et al., IJW 2018; Frontiers in Public Health 2024; Sylapan et al., Consciousness &amp; Cognition 2020</cite></article>
+          <article class="ax-card t"><div class="ax-big">42 &middot; 33 &middot; 28<small>advanced &middot; novice &middot; control</small></div><h4>Advanced Isha practitioners sustain power in Shoonya</h4><p>With 128-channel EEG, oscillatory power was sustained in advanced practitioners while novices and controls dropped; they also reported deeper meditation and non-duality. A hypothesis to test, not a result: flexible updating with less rigid identification.</p><cite>Malipeddi et al., Mindfulness 2024 (cross-sectional)</cite></article>
+          <article class="ax-card full"><div class="ax-k">Five design principles for studying a tradition</div>
+            <div class="ax-chips" style="margin-top:.8rem"><span><b>1</b>Tradition-specific protocol</span><span><b>2</b>Context &amp; proficiency, on the tradition&rsquo;s own scales</span><span><b>3</b>Multiple state transitions (rest &harr; meditation)</span><span><b>4</b>Multi-day sessions, e.g. 8-day retreats</span><span><b>5</b>Native environment &amp; time: portable EEG in the centre</span></div>
+            <cite style="margin-top:.9rem">Field work includes tukdam documentation with the Dalai Lama Institute for Higher Education (Tidwell et al., Forensic Sci Int: Reports 2024) and an IKS-funded map of the Mandukya Upanishad&rsquo;s four states onto the states we record.</cite></article>
+        </div>
+      </div>
+
+      <!-- SELF -->
+      <div class="ax-vp" id="vp-self" role="tabpanel" aria-labelledby="tab-self" hidden>
+        <div class="ax-vp-head"><p class="ax-thesis">The self is read across <em>brain, body, behaviour, experience and environment</em>.</p>
+          <div class="ax-tags"><span class="ax-pill">Embodied self</span><span class="ax-pill">Application</span></div></div>
+        <div class="ax-cards">
+          <article class="ax-card wide"><div class="ax-k">Five selves, one body</div><h4>Each circle turns &ldquo;the self&rdquo; into something measurable</h4>
+            <div class="ax-split ax-loop">
+              <svg viewBox="0 0 250 250" role="img" aria-label="Five selves arranged as a loop around the sense of self">
+                <circle cx="125" cy="125" r="84" fill="none" stroke="#E8830A" stroke-width="2" stroke-dasharray="3 6" opacity=".7"/>
+                <text x="125" y="121" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="17" fill="#FAF6EF">Sense</text>
+                <text x="125" y="140" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="17" fill="#FAF6EF">of self</text>
+                <g font-family="DM Mono,monospace" font-size="12" text-anchor="middle" fill="#0D1B2A">
+                  <circle cx="125" cy="41" r="15" fill="#E8830A"/><text x="125" y="45.5">1</text>
+                  <circle cx="204.9" cy="99" r="15" fill="#E8830A"/><text x="204.9" y="103.5">2</text>
+                  <circle cx="174.4" cy="193" r="15" fill="#E8830A"/><text x="174.4" y="197.5">3</text>
+                  <circle cx="75.6" cy="193" r="15" fill="#E8830A"/><text x="75.6" y="197.5">4</text>
+                  <circle cx="45.1" cy="99" r="15" fill="#E8830A"/><text x="45.1" y="103.5">5</text>
+                </g>
+              </svg>
+              <ol>
+                <li><i>1</i><span><b>Interoceptive self</b><q>I am a living body</q>heart-evoked potentials, breath&ndash;heart&ndash;EEG coupling</span></li>
+                <li><i>2</i><span><b>Agency &amp; ownership</b><q>I did that; this is my body</q>agency tasks, VR body illusions</span></li>
+                <li><i>3</i><span><b>Peripersonal space</b><q>The space around me is mine</q>reaction-time and VR paradigms</span></li>
+                <li><i>4</i><span><b>First-person perspective</b><q>I look out from here</q>vestibular self</span></li>
+                <li><i>5</i><span><b>Narrative self</b><q>I am the story I tell</q>self-voice in auditory verbal hallucinations</span></li>
+              </ol>
+            </div><cite>After Newen, Front Psychol 2018</cite></article>
+          <article class="ax-card t"><div class="ax-big">27%</div><h4>One conversation, not three channels</h4><p>of BOLD variance is explained by respiration alone. Nasal breathing synchronises piriform cortex, amygdala and hippocampus; cardiac phase quietly sets the tone of perception, and the brain&rsquo;s response to each heartbeat tracks how self-related a thought is. We are now mapping heart-evoked potentials across sleep stages and subjects <span class="ax-flag" style="margin-left:0">unpublished</span></p><cite>Northoff et al. 2023; Zelano et al. 2016; Tort et al. 2018; Azzalini et al. 2019</cite></article>
+          <article class="ax-card"><div class="ax-big">Time<small>has structure</small></div><h4>Experience is stitched in time</h4><p>In a bistable figure that never changes physically, the felt interval breaks where the percept switches. Experience is not only in time; it carries its own temporal structure.</p><cite>Venugopal, Timing Research Forum 2022</cite></article>
+          <article class="ax-card t"><div class="ax-big">5<small>layers</small></div><h4>Peeling the self</h4><div class="ax-chips"><span>Thoughts</span><span>Body-sense</span><span>Time</span><span>Space</span><span>Ego</span></div><p style="margin-top:.7rem">Sleep stages, meditative states, deprivation and disorder are natural experiments where contents drop away. The contents are measurable; the container is the open question. Heart-evoked potentials across sleep stages are being mapped at CCS <span class="ax-flag" style="margin-left:0">unpublished</span></p></article>
+          <article class="ax-card"><div class="ax-big">Unplugged</div><h4>Trading some fidelity for the whole living context</h4><p>Moving freely returns walking rhythms, posture, breathing and autonomic change, information we used to discard. Neurophenomenology (Varela): trained first-person inquiry and third-person measurement constrain each other. Built for this: Swara Sense, the first sensor-and-app pair for nasal dominance (beta; pilot in 5 healthy adults).</p><cite>Venugopal, &ldquo;Embodied and Unplugged&rdquo;, 2026; CCS technology programme</cite></article>
+        </div>
+      </div>
+      <p class="ax-note reveal">Selected results. Some are preprints, theses or preliminary findings, and are flagged where they are; ongoing projects are not reported here. See <a href="index.html#publications" style="color:var(--saffron-lt);">Publications</a> for full citations.</p>
+    </section>
+
+    <!-- 5 · LAB TO LIFE -->
+    <section class="ax-block" id="lab-to-life">
+      <div class="ax-k reveal">Neurotechnology</div>
+      <h2 class="ax-h2 reveal">From measurement to modulation, <em>outside the lab</em></h2>
+      <div class="ax-pipe reveal">
+        <div class="ax-step"><span class="n">01</span><b>Sense</b><span>Wearable EEG, PPG, ECG, breath</span></div>
+        <div class="ax-step"><span class="n">02</span><b>Decode</b><span>Brain-state classification, machine learning</span></div>
+        <div class="ax-step"><span class="n">03</span><b>Personalise</b><span>Neurofeedback, adaptive training</span></div>
+        <div class="ax-step"><span class="n">04</span><b>Modulate</b><span>tACS, timed sound, scent, tVNS</span></div>
+      </div>
+      <div class="ax-two reveal">
+        <div>
+          <div class="ax-k" style="margin-bottom:.6rem;">The reality gap: three problems to solve</div>
+          <div class="ax-gap">
+            <div><b>4&ndash;8</b><span>channels on wearables, versus 64&ndash;128 in the lab</span></div>
+            <div><b>Noisy</b><span>signal quality with motion and context; denoising and physiological models help</span></div>
+            <div><b>N-of-1</b><span>group averages may not fit one person; learn within-person patterns</span></div>
+          </div>
+          <p class="ax-note">Brains evolved for noisy, unpredictable environments. EEG science should too. Open-source: CCS_SleepStudio, CCS_EEGStudio, CCS_MobileStudio at <a href="https://github.com/arunsasidharan84" target="_blank" rel="noopener" style="color:var(--saffron-lt);">github.com/arunsasidharan84</a>.</p>
+        </div>
+        <div>
+          <div class="ax-k" style="margin-bottom:.6rem;">Projects at various stages</div>
+          <div class="ax-proj">
+            <div><i>1</i>Personalised theta and gamma tACS, frequency tuned per person<em>36 volunteers</em></div>
+            <div><i>2</i>Closed-loop slow-wave and spindle stimulation, incl. ECG phase-locked sound<em></em></div>
+            <div><i>3</i>Smart tVNS for refractory epilepsy (DST-BDTD)<em>prototype</em></div>
+            <div><i>4</i>Closed-loop brain training for chronic pain (DST-BDTD)<em></em></div>
+            <div><i>5</i>Sleep-interface olfactometer, 2nd prize at BREC-BIRAC<em>student prototype</em></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ax-block" id="next">
+      <div class="ax-k reveal">What&rsquo;s next</div>
+      <h2 class="ax-h2 reveal">Two programmes <em>in development</em></h2>
+      <div class="ax-next reveal">
+        <article class="ax-card"><div class="ax-k">Programme</div><h4>UNISON<small>Inner silence across traditions &middot; expert meditators</small></h4>
+          <ul><li>An experience-state space: sleep, dreaming, rest, cognition, meditation, flow and dysregulated states as dynamic configurations</li><li>EEG, HRV, respiration, MRI, experience sampling and real-world monitoring</li><li>Pañcakośa operationalised; machine learning for which practice suits whom, and when</li></ul></article>
+        <article class="ax-card"><div class="ax-k">Programme</div><h4>NIYAMITA<small>Adolescent neurodevelopment through yoga and meditation</small></h4>
+          <ul><li>1,200 adolescents aged 11&ndash;16 across 5 centres; 600 followed for 6 years</li><li>Field battery plus lab EEG, MRI and Type-II polysomnography</li><li>Neurophenomenology: first-person data constrain the physiology</li></ul></article>
+      </div>
+    </section>
+
+    <div class="ax-cta reveal">
+      <div><h3>Join the pursuit</h3><p>We welcome traditions and field sites, clinical and school partners, engineers and funders.</p></div>
+      <div style="display:flex;gap:.8rem;flex-wrap:wrap;"><a class="ax-btn" href="index.html#Opportunities">Opportunities</a><a class="ax-btn o" href="index.html#Connect">Get in touch</a></div>
+    </div>
+  </main>
+
+  <footer style="background:#070E16;border-top:1px solid rgba(232,131,10,.15);padding:1.5rem 5vw;margin-top:4rem;">
+    <div
+      style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem;">
+      <p style="font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.08em;color:rgba(138,155,176,.5);">© 2026
+        Centre for Consciousness Studies, NIMHANS. All rights reserved.</p>
+      <p style="font-family:'DM Mono',monospace;font-size:.6rem;letter-spacing:.08em;color:rgba(138,155,176,.5);">
+        Bengaluru, India</p>
+    </div>
+  </footer>
+
+<script>
+    document.documentElement.classList.add('js-loaded');
+
+    /* Navbar scroll */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 80);
+    }, { passive: true });
+
+    /* Mobile menu */
+    const hamburger = document.getElementById('hamburger');
+    const overlay = document.getElementById('nav-overlay');
+    hamburger.addEventListener('click', () => {
+      const open = overlay.classList.toggle('open');
+      hamburger.classList.toggle('open', open);
+      hamburger.setAttribute('aria-expanded', open);
+      document.body.style.overflow = open ? 'hidden' : '';
+    });
+    function closeNav() {
+      overlay.classList.remove('open');
+      hamburger.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
+
+    /* Reveal on scroll */
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    </script>
+<script>
+  /* Live stats, same source as the other pages */
+  fetch('assets/data/site-data.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (d) {
+    var s = d.stats, host = document.getElementById('ax-stats');
+    [[s.sanctioned_projects, 'Sanctioned projects'], [s.papers_since_2020, 'Papers since 2020'],
+     [s.student_intern_placements, 'Student & intern placements'], [s.intern_institutions, 'Institutions trained'], [3, 'Open-source tools']]
+      .forEach(function (t) {
+        var i = document.createElement('div'); i.className = 'stat-item';
+        var n = document.createElement('span'); n.className = 'stat-num'; n.textContent = t[0];
+        var l = document.createElement('span'); l.className = 'stat-label'; l.textContent = t[1];
+        i.appendChild(n); i.appendChild(l); host.appendChild(i);
+      });
+  }).catch(function () { document.getElementById('ax-stats').style.display = 'none'; });
+
+  /* Accessible tabs with deep links (#voice-body etc.) */
+  (function () {
+    var tabs = Array.prototype.slice.call(document.querySelectorAll('.ax-tab'));
+    function show(tab, focus, push) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute('aria-selected', on); t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      });
+      if (focus) tab.focus();
+      if (push) { try { history.replaceState(null, '', '#voice-' + tab.id.replace('tab-', '')); } catch (e) {} }
+    }
+    tabs.forEach(function (t, i) {
+      t.addEventListener('click', function () { show(t, false, true); });
+      t.addEventListener('keydown', function (e) {
+        var k = e.key, j = k === 'ArrowRight' ? i + 1 : k === 'ArrowLeft' ? i - 1 : k === 'Home' ? 0 : k === 'End' ? tabs.length - 1 : null;
+        if (j === null) return; e.preventDefault(); show(tabs[(j + tabs.length) % tabs.length], true, true);
+      });
+    });
+    var m = /^#voice-(body|clinic|traditions|self)$/.exec(location.hash);
+    if (m) { show(document.getElementById('tab-' + m[1]), false, false); document.getElementById('voices').scrollIntoView(); }
+  })();
+
+  /* Highlight current section in the sub-nav */
+  (function () {
+    var links = document.querySelectorAll('.ax-sub a');
+    var so = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) links.forEach(function (a) { a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id); }); });
+    }, { rootMargin: '-30% 0px -60% 0px' });
+    document.querySelectorAll('.ax-block').forEach(function (s) { so.observe(s); });
+  })();
+</script>
+</body>
+
+</html>
