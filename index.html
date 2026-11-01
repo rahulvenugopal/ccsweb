@@ -2108,6 +2108,10 @@
       <!-- Tab bar -->
       <div class="tab-bar reveal" role="tablist" aria-label="Team groups">
 
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-historical" data-tab="historical" onclick="switchTeamTab('historical')">
+          Founding Team
+        </button>
+
         <button class="tab-btn active" role="tab" aria-selected="true" aria-controls="tab-current" data-tab="current" onclick="switchTeamTab('current')">
           Current Research Team
         </button>
@@ -2132,13 +2136,12 @@
           Alumni
         </button>
 
-        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-historical" data-tab="historical" onclick="switchTeamTab('historical')">
-          Founding Team
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-trainee" data-tab="trainee" onclick="switchTeamTab('trainee')">
+          Interns &amp; Trainees
         </button>
 
         <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-advisory" data-tab="advisory" onclick="switchTeamTab('advisory')">Research Partners</button>
         <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-consortium" data-tab="consortium" onclick="switchTeamTab('consortium')">Collaborators</button>
-        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-trainee" data-tab="trainee" onclick="switchTeamTab('trainee')">Trainee</button>
       </div>
 
       <script>
@@ -2929,24 +2932,294 @@
 
       <!-- Trainee panel -->
       <div class="tab-panel" id="tab-trainee" role="tabpanel">
-        <div class="team-grid">
-          <div class="team-card reveal" style="animation-delay:0.00s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <img src="assets/images/team/vaishnavi.jpeg" alt="Vaishnavi G Nair avatar"
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
-            </div>
-            <h3>Vaishnavi G Nair</h3>
-            <p class="role">M.Sc. Neuroscience, NIMHANS</p>
+        <style>
+          .intern-table-wrap { max-width: 900px; margin: 0 auto; background: var(--white); border-radius: 8px; border: 1px solid var(--stone); overflow: hidden; }
+          .intern-header { display: grid; grid-template-columns: 1.4fr 2fr 1.2fr; gap: 1rem; padding: .85rem 1.25rem; background: var(--offwhite); border-bottom: 2px solid var(--stone); font-family: var(--ff-mono); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--navy); font-weight: 600; }
+          .intern-list { display: grid; max-height: 600px; overflow-y: auto; }
+          .intern-row { display: grid; grid-template-columns: 1.4fr 2fr 1.2fr; gap: 1rem; padding: .85rem 1.25rem; border-bottom: 1px solid rgba(13,27,42,.06); align-items: center; transition: background .15s; }
+          .intern-row:last-child { border-bottom: 0; }
+          .intern-row:hover { background: rgba(232,131,10,.04); }
+          .intern-name { font-family: var(--ff-body); font-weight: 600; font-size: .92rem; color: var(--ink); }
+          .intern-inst { font-size: .84rem; color: var(--muted); line-height: 1.4; }
+          .intern-period { font-family: var(--ff-mono); font-size: .74rem; color: var(--navy); white-space: nowrap; }
+          @media (max-width: 640px) {
+            .intern-header { display: none; }
+            .intern-row { grid-template-columns: 1fr; gap: .3rem; padding: .8rem 1rem; }
+            .intern-period { font-size: .7rem; color: var(--saffron); }
+          }
+        </style>
+        <div class="intern-table-wrap reveal">
+          <div class="intern-header">
+            <span>Name</span>
+            <span>Institute</span>
+            <span>Period</span>
           </div>
-          <div class="team-card reveal" style="animation-delay:0.18s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap"
-              style="background:var(--navy-light,#152338);display:flex;align-items:center;justify-content:center;color:var(--saffron,#e5a93c);font-family:'DM Serif Display',serif;font-size:1.6rem;font-weight:600;border:1px solid rgba(229,169,60,0.2);">
-              SG
-            </div>
-            <h3>Saakshi Goswami</h3>
-            <p class="role">M.Sc. Neuroscience, NIMHANS</p>
+          <div class="intern-list">
+          <div class="intern-row">
+            <span class="intern-name">Sriya</span>
+            <span class="intern-inst">IIT Madras</span>
+            <span class="intern-period">Mar 2021 – Sep 2021</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Kankana Bowmik</span>
+            <span class="intern-inst">IISER Mohali</span>
+            <span class="intern-period">Jun 2021 – Aug 2021</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Adla Zubair</span>
+            <span class="intern-inst">IISER Tirupati</span>
+            <span class="intern-period">Jul 2021 – Sep 2021</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Pranay Rakesh</span>
+            <span class="intern-inst">Bangalore Institute of Technology</span>
+            <span class="intern-period">Aug 2021 – Dec 2021</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Jimisha</span>
+            <span class="intern-inst">Center for Distance Learning, GITAM, Vishakapattanam</span>
+            <span class="intern-period">Dec 2021 – Jan 2022</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Adla Zubair</span>
+            <span class="intern-inst">IISER Tirupati</span>
+            <span class="intern-period">Dec 2021 – Jan 2022</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Abin Jacob</span>
+            <span class="intern-inst">Christ University, Bengaluru</span>
+            <span class="intern-period">Mar 2022 – Jun 2022</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Kankana Bowmik</span>
+            <span class="intern-inst">IISER Mohali</span>
+            <span class="intern-period">May 2022 – Aug 2022</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Gayatri</span>
+            <span class="intern-inst">IIT Gandhinagar</span>
+            <span class="intern-period">May 2022 – Jul 2022</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Adla Zubair</span>
+            <span class="intern-inst">IISER Tirupati</span>
+            <span class="intern-period">Jun 2022 – Apr 2023</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Amruth</span>
+            <span class="intern-inst">AIIMS Bhopal</span>
+            <span class="intern-period">Dec 2022 – May 2023</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Garima Nagal</span>
+            <span class="intern-inst">NFSU Gandhinagar</span>
+            <span class="intern-period">Sep 2022 – Feb 2023</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Keerthi</span>
+            <span class="intern-inst">JSS AHER Mysore</span>
+            <span class="intern-period">Mar 2023 – Mar 2023</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Vaishnavi BS</span>
+            <span class="intern-inst">JSS AHER Mysore</span>
+            <span class="intern-period">Mar 2023 – Oct 2023</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Deepankan</span>
+            <span class="intern-inst">JSS AHER Mysore</span>
+            <span class="intern-period">Mar 2023 – Jul 2023</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Prerana Reddy</span>
+            <span class="intern-inst">JSS AHER Mysore</span>
+            <span class="intern-period">Mar 2023 – Nov 2023</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Ananda Krishnan</span>
+            <span class="intern-inst">Jiwaji University Gwalior</span>
+            <span class="intern-period">Apr 2023 – Jun 2023</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Nandini</span>
+            <span class="intern-inst">IISER Mohali</span>
+            <span class="intern-period">—</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Nahida Jabin</span>
+            <span class="intern-inst">IISER Mohali</span>
+            <span class="intern-period">May 2023 – Aug 2023</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Shivani H</span>
+            <span class="intern-inst">IISER Mohali</span>
+            <span class="intern-period">May 2023 – Aug 2023</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Ananya Sachdev</span>
+            <span class="intern-inst">UM-DAE Centre for Excellence in Basic Sciences, Mumbai</span>
+            <span class="intern-period">May 2023 – Nov 2023</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Ritika Khanna</span>
+            <span class="intern-inst">JSS AHER Mysore</span>
+            <span class="intern-period">Sep 2023 – Nov 2023</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Yashwanth G</span>
+            <span class="intern-inst">University of Amsterdam</span>
+            <span class="intern-period">Oct 2023 – May 2024</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Aysha Khenza</span>
+            <span class="intern-inst">Cochin University of Science and Technology (CUSAT), Kerala</span>
+            <span class="intern-period">Dec 2023 – May 2024</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Joshua D</span>
+            <span class="intern-inst">St Josephs University, Bengaluru</span>
+            <span class="intern-period">Jan 2024 – May 2024</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Simra I</span>
+            <span class="intern-inst">St Josephs University, Bengaluru</span>
+            <span class="intern-period">Jan 2024 – May 2024</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Mahika</span>
+            <span class="intern-inst">M.S. Ramaiah University of Applied Sciences, Bengaluru</span>
+            <span class="intern-period">Jan 2024 – May 2024</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Abhay</span>
+            <span class="intern-inst">Christ University, Bengaluru</span>
+            <span class="intern-period">Feb 2024 – Apr 2024</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Shraddha M</span>
+            <span class="intern-inst">Alumnus of IIT Gandhinagar & Interned at IIT Hyderabad</span>
+            <span class="intern-period">Mar 2024 – May 2024</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Ganga M Patil</span>
+            <span class="intern-inst">JSS AHER Mysore</span>
+            <span class="intern-period">Mar 2024 – Jul 2024</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Ritika Khanna</span>
+            <span class="intern-inst">JSS AHER Mysore</span>
+            <span class="intern-period">Apr 2024 – Sep 2024</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Vidyun Mittal</span>
+            <span class="intern-inst">Alumnus of TRINITY COLLEGE DUBLIN</span>
+            <span class="intern-period">Apr 2024 – Jun 2024</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Nahida Jabin</span>
+            <span class="intern-inst">IISER Mohali</span>
+            <span class="intern-period">May 2024 – Jul 2024</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Shivani H</span>
+            <span class="intern-inst">IISER Mohali</span>
+            <span class="intern-period">May 2024 – Jul 2024</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Prakash Shrimali</span>
+            <span class="intern-inst">SVYASA</span>
+            <span class="intern-period">Apr 2024 – Nov 2024</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Amritanjali Nagne</span>
+            <span class="intern-inst">IISER Mohali</span>
+            <span class="intern-period">Dec 2024 – Dec 2024</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Lokeswara Vijanapalli</span>
+            <span class="intern-inst">IIT Mandi</span>
+            <span class="intern-period">Sep 2024 – Sep 2024</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Dharma Thobani</span>
+            <span class="intern-inst">IIT Mandi</span>
+            <span class="intern-period">Sep 2024 – Oct 2024</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Ankita Garg</span>
+            <span class="intern-inst">IIT Mandi</span>
+            <span class="intern-period">Sep 2024 – Oct 2024</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Saakshi Goswami</span>
+            <span class="intern-inst">IGNOU (Correspondence)</span>
+            <span class="intern-period">Oct 2024 – Jun 2025</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Vaishnavi G Nair</span>
+            <span class="intern-inst">Cochin University of Science and Technology (CUSAT), Kerala</span>
+            <span class="intern-period">Jan 2025 – Jul 2025</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Twinkle Yadav</span>
+            <span class="intern-inst">Jiwaji University Gwalior</span>
+            <span class="intern-period">Feb 2025 – Aug 2025</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Jaisy Bridgette Devadasse</span>
+            <span class="intern-inst">UNITO, Turin</span>
+            <span class="intern-period">Apr 2025 – Jun 2025</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Deepshik Sharma</span>
+            <span class="intern-inst">JAIN University, Bangalore</span>
+            <span class="intern-period">Jun 2025 – Oct 2025</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Anjana Sinha</span>
+            <span class="intern-inst">JSS AHER Mysore</span>
+            <span class="intern-period">Aug 2025 – Sep 2025</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Siddharth Rajesh</span>
+            <span class="intern-inst">University of Sydney</span>
+            <span class="intern-period">Sep 2025 – Apr 2026</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Manasa Marthala</span>
+            <span class="intern-inst">Christ University (Central Campus)</span>
+            <span class="intern-period">Dec 2025 – Mar 2026</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Chinmayi Vaidya</span>
+            <span class="intern-inst">Christ University (Central Campus)</span>
+            <span class="intern-period">Dec 2025 – Mar 2026</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Priyashi</span>
+            <span class="intern-inst">Christ University (Central Campus)</span>
+            <span class="intern-period">Dec 2025 – Mar 2026</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Om Tiwary</span>
+            <span class="intern-inst">Rashtriya Raksha University, Gujarat</span>
+            <span class="intern-period">Jan 2026 – Mar 2026</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Niti Desai</span>
+            <span class="intern-inst">Rashtriya Raksha University, Gujarat</span>
+            <span class="intern-period">Jan 2026 – Mar 2026</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Naveena Sunil</span>
+            <span class="intern-inst">MAHE</span>
+            <span class="intern-period">Mar 2026 – Oct 2027</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Aswin Tony</span>
+            <span class="intern-inst">Trivandrum Medical College</span>
+            <span class="intern-period">Mar 2026 – Apr 2026</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Neha H Nair</span>
+            <span class="intern-inst">IISER-Pune</span>
+            <span class="intern-period">May 2026 – Jul 2026</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Aparna Manoj</span>
+            <span class="intern-inst">IISER Mohali</span>
+            <span class="intern-period">May 2026 – Jul 2026</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Srinivasan R</span>
+            <span class="intern-inst">University of Hyderabad</span>
+            <span class="intern-period">May 2026 – Jul 2026</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Shatakshi Singh</span>
+            <span class="intern-inst">IISER Berhampur</span>
+            <span class="intern-period">Jun 2026 – Mar 2027</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Sharon Zachariah</span>
+            <span class="intern-inst">Dayananda Sagar University</span>
+            <span class="intern-period">—</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Harshitha P.G</span>
+            <span class="intern-inst">Dayananda Sagar University</span>
+            <span class="intern-period">—</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Vishaka Biju</span>
+            <span class="intern-inst">Dayananda Sagar University</span>
+            <span class="intern-period">—</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Shreya Paul</span>
+            <span class="intern-inst">Dayananda Sagar University</span>
+            <span class="intern-period">—</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Kshitija Chakre</span>
+            <span class="intern-inst">MIT World Peace University (MIT-WPU)</span>
+            <span class="intern-period">Jul 2026 – Dec 2026</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Pallabi Pal</span>
+            <span class="intern-inst">University of Rajasthan</span>
+            <span class="intern-period">Aug 2026 – Nov 2026</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Nahida Jabin</span>
+            <span class="intern-inst">IISER Mohali</span>
+            <span class="intern-period">Sep 2026 – Oct 2026</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Delna Kuriyakose</span>
+            <span class="intern-inst">VIT, Vellore</span>
+            <span class="intern-period">Sep 2026 – Nov 2026</span>
+          </div>          <div class="intern-row">
+            <span class="intern-name">Gargi Mangukya</span>
+            <span class="intern-inst">Manipal Academy of Higher Education</span>
+            <span class="intern-period">Jul 2026 – Feb 2027</span>
+          </div>
           </div>
         </div>
       </div>
