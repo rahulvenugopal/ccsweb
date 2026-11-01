@@ -734,6 +734,16 @@
     .nav-brand .brand-top, .nav-brand .brand-sub { white-space: nowrap; }
     @media (max-width: 1440px) and (min-width: 1025px) { .nav-links { gap: 1.25rem; } .nav-links a { letter-spacing: .1em; } }
   </style>
+<style>
+  .cx-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1rem; }
+  .cx-card { justify-content: flex-start; background: var(--surface); border: 1px solid rgba(250,246,239,.08); border-top: 3px solid var(--saffron); border-radius: 4px; padding: 1.1rem 1.2rem; display: flex; flex-direction: column; gap: .8rem; min-width: 0; }
+  .cx-who { display: flex; gap: .8rem; align-items: flex-start; } .cx-who img { flex: none; width: 52px; height: 52px; border-radius: 50%; object-fit: cover; object-position: center 20%; border: 2px solid var(--saffron); }
+  .cx-who b { display: block; min-height: 2.3em; font-family: var(--ff-disp); font-size: 1.1rem; line-height: 1.15; } .cx-who span { font-family: var(--ff-mono); font-size: .56rem; letter-spacing: .12em; text-transform: uppercase; color: var(--saffron-lt); }
+  .cx-th { font-family: var(--ff-disp); font-size: 1.08rem; line-height: 1.3; color: var(--cream); }
+  .cx-st { display: grid; gap: .6rem; margin-top: auto; padding-top: .8rem; border-top: 1px dashed rgba(250,246,239,.14); }
+  .cx-st b { display: block; font-family: var(--ff-disp); font-size: 1.8rem; line-height: 1; color: var(--saffron-lt); font-weight: 500; } .cx-st span { font-size: .76rem; line-height: 1.4; color: var(--muted); }
+  @media (max-width: 1000px) { .cx-grid { grid-template-columns: 1fr 1fr; } } @media (max-width: 560px) { .cx-grid { grid-template-columns: 1fr; } }
+</style>
 </head>
 
 <body>
@@ -775,41 +785,17 @@
   </nav>
 
   
-  <div class="page-hero" style="padding-bottom:2.2rem;">
-    <div class="container">
-      <div class="reveal">
-        <a href="index.html" class="back-link">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12" /><polyline points="12 19 5 12 12 5" /></svg>
-          Back to Home
-        </a>
-        <div class="eyebrow">Architecture of experience</div>
-        <div class="saffron-rule"></div>
-        <h1>Decoding the <em>embodied</em> architecture of experience</h1>
-        <p class="sub">From contemplative to clinical sciences: how one question, <em>how does experience arise from a living body?</em>, shapes four decades of work at NIMHANS.</p>
-      </div>
-    </div>
+  <div class="page-hero" style="padding-bottom:1.5rem;">
+    <div class="container"><div class="reveal">
+      <a href="index.html" class="back-link"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12" /><polyline points="12 19 5 12 12 5" /></svg>Back to Home</a>
+      <div class="eyebrow">Architecture of experience</div><div class="saffron-rule"></div>
+      <h1>Decoding the <em>embodied</em> architecture of experience</h1>
+      <p class="sub">From contemplative to clinical sciences: how does experience arise from a living body?</p>
+    </div></div>
   </div>
-
-  <nav class="ax-sub" aria-label="On this page">
-    <ul>
-      <li><a href="#architecture">Architecture</a></li>
-      <li><a href="#legacy">Four decades</a></li>
-      <li><a href="#middle">Middle ground</a></li>
-      <li><a href="#voices">Four voices</a></li>
-      <li><a href="#lab-to-life">Lab to life</a></li>
-      <li><a href="#next">What&rsquo;s next</a></li>
-    </ul>
-  </nav>
-
   <main class="container">
-
-    <div class="stats-bar reveal" id="ax-stats" style="margin-top:2rem;margin-bottom:0;"></div>
-
-    <!-- 1 · ARCHITECTURE -->
-    <section class="ax-block" id="architecture">
-      <div class="ax-k reveal">The framework</div>
-      <h2 class="ax-h2 reveal">Three pillars, standing on <em>three foundations</em></h2>
-      <p class="ax-lede reveal">Every CCS project holds up at least one pillar and rests on all three foundations.</p>
+    <section class="ax-block" id="architecture" style="padding-top:1.5rem;">
+      <h2 class="ax-h2 reveal">Three pillars, <em>three foundations</em></h2>
       <div class="ax-arch reveal">
         <div class="ax-roof"><small>Centre for Consciousness Studies</small>Architecture of Experience</div>
         <div class="ax-pillars">
@@ -833,208 +819,59 @@
         </div>
         <div class="ax-ground"></div>
       </div>
+    
     </section>
 
-    <!-- 2 · LEGACY -->
-    <section class="ax-block" id="legacy">
-      <div class="ax-k reveal">Legacy &rarr; today</div>
+    <section class="ax-block" id="legacy" style="padding-bottom:0;">
       <h2 class="ax-h2 reveal">Four decades, <em>one question</em></h2>
-      <div class="ax-tl reveal">
-        <div class="ax-tl-i"><div class="ax-yr">1976</div><h4>Project Consciousness</h4><p>Inaugurated at NIMHANS (Dept. of Neurophysiology, ICMR-funded under Prof. T. Desiraju). A whole-body study of yoga and meditation in sound-proof cabins: 91 men registered; TM, Rajayoga, Yoga Nidra, pranayama.</p></div>
-        <div class="ax-tl-i"><div class="ax-yr">1982&ndash;85</div><h4>Symposium and first lab</h4><p>A 1982 symposium on Yoga, Brain &amp; Consciousness brought yoga, neuroscience and philosophy together; the first lab followed with a 13-channel EEG polygraph, a 4-channel portable polygraph and Russian collaborators.</p></div>
-        <div class="ax-tl-i"><div class="ax-yr">2000&ndash;2020</div><h4>Cognitive &amp; Sleep Lab</h4><p>Whole-night polysomnography as a window on consciousness: meditators&rsquo; sleep, Ayurveda and yoga trials, schizophrenia, lucid dreaming, dream decoding.</p></div>
-        <div class="ax-tl-i"><div class="ax-yr">2020+</div><h4>Centre for Consciousness Studies</h4><p>Four core areas: sleep &amp; dreams, mind&ndash;body &amp; contemplative, clinical &amp; developmental, neurotechnology. Cross-tradition EEG, wearables, open-source tools.</p></div>
-      </div>
-      <div class="ax-lesson reveal">Yoga is not a relaxation switch. It trains homeostatic adaptability.
-        <span>Lesson of Project Consciousness: after TM, ventilation fell; after Rajayoga and pranayama it rose. Every person showed their own pattern, session to session.</span></div>
+      <div class="ax-chips reveal" style="gap:.6rem;"><span><b>1976</b>Project Consciousness</span><span><b>1982&ndash;85</b>Symposium and first lab</span><span><b>2000&ndash;2020</b>Cognitive &amp; Sleep Lab</span><span><b>2020+</b>Centre for Consciousness Studies</span></div>
+      <p class="ax-note reveal" style="font-size:.7rem;">Lesson of Project Consciousness: yoga is not a relaxation switch, it trains homeostatic adaptability.</p>
     </section>
 
-    <!-- 3 · MIDDLE GROUND -->
-    <section class="ax-block" id="middle">
-      <div class="ax-k reveal">Why a middle ground</div>
-      <h2 class="ax-h2 reveal">Two ways of knowing, <em>one human being</em></h2>
-      <div class="ax-mid reveal">
-        <div class="ax-side e"><div class="ax-k">Eastern &middot; contemplative</div><h3>First-person wisdom</h3><ul><li>Subjective introspection</li><li>Qualitative assessment</li><li>Holistic: connectedness</li></ul></div>
-        <div class="ax-core"><div class="ax-k">Middle ground</div><h3>A consciousness lens, with health as a continuum</h3><p>Measurement from neuroscience, maps of a healthy, flexible mind from tradition, tested in real-world settings with advanced neurotechnology.</p>
-          <div class="tri"><span class="ax-pill">Neurophenomenological designs</span><span class="ax-pill">Multivariate analysis</span><span class="ax-pill">Real-world technology</span></div></div>
-        <div class="ax-side w"><div class="ax-k">Western &middot; neuroscientific</div><h3>Third-person measurement</h3><ul><li>Objective evaluation</li><li>Quantifiable data</li><li>Reductionist, materialistic</li></ul></div>
-      </div>
-      <div class="ax-cont reveal">
-        <div class="ax-k">Health as a continuum, not a binary</div>
-        <div class="ax-bar" role="img" aria-label="A continuum from illness through normal to wellbeing"></div>
+    <section class="ax-block" id="middle" style="padding-bottom:0;">
+      <h2 class="ax-h2 reveal">A middle ground, <em>health as a continuum</em></h2>
+      <div class="ax-cont reveal" id="framework" style="margin-top:0;">
         <div class="ax-ends"><span>Illness</span><span>Normal</span><span>Wellbeing</span></div>
-        <div class="row"><span>A person&rsquo;s position shifts with the state they are in. We use four states as lenses:</span><span class="ax-pill">Rest</span><span class="ax-pill">Task</span><span class="ax-pill">Meditation</span><span class="ax-pill">Sleep</span></div>
+        <div class="ax-bar" role="img" aria-label="Continuum from illness through normal to wellbeing"></div>
+        <div class="row"><span>Neuroscience + Indian philosophical insight, studied across</span><span class="ax-pill">Rest</span><span class="ax-pill">Task</span><span class="ax-pill">Meditation</span><span class="ax-pill">Sleep</span></div>
       </div>
-      <div class="ax-k reveal" id="framework" style="margin-top:2rem;">Our research framework</div>
-      <div class="ax-fw reveal" aria-label="Concepts, states, samples and techniques">
-        <div><div class="ax-k">Concepts / ideas</div><p>Neuroscience + Indian philosophical insights</p></div>
-        <div><div class="ax-k">States / levels</div><div class="ax-chips"><span>Rest</span><span>Task</span><span>Meditation</span><span>Sleep</span></div></div>
-        <div><div class="ax-k">Samples / models</div><div class="ax-chips"><span>Wellness</span><span>Normal</span><span>Illness</span></div></div>
-        <div><div class="ax-k">Techniques / approaches</div><p>Neurophysiological + cognitive neuroscience</p></div>
-      </div>
-      <div class="ax-oa reveal">
-        <div><div class="ax-k">Three objectives</div><ol><li>Multidimensional nature of awareness</li><li>Role of brain&ndash;body harmony in wellbeing</li><li>Application-oriented research</li></ol></div>
-        <div><div class="ax-k">Three approaches</div><ol><li>Neurophenomenological designs</li><li>Modern multivariate analysis</li><li>Novel technology for real-world settings</li></ol></div>
-      </div>
-      <div class="ax-frame reveal">
-        <div class="ax-ladder b"><h4>Bennett &middot; five evolutionary functions</h4><ol>
-          <li><b>Speaking</b><span>symbols, grammar, inner narrative</span></li><li><b>Mentalizing</b><span>metacognition, theory of mind</span></li><li><b>Simulating</b><span>world models, replay, imagination</span></li><li><b>Reinforcing</b><span>reward learning, habits</span></li><li><b>Steering</b><span>taxis and reflexes</span></li></ol></div>
-        <div class="ax-ladder k"><h4>Pa&ntilde;cakośa &middot; five layers of lived experience</h4><ol>
-          <li><b>Ānandamaya</b><span>wholeness, wellbeing</span></li><li><b>Vijñānamaya</b><span>discernment, agency</span></li><li><b>Manomaya</b><span>sensing, feeling mind</span></li><li><b>Prāṇamaya</b><span>breath, vitality, homeostasis</span></li><li><b>Annamaya</b><span>physical body</span></li></ol></div>
-      </div>
-      <p class="ax-note reveal">Two independent frameworks: Bennett asks functional questions, Pa&ntilde;cakośa offers experiential distinctions. We use both without forcing a one-to-one mapping. Temporo-spatial theory (Northoff &amp; Zilio, 2022) is a candidate bridge to test between them.</p>
     </section>
 
-    <!-- 4 · FOUR VOICES -->
-    <section class="ax-block" id="voices">
-      <div class="ax-k reveal">One architecture &middot; four vantage points</div>
-      <h2 class="ax-h2 reveal">Four voices, <em>selected results</em></h2>
-      <p class="ax-lede reveal">The same architecture, seen from the body, the clinic, the traditions and the self. Choose a voice.</p>
-
-      <div class="ax-tabs reveal" role="tablist" aria-label="Four vantage points">
-        <button class="ax-tab" role="tab" id="tab-body" aria-controls="vp-body" aria-selected="true"><img src="assets/images/team/ravindra.jpg" alt=""><span><span class="t1">Ravindra Nagendra</span><span class="t2">The body</span></span></button>
-        <button class="ax-tab" role="tab" id="tab-clinic" aria-controls="vp-clinic" aria-selected="false" tabindex="-1"><img src="assets/images/team/arun.jpg" alt=""><span><span class="t1">Arun Sasidharan</span><span class="t2">The clinic</span></span></button>
-        <button class="ax-tab" role="tab" id="tab-traditions" aria-controls="vp-traditions" aria-selected="false" tabindex="-1"><img src="assets/images/team/praerna.jpg" alt=""><span><span class="t1">Praerna Chowdhury</span><span class="t2">The traditions</span></span></button>
-        <button class="ax-tab" role="tab" id="tab-self" aria-controls="vp-self" aria-selected="false" tabindex="-1"><img src="assets/images/team/rahul.png" alt=""><span><span class="t1">Rahul Venugopal</span><span class="t2">Beyond the brain</span></span></button>
+    <section class="ax-block" id="voices" style="padding-bottom:0;">
+      <h2 class="ax-h2 reveal">Four voices, <em>one architecture</em></h2>
+      <div class="cx-grid reveal">
+        <article class="cx-card"><div class="cx-who"><img src="assets/images/team/ravindra.jpg" alt=""><div><b>Ravindra Nagendra</b><span>The body</span></div></div>
+          <p class="cx-th">Yoga trains adaptability; sleep is the overnight readout of the heart&ndash;brain&ndash;breath loop.</p>
+          </article>
+        <article class="cx-card"><div class="cx-who"><img src="assets/images/team/arun.jpg" alt=""><div><b>Arun Sasidharan</b><span>The clinic</span></div></div>
+          <p class="cx-th">Health is a continuum, measured with one ruler at both ends.</p>
+          </article>
+        <article class="cx-card"><div class="cx-who"><img src="assets/images/team/praerna.jpg" alt=""><div><b>Praerna Chowdhury</b><span>The traditions</span></div></div>
+          <p class="cx-th">Respect a tradition&rsquo;s architecture and real differences appear.</p>
+          </article>
+        <article class="cx-card"><div class="cx-who"><img src="assets/images/team/rahul.png" alt=""><div><b>Rahul Venugopal</b><span>Beyond the brain</span></div></div>
+          <p class="cx-th">The self is read across brain, body, behaviour, experience and environment.</p>
+          </article>
       </div>
-
-      <!-- BODY -->
-      <div class="ax-vp" id="vp-body" role="tabpanel" aria-labelledby="tab-body">
-        <div class="ax-vp-head"><p class="ax-thesis">Yoga trains adaptability. The <em>heart&ndash;brain&ndash;breath loop</em> is trainable, and sleep is its overnight readout.</p>
-          <div class="ax-tags"><span class="ax-pill">Embodied self</span><span class="ax-pill">Multidimensional awareness</span></div></div>
-        <div class="ax-cards">
-          <article class="ax-card"><div class="ax-big">Individual</div><h4>No single &ldquo;relaxation response&rdquo;</h4><p>Tidal volume and ventilation fell after TM but rose after Rajayoga and pranayama; lactate and cortisol fell in some seniors and rose in others. Effects read as adaptive optimisation across repeated sessions. CCS now records repeated, multi-day sessions and always includes rest and task conditions.</p><cite>NIMHANS&ndash;ICMR Project Consciousness report (Desiraju)</cite></article>
-          <article class="ax-card t"><div class="ax-big">11&ndash;13%<small>deep sleep</small></div><h4>Meditators keep their deep sleep with age</h4>
-            <div class="ax-vs"><div><span>Controls</span><span class="tr"><i class="g" style="width:28%"></i></span><b>3.7%</b></div><div><span>Meditators</span><span class="tr"><i class="tl" style="width:92%"></i></span><b>11&ndash;13%</b></div></div>
-            <p>Slow-wave (N3) share in middle-aged yoga and Vipassana meditators versus age-matched controls, with higher vagal tone through the night.</p><cite>Sulekha et al., Sleep Biol Rhythms 2006; Nagendra et al., Int J CAM 2017; Sleep Sci 2023</cite></article>
-          <article class="ax-card"><div class="ax-big">60<small>patients, RCT</small></div><h4>Yoga added to migraine care raised vagal tone</h4><p>Five days a week for six weeks: a greater reduction in headache frequency and intensity, with more vagal and less sympathetic activity. Hypothesis in progress: practice trains a loop, not a single organ.</p><cite>Kisan et al., Int J Yoga 2014</cite></article>
-          <article class="ax-card t"><div class="ax-big">Awareness<small>inside sleep</small></div><h4>Sleep is more than disconnection: its responsiveness can be measured</h4><p>The same tones evoke stage-dependent ERP waves (P200, N350, N550&ndash;P900) awake and in NREM sleep. Meditators show more dynamic NREM and REM patterns, and larger N550&ndash;P900 complexes correlate with fewer NREM disruptions, so K-complexes may be a protective gate against external sounds.</p><cite>Venugopal et al., 2018 (n = 12 healthy volunteers); Venugopal et al., 2019</cite></article>
-          <article class="ax-card t"><div class="ax-big">r = &minus;0.49</div><h4>A quieter heart signal in REM predicts a better morning<span class="ax-flag">preliminary</span></h4><p>Lower heart-evoked potential amplitude (300&ndash;400 ms after the R-peak) during REM sleep goes with higher mood ratings after waking (p = 0.047): reduced cortical processing of cardiac signals may reflect less self-referential, interoceptive processing, a link between sleep-based interoception and next-day mood.</p><cite>CCS sleep study; full reference to be added</cite></article>
-          <article class="ax-card"><div class="ax-big">5<small>lessons</small></div><h4>Five Project Consciousness lessons still in our protocols</h4><p>Single sessions mislead, subtract the sitting control, expect individual patterns, think non-linearly, and treat health as a continuum.</p><cite>Desiraju report; CCS current protocols</cite></article>
-        </div>
-      </div>
-
-      <!-- CLINIC -->
-      <div class="ax-vp" id="vp-clinic" role="tabpanel" aria-labelledby="tab-clinic" hidden>
-        <div class="ax-vp-head"><p class="ax-thesis">Through a consciousness lens, health is a <em>continuum</em> measured with one ruler at both ends.</p>
-          <div class="ax-tags"><span class="ax-pill">Application-oriented research</span></div></div>
-        <div class="ax-cards">
-          <article class="ax-card"><div class="ax-big">45 <small>vs 39 controls</small></div><h4>Schizophrenia: altered coordination across states</h4><p>Whole-night sleep in patients shows more and longer awakenings, reduced N2, and unstable sleep cycles. Elevated serum adenosine deaminase in antipsychotic-na&iuml;ve patients. Task EEG and fMRI show shared coordination differences with near-normal performance.</p><cite>Sasidharan et al., Sleep Medicine 2017; Asian J Psychiatry 2017; PhD thesis 2015</cite></article>
-          <article class="ax-card t"><div class="ax-big">&minus;18.2<small>vs &minus;7.5</small></div><h4>Add-on yoga in adolescent depression<span class="ax-flag">thesis</span></h4><div class="ax-vs"><div><span>Yoga + care</span><span class="tr"><i class="tl" style="width:100%"></i></span><b>&minus;18.22</b></div><div><span>Care alone</span><span class="tr"><i class="g" style="width:41%"></i></span><b>&minus;7.49</b></div></div><p>Change in depression score (HDRS). Delta-band information transfer from anterior cingulate to insula tracked the improvement (r = &minus;0.57, p = 0.001).</p><cite>Bhaskar, PhD thesis, NIMHANS 2026</cite></article>
-          <article class="ax-card"><div class="ax-big">72<small>patients</small></div><h4>Ayurveda for anxiety and sleep, objectively tested</h4><p>In generalised anxiety, Manasamitra Vataka &plusmn; Shirodhara preserved slow-wave sleep and continuity, whereas clonazepam reduced N3. Whole-night polysomnography adds information beyond symptom ratings.</p><cite>Tubaki et al., Current Science 2016</cite></article>
-          <article class="ax-card t"><div class="ax-big">5/6<small>vs 1/5</small></div><h4>Reading and gently shaping dreams</h4><p>Five of six participants trained in lucid dreaming (reality testing, autosuggestion, intention plus a REM auditory cue) achieved it, against one of five controls, with higher fronto-central gamma. In 29 healthy high-recallers, recall tracked beta power and default-mode connectivity; 10.4% of sleep cues surfaced in the next dream report. <b>Not dream decoding.</b></p><cite>Kumar et al., Int J Dream Research 2018; Consciousness &amp; Cognition 2025</cite></article>
-          <article class="ax-card"><div class="ax-big">140<small>4 &times; 35, triple-blind</small></div><h4>Music reorganises engagement</h4><p>Ten minutes of bansuri: alpha fell in every group, most in the control; frontal beta1 depended on the raga. Some ragas also gave smaller responses to unrelated sounds.</p><cite>Kunikullaya et al., IJPP 2025; Music &amp; Medicine 2022, 2025</cite></article>
-          <article class="ax-card t"><div class="ax-big">3<small>disorders</small></div><h4>Sleep as a clinical window</h4><div class="ax-chips"><span><b>SCZ</b>unstable cycles</span><span><b>PSP</b>reduced, fragmented sleep</span><span><b>CD</b>fewer spindles, less REM</span></div><p style="margin-top:.7rem">Each condition leaves its own signature, a sensitive window on brain function and disease progression. PSP and cervical dystonia: whole-night recordings in 22 and 13 patients.</p><cite>Boini 2021, 2022; Ray 2021</cite></article>
-        </div>
-      </div>
-
-      <!-- TRADITIONS -->
-      <div class="ax-vp" id="vp-traditions" role="tabpanel" aria-labelledby="tab-traditions" hidden>
-        <div class="ax-vp-head"><p class="ax-thesis">Respect a tradition&rsquo;s architecture and <em>real differences</em> appear in practice, time and experience.</p>
-          <div class="ax-tags"><span class="ax-pill">Multidimensional awareness</span></div></div>
-        <div class="ax-cards">
-          <article class="ax-card wide"><div class="ax-k">One word, many practices<span class="ax-flag">preprints</span></div><h4>Traditions leave different neural fingerprints</h4>
-            <div class="ax-vs" style="grid-template-columns:1fr 1fr;column-gap:2rem;">
-              <div style="grid-template-columns:6.4rem 1fr 2.6rem;"><span>Brahma Kumaris</span><span class="tr"><i style="width:100%"></i></span><b>1.00</b></div>
-              <div style="grid-template-columns:6.4rem 1fr 2.6rem;"><span>Vipassana</span><span class="tr"><i style="width:95%"></i></span><b>0.95</b></div>
-              <div style="grid-template-columns:6.4rem 1fr 2.6rem;"><span>Isha Yoga</span><span class="tr"><i style="width:91%"></i></span><b>0.91</b></div>
-              <div style="grid-template-columns:6.4rem 1fr 2.6rem;"><span>Heartfulness</span><span class="tr"><i style="width:87%"></i></span><b>0.87</b></div>
-            </div>
-            <p>Classification performance (AUC) of EEG features for each tradition. Nonlinear features contribute most overall, though oscillatory features lead for Vipassana and Isha. Theta&ndash;alpha power is highly reliable across two days (ICC = 0.97). Different techniques, common goal: multiple neural pathways to meditative states.</p><cite>Shrimali et al., bioRxiv 2025; Ventura et al., Neurosci Conscious 2026; Chowdhury et al., bioRxiv 2026</cite></article>
-          <article class="ax-card t"><div class="ax-big">&rho; = &minus;0.31</div><h4>When inner and outer clocks converge</h4><p>Intrinsic neural timescales are longer for internal (breath) than external attention. Advanced meditators show no gap, and the smaller the gap, the stronger the reported non-duality (p = .02, 53 paired observations).</p><cite>Saketh et al., Communications Biology 2026</cite></article>
-          <article class="ax-card t"><div class="ax-big">2&ndash;3<small>min to onset</small></div><h4>Meditation is a trajectory, not a snapshot</h4><p>EEG changes begin within 2&ndash;3 minutes and peak at 7&ndash;10. Long-term meditators switch between rest and meditation within a minute on demand; controls do not.</p><cite>Malipeddi et al., 2025; Nair et al., Consciousness &amp; Cognition 2017</cite></article>
-          <article class="ax-card"><div class="ax-big">51.6%<small>of variance</small></div><h4>Wellbeing follows practice proficiency</h4><p>Across 1,009 Brahma Kumaris practitioners, proficiency predicted wellbeing better than years of practice. Isha practitioners (n = 1,352) report lower stress than controls, with a dose&ndash;response to practice; proficient Heartfulness meditators score higher on wellbeing.</p><cite>Nair et al., IJW 2018; Frontiers in Public Health 2024; Sylapan et al., Consciousness &amp; Cognition 2020</cite></article>
-          <article class="ax-card t"><div class="ax-big">42 &middot; 33 &middot; 28<small>advanced &middot; novice &middot; control</small></div><h4>Advanced Isha practitioners sustain power in Shoonya</h4><p>With 128-channel EEG, oscillatory power was sustained in advanced practitioners while novices and controls dropped; they also reported deeper meditation and non-duality. A hypothesis to test, not a result: flexible updating with less rigid identification.</p><cite>Malipeddi et al., Mindfulness 2024 (cross-sectional)</cite></article>
-          <article class="ax-card full"><div class="ax-k">Five design principles for studying a tradition</div>
-            <div class="ax-chips" style="margin-top:.8rem"><span><b>1</b>Tradition-specific protocol</span><span><b>2</b>Context &amp; proficiency, on the tradition&rsquo;s own scales</span><span><b>3</b>Multiple state transitions (rest &harr; meditation)</span><span><b>4</b>Multi-day sessions, e.g. 8-day retreats</span><span><b>5</b>Native environment &amp; time: portable EEG in the centre</span></div>
-            <cite style="margin-top:.9rem">Field work includes tukdam documentation with the Dalai Lama Institute for Higher Education (Tidwell et al., Forensic Sci Int: Reports 2024) and an IKS-funded map of the Mandukya Upanishad&rsquo;s four states onto the states we record.</cite></article>
-        </div>
-      </div>
-
-      <!-- SELF -->
-      <div class="ax-vp" id="vp-self" role="tabpanel" aria-labelledby="tab-self" hidden>
-        <div class="ax-vp-head"><p class="ax-thesis">The self is read across <em>brain, body, behaviour, experience and environment</em>.</p>
-          <div class="ax-tags"><span class="ax-pill">Embodied self</span><span class="ax-pill">Application</span></div></div>
-        <div class="ax-cards">
-          <article class="ax-card wide"><div class="ax-k">Five selves, one body</div><h4>Each circle turns &ldquo;the self&rdquo; into something measurable</h4>
-            <div class="ax-split ax-loop">
-              <svg viewBox="0 0 250 250" role="img" aria-label="Five selves arranged as a loop around the sense of self">
-                <circle cx="125" cy="125" r="84" fill="none" stroke="#E8830A" stroke-width="2" stroke-dasharray="3 6" opacity=".7"/>
-                <text x="125" y="121" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="17" fill="#FAF6EF">Sense</text>
-                <text x="125" y="140" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="17" fill="#FAF6EF">of self</text>
-                <g font-family="DM Mono,monospace" font-size="12" text-anchor="middle" fill="#0D1B2A">
-                  <circle cx="125" cy="41" r="15" fill="#E8830A"/><text x="125" y="45.5">1</text>
-                  <circle cx="204.9" cy="99" r="15" fill="#E8830A"/><text x="204.9" y="103.5">2</text>
-                  <circle cx="174.4" cy="193" r="15" fill="#E8830A"/><text x="174.4" y="197.5">3</text>
-                  <circle cx="75.6" cy="193" r="15" fill="#E8830A"/><text x="75.6" y="197.5">4</text>
-                  <circle cx="45.1" cy="99" r="15" fill="#E8830A"/><text x="45.1" y="103.5">5</text>
-                </g>
-              </svg>
-              <ol>
-                <li><i>1</i><span><b>Interoceptive self</b><q>I am a living body</q>heart-evoked potentials, breath&ndash;heart&ndash;EEG coupling</span></li>
-                <li><i>2</i><span><b>Agency &amp; ownership</b><q>I did that; this is my body</q>agency tasks, VR body illusions</span></li>
-                <li><i>3</i><span><b>Peripersonal space</b><q>The space around me is mine</q>reaction-time and VR paradigms</span></li>
-                <li><i>4</i><span><b>First-person perspective</b><q>I look out from here</q>vestibular self</span></li>
-                <li><i>5</i><span><b>Narrative self</b><q>I am the story I tell</q>self-voice in auditory verbal hallucinations</span></li>
-              </ol>
-            </div><cite>After Newen, Front Psychol 2018</cite></article>
-          <article class="ax-card t"><div class="ax-big">27%</div><h4>One conversation, not three channels</h4><p>of BOLD variance is explained by respiration alone. Nasal breathing synchronises piriform cortex, amygdala and hippocampus; cardiac phase quietly sets the tone of perception, and the brain&rsquo;s response to each heartbeat tracks how self-related a thought is. We are now mapping heart-evoked potentials across sleep stages and subjects <span class="ax-flag" style="margin-left:0">unpublished</span></p><cite>Northoff et al. 2023; Zelano et al. 2016; Tort et al. 2018; Azzalini et al. 2019</cite></article>
-          <article class="ax-card"><div class="ax-big">Time<small>has structure</small></div><h4>Experience is stitched in time</h4><p>In a bistable figure that never changes physically, the felt interval breaks where the percept switches. Experience is not only in time; it carries its own temporal structure.</p><cite>Venugopal, Timing Research Forum 2022</cite></article>
-          <article class="ax-card t"><div class="ax-big">5<small>layers</small></div><h4>Peeling the self</h4><div class="ax-chips"><span>Thoughts</span><span>Body-sense</span><span>Time</span><span>Space</span><span>Ego</span></div><p style="margin-top:.7rem">Sleep stages, meditative states, deprivation and disorder are natural experiments where contents drop away. The contents are measurable; the container is the open question. Heart-evoked potentials across sleep stages are being mapped at CCS <span class="ax-flag" style="margin-left:0">unpublished</span></p></article>
-          <article class="ax-card"><div class="ax-big">Unplugged</div><h4>Trading some fidelity for the whole living context</h4><p>Moving freely returns walking rhythms, posture, breathing and autonomic change, information we used to discard. Neurophenomenology (Varela): trained first-person inquiry and third-person measurement constrain each other. Built for this: Swara Sense, the first sensor-and-app pair for nasal dominance (beta; pilot in 5 healthy adults).</p><cite>Venugopal, &ldquo;Embodied and Unplugged&rdquo;, 2026; CCS technology programme</cite></article>
-        </div>
-      </div>
-      <p class="ax-note reveal">Selected results. Some are preprints, theses or preliminary findings, and are flagged where they are; ongoing projects are not reported here. See <a href="index.html#publications" style="color:var(--saffron-lt);">Publications</a> for full citations.</p>
+      <p class="ax-note reveal">Selected results; see Publications for full citations. Some are preprints, theses or preliminary.</p>
     </section>
 
-    <!-- 5 · LAB TO LIFE -->
-    <section class="ax-block" id="lab-to-life">
-      <div class="ax-k reveal">Neurotechnology</div>
-      <h2 class="ax-h2 reveal">From measurement to modulation, <em>outside the lab</em></h2>
+    <section class="ax-block" id="lab-to-life" style="padding-bottom:0;">
+      <h2 class="ax-h2 reveal">Beyond the lab, <em>and what&rsquo;s next</em></h2>
       <div class="ax-pipe reveal">
-        <div class="ax-step"><span class="n">01</span><b>Sense</b><span>Wearable EEG, PPG, ECG, breath</span></div>
-        <div class="ax-step"><span class="n">02</span><b>Decode</b><span>Brain-state classification, machine learning</span></div>
-        <div class="ax-step"><span class="n">03</span><b>Personalise</b><span>Neurofeedback, adaptive training</span></div>
-        <div class="ax-step"><span class="n">04</span><b>Modulate</b><span>tACS, timed sound, scent, tVNS</span></div>
+        <div class="ax-step"><span class="n">01</span><b>Sense</b><span>Wearable EEG, heart, breath</span></div>
+        <div class="ax-step"><span class="n">02</span><b>Decode</b><span>Brain-state machine learning</span></div>
+        <div class="ax-step"><span class="n">03</span><b>Personalise</b><span>Neurofeedback, N-of-1</span></div>
+        <div class="ax-step"><span class="n">04</span><b>Modulate</b><span>tACS, sound, scent, tVNS</span></div>
       </div>
-      <div class="ax-two reveal">
-        <div>
-          <div class="ax-k" style="margin-bottom:.6rem;">The reality gap: three problems to solve</div>
-          <div class="ax-gap">
-            <div><b>4&ndash;8</b><span>channels on wearables, versus 64&ndash;128 in the lab</span></div>
-            <div><b>Noisy</b><span>signal quality with motion and context; denoising and physiological models help</span></div>
-            <div><b>N-of-1</b><span>group averages may not fit one person; learn within-person patterns</span></div>
-          </div>
-          <p class="ax-note">Brains evolved for noisy, unpredictable environments. EEG science should too. Open-source: CCS_SleepStudio, CCS_EEGStudio, CCS_MobileStudio at <a href="https://github.com/arunsasidharan84" target="_blank" rel="noopener" style="color:var(--saffron-lt);">github.com/arunsasidharan84</a>.</p>
-        </div>
-        <div>
-          <div class="ax-k" style="margin-bottom:.6rem;">Projects at various stages</div>
-          <div class="ax-proj">
-            <div><i>1</i>Personalised theta and gamma tACS, frequency tuned per person<em>36 volunteers</em></div>
-            <div><i>2</i>Closed-loop slow-wave and spindle stimulation, incl. ECG phase-locked sound<em></em></div>
-            <div><i>3</i>Smart tVNS for refractory epilepsy (DST-BDTD)<em>prototype</em></div>
-            <div><i>4</i>Closed-loop brain training for chronic pain (DST-BDTD)<em></em></div>
-            <div><i>5</i>Sleep-interface olfactometer, 2nd prize at BREC-BIRAC<em>student prototype</em></div>
-          </div>
-        </div>
+      <div class="ax-next reveal" id="next">
+        <article class="ax-card" style="padding:1rem 1.3rem;"><h4 style="font-size:1.3rem;margin:0">UNISON<small>Inner silence across traditions &middot; expert meditators</small></h4></article>
+        <article class="ax-card" style="padding:1rem 1.3rem;"><h4 style="font-size:1.3rem;margin:0">NIYAMITA<small>Adolescent neurodevelopment through yoga and meditation &middot; 1,200 adolescents</small></h4></article>
       </div>
     </section>
 
-    <section class="ax-block" id="next">
-      <div class="ax-k reveal">What&rsquo;s next</div>
-      <h2 class="ax-h2 reveal">Two programmes <em>in development</em></h2>
-      <div class="ax-next reveal">
-        <article class="ax-card"><div class="ax-k">Programme</div><h4>UNISON<small>Inner silence across traditions &middot; expert meditators</small></h4>
-          <ul><li>An experience-state space: sleep, dreaming, rest, cognition, meditation, flow and dysregulated states as dynamic configurations</li><li>EEG, HRV, respiration, MRI, experience sampling and real-world monitoring</li><li>Pañcakośa operationalised; machine learning for which practice suits whom, and when</li></ul></article>
-        <article class="ax-card"><div class="ax-k">Programme</div><h4>NIYAMITA<small>Adolescent neurodevelopment through yoga and meditation</small></h4>
-          <ul><li>1,200 adolescents aged 11&ndash;16 across 5 centres; 600 followed for 6 years</li><li>Field battery plus lab EEG, MRI and Type-II polysomnography</li><li>Neurophenomenology: first-person data constrain the physiology</li></ul></article>
-      </div>
-    </section>
-
-    <div class="ax-cta reveal">
-      <div><h3>Join the pursuit</h3><p>We welcome traditions and field sites, clinical and school partners, engineers and funders.</p></div>
-      <div style="display:flex;gap:.8rem;flex-wrap:wrap;"><a class="ax-btn" href="index.html#Opportunities">Opportunities</a><a class="ax-btn o" href="index.html#Connect">Get in touch</a></div>
-    </div>
+    <div class="ax-cta reveal"><div><h3>Join the pursuit</h3><p>Traditions and field sites, clinical and school partners, engineers and funders.</p></div>
+      <div style="display:flex;gap:.8rem;flex-wrap:wrap;"><a class="ax-btn" href="index.html#Opportunities">Opportunities</a><a class="ax-btn o" href="index.html#Connect">Get in touch</a></div></div>
   </main>
 
   <footer style="background:#070E16;border-top:1px solid rgba(232,131,10,.15);padding:1.5rem 5vw;margin-top:4rem;">
@@ -1085,19 +922,6 @@
 
     </script>
 <script>
-  /* Live stats, same source as the other pages */
-  fetch('assets/data/site-data.json', { cache: 'no-cache' }).then(function (r) { return r.json(); }).then(function (d) {
-    var s = d.stats, host = document.getElementById('ax-stats');
-    [[s.sanctioned_projects, 'Sanctioned projects'], [s.papers_since_2020, 'Papers since 2020'],
-     [s.student_intern_placements, 'Student & intern placements'], [s.intern_institutions, 'Institutions trained'], [3, 'Open-source tools']]
-      .forEach(function (t) {
-        var i = document.createElement('div'); i.className = 'stat-item';
-        var n = document.createElement('span'); n.className = 'stat-num'; n.textContent = t[0];
-        var l = document.createElement('span'); l.className = 'stat-label'; l.textContent = t[1];
-        i.appendChild(n); i.appendChild(l); host.appendChild(i);
-      });
-  }).catch(function () { document.getElementById('ax-stats').style.display = 'none'; });
-
   /* Accessible tabs with deep links (#voice-body etc.) */
   (function () {
     var tabs = Array.prototype.slice.call(document.querySelectorAll('.ax-tab'));

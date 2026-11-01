@@ -2,7 +2,8 @@
 
 ## Unreleased
 
-- **New page `architecture.html`**: the deck's architecture of experience (three pillars on three foundations, four decades, middle ground and research framework, four voices with selected results, neurotechnology, and a "What's next" card for UNISON and NIYAMITA). Includes a few flagged preliminary or unpublished results.
+- **New page `architecture.html`** (concise): the architecture of experience in one short scroll (pillars and foundations, four decades, health continuum, four voices, neurotech pipeline, UNISON and NIYAMITA).
+- **Detailed version kept for later** on branch `architecture-detailed` (and in the first commit of this release): four tabs of findings with citations, Bennett and Pañcakośa ladders, framework objectives, design principles, neurotech problems and projects, and flagged preliminary or unpublished results.
 - **Home**: hero now shows the live pillar diagram (links to the new page); "Our Legacy" timeline condensed to match.
 - **Research**: the framework tiles are replaced by a link card to `architecture.html#framework`.
 - **Nav**: "Architecture" added on every page, with a small CSS rule keeping the header on one line on laptop widths.
