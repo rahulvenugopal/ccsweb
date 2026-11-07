@@ -2108,7 +2108,7 @@
       <!-- Tab bar -->
       <div class="tab-bar reveal" role="tablist" aria-label="Team groups">
 
-        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-historical" data-tab="historical" onclick="switchTeamTab('historical')">
+                <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-historical" data-tab="historical" onclick="switchTeamTab('historical')">
           Founding Team
         </button>
 
@@ -2121,7 +2121,11 @@
         </button>
 
         <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-phd" data-tab="phd" onclick="switchTeamTab('phd')">
-          Graduate Students
+          PhD Scholars
+        </button>
+
+        <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-msc" data-tab="msc" onclick="switchTeamTab('msc')">
+          M.Sc. Students
         </button>
 
         <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-staff" data-tab="staff" onclick="switchTeamTab('staff')">
@@ -2311,81 +2315,159 @@
           </div>
         </div>
       </div>
-      <div class="tab-panel " id="tab-phd" role="tabpanel">
-        <div class="team-grid ">
-          <div class="team-card reveal" style="animation-delay:0.00s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <img src="assets/images/team/suma.png" alt="Suma Bhaskar avatar"
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
-            </div>
-            <h3>Suma Bhaskar</h3>
-            <p class="role">Graduate student</p>
+            <div class="tab-panel " id="tab-phd" role="tabpanel">
+        <div style="margin-bottom:2.5rem;">
+          <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;">
+            <span style="font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--saffron);font-weight:600;">Active PhD Scholars</span>
+            <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(232,131,10,.35),transparent);"></span>
           </div>
-          <div class="team-card reveal" style="animation-delay:0.18s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <img src="assets/images/team/safoora.jpg" alt="Safoora Naaz avatar"
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+          <div class="team-grid">
+            <div class="team-card reveal" style="animation-delay:0.00s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <canvas class="monogram-canvas" data-name="Amritharekha Nayak"></canvas>
+              </div>
+              <h3>Amritharekha Nayak</h3>
+              <p class="role">PhD Scholar (2022&ndash;2027)<br><span style="font-size:.75rem;color:var(--navy);">Frontal-midline-theta training &amp; mentation</span></p>
             </div>
-            <h3>Safoora Naaz</h3>
-            <p class="role">Graduate student</p>
+            <div class="team-card reveal" style="animation-delay:0.15s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <canvas class="monogram-canvas" data-name="Saksham Agarwal"></canvas>
+              </div>
+              <h3>Saksham Agarwal</h3>
+              <p class="role">PhD Scholar (2023&ndash;Present)<br><span style="font-size:.75rem;color:var(--navy);">Neurophysiology &amp; phenomenology of Yoga Nidra</span></p>
+            </div>
+            <div class="team-card reveal" style="animation-delay:0.30s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <img src="assets/images/team/krithika.jpeg" alt="Krithika A Ramaswamy avatar"
+                  style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+              </div>
+              <h3>Krithika A Ramaswamy</h3>
+              <p class="role">PhD Scholar (2025&ndash;Present)<br><span style="font-size:.75rem;color:var(--navy);">Resonance breathing &amp; perception in ADHD</span></p>
+            </div>
+            <div class="team-card reveal" style="animation-delay:0.45s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <img src="assets/images/team/siyam.jpg" alt="Ahamed Siyam Hussain M avatar"
+                  style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:50%;">
+              </div>
+              <h3>Ahamed Siyam Hussain M</h3>
+              <p class="role">PhD Scholar (2025&ndash;Present)<br><span style="font-size:.75rem;color:var(--navy);">VR-assisted induction of lucid dreaming</span></p>
+              <div class="team-socials">
+                <a href="https://scholar.google.com/citations?hl=en&user=eXZMiJsAAAAJ" target="_blank" rel="noopener"
+                  aria-label="Google Scholar" title="Google Scholar">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" width="18" height="18">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                  </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/ahamed-siyam-hussain-m-527755325" target="_blank" rel="noopener"
+                  aria-label="LinkedIn" title="LinkedIn">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round" width="18" height="18">
+                    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                    <rect x="2" y="9" width="4" height="12"></rect>
+                    <circle cx="4" cy="4" r="2"></circle>
+                  </svg>
+                </a>
+              </div>
+            </div>
+            <div class="team-card reveal" style="animation-delay:0.60s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <img src="assets/images/team/praerna.jpg" alt="Praerna Chowdhury avatar"
+                  style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:50%;">
+              </div>
+              <h3>Praerna Chowdhury</h3>
+              <p class="role">PhD Scholar (External &ndash; SVYASA, 2022&ndash;2026)<br><span style="font-size:.75rem;color:var(--navy);">EEG-signatures of meditation proficiency</span></p>
+            </div>
           </div>
-          <div class="team-card reveal" style="animation-delay:0.36s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <canvas class="monogram-canvas" data-name="Amritharekha Nayak"></canvas>
-            </div>
-            <h3>Amritharekha Nayak</h3>
-            <p class="role">Graduate student</p>
+        </div>
+
+        <div>
+          <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;">
+            <span style="font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-lt);font-weight:600;">Completed PhD Scholars</span>
+            <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(40,116,166,.35),transparent);"></span>
           </div>
-          <div class="team-card reveal" style="animation-delay:0.54s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <canvas class="monogram-canvas" data-name="Saksham Agarwal"></canvas>
+          <div class="team-grid">
+            <div class="team-card reveal" style="animation-delay:0.00s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <img src="assets/images/team/suma.png" alt="Suma Bhaskar avatar"
+                  style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+              </div>
+              <h3>Suma Bhaskar</h3>
+              <p class="role">PhD Scholar (2021&ndash;2025)<br><span style="font-size:.75rem;color:var(--navy);">Yoga intervention in adolescent depression</span></p>
             </div>
-            <h3>Saksham Agarwal</h3>
-            <p class="role">Graduate student</p>
-          </div>
-          <div class="team-card reveal" style="animation-delay:0.72s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <img src="assets/images/team/siyam.jpg" alt="Ahamed Siyam Hussain M avatar"
-                style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:50%;">
+            <div class="team-card reveal" style="animation-delay:0.15s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <img src="assets/images/team/safoora.jpg" alt="Safoora Naaz avatar"
+                  style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+              </div>
+              <h3>Safoora Naaz</h3>
+              <p class="role">PhD Scholar (2021&ndash;2025)<br><span style="font-size:.75rem;color:var(--navy);">Sleep spindle modulation in MCI</span></p>
             </div>
-            <h3>Ahamed Siyam Hussain M</h3>
-            <p class="role">Graduate student</p>
-            <div class="team-socials">
-              <a href="https://scholar.google.com/citations?hl=en&user=eXZMiJsAAAAJ" target="_blank" rel="noopener"
-                aria-label="Google Scholar" title="Google Scholar">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" width="18" height="18">
-                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
-                </svg>
-              </a>
-              <a href="https://www.linkedin.com/in/ahamed-siyam-hussain-m-527755325" target="_blank" rel="noopener"
-                aria-label="LinkedIn" title="LinkedIn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                  stroke-linejoin="round" width="18" height="18">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-                  <rect x="2" y="9" width="4" height="12"></rect>
-                  <circle cx="4" cy="4" r="2"></circle>
-                </svg>
-              </a>
-            </div>
-          </div>
-          <div class="team-card reveal" style="animation-delay:0.90s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <img src="assets/images/team/krithika.jpeg" alt="Krithika A Ramaswamy avatar"
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
-            </div>
-            <h3>Krithika A Ramaswamy</h3>
-            <p class="role">Graduate student</p>
           </div>
         </div>
       </div>
+
+      <div class="tab-panel " id="tab-msc" role="tabpanel">
+        <div style="margin-bottom:2.5rem;">
+          <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;">
+            <span style="font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--saffron);font-weight:600;">Active M.Sc. Students</span>
+            <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(232,131,10,.35),transparent);"></span>
+          </div>
+          <div class="team-grid">
+            <div class="team-card reveal" style="animation-delay:0.00s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <img src="assets/images/team/vaishnavi.jpeg" alt="Vaishnavi G Nair avatar"
+                  style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+              </div>
+              <h3>Vaishnavi G Nair</h3>
+              <p class="role">M.Sc. Neuroscience, NIMHANS (2026&ndash;2027)<br><span style="font-size:.75rem;color:var(--navy);">Heart-brain biases in perception</span></p>
+            </div>
+            <div class="team-card reveal" style="animation-delay:0.15s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <canvas class="monogram-canvas" data-name="Saakshi Goswami"></canvas>
+              </div>
+              <h3>Saakshi Goswami</h3>
+              <p class="role">M.Sc. Neuroscience, NIMHANS (2026&ndash;2027)<br><span style="font-size:.75rem;color:var(--navy);">Pressure-based nasal airflow wearable</span></p>
+            </div>
+            <div class="team-card reveal" style="animation-delay:0.30s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <canvas class="monogram-canvas" data-name="M D Minhaj Alam"></canvas>
+              </div>
+              <h3>M D Minhaj Alam</h3>
+              <p class="role">M.Sc. Neuroscience, NIMHANS (2025&ndash;2026)<br><span style="font-size:.75rem;color:var(--navy);">Perceived stress &amp; sleep micro-architecture</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;">
+            <span style="font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-lt);font-weight:600;">Completed M.Sc. Students</span>
+            <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(40,116,166,.35),transparent);"></span>
+          </div>
+          <div class="team-grid">
+            <div class="team-card reveal" style="animation-delay:0.00s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <canvas class="monogram-canvas" data-name="Devangana Sharma"></canvas>
+              </div>
+              <h3>Devangana Sharma</h3>
+              <p class="role">M.Sc. Neuroscience, NIMHANS (2024&ndash;2025)<br><span style="font-size:.75rem;color:var(--navy);">Working memory &amp; network dynamics</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div class="tab-panel " id="tab-staff" role="tabpanel">
         <div class="team-grid ">
           <div class="team-card reveal" style="animation-delay:0.00s">
@@ -2421,187 +2503,203 @@
           </div>
         </div>
       </div>
-      <div class="tab-panel " id="tab-alumni" role="tabpanel">
-        <div class="team-grid alumni-grid">
-          <div class="team-card reveal" style="animation-delay:0.00s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <canvas class="monogram-canvas" data-name="Adla"></canvas>
-            </div>
-            <h3>Adla</h3>
-            <p class="role"></p>
+            <div class="tab-panel " id="tab-alumni" role="tabpanel">
+        <div style="margin-bottom:2.5rem;">
+          <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;">
+            <span style="font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--saffron);font-weight:600;">Doctoral Alumni (Ph.D. Scholars)</span>
+            <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(232,131,10,.35),transparent);"></span>
           </div>
-          <div class="team-card reveal" style="animation-delay:0.18s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <img src="assets/images/team/aishwarya.jpg" alt="Aishwarya Swamy avatar"
-                style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:50%;">
+          <div class="team-grid">
+            <div class="team-card reveal" style="animation-delay:0.00s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <img src="assets/images/team/ajay.jpg" alt="Dr Ajay Kumar Nair avatar"
+                  style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:50%;">
+              </div>
+              <h3>Dr Ajay Kumar Nair</h3>
+              <p class="role">PhD Alumnus</p>
             </div>
-            <h3>Aishwarya Swamy</h3>
-            <p class="role"></p>
+            <div class="team-card reveal" style="animation-delay:0.10s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <img src="assets/images/team/arathi.jpg" alt="Dr Arathi Radhakrishnan avatar"
+                  style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+              </div>
+              <h3>Dr Arathi Radhakrishnan</h3>
+              <p class="role">PhD Alumna</p>
+            </div>
+            <div class="team-card reveal" style="animation-delay:0.20s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <img src="assets/images/team/basavaraj.jpg" alt="Dr Basavaraj Tubaki avatar"
+                  style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+              </div>
+              <h3>Dr Basavaraj Tubaki</h3>
+              <p class="role">PhD Alumnus</p>
+            </div>
+            <div class="team-card reveal" style="animation-delay:0.30s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <img src="assets/images/team/gulshan.jpg" alt="Dr Gulshan Kumar avatar"
+                  style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+              </div>
+              <h3>Dr Gulshan Kumar</h3>
+              <p class="role">PhD Alumnus</p>
+            </div>
+            <div class="team-card reveal" style="animation-delay:0.40s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <img src="assets/images/team/harsha.jpg" alt="Dr Harsha Halahalli avatar"
+                  style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+              </div>
+              <h3>Dr Harsha Halahalli</h3>
+              <p class="role">PhD Alumnus</p>
+            </div>
+            <div class="team-card reveal" style="animation-delay:0.50s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <img src="assets/images/team/nirmala.jpg" alt="Dr Nirmala M avatar"
+                  style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+              </div>
+              <h3>Dr Nirmala M</h3>
+              <p class="role">PhD Alumna</p>
+            </div>
+            <div class="team-card reveal" style="animation-delay:0.60s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <img src="assets/images/team/pranay.jpg" alt="Dr Pranay S Yadav avatar"
+                  style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+              </div>
+              <h3>Dr Pranay S Yadav</h3>
+              <p class="role">PhD Alumnus</p>
+            </div>
+            <div class="team-card reveal" style="animation-delay:0.70s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <img src="assets/images/team/ramajayam.jpg" alt="Dr Ramajayam G avatar"
+                  style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+              </div>
+              <h3>Dr Ramajayam G</h3>
+              <p class="role">PhD Alumnus</p>
+            </div>
+            <div class="team-card reveal" style="animation-delay:0.80s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <img src="assets/images/team/jyothi.jpg" alt="Dr Ratna Jyothi Kakumanu avatar"
+                  style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+              </div>
+              <h3>Dr Ratna Jyothi Kakumanu</h3>
+              <p class="role">PhD Alumna</p>
+            </div>
+            <div class="team-card reveal" style="animation-delay:0.90s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <img src="assets/images/team/ravi_kiran.jpg" alt="Dr Ravi Kiran Kisan avatar"
+                  style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:50%;">
+              </div>
+              <h3>Dr Ravi Kiran Kisan</h3>
+              <p class="role">PhD Alumnus</p>
+            </div>
+            <div class="team-card reveal" style="animation-delay:1.00s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <img src="assets/images/team/saketh.jpg" alt="Dr Saketh M avatar"
+                  style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+              </div>
+              <h3>Dr Saketh M</h3>
+              <p class="role">PhD Alumnus</p>
+            </div>
+            <div class="team-card reveal" style="animation-delay:1.10s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <img src="assets/images/team/shwetha.jpg" alt="Dr Shweta Rastogi avatar"
+                  style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+              </div>
+              <h3>Dr Shweta Rastogi</h3>
+              <p class="role">PhD Alumna</p>
+            </div>
+            <div class="team-card reveal" style="animation-delay:1.20s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <img src="assets/images/team/sulekha.jpg" alt="Dr Sulekha S avatar"
+                  style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:50%;">
+              </div>
+              <h3>Dr Sulekha S</h3>
+              <p class="role">PhD Alumna</p>
+            </div>
+            <div class="team-card reveal" style="animation-delay:1.30s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <img src="assets/images/team/vrinda.jpg" alt="Dr Vrinda M avatar"
+                  style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+              </div>
+              <h3>Dr Vrinda M</h3>
+              <p class="role">PhD Alumna</p>
+            </div>
           </div>
-          <div class="team-card reveal" style="animation-delay:0.36s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <img src="assets/images/team/ajay.jpg" alt="Dr Ajay Kumar Nair avatar"
-                style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:50%;">
-            </div>
-            <h3>Dr Ajay Kumar Nair</h3>
-            <p class="role"></p>
+        </div>
+
+        <div>
+          <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem;">
+            <span style="font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-lt);font-weight:600;">Research Scholars &amp; Staff Alumni</span>
+            <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(40,116,166,.35),transparent);"></span>
           </div>
-          <div class="team-card reveal" style="animation-delay:0.54s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <img src="assets/images/team/arathi.jpg" alt="Dr Arathi Radhakrishnan avatar"
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+          <div class="team-grid">
+            <div class="team-card reveal" style="animation-delay:0.00s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <canvas class="monogram-canvas" data-name="Adla"></canvas>
+              </div>
+              <h3>Adla Zubair</h3>
+              <p class="role">Research Intern</p>
             </div>
-            <h3>Dr Arathi Radhakrishnan</h3>
-            <p class="role"></p>
-          </div>
-          <div class="team-card reveal" style="animation-delay:0.72s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <img src="assets/images/team/basavaraj.jpg" alt="Dr Basavaraj Tubaki avatar"
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            <div class="team-card reveal" style="animation-delay:0.10s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <img src="assets/images/team/aishwarya.jpg" alt="Aishwarya Swamy avatar"
+                  style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:50%;">
+              </div>
+              <h3>Aishwarya Swamy</h3>
+              <p class="role">Research Fellow</p>
             </div>
-            <h3>Dr Basavaraj Tubaki</h3>
-            <p class="role"></p>
-          </div>
-          <div class="team-card reveal" style="animation-delay:0.90s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <img src="assets/images/team/gulshan.jpg" alt="Dr Gulshan Kumar avatar"
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            <div class="team-card reveal" style="animation-delay:0.20s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <canvas class="monogram-canvas" data-name="Kishan"></canvas>
+              </div>
+              <h3>Kishan</h3>
+              <p class="role">Project Staff</p>
             </div>
-            <h3>Dr Gulshan Kumar</h3>
-            <p class="role"></p>
-          </div>
-          <div class="team-card reveal" style="animation-delay:1.08s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <img src="assets/images/team/harsha.jpg" alt="Dr Harsha Halahalli avatar"
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+            <div class="team-card reveal" style="animation-delay:0.30s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <canvas class="monogram-canvas" data-name="Mohit"></canvas>
+              </div>
+              <h3>Mohit</h3>
+              <p class="role">Project Staff</p>
             </div>
-            <h3>Dr Harsha Halahalli</h3>
-            <p class="role"></p>
-          </div>
-          <div class="team-card reveal" style="animation-delay:1.26s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <canvas class="monogram-canvas" data-name="Kishan"></canvas>
+            <div class="team-card reveal" style="animation-delay:0.40s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <img src="assets/images/team/ramachandra.jpg" alt="Ramachandra avatar"
+                  style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:50%;">
+              </div>
+              <h3>Ramachandra</h3>
+              <p class="role">Technical Staff</p>
             </div>
-            <h3>Kishan</h3>
-            <p class="role"></p>
-          </div>
-          <div class="team-card reveal" style="animation-delay:1.44s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <canvas class="monogram-canvas" data-name="Mohit"></canvas>
+            <div class="team-card reveal" style="animation-delay:0.50s">
+              <div class="card-border-bottom"></div>
+              <div class="card-avatar-wrap">
+                <img src="assets/images/team/sruthi.jpg" alt="Sruthi Susan Kuriakose avatar"
+                  style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
+              </div>
+              <h3>Sruthi Susan Kuriakose</h3>
+              <p class="role">Research Scholar</p>
             </div>
-            <h3>Mohit</h3>
-            <p class="role"></p>
-          </div>
-          <div class="team-card reveal" style="animation-delay:1.62s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <img src="assets/images/team/nirmala.jpg" alt="Dr Nirmala M avatar"
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
-            </div>
-            <h3>Dr Nirmala M</h3>
-            <p class="role"></p>
-          </div>
-          <div class="team-card reveal" style="animation-delay:1.80s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <img src="assets/images/team/pranay.jpg" alt="Dr Pranay S Yadav avatar"
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
-            </div>
-            <h3>Dr Pranay S Yadav</h3>
-            <p class="role"></p>
-          </div>
-          <div class="team-card reveal" style="animation-delay:1.98s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <img src="assets/images/team/ramachandra.jpg" alt="Ramachandra avatar"
-                style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:50%;">
-            </div>
-            <h3>Ramachandra</h3>
-            <p class="role"></p>
-          </div>
-          <div class="team-card reveal" style="animation-delay:2.16s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <img src="assets/images/team/ramajayam.jpg" alt="Dr Ramajayam G avatar"
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
-            </div>
-            <h3>Dr Ramajayam G</h3>
-            <p class="role"></p>
-          </div>
-          <div class="team-card reveal" style="animation-delay:2.34s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <img src="assets/images/team/jyothi.jpg" alt="Dr Ratna Jyothi Kakumanu avatar"
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
-            </div>
-            <h3>Dr Ratna Jyothi Kakumanu</h3>
-            <p class="role"></p>
-          </div>
-          <div class="team-card reveal" style="animation-delay:2.52s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <img src="assets/images/team/ravi_kiran.jpg" alt="Dr Ravi Kiran Kisan avatar"
-                style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:50%;">
-            </div>
-            <h3>Dr Ravi Kiran Kisan</h3>
-            <p class="role"></p>
-          </div>
-          <div class="team-card reveal" style="animation-delay:2.70s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <img src="assets/images/team/saketh.jpg" alt="Dr Saketh M avatar"
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
-            </div>
-            <h3>Dr Saketh M</h3>
-            <p class="role"></p>
-          </div>
-          <div class="team-card reveal" style="animation-delay:2.88s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <img src="assets/images/team/shwetha.jpg" alt="Dr Shweta Rastogi avatar"
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
-            </div>
-            <h3>Dr Shweta Rastogi</h3>
-            <p class="role"></p>
-          </div>
-          <div class="team-card reveal" style="animation-delay:3.06s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <img src="assets/images/team/sruthi.jpg" alt="Sruthi Susan Kuriakose avatar"
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
-            </div>
-            <h3>Sruthi Susan Kuriakose</h3>
-            <p class="role"></p>
-          </div>
-          <div class="team-card reveal" style="animation-delay:3.24s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <img src="assets/images/team/sulekha.jpg" alt="Dr Sulekha S avatar"
-                style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:50%;">
-            </div>
-            <h3>Dr Sulekha S</h3>
-            <p class="role"></p>
-          </div>
-          <div class="team-card reveal" style="animation-delay:3.42s">
-            <div class="card-border-bottom"></div>
-            <div class="card-avatar-wrap">
-              <img src="assets/images/team/vrinda.jpg" alt="Dr Vrinda M avatar"
-                style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
-            </div>
-            <h3>Dr Vrinda M</h3>
-            <p class="role"></p>
           </div>
         </div>
       </div>
+
       <div class="tab-panel " id="tab-historical" role="tabpanel">
         <div style="margin-bottom:2rem;">
           <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;">
@@ -2930,296 +3028,324 @@
         </div>
       </div>
 
-      <!-- Trainee panel -->
+            <!-- Trainee panel -->
       <div class="tab-panel" id="tab-trainee" role="tabpanel">
         <style>
-          .intern-table-wrap { max-width: 900px; margin: 0 auto; background: var(--white); border-radius: 8px; border: 1px solid var(--stone); overflow: hidden; }
-          .intern-header { display: grid; grid-template-columns: 1.4fr 2fr 1.2fr; gap: 1rem; padding: .85rem 1.25rem; background: var(--offwhite); border-bottom: 2px solid var(--stone); font-family: var(--ff-mono); font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: var(--navy); font-weight: 600; }
-          .intern-list { display: grid; max-height: 600px; overflow-y: auto; }
-          .intern-row { display: grid; grid-template-columns: 1.4fr 2fr 1.2fr; gap: 1rem; padding: .85rem 1.25rem; border-bottom: 1px solid rgba(13,27,42,.06); align-items: center; transition: background .15s; }
+          .intern-table-wrap { max-width: 960px; margin: 0 auto; background: var(--white); border-radius: 8px; border: 1px solid var(--stone); overflow: hidden; }
+          .intern-section-title { padding: .9rem 1.25rem .5rem; font-family: var(--ff-mono); font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--navy); font-weight: 600; display: flex; align-items: center; gap: .75rem; background: var(--offwhite); border-bottom: 1px solid var(--stone); }
+          .intern-header { display: grid; grid-template-columns: 1.4fr 2fr 1.3fr; gap: 1rem; padding: .75rem 1.25rem; background: var(--offwhite); border-bottom: 2px solid var(--stone); font-family: var(--ff-mono); font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; color: var(--navy); font-weight: 600; }
+          .intern-list { display: grid; max-height: 520px; overflow-y: auto; }
+          .intern-row { display: grid; grid-template-columns: 1.4fr 2fr 1.3fr; gap: 1rem; padding: .8rem 1.25rem; border-bottom: 1px solid rgba(13,27,42,.06); align-items: center; transition: background .15s; }
           .intern-row:last-child { border-bottom: 0; }
           .intern-row:hover { background: rgba(232,131,10,.04); }
           .intern-name { font-family: var(--ff-body); font-weight: 600; font-size: .92rem; color: var(--ink); }
           .intern-inst { font-size: .84rem; color: var(--muted); line-height: 1.4; }
-          .intern-period { font-family: var(--ff-mono); font-size: .74rem; color: var(--navy); white-space: nowrap; }
+          .intern-period { font-family: var(--ff-mono); font-size: .72rem; color: var(--navy); display: flex; align-items: center; gap: .5rem; }
+          .badge-status { display: inline-block; padding: .15rem .45rem; border-radius: 4px; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; }
+          .badge-active { background: rgba(26,107,107,.12); color: var(--teal); border: 1px solid rgba(26,107,107,.3); }
+          .badge-completed { background: rgba(138,155,176,.12); color: var(--muted); border: 1px solid rgba(138,155,176,.25); }
           @media (max-width: 640px) {
             .intern-header { display: none; }
             .intern-row { grid-template-columns: 1fr; gap: .3rem; padding: .8rem 1rem; }
-            .intern-period { font-size: .7rem; color: var(--saffron); }
+            .intern-period { font-size: .7rem; }
           }
         </style>
-        <div class="intern-table-wrap reveal">
-          <div class="intern-header">
-            <span>Name</span>
-            <span>Institute</span>
-            <span>Period</span>
+        
+        <div style="max-width:960px;margin:0 auto 2.5rem;">
+          <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;">
+            <span style="font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--saffron);font-weight:600;">Active Trainees (6)</span>
+            <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(232,131,10,.35),transparent);"></span>
           </div>
-          <div class="intern-list">
-          <div class="intern-row">
-            <span class="intern-name">Sriya</span>
-            <span class="intern-inst">IIT Madras</span>
-            <span class="intern-period">Mar 2021 – Sep 2021</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Kankana Bowmik</span>
-            <span class="intern-inst">IISER Mohali</span>
-            <span class="intern-period">Jun 2021 – Aug 2021</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Adla Zubair</span>
-            <span class="intern-inst">IISER Tirupati</span>
-            <span class="intern-period">Jul 2021 – Sep 2021</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Pranay Rakesh</span>
-            <span class="intern-inst">Bangalore Institute of Technology</span>
-            <span class="intern-period">Aug 2021 – Dec 2021</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Jimisha</span>
-            <span class="intern-inst">Center for Distance Learning, GITAM, Vishakapattanam</span>
-            <span class="intern-period">Dec 2021 – Jan 2022</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Adla Zubair</span>
-            <span class="intern-inst">IISER Tirupati</span>
-            <span class="intern-period">Dec 2021 – Jan 2022</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Abin Jacob</span>
-            <span class="intern-inst">Christ University, Bengaluru</span>
-            <span class="intern-period">Mar 2022 – Jun 2022</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Kankana Bowmik</span>
-            <span class="intern-inst">IISER Mohali</span>
-            <span class="intern-period">May 2022 – Aug 2022</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Gayatri</span>
-            <span class="intern-inst">IIT Gandhinagar</span>
-            <span class="intern-period">May 2022 – Jul 2022</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Adla Zubair</span>
-            <span class="intern-inst">IISER Tirupati</span>
-            <span class="intern-period">Jun 2022 – Apr 2023</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Amruth</span>
-            <span class="intern-inst">AIIMS Bhopal</span>
-            <span class="intern-period">Dec 2022 – May 2023</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Garima Nagal</span>
-            <span class="intern-inst">NFSU Gandhinagar</span>
-            <span class="intern-period">Sep 2022 – Feb 2023</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Keerthi</span>
-            <span class="intern-inst">JSS AHER Mysore</span>
-            <span class="intern-period">Mar 2023 – Mar 2023</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Vaishnavi BS</span>
-            <span class="intern-inst">JSS AHER Mysore</span>
-            <span class="intern-period">Mar 2023 – Oct 2023</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Deepankan</span>
-            <span class="intern-inst">JSS AHER Mysore</span>
-            <span class="intern-period">Mar 2023 – Jul 2023</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Prerana Reddy</span>
-            <span class="intern-inst">JSS AHER Mysore</span>
-            <span class="intern-period">Mar 2023 – Nov 2023</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Ananda Krishnan</span>
-            <span class="intern-inst">Jiwaji University Gwalior</span>
-            <span class="intern-period">Apr 2023 – Jun 2023</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Nandini</span>
-            <span class="intern-inst">IISER Mohali</span>
-            <span class="intern-period">—</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Nahida Jabin</span>
-            <span class="intern-inst">IISER Mohali</span>
-            <span class="intern-period">May 2023 – Aug 2023</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Shivani H</span>
-            <span class="intern-inst">IISER Mohali</span>
-            <span class="intern-period">May 2023 – Aug 2023</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Ananya Sachdev</span>
-            <span class="intern-inst">UM-DAE Centre for Excellence in Basic Sciences, Mumbai</span>
-            <span class="intern-period">May 2023 – Nov 2023</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Ritika Khanna</span>
-            <span class="intern-inst">JSS AHER Mysore</span>
-            <span class="intern-period">Sep 2023 – Nov 2023</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Yashwanth G</span>
-            <span class="intern-inst">University of Amsterdam</span>
-            <span class="intern-period">Oct 2023 – May 2024</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Aysha Khenza</span>
-            <span class="intern-inst">Cochin University of Science and Technology (CUSAT), Kerala</span>
-            <span class="intern-period">Dec 2023 – May 2024</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Joshua D</span>
-            <span class="intern-inst">St Josephs University, Bengaluru</span>
-            <span class="intern-period">Jan 2024 – May 2024</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Simra I</span>
-            <span class="intern-inst">St Josephs University, Bengaluru</span>
-            <span class="intern-period">Jan 2024 – May 2024</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Mahika</span>
-            <span class="intern-inst">M.S. Ramaiah University of Applied Sciences, Bengaluru</span>
-            <span class="intern-period">Jan 2024 – May 2024</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Abhay</span>
-            <span class="intern-inst">Christ University, Bengaluru</span>
-            <span class="intern-period">Feb 2024 – Apr 2024</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Shraddha M</span>
-            <span class="intern-inst">Alumnus of IIT Gandhinagar & Interned at IIT Hyderabad</span>
-            <span class="intern-period">Mar 2024 – May 2024</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Ganga M Patil</span>
-            <span class="intern-inst">JSS AHER Mysore</span>
-            <span class="intern-period">Mar 2024 – Jul 2024</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Ritika Khanna</span>
-            <span class="intern-inst">JSS AHER Mysore</span>
-            <span class="intern-period">Apr 2024 – Sep 2024</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Vidyun Mittal</span>
-            <span class="intern-inst">Alumnus of TRINITY COLLEGE DUBLIN</span>
-            <span class="intern-period">Apr 2024 – Jun 2024</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Nahida Jabin</span>
-            <span class="intern-inst">IISER Mohali</span>
-            <span class="intern-period">May 2024 – Jul 2024</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Shivani H</span>
-            <span class="intern-inst">IISER Mohali</span>
-            <span class="intern-period">May 2024 – Jul 2024</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Prakash Shrimali</span>
-            <span class="intern-inst">SVYASA</span>
-            <span class="intern-period">Apr 2024 – Nov 2024</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Amritanjali Nagne</span>
-            <span class="intern-inst">IISER Mohali</span>
-            <span class="intern-period">Dec 2024 – Dec 2024</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Lokeswara Vijanapalli</span>
-            <span class="intern-inst">IIT Mandi</span>
-            <span class="intern-period">Sep 2024 – Sep 2024</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Dharma Thobani</span>
-            <span class="intern-inst">IIT Mandi</span>
-            <span class="intern-period">Sep 2024 – Oct 2024</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Ankita Garg</span>
-            <span class="intern-inst">IIT Mandi</span>
-            <span class="intern-period">Sep 2024 – Oct 2024</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Saakshi Goswami</span>
-            <span class="intern-inst">IGNOU (Correspondence)</span>
-            <span class="intern-period">Oct 2024 – Jun 2025</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Vaishnavi G Nair</span>
-            <span class="intern-inst">Cochin University of Science and Technology (CUSAT), Kerala</span>
-            <span class="intern-period">Jan 2025 – Jul 2025</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Twinkle Yadav</span>
-            <span class="intern-inst">Jiwaji University Gwalior</span>
-            <span class="intern-period">Feb 2025 – Aug 2025</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Jaisy Bridgette Devadasse</span>
-            <span class="intern-inst">UNITO, Turin</span>
-            <span class="intern-period">Apr 2025 – Jun 2025</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Deepshik Sharma</span>
-            <span class="intern-inst">JAIN University, Bangalore</span>
-            <span class="intern-period">Jun 2025 – Oct 2025</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Anjana Sinha</span>
-            <span class="intern-inst">JSS AHER Mysore</span>
-            <span class="intern-period">Aug 2025 – Sep 2025</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Siddharth Rajesh</span>
-            <span class="intern-inst">University of Sydney</span>
-            <span class="intern-period">Sep 2025 – Apr 2026</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Manasa Marthala</span>
-            <span class="intern-inst">Christ University (Central Campus)</span>
-            <span class="intern-period">Dec 2025 – Mar 2026</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Chinmayi Vaidya</span>
-            <span class="intern-inst">Christ University (Central Campus)</span>
-            <span class="intern-period">Dec 2025 – Mar 2026</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Priyashi</span>
-            <span class="intern-inst">Christ University (Central Campus)</span>
-            <span class="intern-period">Dec 2025 – Mar 2026</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Om Tiwary</span>
-            <span class="intern-inst">Rashtriya Raksha University, Gujarat</span>
-            <span class="intern-period">Jan 2026 – Mar 2026</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Niti Desai</span>
-            <span class="intern-inst">Rashtriya Raksha University, Gujarat</span>
-            <span class="intern-period">Jan 2026 – Mar 2026</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Naveena Sunil</span>
-            <span class="intern-inst">MAHE</span>
-            <span class="intern-period">Mar 2026 – Oct 2027</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Aswin Tony</span>
-            <span class="intern-inst">Trivandrum Medical College</span>
-            <span class="intern-period">Mar 2026 – Apr 2026</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Neha H Nair</span>
-            <span class="intern-inst">IISER-Pune</span>
-            <span class="intern-period">May 2026 – Jul 2026</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Aparna Manoj</span>
-            <span class="intern-inst">IISER Mohali</span>
-            <span class="intern-period">May 2026 – Jul 2026</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Srinivasan R</span>
-            <span class="intern-inst">University of Hyderabad</span>
-            <span class="intern-period">May 2026 – Jul 2026</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Shatakshi Singh</span>
-            <span class="intern-inst">IISER Berhampur</span>
-            <span class="intern-period">Jun 2026 – Mar 2027</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Sharon Zachariah</span>
-            <span class="intern-inst">Dayananda Sagar University</span>
-            <span class="intern-period">—</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Harshitha P.G</span>
-            <span class="intern-inst">Dayananda Sagar University</span>
-            <span class="intern-period">—</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Vishaka Biju</span>
-            <span class="intern-inst">Dayananda Sagar University</span>
-            <span class="intern-period">—</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Shreya Paul</span>
-            <span class="intern-inst">Dayananda Sagar University</span>
-            <span class="intern-period">—</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Kshitija Chakre</span>
-            <span class="intern-inst">MIT World Peace University (MIT-WPU)</span>
-            <span class="intern-period">Jul 2026 – Dec 2026</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Pallabi Pal</span>
-            <span class="intern-inst">University of Rajasthan</span>
-            <span class="intern-period">Aug 2026 – Nov 2026</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Nahida Jabin</span>
-            <span class="intern-inst">IISER Mohali</span>
-            <span class="intern-period">Sep 2026 – Oct 2026</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Delna Kuriyakose</span>
-            <span class="intern-inst">VIT, Vellore</span>
-            <span class="intern-period">Sep 2026 – Nov 2026</span>
-          </div>          <div class="intern-row">
-            <span class="intern-name">Gargi Mangukya</span>
-            <span class="intern-inst">Manipal Academy of Higher Education</span>
-            <span class="intern-period">Jul 2026 – Feb 2027</span>
+          <div class="intern-table-wrap reveal">
+            <div class="intern-header">
+              <span>Name</span>
+              <span>Institute</span>
+              <span>Status &amp; Period</span>
+            </div>
+            <div class="intern-list" style="max-height:none;">
+            <div class="intern-row">
+              <span class="intern-name">Naveena Sunil</span>
+              <span class="intern-inst">MAHE</span>
+              <span class="intern-period"><span class="badge-status badge-active">Active</span> Mar 2026 – Oct 2027</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Shatakshi Singh</span>
+              <span class="intern-inst">IISER Berhampur</span>
+              <span class="intern-period"><span class="badge-status badge-active">Active</span> Jun 2026 – Mar 2027</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Kshitija Chakre</span>
+              <span class="intern-inst">MIT World Peace University (MIT-WPU)</span>
+              <span class="intern-period"><span class="badge-status badge-active">Active</span> Jul 2026 – Dec 2026</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Pallabi Pal</span>
+              <span class="intern-inst">University of Rajasthan</span>
+              <span class="intern-period"><span class="badge-status badge-active">Active</span> Aug 2026 – Nov 2026</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Delna Kuriyakose</span>
+              <span class="intern-inst">VIT, Vellore</span>
+              <span class="intern-period"><span class="badge-status badge-active">Active</span> Sep 2026 – Nov 2026</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Gargi Mangukya</span>
+              <span class="intern-inst">Manipal Academy of Higher Education</span>
+              <span class="intern-period"><span class="badge-status badge-active">Active</span> Jul 2026 – Feb 2027</span>
+            </div>
+            </div>
           </div>
+        </div>
+
+        <div style="max-width:960px;margin:0 auto;">
+          <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;">
+            <span style="font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-lt);font-weight:600;">Completed Trainees (60)</span>
+            <span style="flex:1;height:1px;background:linear-gradient(90deg,rgba(40,116,166,.35),transparent);"></span>
+          </div>
+          <div class="intern-table-wrap reveal">
+            <div class="intern-header">
+              <span>Name</span>
+              <span>Institute</span>
+              <span>Status &amp; Period</span>
+            </div>
+            <div class="intern-list">
+            <div class="intern-row">
+              <span class="intern-name">Sriya</span>
+              <span class="intern-inst">IIT Madras</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Mar 2021 – Sep 2021</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Kankana Bowmik</span>
+              <span class="intern-inst">IISER Mohali</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Jun 2021 – Aug 2021</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Adla Zubair</span>
+              <span class="intern-inst">IISER Tirupati</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Jul 2021 – Sep 2021</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Pranay Rakesh</span>
+              <span class="intern-inst">Bangalore Institute of Technology</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Aug 2021 – Dec 2021</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Jimisha</span>
+              <span class="intern-inst">Center for Distance Learning, GITAM, Vishakapattanam</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Dec 2021 – Jan 2022</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Adla Zubair</span>
+              <span class="intern-inst">IISER Tirupati</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Dec 2021 – Jan 2022</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Abin Jacob</span>
+              <span class="intern-inst">Christ University, Bengaluru</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Mar 2022 – Jun 2022</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Kankana Bowmik</span>
+              <span class="intern-inst">IISER Mohali</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> May 2022 – Aug 2022</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Gayatri</span>
+              <span class="intern-inst">IIT Gandhinagar</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> May 2022 – Jul 2022</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Adla Zubair</span>
+              <span class="intern-inst">IISER Tirupati</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Jun 2022 – Apr 2023</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Amruth</span>
+              <span class="intern-inst">AIIMS Bhopal</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Dec 2022 – May 2023</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Garima Nagal</span>
+              <span class="intern-inst">NFSU Gandhinagar</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Sep 2022 – Feb 2023</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Keerthi</span>
+              <span class="intern-inst">JSS AHER Mysore</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Mar 2023 – Mar 2023</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Vaishnavi BS</span>
+              <span class="intern-inst">JSS AHER Mysore</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Mar 2023 – Oct 2023</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Deepankan</span>
+              <span class="intern-inst">JSS AHER Mysore</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Mar 2023 – Jul 2023</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Prerana Reddy</span>
+              <span class="intern-inst">JSS AHER Mysore</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Mar 2023 – Nov 2023</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Ananda Krishnan</span>
+              <span class="intern-inst">Jiwaji University Gwalior</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Apr 2023 – Jun 2023</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Nandini</span>
+              <span class="intern-inst">IISER Mohali</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> —</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Nahida Jabin</span>
+              <span class="intern-inst">IISER Mohali</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> May 2023 – Aug 2023</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Shivani H</span>
+              <span class="intern-inst">IISER Mohali</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> May 2023 – Aug 2023</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Ananya Sachdev</span>
+              <span class="intern-inst">UM-DAE Centre for Excellence in Basic Sciences, Mumbai</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> May 2023 – Nov 2023</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Ritika Khanna</span>
+              <span class="intern-inst">JSS AHER Mysore</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Sep 2023 – Nov 2023</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Yashwanth G</span>
+              <span class="intern-inst">University of Amsterdam</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Oct 2023 – May 2024</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Aysha Khenza</span>
+              <span class="intern-inst">Cochin University of Science and Technology (CUSAT), Kerala</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Dec 2023 – May 2024</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Joshua D</span>
+              <span class="intern-inst">St Josephs University, Bengaluru</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Jan 2024 – May 2024</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Simra I</span>
+              <span class="intern-inst">St Josephs University, Bengaluru</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Jan 2024 – May 2024</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Mahika</span>
+              <span class="intern-inst">M.S. Ramaiah University of Applied Sciences, Bengaluru</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Jan 2024 – May 2024</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Abhay</span>
+              <span class="intern-inst">Christ University, Bengaluru</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Feb 2024 – Apr 2024</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Shraddha M</span>
+              <span class="intern-inst">Alumnus of IIT Gandhinagar & Interned at IIT Hyderabad</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Mar 2024 – May 2024</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Ganga M Patil</span>
+              <span class="intern-inst">JSS AHER Mysore</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Mar 2024 – Jul 2024</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Ritika Khanna</span>
+              <span class="intern-inst">JSS AHER Mysore</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Apr 2024 – Sep 2024</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Vidyun Mittal</span>
+              <span class="intern-inst">Alumnus of TRINITY COLLEGE DUBLIN</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Apr 2024 – Jun 2024</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Nahida Jabin</span>
+              <span class="intern-inst">IISER Mohali</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> May 2024 – Jul 2024</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Shivani H</span>
+              <span class="intern-inst">IISER Mohali</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> May 2024 – Jul 2024</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Prakash Shrimali</span>
+              <span class="intern-inst">SVYASA</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Apr 2024 – Nov 2024</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Amritanjali Nagne</span>
+              <span class="intern-inst">IISER Mohali</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Dec 2024 – Dec 2024</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Lokeswara Vijanapalli</span>
+              <span class="intern-inst">IIT Mandi</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Sep 2024 – Sep 2024</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Dharma Thobani</span>
+              <span class="intern-inst">IIT Mandi</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Sep 2024 – Oct 2024</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Ankita Garg</span>
+              <span class="intern-inst">IIT Mandi</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Sep 2024 – Oct 2024</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Saakshi Goswami</span>
+              <span class="intern-inst">IGNOU (Correspondence)</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Oct 2024 – Jun 2025</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Vaishnavi G Nair</span>
+              <span class="intern-inst">Cochin University of Science and Technology (CUSAT), Kerala</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Jan 2025 – Jul 2025</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Twinkle Yadav</span>
+              <span class="intern-inst">Jiwaji University Gwalior</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Feb 2025 – Aug 2025</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Jaisy Bridgette Devadasse</span>
+              <span class="intern-inst">UNITO, Turin</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Apr 2025 – Jun 2025</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Deepshik Sharma</span>
+              <span class="intern-inst">JAIN University, Bangalore</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Jun 2025 – Oct 2025</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Anjana Sinha</span>
+              <span class="intern-inst">JSS AHER Mysore</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Aug 2025 – Sep 2025</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Siddharth Rajesh</span>
+              <span class="intern-inst">University of Sydney</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Sep 2025 – Apr 2026</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Manasa Marthala</span>
+              <span class="intern-inst">Christ University (Central Campus)</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Dec 2025 – Mar 2026</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Chinmayi Vaidya</span>
+              <span class="intern-inst">Christ University (Central Campus)</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Dec 2025 – Mar 2026</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Priyashi</span>
+              <span class="intern-inst">Christ University (Central Campus)</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Dec 2025 – Mar 2026</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Om Tiwary</span>
+              <span class="intern-inst">Rashtriya Raksha University, Gujarat</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Jan 2026 – Mar 2026</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Niti Desai</span>
+              <span class="intern-inst">Rashtriya Raksha University, Gujarat</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Jan 2026 – Mar 2026</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Aswin Tony</span>
+              <span class="intern-inst">Trivandrum Medical College</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Mar 2026 – Apr 2026</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Neha H Nair</span>
+              <span class="intern-inst">IISER-Pune</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> May 2026 – Jul 2026</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Aparna Manoj</span>
+              <span class="intern-inst">IISER Mohali</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> May 2026 – Jul 2026</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Srinivasan R</span>
+              <span class="intern-inst">University of Hyderabad</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> May 2026 – Jul 2026</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Sharon Zachariah</span>
+              <span class="intern-inst">Dayananda Sagar University</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> —</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Harshitha P.G</span>
+              <span class="intern-inst">Dayananda Sagar University</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> —</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Vishaka Biju</span>
+              <span class="intern-inst">Dayananda Sagar University</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> —</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Shreya Paul</span>
+              <span class="intern-inst">Dayananda Sagar University</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> —</span>
+            </div>            <div class="intern-row">
+              <span class="intern-name">Nahida Jabin</span>
+              <span class="intern-inst">IISER Mohali</span>
+              <span class="intern-period"><span class="badge-status badge-completed">Completed</span> Sep 2026 – Oct 2026</span>
+            </div>
+            </div>
           </div>
         </div>
       </div>

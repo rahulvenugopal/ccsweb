@@ -1,25 +1,24 @@
 {
-  "generated": "2026-10-05T13:29:56",
+  "generated": "2026-11-07T16:28:55",
   "stats": {
-    "sanctioned_projects": 18,
+    "sanctioned_projects": 17,
     "student_intern_placements": 63,
     "intern_institutions": 33,
     "intern_institutions_international": 4,
-    "invited_talks": 46,
+    "invited_talks": 57,
     "events_organised": 11,
-    "publications_published": 60,
-    "papers_since_2020": 45
+    "publications_published": 62,
+    "papers_since_2020": 50
   },
   "areas": {
     "neurotech": {
       "sanctioned": 3,
-      "students": 8,
+      "students": 7,
       "student_titles": [
         "Sleep interface Olfactometer for targeted memory activation in vulnerable population",
         "EEG oscillations and applications in Neurofeedback",
         "Closed loop sleep stimulation and its effectiveness in enhancing slow wave characteristics in spindle-slow wave coupling in schizophrenia",
         "Closed loop sleep stimulation and its effectiveness in enhancing spindle characteristic in spindle slow wave coupling",
-        "Understanding Nasal cycles in Neurophenomenology – device development",
         "Dissertation titled \"ECG phase-locked auditory stimulation and its influence on brain waves: A pilot study\"",
         "Optimisation of a closed loop protocol for TMR stimulation during nap",
         "Adaptive Personalization of Short Cognitive Training Using a Wearable EEG/PPG Band"
@@ -27,41 +26,37 @@
     },
     "sleep": {
       "sanctioned": 2,
-      "students": 13,
+      "students": 12,
       "student_titles": [
         "Understanding the features of EEG alpha oscillation in Wake and Sleep (Spindles)",
         "A Comparative Study of K Complex Density in N2 Stage of Sleep between Patients with Generalized Anxiety Disorder And Co-Morbid Generalized Social Phobia and Normal Control Subjects",
+        "Alpha Dynamics and Thalamo-cortical integrity in wake and sleep: An EEG-based exploration study",
         "Decoding Multivariate EEG pattern between dream and no dream from High density PSG data",
         "Combining both manual and automated quantitative analysis of dream content from multiple dream reports of a single night's sleep - an exploratory study",
         "Wakeful alertness in meditators during deep sleep - an EEG connectivity study",
         "Relation between sleep-wake activity pattern and mental health among elderly - an actigraphy based study",
         "Research Observership - Sleep Study training",
-        "Respiration-ECG-EEG coupling in Nap data",
-        "Actigraphy profile of Elderly",
         "Heart Evoked Potential across sleep stages",
         "Self Referential processing in Sleep"
       ]
     },
     "clinical": {
       "sanctioned": 4,
-      "students": 4,
+      "students": 2,
       "student_titles": [
-        "Alpha Dynamics and Thalamo-cortical integrity in wake and sleep: An EEG-based exploration study",
-        "Assessment of mental stress using EEG and behavioural measures",
         "Exploring the Excitation/Inhibition (E/I) Balance in Schizophrenia using EEG",
         "Epilepsy Prediction using Multi-Variate EEG pattern dynamics"
       ]
     },
     "mindbody": {
-      "sanctioned": 9,
-      "students": 10,
+      "sanctioned": 8,
+      "students": 9,
       "student_titles": [
         "Estimating Periodic and Aperiodic EEG Activity In Vipassana Meditators",
         "Neurobehavioural evaluation of Meditation Proficiency",
         "Enhanced delta and theta frequency in Yoga-based breathing-preliminary investigation findings",
         "Effect of Yoga based focus-defocus exercise on event related potential- EEG pilot study",
         "EEG-Resp-HRV Synch in Brahmakumari Meditators",
-        "Mind Wandering content across sessions - a survey and EEG based study",
         "Mind Wandering and Breathwatch training - a survey and EEG based study",
         "Prodicting Brain age in Meditators using ML-based multivariate approach on EEG data",
         "Training in EEG Acquisition, paradigm designing, advanced EEG analysis on Advanced meditator datasets | Multivariate EEG patterns across traditions using ML approach",
@@ -70,25 +65,30 @@
     },
     "cross": {
       "sanctioned": 0,
-      "students": 23,
+      "students": 28,
       "student_titles": [
         "Neurocognition: EEG analysis of working memory and microstates",
+        "Assessment of mental stress using EEG and behavioural measures",
         "EEG dynamics and working memory",
         "Relation between ERP, EEG oscillations and emotion",
         "Investigating the Correlation between EEG Power spectrum and fMRI Activity in the Default Mode Network, Salience Network, and Frontoparietal Network",
         "Examining EEG Features that are consistent across days between two Individuals",
+        "Mind Wandering content across sessions - a survey and EEG based study",
         "EEG/ERP Analysis in MATLAB",
         "Comparison of two multivariate approaches to study three different ERP components from the existing dataset",
         "Comparing different connectivity measures to distinguish rest and task conditions.",
         "Research Observership",
+        "Understanding Nasal cycles in Neurophenomenology – device development",
+        "Respiration-ECG-EEG coupling in Nap data",
         "Eye Tracking based Neurophenomenology of Imagination",
+        "Actigraphy profile of Elderly",
         "Brain Age Index",
         "Heart Evoked Potential under varying working memory loads",
         "EEG Dynamics in Foresic Interview",
         "Training in HRV advanced analysis",
         "Neural mass models",
         "Sense of Agency",
-        "Basic EEG Analysis",
+        "Basic EEG/ERP Analysis, Paradigm making in E-prime",
         "Neural Speech Tracking",
         "Psiconnect dataset, Brain Criticality",
         "Heartbeat Evoked Potentials"
@@ -105,8 +105,7 @@
       "DST-BDTD",
       "DST-CSRI",
       "DST-SATYAM / SHRI",
-      "DST-SERB",
-      "IKS (MoE)"
+      "DST-SERB"
     ],
     "Industry": [
       "Turtle Technologies"
@@ -259,7 +258,7 @@
     "2022": 2,
     "2023": 1,
     "2025": 9,
-    "2026": 17
+    "2026": 26
   },
   "placements_by_year": {
     "2021": 6,
@@ -267,17 +266,17 @@
     "2023": 11,
     "2024": 16,
     "2025": 9,
-    "2026": 6
+    "2026": 13
   },
   "publications": {
     "since": 2020,
-    "total": 45,
+    "total": 50,
     "citations": 0,
     "has_citations": false,
     "other_outputs": {
-      "Preprint": 7,
-      "Conference paper": 6,
-      "Abstract / poster": 2
+      "Preprint": 10,
+      "Conference paper": 2,
+      "Abstract / poster": 0
     },
     "by_area": [
       {
@@ -289,13 +288,13 @@
       {
         "key": "mindbody",
         "label": "Mind–body & contemplative science",
-        "papers": 12,
+        "papers": 15,
         "citations": 0
       },
       {
         "key": "clinical",
         "label": "Clinical & developmental neuroscience",
-        "papers": 5,
+        "papers": 7,
         "citations": 0
       },
       {
@@ -316,13 +315,13 @@
         "theme": "Sleep & dreaming",
         "papers": 38.0,
         "citations": 384.0,
-        "as_of": "September 2026"
+        "as_of": "2026-09-01 00:00:00"
       },
       {
         "theme": "Meditation",
         "papers": 26.0,
         "citations": 355.0,
-        "as_of": "September 2026"
+        "as_of": "2026-09-01 00:00:00"
       }
     ],
     "journals": [
@@ -600,13 +599,6 @@
       "status": "Sanctioned",
       "start_year": 2025,
       "area": "clinical"
-    },
-    {
-      "title": "Mandukya Upanishad and neural states of consciousness",
-      "agency": "IKS (MoE)",
-      "status": "Sanctioned",
-      "start_year": 2025,
-      "area": "mindbody"
     }
   ],
   "events_organised": [
